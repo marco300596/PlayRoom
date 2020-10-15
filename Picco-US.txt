@@ -1,0 +1,8 @@
+1. As a Player, I want to book a game room, so that I can decide to join a tournament or not.
+
+2. As a Player, I want to know the game room in a range of 30km, so that I can reach it as soon as possible.
+
+3. As an Event Organizer, I want to block a player if he/she does not respect ¹rules, so that I can decide if I should remove him/her from the system or not.
+
+¹rules: bad language, vandalize hardware or room, spam(aggiungere altro)
+ 
