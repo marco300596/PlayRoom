@@ -1,4 +1,0 @@
-1)The system shall provide to the Advanced Player to create a pool about the type of the game to use for the tournament.
-2)The system shall provide a geolocation service  to the players to choose the events that are available at most 30 kilometres from their city.
-3)The system shall provide the Event Organizer to post photos of the room that he/she can offer for the event with  the description of the hardware¹ offered.
-¹hardware:consoles,computers,table games.
