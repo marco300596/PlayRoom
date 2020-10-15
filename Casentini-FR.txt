@@ -1,0 +1,5 @@
+1. The system shall provide the upload of pictures (and/or videos ?) about the rooms.
+2. The system shall provide the information¹ about a room when it is selected.
+3. The system shall provide a push notification reporting if the booking was   successful or not.
+
+¹informations: GPS Position, Ratings, Capacity, Max number of groups accepted;

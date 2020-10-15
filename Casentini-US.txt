@@ -1,0 +1,8 @@
+1. As a Player, i want to see the ¹availability of games and hardware at the gameroom, so that i can search for the most suitable to me.
+
+2. As an Event organizer, I want to share events and new availability through the system, so that I can sponsor my activity.
+
+3. As a Player, I want to be redirected from the map to the selected room’s page, so that I can see all the info² about it.
+
+¹availability: new table games, software or hardware.
+²info: posts, organized events, availability, telephone number, address, ecc.
