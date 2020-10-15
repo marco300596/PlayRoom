@@ -1,0 +1,4 @@
+1. The system shall provide a section in which players can leave feedback about their game experience in the room.
+2. The system shall provide a table for the advanced players with the highest score in a particular game.
+3. The system shall provide a push notification for all users when an event is about to begin.
+ 
