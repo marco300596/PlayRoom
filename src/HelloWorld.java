@@ -6,7 +6,7 @@ public class HelloWorld {
 		int b = 44;
 		System.out.println("Hello World!");
 		int c= sum(a,b);
-		System.out.print(c);
+		System.out.println(c);
 	}
 	
 	public static int sum(int a,int b) {
