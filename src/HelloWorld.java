@@ -12,9 +12,12 @@ public class HelloWorld {
 		System.out.println("Hello world");
 		System.out.println("Hello worlds");
 		System.out.println("passata di sugooooo");
+		int x=add();
+		System.out.println(x);
+		
 	}
 	
-	public int add() {
+	public static int add() {
 		int a=5;
 		int b=6;
 		return a+b;
