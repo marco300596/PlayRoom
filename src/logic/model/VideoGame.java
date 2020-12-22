@@ -6,7 +6,7 @@ public class VideoGame {
 	private Boolean availability;
 	private int quantity;
 	private String description;
-	
+		
 	public String getGameName() {
 		return gameName;
 	}
@@ -37,5 +37,5 @@ public class VideoGame {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+		
 }
