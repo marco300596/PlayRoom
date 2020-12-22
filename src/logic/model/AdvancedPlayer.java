@@ -1,6 +1,6 @@
 package logic.model;
 
-public class AdvancedPlayer {
+public class AdvancedPlayer extends Player{
 	
 	//attribute
 
