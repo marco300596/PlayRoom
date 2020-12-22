@@ -9,7 +9,7 @@ public class AdvancedPlayer extends Player
 	//non-default constructor
 	public AdvancedPlayer(String firstname,	String lastname, String email, String username, String password)
 	{
-		super(firstname, lastname, email, username, password);
+		//super(firstname, lastname, email, username, password);
 		this.setAdv(true);	
 	}
 	
