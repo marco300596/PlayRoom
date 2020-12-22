@@ -1,17 +1,17 @@
 package logic.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class HighscoreTable {
 	
-	private ArrayList<String> highscoreList;
+	private List<String> highscoreList;
 	private String highscore;
 	private String tournamentName;
 	
-	public ArrayList<String> getHighscoreList() {
+	public List<String> getHighscoreList() {
 		return highscoreList;
 	}
-	public void setHighscoreList(ArrayList<String> highscoreList) {
+	public void setHighscoreList(List<String> highscoreList) {
 		this.highscoreList = highscoreList;
 	}
 	public String getHighscore() {
