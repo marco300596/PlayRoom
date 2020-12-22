@@ -7,28 +7,42 @@ public class Hardware {
 	private int availability;
 	private String description;
 	
-	public String getHardwareName() {
+	public String getHardwareName()
+	{
 		return hardwareName;
 	}
-	public void setHardwareName(String hardwareName) {
-		this.hardwareName = hardwareName;
-	}
-	public int getQuantity() {
+	
+	public int getQuantity()
+	{
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+
 	public int getAvaibility() {
 		return availability;
 	}
-	public void setAvaibility(int avaibility) {
-		this.availability = avaibility;
-	}
-	public String getDescription() {
+	
+	public String getDescription()
+	{
 		return description;
 	}
-	public void setDescription(String description) {
+	
+	public void setHardwareName(String hardwareName)
+	{
+		this.hardwareName = hardwareName;
+	}
+	
+	public void setQuantity(int quantity)
+	{
+		this.quantity = quantity;
+	}
+	
+	public void setAvaibility(int avaibility)
+	{
+		this.availability = avaibility;
+	}
+	
+	public void setDescription(String description)
+	{
 		this.description = description;
 	}
 	

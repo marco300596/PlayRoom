@@ -1,33 +1,74 @@
 package logic.model;
 
-public class Reservation {
+public class Reservation 
+{
+	
+	//attributes
 	private int reservationStatus;
+	private int numberOfPlayer;
 	private String reservationRoom;
 	private String playerUsername;
 	private String organizerMail;
 	
-	public int getReservationStatus() {
+	//methods
+	//non-default constructor
+	public Reservation(int reservationStatus, int numberOfPlayer, String reservationRoom, String playerUsername, String organizerMail) 
+	{
+		this.setReservationStatus(reservationStatus);
+		this.setNumberOfPlayer(numberOfPlayer);
+		this.setReservationRoom(reservationRoom);
+		this.setPlayerUsername(playerUsername);
+		this.setOrganizerMail(organizerMail);
+	}
+	
+	//setter&getter
+	public int getReservationStatus() 
+	{
 		return reservationStatus;
 	}
-	public void setReservationStatus(int reservationStatus) {
-		this.reservationStatus = reservationStatus;
+	
+	public int getNumberOfPlayer()
+	{
+		return numberOfPlayer;
 	}
-	public String getReservationRoom() {
+	
+	public String getReservationRoom()
+	{
 		return reservationRoom;
 	}
-	public void setReservationRoom(String reservationRoom) {
-		this.reservationRoom = reservationRoom;
-	}
-	public String getPlayerUsername() {
+
+	public String getPlayerUsername()
+	{
 		return playerUsername;
 	}
-	public void setPlayerUsername(String playerUsername) {
-		this.playerUsername = playerUsername;
-	}
-	public String getOrganizerMail() {
+	
+	public String getOrganizerMail()
+	{
 		return organizerMail;
 	}
-	public void setOrganizerMail(String organizerMail) {
+	
+	public void setReservationStatus(int reservationStatus)
+	{
+		this.reservationStatus = reservationStatus;
+	}
+	
+	public void setNumberOfPlayer(int numberOfPlayer)
+	{
+		this.numberOfPlayer = numberOfPlayer;
+	}
+	
+	public void setReservationRoom(String reservationRoom)
+	{
+		this.reservationRoom = reservationRoom;
+	}
+	
+	public void setPlayerUsername(String playerUsername)
+	{
+		this.playerUsername = playerUsername;
+	}
+	
+	public void setOrganizerMail(String organizerMail)
+	{
 		this.organizerMail = organizerMail;
 	}
 	

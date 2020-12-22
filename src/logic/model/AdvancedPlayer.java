@@ -1,18 +1,26 @@
 package logic.model;
 
-public class AdvancedPlayer extends Player{
-	
+public class AdvancedPlayer extends Player
+{	
 	//attribute
-
 	private boolean isAdv;
 
 	//method
+	//non-default constructor
+	public AdvancedPlayer(String firstname,	String lastname, String email, String username, String password, boolean isAdv)
+	{
+		super(firstname, lastname, email, username, password);
+		isAdv = true;	
+	}
 	
-	public boolean isAdv() {
+	//setter&getter
+	public boolean getisAdv()
+	{
 		return isAdv;
 	}
 
-	public void setAdv(boolean isAdv) {
+	public void setAdv(boolean isAdv)
+	{
 		this.isAdv = isAdv;
 	}
 	

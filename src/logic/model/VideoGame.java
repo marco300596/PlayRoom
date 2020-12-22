@@ -7,34 +7,53 @@ public class VideoGame {
 	private int quantity;
 	private String description;
 		
-	public String getGameName() {
+	public String getGameName()
+	{
 		return gameName;
 	}
-	public void setGameName(String gameName) {
-		this.gameName = gameName;
-	}
-	public String getGenre() {
+	
+	public String getGenre()
+	{
 		return genre;
 	}
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-	public Boolean getAvailability() {
+	
+	public Boolean getAvailability()
+	{
 		return availability;
 	}
-	public void setAvailability(Boolean availability) {
-		this.availability = availability;
-	}
-	public int getQuantity() {
+	
+	public int getQuantity()
+	{
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public String getDescription() {
+	
+	public String getDescription()
+	{
 		return description;
 	}
-	public void setDescription(String description) {
+	
+	public void setGameName(String gameName)
+	{
+		this.gameName = gameName;
+	}
+	
+	public void setGenre(String genre)
+	{
+		this.genre = genre;
+	}
+	
+	public void setAvailability(Boolean availability)
+	{
+		this.availability = availability;
+	}
+	
+	public void setQuantity(int quantity)
+	{
+		this.quantity = quantity;
+	}
+	
+	public void setDescription(String description)
+	{
 		this.description = description;
 	}
 		
