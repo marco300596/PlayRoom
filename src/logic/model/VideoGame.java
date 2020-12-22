@@ -1,17 +1,17 @@
 package logic.model;
 
 public class VideoGame {
-	private String nameGame;
+	private String gameName;
 	private String genre;
-	private Boolean aivailability;
+	private Boolean availability;
 	private int quantity;
 	private String description;
 	
 	public String getNameGame() {
-		return nameGame;
+		return gameName;
 	}
 	public void setNameGame(String nameGame) {
-		this.nameGame = nameGame;
+		this.gameName = nameGame;
 	}
 	public String getGenre() {
 		return genre;
@@ -19,11 +19,11 @@ public class VideoGame {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public Boolean getAivailability() {
-		return aivailability;
+	public Boolean getAvailability() {
+		return availability;
 	}
-	public void setAivailability(Boolean aivailability) {
-		this.aivailability = aivailability;
+	public void setAvailability(Boolean availability) {
+		this.availability = availability;
 	}
 	public int getQuantity() {
 		return quantity;
