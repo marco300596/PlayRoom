@@ -2,34 +2,34 @@ package logic.model;
 
 public class EventOrganizer {
 	
-	private String firstname;
-	private String lastname;
-	private String email;
-	private String ownRooms;
+	private String orgFirstname;
+	private String orgLastname;
+	private String orgEmail;
+	private String orgOwnRoom;
 	
-	public String getFirstname() {
-		return firstname;
+	public String getOrgFirstname() {
+		return orgFirstname;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setOrgFirstname(String orgFirstname) {
+		this.orgFirstname = orgFirstname;
 	}
-	public String getLastname() {
-		return lastname;
+	public String getOrgLastname() {
+		return orgLastname;
 	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setOrgLastname(String orgLastname) {
+		this.orgLastname = orgLastname;
 	}
-	public String getEmail() {
-		return email;
+	public String getOrgEmail() {
+		return orgEmail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setOrgEmail(String orgEmail) {
+		this.orgEmail = orgEmail;
 	}
-	public String getOwnRooms() {
-		return ownRooms;
+	public String getOrgOwnRoom() {
+		return orgOwnRoom;
 	}
-	public void setOwnRooms(String ownRooms) {
-		this.ownRooms = ownRooms;
+	public void setOrgOwnRoom(String orgOwnRoom) {
+		this.orgOwnRoom = orgOwnRoom;
 	}
 	
 	
