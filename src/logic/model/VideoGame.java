@@ -7,11 +7,11 @@ public class VideoGame {
 	private int quantity;
 	private String description;
 	
-	public String getNameGame() {
+	public String getGameName() {
 		return gameName;
 	}
-	public void setNameGame(String nameGame) {
-		this.gameName = nameGame;
+	public void setGameName(String gameName) {
+		this.gameName = gameName;
 	}
 	public String getGenre() {
 		return genre;
@@ -37,5 +37,5 @@ public class VideoGame {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	
 }
