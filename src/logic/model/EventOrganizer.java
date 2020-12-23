@@ -7,6 +7,13 @@ public class EventOrganizer {
 	private String orgEmail;
 	private String orgOwnRoom;
 	
+	public EventOrganizer(String orgFirstname, String orgLastname, String orgEmail, String orgOwnRoom) {
+		this.setOrgFirstname(orgFirstname);
+		this.setOrgLastname(orgLastname);
+		this.setOrgEmail(orgEmail);
+		this.setOrgOwnRoom(orgOwnRoom);
+	}
+
 	public String getOrgFirstname()
 	{
 		return orgFirstname;
