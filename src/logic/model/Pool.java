@@ -7,15 +7,12 @@ public class Pool {
 	private String question;
 	private String answer;
 	private String tournamentName;
-	
-	
-	
+		
 	public Pool(String poolName, String question, String answer, String tournamentName) {
-		super();
-		this.poolName = poolName;
-		this.question = question;
-		this.answer = answer;
-		this.tournamentName = tournamentName;
+		this.setPoolName(poolName);
+		this.setQuestion(question);
+		this.setAnswer(answer);
+		this.setTournamentName(tournamentName);
 	}
 
 	//methods
