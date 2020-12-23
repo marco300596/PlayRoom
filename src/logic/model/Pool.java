@@ -8,6 +8,16 @@ public class Pool {
 	private String answer;
 	private String tournamentName;
 	
+	
+	
+	public Pool(String poolName, String question, String answer, String tournamentName) {
+		super();
+		this.poolName = poolName;
+		this.question = question;
+		this.answer = answer;
+		this.tournamentName = tournamentName;
+	}
+
 	//methods
 	//setter&getter
 	public String getPoolName()
