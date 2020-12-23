@@ -7,6 +7,16 @@ public class Hardware {
 	private int availability;
 	private String description;
 	
+	
+	
+	public Hardware(String hardwareName, int quantity, int availability, String description) {
+		
+		this.setHardwareName(hardwareName);
+		this.setQuantity(quantity);
+		this.setAvailability(availability);
+		this.setDescription(description);
+	}
+
 	public String getHardwareName()
 	{
 		return hardwareName;
@@ -36,9 +46,9 @@ public class Hardware {
 		this.quantity = quantity;
 	}
 	
-	public void setAvaibility(int avaibility)
+	public void setAvailability(int availability)
 	{
-		this.availability = avaibility;
+		this.availability = availability;
 	}
 	
 	public void setDescription(String description)
