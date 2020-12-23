@@ -6,6 +6,18 @@ public class VideoGame {
 	private Boolean availability;
 	private int quantity;
 	private String description;
+	
+	
+	public VideoGame(String gameName,String genre,Boolean availability,int quantity,String description) 
+	{
+		this.setGameName(gameName);
+		this.setGenre(genre);
+		this.setAvailability(availability);
+		this.setQuantity(quantity);
+		this.setDescription(description);
+		
+	
+	}
 		
 	public String getGameName()
 	{

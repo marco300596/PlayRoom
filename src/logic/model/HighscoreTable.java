@@ -11,10 +11,11 @@ public class HighscoreTable {
 	
 	//methods
 	//non-default constructor
-	public HighscoreTable(List<String> highscoreList, String tournamentName)
+	public HighscoreTable(List<String> highscoreList, String tournamentName,String highscore)
 	{
 		this.setHighscoreList(highscoreList);
 		this.setTournamentName(tournamentName);
+		this.setHighscore(highscore);
 	}
 	
 	//setter&getter
