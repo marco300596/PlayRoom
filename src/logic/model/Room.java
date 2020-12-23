@@ -8,6 +8,16 @@ public class Room {
 	private String location;
 	private String photo;
 	
+	
+	public Room(String roomName, int numSeat, int price, String location, String photo) {
+		
+		this.setRoomName(roomName);
+		this.setNumSeat(numSeat);
+		this.setPrice(price);
+		this.setLocation(location);
+		this.setPhoto(photo);
+	}
+
 	public String getRoomName()
 	{
 		return roomName;
