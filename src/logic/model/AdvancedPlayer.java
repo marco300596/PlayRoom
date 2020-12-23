@@ -7,20 +7,17 @@ public class AdvancedPlayer extends Player
 
 	//method
 	//non-default constructor
-	public AdvancedPlayer(String firstname,	String lastname, String email, String username, String password)
+	public AdvancedPlayer(String firstname,	String lastname, String email, String username, String password, Boolean isAdv)
 	{
-		//super(firstname, lastname, email, username, password);
+		super(firstname, lastname, email, username, password);
 		this.setAdv(true);	
 	}
-	
-	//setter&getter
-	public boolean getisAdv()
-	{
+
+	public boolean isAdv() {
 		return isAdv;
 	}
 
-	public void setAdv(boolean isAdv)
-	{
+	public void setAdv(boolean isAdv) {
 		this.isAdv = isAdv;
 	}
 	
