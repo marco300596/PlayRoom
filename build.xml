@@ -3,19 +3,37 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="PlayRoom">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="PlayRoom.git">
     <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="C:/Users/narco/eclipse/java-2019-09/eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.8"/>
-    <property name="source" value="1.8"/>
-    <path id="PlayRoom.classpath">
+    <property name="target" value="12"/>
+    <property name="source" value="12"/>
+    <path id="JavaFX15.userclasspath">
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/javafx.base.jar"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/javafx.controls.jar"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/javafx.fxml.jar"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/javafx.graphics.jar"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/javafx.media.jar"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/javafx.swing.jar"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/javafx.web.jar"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/javafx-swt.jar"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/src.zip"/>
+    </path>
+    <path id="PlayRoom.git.classpath">
         <pathelement location="bin"/>
+        <path refid="JavaFX15.userclasspath"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/src.zip"/>
+    </path>
+    <path id="run.HelloWorld (3).classpath">
+        <path refid="PlayRoom.git.classpath"/>
+        <path refid="JavaFX15.userclasspath"/>
+        <pathelement location="../../../../openjfx-15.0.1_windows-x86_bin-sdk/javafx-sdk-15.0.1/lib/src.zip"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
-            <fileset dir="src">
-                <exclude name="**/*.launch"/>
+            <fileset dir="trunk/src">
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -29,8 +47,8 @@
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
-            <src path="src"/>
-            <classpath refid="PlayRoom.classpath"/>
+            <src path="trunk/src"/>
+            <classpath refid="PlayRoom.git.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -47,9 +65,9 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="HelloWorld (1)">
+    <target name="HelloWorld (3)">
         <java classname="HelloWorld" failonerror="true" fork="yes">
-            <classpath refid="PlayRoom.classpath"/>
+            <classpath refid="run.HelloWorld (3).classpath"/>
         </java>
     </target>
 </project>
