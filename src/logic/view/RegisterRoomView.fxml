@@ -1,56 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="790.0" prefWidth="856.0" style="-fx-background-color: #262628;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextArea prefHeight="66.0" prefWidth="600.0" scrollLeft="10.0" text="   PlayRoom      ">
-         <font>
-            <Font name="System Bold Italic" size="30.0" />
-         </font>
-      </TextArea>
-      <Text layoutX="227.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Registration">
+      <Text fill="#ebe7e7" layoutX="475.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Registration">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextArea layoutX="27.0" layoutY="147.0" prefHeight="37.0" prefWidth="183.0" />
+      <TextArea layoutX="300.0" layoutY="172.0" prefHeight="37.0" prefWidth="183.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></TextArea>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="27.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the Room:">
+      <Text fill="WHITE" layoutX="300.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the Room:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextArea layoutX="27.0" layoutY="221.0" prefHeight="37.0" prefWidth="183.0" />
-      <Text layoutX="27.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game available:">
+      <TextArea layoutX="300.0" layoutY="247.0" prefHeight="37.0" prefWidth="183.0" />
+      <Text fill="WHITE" layoutX="303.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game available:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="27.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select images">
+      <Text fill="WHITE" layoutX="300.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select images">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextArea accessibleRole="IMAGE_VIEW" layoutX="26.0" layoutY="305.0" prefHeight="136.0" prefWidth="183.0" />
-      <Button layoutX="81.0" layoutY="361.0" mnemonicParsing="false" text="Add photo" />
-      <Text layoutX="27.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Description:">
+      <TextArea accessibleRole="IMAGE_VIEW" layoutX="300.0" layoutY="324.0" prefHeight="136.0" prefWidth="189.0" />
+      <Button layoutX="357.0" layoutY="379.0" mnemonicParsing="false" text="Add photo" />
+      <Text fill="WHITE" layoutX="300.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Description:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextArea layoutX="22.0" layoutY="479.0" prefHeight="80.0" prefWidth="368.0" />
-      <Text layoutX="26.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Location:">
+      <TextArea layoutX="300.0" layoutY="499.0" prefHeight="110.0" prefWidth="370.0" />
+      <Text fill="WHITE" layoutX="303.0" layoutY="652.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Location:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Button layoutX="257.0" layoutY="594.0" mnemonicParsing="false" text="Register Room" />
-      <ScrollBar layoutX="586.0" layoutY="90.0" orientation="VERTICAL" prefHeight="549.0" prefWidth="14.0" />
+      <Button layoutX="527.0" layoutY="721.0" mnemonicParsing="false" text="Register Room" />
+      <HBox layoutX="-7.0" layoutY="-5.0" prefHeight="100.0" prefWidth="864.0" style="-fx-background-color: #262628;">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/home.png" />
+               </image>
+            </ImageView>
+            <Text fill="#87e7e1" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayRoom" textAlignment="JUSTIFY" wrappingWidth="188.9830722808838">
+               <HBox.margin>
+                  <Insets top="25.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="350.0" top="25.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../image/puffer-fish.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Login/Register">
+               <HBox.margin>
+                  <Insets left="15.0" top="35.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <VBox layoutY="94.0" prefHeight="696.0" prefWidth="286.0" style="-fx-background-color: #333335;">
+         <children>
+            <MenuButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="110.0" prefWidth="290.0" style="-fx-background-color: transparent;" text="Rooms" textAlignment="JUSTIFY" textFill="#6fd736">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <items>
+                  <CustomMenuItem text="1">
+                     <content>
+                        <CheckBox contentDisplay="RIGHT" maxHeight="110.0" prefHeight="100.0" text="Click Me" />
+                     </content>
+                  </CustomMenuItem>
+               </items>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="110.0" prefWidth="312.0" style="-fx-background-color: transparent;" text="Tournament" textAlignment="JUSTIFY" textFill="#6fd736">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <items>
+                  <CustomMenuItem hideOnClick="false" mnemonicParsing="false" text="2">
+                     <content>
+                        <CheckBox contentDisplay="RIGHT" maxHeight="110.0" prefHeight="110.0" text="Click Me" />
+                     </content>
+                  </CustomMenuItem>
+               </items>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="110.0" prefWidth="321.0" style="-fx-background-color: transparent;" text="Contact Us" textAlignment="JUSTIFY" textFill="#6fd736">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <items>
+                  <CustomMenuItem mnemonicParsing="false" text="3">
+                     <content>
+                        <CheckBox contentDisplay="RIGHT" maxHeight="110.0" prefHeight="110.0" text="Click Me" />
+                     </content>
+                  </CustomMenuItem>
+               </items>
+            </MenuButton>
+            <MenuButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="110.0" prefWidth="321.0" style="-fx-background-color: transparent;" text="Maps" textAlignment="JUSTIFY" textFill="#6fd736">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <items>
+                  <CustomMenuItem hideOnClick="false" mnemonicParsing="false" text="4">
+                     <content>
+                        <CheckBox alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="110.0" prefHeight="110.0" text="Click Me" />
+                     </content>
+                  </CustomMenuItem>
+               </items>
+            </MenuButton>
+         </children>
+      </VBox>
+      <ScrollBar layoutX="842.0" layoutY="94.0" orientation="VERTICAL" prefHeight="696.0" prefWidth="14.0" style="-fx-background-color: #333335;" />
    </children>
 </AnchorPane>
