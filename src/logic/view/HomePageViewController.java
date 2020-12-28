@@ -55,7 +55,11 @@ public class HomePageViewController {
 
     @FXML
     void roomPage(MouseEvent event) {
-    	loadPage("RegisterRoomView");
+    	
+    	
+    	 loadPage("RegisterRoomView");
+    	 bp.setCenter(ap);
+    	
     }
 
     @FXML
@@ -73,7 +77,7 @@ public class HomePageViewController {
     		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
     	}
     	
-    	bp.setCenter(root);
+    //	bp.setCenter(root);
     }
     
   /*  private void link() throws IOException{
