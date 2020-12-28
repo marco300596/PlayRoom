@@ -68,7 +68,7 @@ public class HomePageViewController {
     }
     
     private void loadPage(String page) {
-    	Parent root = null;
+    	 Parent root = null;
     	
     	try {
     		root = FXMLLoader.load(getClass().getResource(page+".fxml"));
@@ -77,18 +77,14 @@ public class HomePageViewController {
     		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
     	}
     	
+    	
     //	bp.setCenter(root);
     }
     
-  /*  private void link() throws IOException{
-    	Stage stage=(Stage) roomBtn.getScene().getWindow();
-    	stage.close();
-    	Stage primaryStage=new Stage();
-    	Parent root=FXMLLoader.load(getClass().getResource("RegisterRoomView.fxml"));
-    	primaryStage.setTitle("RegisterRoom");
-    	primaryStage.setScene(new Scene(root, 500, 500));
-    	primaryStage.show();
+   private void button1action() throws IOException{
+	   loadPage("RegisterRoomView");
+	   
     	
     }
-    */
+    
 }
