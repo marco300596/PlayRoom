@@ -10,9 +10,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.MenuButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 public class HomePageViewController {
 	
+	@FXML
+	private BorderPane bp;
+	
+	@FXML
+    private AnchorPane ap;
 	
 	@FXML
     private ImageView btnHome;
@@ -63,6 +70,8 @@ public class HomePageViewController {
     	} catch(IOException e){
     		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
     	}
-    	//manca dove inserire sta cazzo di root(in un border pane si puo fare, in anchor no)
+    	
+    	bp.setCenter(root);
     }
+    
 }
