@@ -17,6 +17,18 @@
    <left>
       <VBox prefHeight="880.0" prefWidth="290.0" style="-fx-background-color: #333335;" BorderPane.alignment="CENTER">
          <children>
+            <MenuButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="110.0" prefWidth="321.0" style="-fx-background-color: transparent;" text="Rooms" textAlignment="JUSTIFY" textFill="#6fd736">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <items>
+                  <CustomMenuItem text="1">
+                     <content>
+                        <CheckBox contentDisplay="RIGHT" maxHeight="110.0" prefHeight="100.0" text="Click Me" />
+                     </content>
+                  </CustomMenuItem>
+               </items>
+            </MenuButton>
             <MenuButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="110.0" prefWidth="312.0" style="-fx-background-color: transparent;" text="Tournament" textAlignment="JUSTIFY" textFill="#6fd736">
                <font>
                   <Font name="Arial" size="20.0" />
