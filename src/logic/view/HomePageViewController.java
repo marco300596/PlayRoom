@@ -7,11 +7,13 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class HomePageViewController {
 	
@@ -74,4 +76,15 @@ public class HomePageViewController {
     	bp.setCenter(root);
     }
     
+  /*  private void link() throws IOException{
+    	Stage stage=(Stage) roomBtn.getScene().getWindow();
+    	stage.close();
+    	Stage primaryStage=new Stage();
+    	Parent root=FXMLLoader.load(getClass().getResource("RegisterRoomView.fxml"));
+    	primaryStage.setTitle("RegisterRoom");
+    	primaryStage.setScene(new Scene(root, 500, 500));
+    	primaryStage.show();
+    	
+    }
+    */
 }
