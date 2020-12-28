@@ -81,10 +81,8 @@ public class HomePageViewController {
     //	bp.setCenter(root);
     }
     
-   private void button1action() throws IOException{
-	   loadPage("RegisterRoomView");
-	   
+   
     	
-    }
+    
     
 }
