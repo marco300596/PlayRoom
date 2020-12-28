@@ -58,7 +58,7 @@ public class HomePageViewController {
     	
     	
     	 loadPage("RegisterRoomView");
-    	 bp.setCenter(ap);
+    	 
     	
     }
 
