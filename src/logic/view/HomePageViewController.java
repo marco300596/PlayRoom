@@ -74,7 +74,7 @@ public class HomePageViewController {
 
     @FXML
     void tournamentPage(MouseEvent event) {
-    	//TODO
+    	loadPage("CreateTournamentView");
     }
     
     private void loadPage(String page) {
