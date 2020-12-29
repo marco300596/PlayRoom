@@ -28,17 +28,17 @@
                   </CustomMenuItem>
                   <CustomMenuItem text="1">
                      <content>
-                        <Button mnemonicParsing="false" onMousePressed="#roomPage" text="Button" />
+                        <Button mnemonicParsing="false" onMousePressed="#bookingPage" text="Button" />
                      </content>
                   </CustomMenuItem>
                   <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
                      <content>
-                        <Button mnemonicParsing="false" onMousePressed="#roomPage" text="Button" />
+                        <Button mnemonicParsing="false" text="Button" />
                      </content>
                   </CustomMenuItem>
                   <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
                      <content>
-                        <Button mnemonicParsing="false" onMousePressed="#roomPage" text="Button" />
+                        <Button mnemonicParsing="false" text="Button" />
                      </content>
                   </CustomMenuItem>
                </items>
