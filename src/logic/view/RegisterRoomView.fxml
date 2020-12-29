@@ -10,15 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="780.0" prefWidth="732.0" style="-fx-background-color: #262628;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="780.0" prefWidth="732.0" style="-fx-background-color: #262628;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fill="#ebe7e7" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Registration" textAlignment="RIGHT" wrappingWidth="738.8080291748047" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <ScrollBar orientation="VERTICAL" prefHeight="696.0" prefWidth="22.0" style="-fx-background-color: #333335;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <HBox prefHeight="790.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="780.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
             <VBox prefHeight="790.0" prefWidth="907.0">
                <children>
@@ -99,5 +93,11 @@
             </VBox>
          </children>
       </HBox>
+      <ScrollBar orientation="VERTICAL" prefHeight="696.0" prefWidth="22.0" style="-fx-background-color: #333335;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Text boundsType="VISUAL" fill="#3ed054" layoutX="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Registration" textAlignment="RIGHT" wrappingWidth="458.68359375" x="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
