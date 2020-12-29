@@ -77,6 +77,11 @@ public class HomePageViewController {
     	loadPage("CreateTournamentView");
     }
     
+    @FXML
+    void managementPage(MouseEvent event) {
+    	loadPage("Management");
+    }
+    
     private void loadPage(String page) {
     	 Parent root = null;
     	
