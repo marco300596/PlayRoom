@@ -66,6 +66,11 @@ public class HomePageViewController {
     	 
     	
     }
+    
+    @FXML
+    void bookingPage(MouseEvent event) {
+    	loadPage("BookRoom");
+    }
 
     @FXML
     void tournamentPage(MouseEvent event) {
