@@ -39,6 +39,11 @@ public class HomePageViewController {
     private MenuButton btnMaps;
     
     @FXML
+    void loginPage(MouseEvent event) {
+    	loadPage("logpage");
+    }
+    
+    @FXML
     void homePage(MouseEvent event) {
     	loadPage("homepage");
     }
