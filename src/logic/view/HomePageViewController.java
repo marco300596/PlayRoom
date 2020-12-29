@@ -78,7 +78,7 @@ public class HomePageViewController {
     	}
     	
     	
-    //	bp.setCenter(root);
+    	bp.setCenter(root);
     }
     
    
