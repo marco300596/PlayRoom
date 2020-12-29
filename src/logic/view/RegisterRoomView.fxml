@@ -94,7 +94,7 @@
          </children>
       </HBox>
       <ScrollBar orientation="VERTICAL" prefHeight="696.0" prefWidth="22.0" style="-fx-background-color: #333335;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Text boundsType="VISUAL" fill="#3ed054" layoutX="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Registration" textAlignment="RIGHT" wrappingWidth="458.68359375" x="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="20.0">
+      <Text boundsType="VISUAL" fill="#6fd736" layoutX="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Registration" textAlignment="RIGHT" wrappingWidth="458.68359375" x="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font size="40.0" />
          </font>
