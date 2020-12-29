@@ -49,8 +49,8 @@
                </font>
                <items>
                   <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                     <content>
                         <Button mnemonicParsing="false" onMousePressed="#tournamentPage" text="Button" />
+                     <content>
                         <Button mnemonicParsing="false" text="Button" />
                      </content>
                   </CustomMenuItem>
