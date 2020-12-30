@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane style="-fx-background-color: #333338;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="723.0" prefWidth="980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -56,7 +56,7 @@
                   <Insets left="25.0" />
                </VBox.margin>
             </HBox>
-            <Button mnemonicParsing="false" style="-fx-background-color: TRANSPARENT; -fx-border-color: #000000;" text="SUBMIT HIGHSCORE" textAlignment="JUSTIFY" textFill="#6fd736" underline="true">
+            <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000;" text="SUBMIT HIGHSCORE" textAlignment="JUSTIFY" textFill="#6fd736" underline="true">
                <VBox.margin>
                   <Insets left="250.0" right="62.0" top="10.0" />
                </VBox.margin>
