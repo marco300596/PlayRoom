@@ -82,7 +82,6 @@ public class HomePageViewController {
     	
    	 loadPage("RoomRating");
    	 
-   	
    }
     
     @FXML
