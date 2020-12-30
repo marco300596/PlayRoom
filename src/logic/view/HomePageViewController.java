@@ -27,14 +27,14 @@ public class HomePageViewController {
 
     @FXML
     void showOrganizerPage(MouseEvent event) {
-    	loadPage("PlainEOModelPage");
+    	loadMainPage("PlainEOModelPage");
     	FXMLLoader loader = new FXMLLoader();
     	loader.setController(new PlayerPageViewController());
     }
 
     @FXML
     void showPlayerPage(MouseEvent event) {
-    	loadPage("PlainPModelPage");
+    	loadMainPage("PlainPModelPage");
     	FXMLLoader loader = new FXMLLoader();
     	loader.setController(new OrganizerPageViewController());
     }
@@ -51,6 +51,21 @@ public class HomePageViewController {
    	
    	
     	bp.setCenter(root);
+    }
+    
+    private void loadMainPage(String page) {
+    	BorderPane root = null;
+    	
+    	try {
+    		root = (BorderPane)FXMLLoader.load(getClass().getResource(page+".fxml"));
+    		
+    	} catch(IOException e){
+    		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
+    	}
+
+    	bp.setTop(root.getTop());
+    	bp.setLeft(root.getLeft());
+    	
     }
 
 }
