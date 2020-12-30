@@ -77,6 +77,14 @@ public class HomePageViewController {
     	
     }
     
+    void ratePage(MouseEvent event) {
+    	
+    	
+   	 loadPage("RoomRating");
+   	 
+   	
+   }
+    
     @FXML
     void bookingPage(MouseEvent event) {
     	loadPage("BookRoom");
