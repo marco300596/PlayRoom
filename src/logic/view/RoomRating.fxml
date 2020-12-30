@@ -64,6 +64,9 @@
                      </font>
                   </Button>
                </children>
+               <HBox.margin>
+                  <Insets top="50.0" />
+               </HBox.margin>
             </VBox>
          </children>
       </HBox>
