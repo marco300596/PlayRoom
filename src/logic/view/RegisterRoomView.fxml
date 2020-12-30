@@ -46,12 +46,28 @@
                         <Insets bottom="20.0" left="50.0" />
                      </VBox.margin>
                   </TextArea>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hardware available:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="50.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </TextArea>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Select images:">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" right="50.0" />
+                        <Insets bottom="5.0" left="50.0" right="50.0" top="20.0" />
                      </VBox.margin>
                   </Text>
                   <TextArea accessibleRole="IMAGE_VIEW" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="136.0" prefWidth="189.0">
