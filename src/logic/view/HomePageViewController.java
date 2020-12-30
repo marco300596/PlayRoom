@@ -17,71 +17,69 @@ import javafx.stage.Stage;
 
 public class HomePageViewController {
 	
-	@FXML
-	private BorderPane bp;
+   @FXML
+   private BorderPane bp;
 	
-	@FXML
-    private AnchorPane ap;
+   @FXML
+   private AnchorPane ap;
 	
-	@FXML
-    private ImageView btnHome;
+   @FXML
+   private ImageView btnHome;
 	
-    @FXML
-    private MenuButton roomBtn;
+   @FXML
+   private MenuButton roomBtn;
 
-    @FXML
-    private MenuButton btnTournament;
+   @FXML
+   private MenuButton btnTournament;
 
-    @FXML
-    private MenuButton btnContact;
+   @FXML
+   private MenuButton btnContact;
 
-    @FXML
-    private MenuButton btnMaps;
+   @FXML
+   private MenuButton btnMaps;
     
-    @FXML
-    void highscorePage(MouseEvent event) {
+   @FXML
+   void highscorePage(MouseEvent event) {
     	loadPage("HighscoreTableView");
-    }
+   }
     
-    @FXML
-    void highscoreHistoryPage(MouseEvent event) {
+   @FXML
+   void highscoreHistoryPage(MouseEvent event) {
     	loadPage("HighscoreProgressionView");
-    }
+   }
     
-    @FXML
-    void loginPage(MouseEvent event) {
+   @FXML
+   void loginPage(MouseEvent event) {
     	loadPage("logpage");
-    }
+   }
     
-    @FXML
-    void homePage(MouseEvent event) {
+   @FXML
+   void homePage(MouseEvent event) {
     	loadPage("homepage");
-    }
+   }
 
-    @FXML
-    void contactPage(MouseEvent event) {
+   @FXML
+   void contactPage(MouseEvent event) {
     	//TODO
-    }
+   }
 
-    @FXML
-    void mapsPage(MouseEvent event) {
+   @FXML
+   void mapsPage(MouseEvent event) {
     	//TODO
-    }
+   }
 
-    @FXML
-    void roomPage(MouseEvent event) {
+   @FXML
+   void roomPage(MouseEvent event) {
     	
     	
-    	 loadPage("RegisterRoomView");
+	   loadPage("RegisterRoomView");
     	 
     	
-    }
+   }
     
-    @FXML
-    void ratePage(MouseEvent event) {
-    	
-    	
-   	 loadPage("RoomRating");
+   @FXML
+   void ratePage(MouseEvent event) {
+   	 	loadPage("RoomRating");
    	 
    }
     
