@@ -41,7 +41,7 @@
                      <VBox.margin>
                         <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
-                  </Rating>
+                  </Rating>	
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Leave a comment:">
                      <VBox.margin>
                         <Insets bottom="5.0" left="50.0" right="50.0" top="10.0" />
