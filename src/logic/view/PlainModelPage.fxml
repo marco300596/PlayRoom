@@ -33,7 +33,7 @@
                   </CustomMenuItem>
                   <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
                      <content>
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button minHeight="100.0" mnemonicParsing="false" onMousePressed="#ratePage" prefHeight="80.0" prefWidth="200.0" text="RatePage" />
                      </content>
                   </CustomMenuItem>
                   <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
