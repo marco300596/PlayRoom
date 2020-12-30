@@ -39,6 +39,16 @@ public class HomePageViewController {
     private MenuButton btnMaps;
     
     @FXML
+    void HighscorePage(MouseEvent event) {
+    	loadPage("HighscoreTableView");
+    }
+    
+    @FXML
+    void HighscoreHistoryPage(MouseEvent event) {
+    	loadPage("HighscoreProgressionView");
+    }
+    
+    @FXML
     void loginPage(MouseEvent event) {
     	loadPage("logpage");
     }
