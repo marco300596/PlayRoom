@@ -57,7 +57,7 @@ public class HomePageViewController {
     	BorderPane root = null;
     	
     	try {
-    		root = (BorderPane)FXMLLoader.load(getClass().getResource(page+".fxml"));
+    		root = FXMLLoader.load(getClass().getResource(page+".fxml"));
     		
     	} catch(IOException e){
     		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
