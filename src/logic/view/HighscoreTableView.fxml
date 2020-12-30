@@ -25,7 +25,7 @@
                   <Insets left="60.0" right="10.0" top="20.0" />
                </VBox.margin>
             </Text>
-            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="572.0" promptText="Insert Highscore" style="-fx-background-color: TRANS; -fx-border-color: #000000;">
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="572.0" promptText="Insert Highscore" style="-fx-background-color: transparent; -fx-border-color: #000000;">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -35,7 +35,7 @@
             </TextField>
             <HBox prefHeight="100.0" prefWidth="484.0">
                <children>
-                  <TextField prefHeight="50.0" prefWidth="572.0" promptText="Room's Location" style="-fx-background-color: TRANS; -fx-border-color: #000000;">
+                  <TextField prefHeight="50.0" prefWidth="572.0" promptText="Room's Location" style="-fx-background-color: transparent; -fx-border-color: #000000;">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
