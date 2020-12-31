@@ -24,7 +24,7 @@ public class HomePageViewController {
     private CheckBox cbeo;
     
     @FXML
-    private Button log;
+    private Button btn;
     
     @FXML
     void home(MouseEvent event) {
