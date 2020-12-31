@@ -39,21 +39,22 @@ public class HomePageViewController {
     void showOrganizerPage() {
     	loadMainPage("PlainEOModelPage");
     	FXMLLoader loader = new FXMLLoader();
-    	loader.setController(new PlayerPageViewController());
+    	loader.setController(new OrganizerPageViewController());
     }
     @FXML
     void showPlayerPage() {
     	loadMainPage("PlainPModelPage");
     	FXMLLoader loader = new FXMLLoader();
-    	loader.setController(new OrganizerPageViewController());
+    	loader.setController(new PlayerPageViewController());
     }
     
     @FXML
     void pression(MouseEvent event) {
-    	if(cbp.isSelected()==true) {
-    	//	loadMainPage("PlainPModelPage");
+    	if(cbp.isSelected()) {
+    		showPlayerPage();
+    	} else if(cbeo.isSelected()){
+    		showOrganizerPage();
     	}
-    	
     }
     
     
