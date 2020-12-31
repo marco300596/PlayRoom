@@ -47,12 +47,15 @@ public class HomePageViewController {
     	FXMLLoader loader = new FXMLLoader();
     	loader.setController(new OrganizerPageViewController());
     }
-    /*
+    
     @FXML
     void pression(MouseEvent event) {
-    	activateButton();
+    	if(cbp.isSelected()==true) {
+    	//	loadMainPage("PlainPModelPage");
+    	}
+    	
     }
-    */
+    
     
     private void loadMainPage(String page) {
     	BorderPane root = null;
