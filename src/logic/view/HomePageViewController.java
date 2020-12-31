@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -29,11 +28,15 @@ public class HomePageViewController {
     @FXML
     void home(MouseEvent event) {
     	loadMainPage("homepage");
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setController(new HomePageViewController());
     }
 
     @FXML
     void loginPage(MouseEvent event) {
-    	loadMainPage("logpage");
+    	loadMainPage("homepage");
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setController(new HomePageViewController());
     }
     @FXML
     void showOrganizerPage() {
@@ -68,22 +71,10 @@ public class HomePageViewController {
     		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
     	}
 
-    	bp.setTop(root.getTop());
     	bp.setLeft(root.getLeft());
     	bp.setCenter(root.getCenter());
     	bp.setRight(root.getRight());
     	bp.setBottom(root.getBottom());
     	
     }
-/*
-	private void activateButton() {
-		if (cbp.isSelected()==true || cbeo.isSelected()==true){
-			log.setEnabled(true);
-		}
-		if(log.handleEvent(MouseEvent event)==true && cbeo.isSelected()==true) {
-			showOrganizerPage();
-		}
-		if(log.getMouseListeners() && cbp.isSelected()==true) {
-			showPlayerPage();
-		}*/
 }
