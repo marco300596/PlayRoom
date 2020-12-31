@@ -31,6 +31,8 @@ public class HomePageViewController {
     	FXMLLoader loader = new FXMLLoader();
     	loader.setController(new HomePageViewController());
     }
+    
+    
 
     @FXML
     void loginPage(MouseEvent event) {

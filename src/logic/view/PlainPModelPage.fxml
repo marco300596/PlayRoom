@@ -39,7 +39,10 @@
                </font>
                <items>
                   <CustomMenuItem mnemonicParsing="false" />
-                  <CustomMenuItem text="1" />
+                  <CustomMenuItem text="1">
+                     <content>
+                        <Button mnemonicParsing="false" onMousePressed="#poolPage" text="CreatePool" />
+                     </content></CustomMenuItem>
                   <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
                      <content>
                         <Button mnemonicParsing="false" onMousePressed="#highscoreHistoryPage" prefHeight="80.0" prefWidth="200.0" text="Your Highscore Progression" />

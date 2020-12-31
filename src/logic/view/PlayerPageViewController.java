@@ -61,6 +61,11 @@ public class PlayerPageViewController {
 	   loadPlayerPage("RoomRating");
    	 
    }
+   @FXML
+   void poolPage(MouseEvent event) {
+	   loadPlayerPage("CreatePool");
+   	 
+   }
     
     @FXML
     void bookingPage(MouseEvent event) {
