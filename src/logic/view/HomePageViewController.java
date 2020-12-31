@@ -33,7 +33,7 @@ public class HomePageViewController {
 
     @FXML
     void loginPage(MouseEvent event) {
-    	loadPage("logpage");
+    	loadMainPage("logpage");
     }
     @FXML
     void showOrganizerPage() {
@@ -53,19 +53,6 @@ public class HomePageViewController {
     	activateButton();
     }
     */
-    private void loadPage(String page) {
-    	Parent root = null;
-    	
-    	try {
-    		root = FXMLLoader.load(getClass().getResource(page+".fxml"));
-    		
-    	} catch(IOException e){
-    		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
-    	}
-
-    	bp.setCenter(root);
-    	
-    }
     
     private void loadMainPage(String page) {
     	BorderPane root = null;
