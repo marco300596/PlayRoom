@@ -67,6 +67,8 @@ public class HomePageViewController {
     	bp.setTop(root.getTop());
     	bp.setLeft(root.getLeft());
     	bp.setCenter(root.getCenter());
+    	bp.setRight(root.getRight());
+    	bp.setBottom(root.getBottom());
     	
     }
 /*
