@@ -10,6 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class HomePageViewController {
 
@@ -64,19 +68,21 @@ public class HomePageViewController {
     
     
     private void loadMainPage(String page) {
-    	BorderPane root = null;
-    	
+    	Parent root = null;
+    	Stage sce = (Stage)bp.getScene().getWindow();
     	try {
     		root = FXMLLoader.load(getClass().getResource(page+".fxml"));
     		
     	} catch(IOException e){
     		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
     	}
-
+    	/*bp.setTop(root.getTop());
     	bp.setLeft(root.getLeft());
     	bp.setCenter(root.getCenter());
     	bp.setRight(root.getRight());
     	bp.setBottom(root.getBottom());
-    	
+    	*/
+    	sce.setScene(new Scene(root));
+    	sce.show();
     }
 }

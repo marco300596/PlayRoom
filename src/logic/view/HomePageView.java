@@ -15,8 +15,6 @@ public class HomePageView extends Application {
     	
     	try {
     		Parent root = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-    		FXMLLoader loader = new FXMLLoader();
-        	loader.setController(new HomePageViewController());
     		primaryStage.setScene(new Scene(root));
             primaryStage.show();
     	} catch (IOException e) {
