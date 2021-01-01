@@ -37,6 +37,18 @@ public class PlayerPageViewController {
 
    @FXML
    private MenuButton btnMaps;
+   
+   @FXML
+   void home(MouseEvent event) {
+   	HomepageView.loadMainPage("homepage");
+   }
+   
+   
+
+   @FXML
+   void loginPage(MouseEvent event) {
+   	loadMainPage("homepage");
+   }
     
     
    @FXML

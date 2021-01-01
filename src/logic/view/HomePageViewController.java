@@ -32,8 +32,6 @@ public class HomePageViewController {
     @FXML
     void home(MouseEvent event) {
     	loadMainPage("homepage");
-    	FXMLLoader loader = new FXMLLoader();
-    	loader.setController(new HomePageViewController());
     }
     
     
@@ -41,20 +39,14 @@ public class HomePageViewController {
     @FXML
     void loginPage(MouseEvent event) {
     	loadMainPage("homepage");
-    	FXMLLoader loader = new FXMLLoader();
-    	loader.setController(new HomePageViewController());
     }
     @FXML
     void showOrganizerPage() {
     	loadMainPage("PlainEOModelPage");
-    	FXMLLoader loader = new FXMLLoader();
-    	loader.setController(new OrganizerPageViewController());
     }
     @FXML
     void showPlayerPage() {
     	loadMainPage("PlainPModelPage");
-    	FXMLLoader loader = new FXMLLoader();
-    	loader.setController(new PlayerPageViewController());
     }
     
     @FXML
