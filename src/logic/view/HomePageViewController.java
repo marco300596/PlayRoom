@@ -33,12 +33,11 @@ public class HomePageViewController {
     	loadMainPage("homepage");
     }
     
-    
-
     @FXML
     void loginPage(MouseEvent event) {
     	loadMainPage("homepage");
     }
+    
     @FXML
     void showOrganizerPage() {
     	loadMainPage("PlainEOModelPage");
@@ -67,12 +66,7 @@ public class HomePageViewController {
     	} catch(IOException e){
     		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
     	}
-    	/*bp.setTop(root.getTop());
-    	bp.setLeft(root.getLeft());
-    	bp.setCenter(root.getCenter());
-    	bp.setRight(root.getRight());
-    	bp.setBottom(root.getBottom());
-    	*/
+    
     	sce.setScene(new Scene(root));
     	sce.show();
     }

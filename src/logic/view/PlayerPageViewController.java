@@ -40,14 +40,14 @@ public class PlayerPageViewController {
    
    @FXML
    void home(MouseEvent event) {
-   	HomepageView.loadMainPage("homepage");
+	   homePlayer("homepage");
    }
    
    
 
    @FXML
    void loginPage(MouseEvent event) {
-   	loadMainPage("homepage");
+	   homePlayer("homepage");
    }
     
     
@@ -85,7 +85,7 @@ public class PlayerPageViewController {
     }
     
     private void loadPlayerPage(String page) {
-    	 Parent root = null;
+    	Parent root = null;
     	
     	try {
     		root = FXMLLoader.load(getClass().getResource(page+".fxml"));
@@ -93,12 +93,32 @@ public class PlayerPageViewController {
     	} catch(IOException e){
     		Logger.getLogger(PlayerPageViewController.class.getName()).log(Level.SEVERE, null, e);
     	}
-    	
-    	
+    //	bp.setTop(root.getTop());
+    //	bp.setLeft(root.getLeft());
     	bp.setCenter(root);
+    //	bp.setRight(root.getRight());
+    //	bp.setBottom(root.getBottom());
+    	
     }
     
-   
+    private void homePlayer(String page) {
+    	Parent root = null;
+    	Stage sce = (Stage)bp.getScene().getWindow();
+    	try {
+    		root = FXMLLoader.load(getClass().getResource(page+".fxml"));
+    		
+    	} catch(IOException e){
+    		Logger.getLogger(PlayerPageViewController.class.getName()).log(Level.SEVERE, null, e);
+    	}
+    	/*bp.setTop(root.getTop());
+    //	bp.setLeft(root.getLeft());
+    	bp.setCenter(root);
+    //	bp.setRight(root.getRight());
+    //	bp.setBottom(root.getBottom());
+    	*/
+    	sce.setScene(new Scene(root));
+    	sce.show();
+    }
     	
     
     
