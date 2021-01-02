@@ -9,17 +9,30 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="15"/>
     <property name="source" value="15"/>
+    <path id="JAVAFX-15.0.1.userclasspath">
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.base.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.controls.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.fxml.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.graphics.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.media.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.swing.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.web.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx-swt.jar"/>
+    </path>
     <path id="PlayRoom.git.classpath">
         <pathelement location="bin"/>
+        <path refid="JAVAFX-15.0.1.userclasspath"/>
+        <pathelement location="../../../../Downloads/javafxscxenebuilder/controlsfx-11.0.3.jar"/>
     </path>
     <path id="run.New_configuration.classpath">
         <path refid="PlayRoom.git.classpath"/>
+        <path refid="JAVAFX-15.0.1.userclasspath"/>
+        <pathelement location="../../../../Downloads/javafxscxenebuilder/controlsfx-11.0.3.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="trunk/src">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -33,7 +46,7 @@
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
-            <src path="."/>
+            <src path="trunk/src"/>
             <classpath refid="PlayRoom.git.classpath"/>
         </javac>
     </target>
