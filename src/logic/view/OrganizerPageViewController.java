@@ -51,6 +51,11 @@ public class OrganizerPageViewController {
     void checkHighscorePage(MouseEvent event) {
     	loadOrgPage("CheckHighscore");
     }
+   
+    @FXML
+    void modifyRoomPage(MouseEvent event) {
+    	loadOrgPage("ModifyRoom");
+    }
     
     private void loadOrgPage(String page) {
     	Parent root = null;
@@ -74,7 +79,7 @@ public class OrganizerPageViewController {
     		
     	} catch(IOException e){
     		Logger.getLogger(OrganizerPageViewController.class.getName()).log(Level.SEVERE, null, e);
-    	};
+    	}
     	
     	sce.setScene(new Scene(root));
     	sce.show();
