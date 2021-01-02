@@ -1,7 +1,8 @@
 package logic.view;
 
 import java.io.IOException;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,10 +19,11 @@ public class HomePageView extends Application {
     		primaryStage.setScene(new Scene(root));
             primaryStage.show();
     	} catch (IOException e) {
-    		e.printStackTrace();
+    	
+    		Logger.getLogger(HomePageView.class.getName()).log(Level.SEVERE, null, e);
     	}
     	
-    }
+}
 
     public static void main(String[] args) {
         launch(args);
