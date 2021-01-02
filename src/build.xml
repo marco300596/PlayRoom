@@ -3,38 +3,37 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="PlayRoom">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="PlayRoom.git">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../eclipse/java-2020-09/eclipse/"/>
+    <property name="ECLIPSE_HOME" value="../../../../eclipse/java-2020-12/eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="14"/>
-    <property name="source" value="14"/>
-    <path id="JavaFX15.userclasspath">
-        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.base.jar"/>
-        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.controls.jar"/>
-        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.fxml.jar"/>
-        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.graphics.jar"/>
-        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.media.jar"/>
-        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.swing.jar"/>
-        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.web.jar"/>
-        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx-swt.jar"/>
+    <property name="target" value="15"/>
+    <property name="source" value="15"/>
+    <path id="JAVAFX-15.0.1.userclasspath">
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.base.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.controls.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.fxml.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.graphics.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.media.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.swing.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx.web.jar"/>
+        <pathelement location="../../../../Downloads/javafx-sdk-15.0.1/lib/javafx-swt.jar"/>
     </path>
-    <path id="Playroom.classpath">
-        <path refid="JavaFX15.userclasspath"/>
+    <path id="PlayRoom.git.classpath">
         <pathelement location="bin"/>
-        <pathelement location="../Scaricati/jar_files/controlsfx-11.0.3.jar"/>
+        <path refid="JAVAFX-15.0.1.userclasspath"/>
+        <pathelement location="../../../../Downloads/javafxscxenebuilder/controlsfx-11.0.3.jar"/>
     </path>
-    <path id="run.HomePageView (1).classpath">
-        <path refid="JavaFX15.userclasspath"/>
-        <path refid="Playroom.classpath"/>
-        <pathelement location="../Scaricati/jar_files/controlsfx-11.0.3.jar"/>
+    <path id="run.New_configuration.classpath">
+        <path refid="PlayRoom.git.classpath"/>
+        <path refid="JAVAFX-15.0.1.userclasspath"/>
+        <pathelement location="../../../../Downloads/javafxscxenebuilder/controlsfx-11.0.3.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="trunk/src">
                 <exclude name="**/*.launch"/>
-                <exclude name="**/*.xtend"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -49,7 +48,7 @@
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="trunk/src"/>
-            <classpath refid="Playroom.classpath"/>
+            <classpath refid="PlayRoom.git.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -66,10 +65,10 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="HomePageView (1)">
+    <target name="New_configuration">
         <java classname="logic.view.HomePageView" failonerror="true" fork="yes">
-            <jvmarg line="--module-path /home/pinno99/Scaricati/javafx-sdk-15.0.1/lib --add-modules javafx.controls,javafx.fxml"/>
-            <classpath refid="run.HomePageView (1).classpath"/>
+            <jvmarg line="--module-path &quot;/home/marco/Downloads/javafx-sdk-15.0.1/lib/&quot;&#10; --add-modules=javafx.controls&#10;--add-modules=javafx.fxml"/>
+            <classpath refid="run.New_configuration.classpath"/>
         </java>
     </target>
 </project>
