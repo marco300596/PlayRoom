@@ -27,9 +27,17 @@
                   </Text>
                   <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <VBox.margin>
-                        <Insets bottom="20.0" left="50.0" right="50.0" />
+                        <Insets bottom="-20.0" left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextArea>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Select images:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="500.0" right="50.0" />
+                     </VBox.margin>
+                  </Text>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game available:">
                      <font>
                         <Font name="System Bold" size="15.0" />
@@ -43,7 +51,7 @@
                         <Insets />
                      </opaqueInsets>
                      <VBox.margin>
-                        <Insets bottom="20.0" left="50.0" />
+                        <Insets bottom="5.0" left="50.0" />
                      </VBox.margin>
                   </TextArea>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hardware available:">
@@ -62,22 +70,14 @@
                         <Insets left="50.0" />
                      </VBox.margin>
                   </TextArea>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Select images:">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" right="50.0" top="20.0" />
-                     </VBox.margin>
-                  </Text>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" />
+                        <Insets bottom="5.0" left="500.0" top="-130.0" />
                      </VBox.margin>
                   </ImageView>
                   <Button mnemonicParsing="false" text="Add photo">
                      <VBox.margin>
-                        <Insets bottom="20.0" left="50.0" />
+                        <Insets bottom="20.0" left="500.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />
