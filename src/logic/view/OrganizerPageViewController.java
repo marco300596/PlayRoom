@@ -69,12 +69,7 @@ public class OrganizerPageViewController {
     		
     	} catch(IOException e){
     		Logger.getLogger(OrganizerPageViewController.class.getName()).log(Level.SEVERE, null, e);
-    	}
-    	//bp.setTop(root.getTop());
-    //	bp.setLeft(root.getLeft());
-    	//bp.setCenter(root);
-    //	bp.setRight(root.getRight());
-    //	bp.setBottom(root.getBottom());
+    	};
     	
     	sce.setScene(new Scene(root));
     	sce.show();
