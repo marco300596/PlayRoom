@@ -66,7 +66,7 @@ public class HomePageViewController {
     	} catch(IOException e){
     		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
     	}
-    
+   
     	sce.setScene(new Scene(root));
     	sce.show();
     }
