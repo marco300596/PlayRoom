@@ -85,7 +85,7 @@
             </TextField>
             <Button mnemonicParsing="false" style="-fx-background-color: TRANSPATENT; -fx-border-color: #FFFFFF;" text="ADD COMPONENT" textFill="WHITE">
                <VBox.margin>
-                  <Insets left="50.0" top="10.0" />
+                  <Insets bottom="50.0" left="50.0" top="10.0" />
                </VBox.margin>
             </Button>
          </children>
