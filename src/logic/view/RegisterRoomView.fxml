@@ -114,13 +114,16 @@
                   </ImageView>
                   <Button mnemonicParsing="false" text="Register Room">
                      <VBox.margin>
-                        <Insets bottom="90.0" left="350.0" right="50.0" />
+                        <Insets bottom="90.0" left="350.0" right="50.0" top="-60.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
                </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </VBox>
          </children>
       </HBox>
