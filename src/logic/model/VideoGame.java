@@ -14,9 +14,7 @@ public class VideoGame {
 		this.setGenre(genre);
 		this.setAvailability(availability);
 		this.setQuantity(quantity);
-		this.setDescription(description);
-		
-	
+		this.setDescription(description);	
 	}
 		
 	public String getGameName()
