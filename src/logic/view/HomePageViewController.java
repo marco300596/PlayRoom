@@ -61,7 +61,7 @@ public class HomePageViewController {
     	Parent root = null;
     	Stage sce = (Stage)bp.getScene().getWindow();
     	try {
-    		root = FXMLLoader.load(getClass().getResource(page+".fxml"));
+    		root = FXMLLoader.load(getClass().getResource("/logic/samples/"+page+".fxml"));
     		
     	} catch(IOException e){
     		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);

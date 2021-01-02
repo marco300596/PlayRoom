@@ -47,11 +47,16 @@ public class OrganizerPageViewController {
     	loadOrgPage("CreateTournamentView");
     }
     
+    @FXML
+    void checkHighscorePage(MouseEvent event) {
+    	loadOrgPage("CheckHighscore");
+    }
+    
     private void loadOrgPage(String page) {
     	Parent root = null;
    
     	try {
-    		root = FXMLLoader.load(getClass().getResource(page+".fxml"));
+    		root = FXMLLoader.load(getClass().getResource("/logic/samples/"+page+".fxml"));
     		
     	} catch(IOException e){
     		Logger.getLogger(OrganizerPageViewController.class.getName()).log(Level.SEVERE, null, e);
@@ -65,7 +70,7 @@ public class OrganizerPageViewController {
     	Parent root = null;
     	Stage sce = (Stage)bp.getScene().getWindow();
     	try {
-    		root = FXMLLoader.load(getClass().getResource(page+".fxml"));
+    		root = FXMLLoader.load(getClass().getResource("/logic/samples/"+page+".fxml"));
     		
     	} catch(IOException e){
     		Logger.getLogger(OrganizerPageViewController.class.getName()).log(Level.SEVERE, null, e);
