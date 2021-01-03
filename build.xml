@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Playroom">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="14"/>
+    <property name="source" value="14"/>
+    <path id="JavaFX15.userclasspath">
+        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.base.jar"/>
+        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.controls.jar"/>
+        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.fxml.jar"/>
+        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.graphics.jar"/>
+        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.media.jar"/>
+        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.swing.jar"/>
+        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.web.jar"/>
+        <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx-swt.jar"/>
+    </path>
+    <path id="Playroom.classpath">
+        <path refid="JavaFX15.userclasspath"/>
+        <pathelement location="bin"/>
+        <pathelement location="../Scaricati/jar_files/controlsfx-11.0.3.jar"/>
+    </path>
+    <path id="run.HomePageView (1).classpath">
+        <path refid="JavaFX15.userclasspath"/>
+        <path refid="Playroom.classpath"/>
+        <pathelement location="../Scaricati/jar_files/controlsfx-11.0.3.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir=".">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.xtend"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="."/>
+            <classpath refid="Playroom.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target name="HomePageView (1)">
+        <java classname="logic.view.HomePageView" failonerror="true" fork="yes">
+            <jvmarg line="--module-path /home/pinno99/Scaricati/javafx-sdk-15.0.1/lib --add-modules javafx.controls,javafx.fxml"/>
+            <classpath refid="run.HomePageView (1).classpath"/>
+        </java>
+    </target>
+</project>
