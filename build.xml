@@ -7,8 +7,8 @@
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../eclipse/java-2020-09/eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="14"/>
-    <property name="source" value="14"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
     <path id="JavaFX15.userclasspath">
         <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.base.jar"/>
         <pathelement location="../Scaricati/javafx-sdk-15.0.1/lib/javafx.controls.jar"/>
