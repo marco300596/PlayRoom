@@ -20,8 +20,8 @@ public class Room {
 		this.setPrice(price);
 		this.setLocation(location);
 		this.setPhoto(photo);
-		this.vg = new ArrayList<VideoGame>();
-		this.hw = new ArrayList<Hardware>();
+		this.vg = new ArrayList<>();
+		this.hw = new ArrayList<>();
 	}
 	
 	public List<Hardware> getHw(){
