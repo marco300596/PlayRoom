@@ -24,6 +24,7 @@ public class Room {
 		this.hw = new ArrayList<>();
 	}
 	
+
 	public List<Hardware> getHw(){
 		return hw;
 	}
