@@ -59,12 +59,13 @@ public class PlayerPageViewController {
 
    @FXML
    void contactPage(MouseEvent event) {
-    	//TODO
+		Logger.getLogger("sonar fatte i cazzi tuoi");
+
    }
 
    @FXML
    void mapsPage(MouseEvent event) {
-    	//TODO
+	   Logger.getLogger("sonar fatte i cazzi tuoi");
    }
 
     
