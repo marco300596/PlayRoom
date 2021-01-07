@@ -4,13 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.exception.MyRuntimeException;
 import logic.model.Hardware;
 import logic.model.Room;
 import logic.model.VideoGame;
 
 
 public class RoomDAO {
-	public Room getRoom(String roomName) {
+	public Room getRoom(String roomName) throws MyRuntimeException {
 		Connection connection = ConnectionFactory.getConnection();
 		try {
 			Statement stmt = connection.createStatement();

@@ -5,10 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.exception.MyRuntimeException;
 import logic.model.Player;
 
 public class PlayerDAO {
-	public Player getPlayer(String username) {
+	public Player getPlayer(String username) throws MyRuntimeException {
 		Connection connection = ConnectionFactory.getConnection();
 		try {
 			Statement stmt = connection.createStatement();
