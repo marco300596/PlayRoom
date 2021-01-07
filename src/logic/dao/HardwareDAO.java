@@ -10,12 +10,12 @@ import logic.model.Hardware;
 
 public class HardwareDAO {
 	
-	public Hardware getHardware(String username) throws MyRuntimeException {
+	public Hardware getHardware(String hardwareName) throws MyRuntimeException {
 		
 		Connection connection = ConnectionFactory.getConnection();
 		try {
 			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM hardware WHERE username=" + username);
+			ResultSet rs = stmt.executeQuery("SELECT * FROM hardware WHERE hardwareName=" + hardwareName);
 			
 			if(rs.next()) {
 				return extractHardwareFromResultSet(rs);

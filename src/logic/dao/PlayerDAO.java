@@ -1,6 +1,7 @@
 package logic.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,6 +24,27 @@ public class PlayerDAO {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
+		return null;
+	}
+	
+	public Player getPlayerByUserNameAndPassword(String username, String password) throws MyRuntimeException{
+		
+		Connection connection = ConnectionFactory.getConnection();
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM player WHERE username=? AND password=?");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				return extractPlayerFromResultSet(rs);
+			}
+			
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+		
 		return null;
 	}
 	
