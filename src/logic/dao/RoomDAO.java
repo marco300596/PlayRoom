@@ -11,7 +11,9 @@ import logic.model.VideoGame;
 
 
 public class RoomDAO {
+	
 	public Room getRoom(String roomName) throws MyRuntimeException {
+		
 		Connection connection = ConnectionFactory.getConnection();
 		try {
 			Statement stmt = connection.createStatement();
@@ -27,6 +29,7 @@ public class RoomDAO {
 	}
 	
 	private Room extractRoomFromResultSet(ResultSet rs) throws SQLException{
+		
 		Room room = new Room();
 		
 		room.setRoomName(rs.getString("roomName"));

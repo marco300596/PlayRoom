@@ -9,6 +9,7 @@ import logic.exception.MyRuntimeException;
 import logic.model.Player;
 
 public class PlayerDAO {
+	
 	public Player getPlayer(String username) throws MyRuntimeException {
 		Connection connection = ConnectionFactory.getConnection();
 		try {
