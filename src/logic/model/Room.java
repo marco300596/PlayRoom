@@ -25,6 +25,11 @@ public class Room {
 	}
 	
 
+	public Room() {
+		// default constructor for dao impl
+	}
+
+
 	public List<Hardware> getHw(){
 		return hw;
 	}

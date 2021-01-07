@@ -16,6 +16,10 @@ public class Player {
 		this.setPassword(password);
 	}
 	
+	public Player() {
+		// default constructor for dao impl
+	}
+
 	public String getFirstname()
 	{
 		return firstname;
