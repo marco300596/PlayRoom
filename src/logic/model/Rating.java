@@ -6,6 +6,10 @@ public class Rating {
 	private int	rate;
 	private String comment;
 	
+	public Rating(){
+		// default constructor for dao impl
+	}
+	
 	public Rating(String roomName, int rate, String comment) {
 		
 		this.setRoomName(roomName);

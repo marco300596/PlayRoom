@@ -7,6 +7,10 @@ public class Pool {
 	private String question;
 	private String answer;
 	private String tournamentName;
+	
+	public Pool(){
+		// default constructor for dao impl
+	}
 		
 	public Pool(String poolName, String question, String answer, String tournamentName) {
 		this.setPoolName(poolName);

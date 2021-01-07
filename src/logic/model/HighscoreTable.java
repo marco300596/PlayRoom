@@ -9,6 +9,10 @@ public class HighscoreTable {
 	private String highscore;
 	private String tournamentName;
 	
+	public HighscoreTable(){
+		// default constructor for dao impl
+	}
+	
 	//methods
 	//non-default constructor
 	public HighscoreTable(List<String> highscoreList, String tournamentName,String highscore)

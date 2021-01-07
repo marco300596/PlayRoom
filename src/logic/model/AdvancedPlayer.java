@@ -2,6 +2,11 @@ package logic.model;
 
 public class AdvancedPlayer extends Player
 {	
+	public AdvancedPlayer() {
+		super();
+		// default constructor for dao impl
+	}
+
 	//attribute
 	private boolean isAdv;
 

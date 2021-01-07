@@ -7,6 +7,9 @@ public class VideoGame {
 	private int quantity;
 	private String description;
 	
+	public VideoGame(){
+		// default constructor for dao impl
+	}
 	
 	public VideoGame(String gameName,String genre,Boolean availability,int quantity,String description) 
 	{

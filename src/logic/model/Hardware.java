@@ -7,7 +7,9 @@ public class Hardware {
 	private int availability;
 	private String description;
 	
-	
+	public Hardware(){
+		// default constructor for dao impl
+	}
 	
 	public Hardware(String hardwareName, int quantity, int availability, String description) {
 		

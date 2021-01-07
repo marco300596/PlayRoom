@@ -8,6 +8,10 @@ public class Tournament {
 	private String tournamentGame;
 	private String tournamentHardware;
 	
+	public Tournament(){
+		// default constructor for dao impl
+	}
+	
 	//methods
 	//non-default constructor
 	public Tournament(String tournamentName, String tournamentRoom, String tournamentGame, String tournamentHardware)

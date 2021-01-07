@@ -13,6 +13,10 @@ public class Room {
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
 	
+	public Room() {
+		// default constructor for dao impl
+	}
+	
 	
 	public Room(String roomName, int numSeat, int price, String location, String photo) {
 		this.setRoomName(roomName);
@@ -23,12 +27,6 @@ public class Room {
 		this.vg = new ArrayList<>();
 		this.hw = new ArrayList<>();
 	}
-	
-
-	public Room() {
-		// default constructor for dao impl
-	}
-
 
 	public List<Hardware> getHw(){
 		return hw;

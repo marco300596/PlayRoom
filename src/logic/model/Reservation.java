@@ -10,6 +10,10 @@ public class Reservation
 	private String playerUsername;
 	private String organizerMail;
 	
+	public Reservation(){
+		// default constructor for dao impl
+	}
+	
 	//methods
 	//non-default constructor
 	public Reservation(int reservationStatus, int numberOfPlayer, String reservationRoom, String playerUsername, String organizerMail) 

@@ -7,6 +7,10 @@ public class EventOrganizer {
 	private String orgEmail;
 	private String orgOwnRoom;
 	
+	public EventOrganizer(){
+		// default constructor for dao impl
+	}
+	
 	public EventOrganizer(String orgFirstname, String orgLastname, String orgEmail, String orgOwnRoom) {
 		this.setOrgFirstname(orgFirstname);
 		this.setOrgLastname(orgLastname);

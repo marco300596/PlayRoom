@@ -8,16 +8,16 @@ public class Player {
 	private String username;
 	private String password;
 	
+	public Player() {
+		// default constructor for dao impl
+	}
+	
 	public Player(String firstname, String lastname, String email, String username, String password) {
 		this.setFirstname(firstname);
 		this.setLastname(lastname);
 		this.setEmail(email);
 		this.setUsername(username);
 		this.setPassword(password);
-	}
-	
-	public Player() {
-		// default constructor for dao impl
 	}
 
 	public String getFirstname()
