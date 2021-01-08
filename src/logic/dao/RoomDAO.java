@@ -14,16 +14,35 @@ public class RoomDAO {
 	
 	public Room getRoom(String roomName) throws MyRuntimeException {
 		
-		Connection connection = ConnectionFactory.getConnection();
+		Statement stmt = null;
+		Connection conn = null;
 		try {
-			Statement stmt = connection.createStatement();
+			conn= ConnectionFactory.getConnection();
+			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM room WHERE roomName=" + roomName);
 			
 			if(rs.next()) {
 				return extractRoomFromResultSet(rs);
 			}
+			stmt.close();
+			conn.close();
+			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+		}
+		finally {
+			try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se) {
+            	se.printStackTrace();
+            }
+            try {
+            	if(conn != null)
+            		conn.close();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
+            }
 		}
 		return null;
 	}

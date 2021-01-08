@@ -12,16 +12,35 @@ public class HardwareDAO {
 	
 	public Hardware getHardware(String hardwareName) throws MyRuntimeException {
 		
-		Connection connection = ConnectionFactory.getConnection();
+		Statement stmt = null;
+		Connection conn = null;
 		try {
-			Statement stmt = connection.createStatement();
+			conn= ConnectionFactory.getConnection();
+			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM hardware WHERE hardwareName=" + hardwareName);
 			
 			if(rs.next()) {
 				return extractHardwareFromResultSet(rs);
 			}
+			stmt.close();
+			conn.close();
+			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+		}
+		finally {
+			try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se) {
+            	se.printStackTrace();
+            }
+            try {
+            	if (conn != null)
+            		conn.close();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
+            }
 		}
 		return null;
 	}
