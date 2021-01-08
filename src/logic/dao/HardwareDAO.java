@@ -10,7 +10,7 @@ import logic.model.Hardware;
 
 public class HardwareDAO {
 	
-	public Hardware getHardware(String hardwareName) throws MyRuntimeException {
+	public Hardware getHardware(String hardwareName) throws MyRuntimeException, SQLException {
 		
 		Statement stmt = null;
 		Connection conn = null;
@@ -29,18 +29,10 @@ public class HardwareDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException se) {
-            	se.printStackTrace();
-            }
-            try {
-            	if (conn != null)
-            		conn.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
-            }
+            if (stmt != null) 
+            	stmt.close();
+            if (conn != null) 
+            	conn.close();
 		}
 		return null;
 	}

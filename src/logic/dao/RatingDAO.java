@@ -10,7 +10,7 @@ import logic.model.Rating;
 
 public class RatingDAO {
 	
-	public Rating getRating(String roomName) throws MyRuntimeException {
+	public Rating getRating(String roomName) throws MyRuntimeException, SQLException {
 		
 		Statement stmt = null;
 		Connection conn = null;
@@ -29,18 +29,10 @@ public class RatingDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException se) {
-            	se.printStackTrace();
-            }
-            try {
-            	if (conn != null)
-            		conn.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
-            }
+            if (stmt != null) 
+            	stmt.close();
+            if (conn != null) 
+            	conn.close();
 		}
 		return null;
 	}
