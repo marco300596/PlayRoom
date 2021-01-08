@@ -23,11 +23,13 @@
         <path refid="JavaFX15.userclasspath"/>
         <pathelement location="bin"/>
         <pathelement location="../Scaricati/jar_files/controlsfx-11.0.3.jar"/>
+    	<pathelement location="../Scaricati/postgresql-42.2.18.jar"/>
     </path>
     <path id="run.HomePageView (1).classpath">
         <path refid="JavaFX15.userclasspath"/>
         <path refid="Playroom.classpath"/>
         <pathelement location="../Scaricati/jar_files/controlsfx-11.0.3.jar"/>
+    	<pathelement location="../Scaricati/postgresql-42.2.18.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
