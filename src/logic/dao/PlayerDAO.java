@@ -13,7 +13,7 @@ import logic.model.Player;
 
 public class PlayerDAO {
 	
-	public Player getPlayer(String username) throws MyRuntimeException {
+	public Player getPlayer(String username) throws MyRuntimeException, SQLException {
 		
 		Statement stmt = null;
 		Connection conn = null;
@@ -32,23 +32,15 @@ public class PlayerDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException se) {
-            	se.printStackTrace();
-            }
-            try {
-            	if(conn != null)
-            		conn.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
-            }
+            if (stmt != null) 
+            	stmt.close();
+            if (conn != null) 
+            	conn.close();
 		}
 		return null;
 	}
 	
-	public Player getPlayerByUserNameAndPassword(String username, String password) throws MyRuntimeException{
+	public Player getPlayerByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement ps = null;
 		Connection conn = null;
@@ -70,23 +62,15 @@ public class PlayerDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			try {
-                if (ps != null)
-                    ps.close();
-            } catch (SQLException se) {
-            	se.printStackTrace();
-            }
-            try {
-            	if(conn != null)
-            		conn.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
-            }
+			 if (ps != null) 
+	            ps.close();
+	         if (conn != null) 
+	            conn.close();
 		}
 		return null;
 	}
 	
-	public Set<Player> getAllPlayers() throws MyRuntimeException{
+	public Set<Player> getAllPlayers() throws MyRuntimeException, SQLException{
 		
 		Statement stmt = null;
 		Connection conn = null;
@@ -110,23 +94,16 @@ public class PlayerDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException se) {
-            	se.printStackTrace();
-            }
-            try {
-            	if(conn != null)
-            		conn.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
-            }
+			 if (stmt != null) 
+				 stmt.close();
+		     if (conn != null) 
+		    	 conn.close();
 		}
+		
 		return new HashSet<>();
 	}
 	
-	public boolean insertPlayer(Player player) throws MyRuntimeException{
+	public boolean insertPlayer(Player player) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement ps = null;
 		Connection conn = null;
@@ -150,18 +127,10 @@ public class PlayerDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			try {
-                if (ps != null)
-                    ps.close();
-            } catch (SQLException se) {
-            	se.printStackTrace();
-            }
-            try {
-            	if(conn != null)
-            		conn.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
-            }
+			 if (ps != null) 
+				 ps.close();
+		     if (conn != null) 
+		    	 conn.close();
 		}
 		return false;
 	}
