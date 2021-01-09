@@ -12,28 +12,28 @@ public class RatingDAO {
 	
 	public Rating getRating(String roomName) throws MyRuntimeException, SQLException {
 		
-		Statement stmt = null;
-		Connection conn = null;
+		Statement stmtRt = null;
+		Connection connRt = null;
 		try {
-			conn= ConnectionFactory.getConnection();
-			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM rating WHERE roomName=" + roomName);
+			connRt= ConnectionFactory.getConnection();
+			stmtRt = connRt.createStatement();
+			ResultSet rs = stmtRt.executeQuery("SELECT * FROM rating WHERE roomName=" + roomName);
 			
 			if(rs.next()) {
 				return extractRatingFromResultSet(rs);
 			}
-			stmt.close();
-			conn.close();
+			stmtRt.close();
+			connRt.close();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
 		}
 		finally {
-			if (stmt != null) {
-				stmt.close();
+			if (stmtRt != null) {
+				stmtRt.close();
 			}
-			if (conn != null) {
-				conn.close();
+			if (connRt != null) {
+				connRt.close();
             }
 		}
 		return null;

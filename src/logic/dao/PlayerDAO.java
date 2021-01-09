@@ -15,28 +15,28 @@ public class PlayerDAO {
 	
 	public Player getPlayer(String username) throws MyRuntimeException, SQLException {
 		
-		Statement stmt = null;
-		Connection conn = null;
+		Statement stmtP = null;
+		Connection connP = null;
 		try {
-			conn= ConnectionFactory.getConnection();
-			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM player WHERE username=" + username);
+			connP= ConnectionFactory.getConnection();
+			stmtP = connP.createStatement();
+			ResultSet rs = stmtP.executeQuery("SELECT * FROM player WHERE username=" + username);
 			
 			if(rs.next()) {
 				return extractPlayerFromResultSet(rs);
 			}
-			stmt.close();
-			conn.close();
+			stmtP.close();
+			connP.close();
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		finally {
-			if (stmt != null) {
-				stmt.close();
+			if (stmtP != null) {
+				stmtP.close();
 			}
-			if (conn != null) {
-				conn.close();
+			if (connP != null) {
+				connP.close();
             }
 		}
 		return null;
@@ -44,31 +44,31 @@ public class PlayerDAO {
 	
 	public Player getPlayerByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
 		
-		PreparedStatement ps = null;
-		Connection conn = null;
+		PreparedStatement psP = null;
+		Connection connP = null;
 		
 		try {
-			conn= ConnectionFactory.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM player WHERE username=? AND password=?");
-			ps.setString(1, username);
-			ps.setString(2, password);
-			ResultSet rs = ps.executeQuery();
+			connP= ConnectionFactory.getConnection();
+			psP = connP.prepareStatement("SELECT * FROM player WHERE username=? AND password=?");
+			psP.setString(1, username);
+			psP.setString(2, password);
+			ResultSet rs = psP.executeQuery();
 			
 			if(rs.next()) {
 				return extractPlayerFromResultSet(rs);
 			}
-			ps.close();
-			conn.close();
+			psP.close();
+			connP.close();
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 		finally {
-			if (ps != null) {
-				ps.close();
+			if (psP != null) {
+				psP.close();
 			}
-			if (conn != null) {
-				conn.close();
+			if (connP != null) {
+				connP.close();
             }
 		}
 		return null;
@@ -76,12 +76,12 @@ public class PlayerDAO {
 	
 	public Set<Player> getAllPlayers() throws MyRuntimeException, SQLException{
 		
-		Statement stmt = null;
-		Connection conn = null;
+		Statement stmtP = null;
+		Connection connP = null;
 		try {
-			conn= ConnectionFactory.getConnection();
-			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM player");
+			connP= ConnectionFactory.getConnection();
+			stmtP = connP.createStatement();
+			ResultSet rs = stmtP.executeQuery("SELECT * FROM player");
 			
 			Set<Player> players = new HashSet<>();
 			
@@ -90,19 +90,19 @@ public class PlayerDAO {
 				players.add(player);
 			}
 			
-			stmt.close();
-			conn.close();
+			stmtP.close();
+			connP.close();
 			return players;
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		finally {
-			if (stmt != null) {
-				stmt.close();
+			if (stmtP != null) {
+				stmtP.close();
 			}
-			if (conn != null) {
-				conn.close();
+			if (connP != null) {
+				connP.close();
             }
 		}
 		return new HashSet<>();
@@ -110,33 +110,33 @@ public class PlayerDAO {
 	
 	public boolean insertPlayer(Player player) throws MyRuntimeException, SQLException{
 		
-		PreparedStatement ps = null;
-		Connection conn = null;
+		PreparedStatement psP = null;
+		Connection connP = null;
 		
 		try {
-			conn= ConnectionFactory.getConnection();
-			ps = conn.prepareStatement("INSERT INTO player VALUES (NULL,?,?,?,?)");
-			ps.setString(1, player.getFirstname());
-			ps.setString(2, player.getLastname());
-			ps.setString(3, player.getEmail());
-			ps.setString(4, player.getPassword());
-			int i = ps.executeUpdate();
+			connP= ConnectionFactory.getConnection();
+			psP = connP.prepareStatement("INSERT INTO player VALUES (NULL,?,?,?,?)");
+			psP.setString(1, player.getFirstname());
+			psP.setString(2, player.getLastname());
+			psP.setString(3, player.getEmail());
+			psP.setString(4, player.getPassword());
+			int i = psP.executeUpdate();
 			
 			if(i == 1) {
 				return true;
 			}
-			ps.close();
-			conn.close();
+			psP.close();
+			connP.close();
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 		finally {
-			if (ps != null) {
-				ps.close();
+			if (psP != null) {
+				psP.close();
 			}
-			if (conn != null) {
-				conn.close();
+			if (connP != null) {
+				connP.close();
             }
 		}
 		return false;
