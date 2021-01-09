@@ -32,10 +32,12 @@ public class PlayerDAO {
 			ex.printStackTrace();
 		}
 		finally {
-            if (stmt != null) 
-            	stmt.close();
-            if (conn != null) 
-            	conn.close();
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+            }
 		}
 		return null;
 	}
@@ -62,10 +64,12 @@ public class PlayerDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			 if (ps != null) 
-	            ps.close();
-	         if (conn != null) 
-	            conn.close();
+			if (ps != null) {
+				ps.close();
+			}
+			if (conn != null) {
+				conn.close();
+            }
 		}
 		return null;
 	}
@@ -94,12 +98,13 @@ public class PlayerDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			 if (stmt != null) 
-				 stmt.close();
-		     if (conn != null) 
-		    	 conn.close();
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+            }
 		}
-		
 		return new HashSet<>();
 	}
 	
@@ -127,10 +132,12 @@ public class PlayerDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			 if (ps != null) 
-				 ps.close();
-		     if (conn != null) 
-		    	 conn.close();
+			if (ps != null) {
+				ps.close();
+			}
+			if (conn != null) {
+				conn.close();
+            }
 		}
 		return false;
 	}
