@@ -1,5 +1,7 @@
 package logic.dao;
+import java.sql.Array;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,6 +41,42 @@ public class RoomDAO {
             }
 		}
 		return null;
+	}
+	
+public boolean insertRoom(Room room) throws MyRuntimeException, SQLException{
+		
+		PreparedStatement psR = null;
+		Connection connR = null;
+		
+		try {
+			connR= ConnectionFactory.getConnection();
+			psR = connR.prepareStatement("INSERT INTO room VALUES (NULL,?,?,?,?,?,?)");
+			psR.setInt(1, room.getNumSeat());
+			psR.setInt(2, room.getPrice());
+			psR.setString(3, room.getLocation());
+			psR.setString(4, room.getPhoto());
+			psR.setArray(5, (Array) room.getHw());
+			psR.setArray(6, (Array) room.getVg());
+			int i = psR.executeUpdate();
+			
+			if(i == 1) {
+				return true;
+			}
+			psR.close();
+			connR.close();
+			
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+		finally {
+			if (psR != null) {
+				psR.close();
+			}
+			if (connR != null) {
+				connR.close();
+            }
+		}
+		return false;
 	}
 	
 	private Room extractRoomFromResultSet(ResultSet rs) throws SQLException{

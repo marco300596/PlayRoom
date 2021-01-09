@@ -1,6 +1,7 @@
 package logic.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -37,6 +38,38 @@ public class RatingDAO {
             }
 		}
 		return null;
+	}
+	
+public boolean insertRating(Rating rating) throws MyRuntimeException, SQLException{
+		
+		PreparedStatement psRt = null;
+		Connection connRt = null;
+		
+		try {
+			connRt= ConnectionFactory.getConnection();
+			psRt = connRt.prepareStatement("INSERT INTO room VALUES (NULL,?,?)");
+			psRt.setInt(1, rating.getRate());
+			psRt.setString(2, rating.getComment());
+			int i = psRt.executeUpdate();
+			
+			if(i == 1) {
+				return true;
+			}
+			psRt.close();
+			connRt.close();
+			
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+		finally {
+			if (psRt != null) {
+				psRt.close();
+			}
+			if (connRt != null) {
+				connRt.close();
+            }
+		}
+		return false;
 	}
 	
 	private Rating extractRatingFromResultSet(ResultSet rs) throws SQLException{

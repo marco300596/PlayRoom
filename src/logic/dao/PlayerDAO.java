@@ -142,6 +142,36 @@ public class PlayerDAO {
 		return false;
 	}
 	
+	public boolean deletePlayer(String username) throws MyRuntimeException, SQLException {
+		
+		Statement stmtP = null;
+		Connection connP = null;
+		try {
+			connP= ConnectionFactory.getConnection();
+			stmtP = connP.createStatement();
+			int i = stmtP.executeUpdate("DELETE FROM player WHERE username=" + username);
+			
+			if (i == 1) {
+				return true;
+			}
+			
+			stmtP.close();
+			connP.close();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			if (stmtP != null) {
+				stmtP.close();
+			}
+			if (connP != null) {
+				connP.close();
+            }
+		}
+		return false;
+	}
+	
 	private Player extractPlayerFromResultSet(ResultSet rs) throws SQLException{
 		Player player = new Player();
 		

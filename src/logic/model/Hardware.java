@@ -29,7 +29,7 @@ public class Hardware {
 		return quantity;
 	}
 
-	public int getAvaibility() {
+	public int getAvailability() {
 		return availability;
 	}
 	
