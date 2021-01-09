@@ -4,6 +4,11 @@ public class Reservation
 {
 	
 	//attributes
+	private int rsid;
+	
+
+	
+
 	private int reservationStatus;
 	private int numberOfPlayer;
 	private String reservationRoom;
@@ -31,6 +36,9 @@ public class Reservation
 		return reservationStatus;
 	}
 	
+	public int getRsid() {
+		return rsid;
+	}
 	public int getNumberOfPlayer()
 	{
 		return numberOfPlayer;
@@ -76,5 +84,7 @@ public class Reservation
 		this.organizerMail = organizerMail;
 	}
 	
-	
+	public void setRsid(int rsid) {
+		rsid = rsid;
+	}
 }
