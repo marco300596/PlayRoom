@@ -27,8 +27,8 @@ public class RoomDAO {
 			stmt.close();
 			conn.close();
 			
-		} catch (SQLException ex) {
-			ex.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		finally {
 			if (stmt != null) {
