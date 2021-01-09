@@ -12,28 +12,28 @@ import logic.model.Tournament;
 public class TournamentDAO {
 public Tournament getTournament(String tournamentName) throws MyRuntimeException, SQLException {
 		
-		Statement stmtR = null;
-		Connection connR = null;
+		Statement stmtT = null;
+		Connection connT = null;
 		try {
-			connR= ConnectionFactory.getConnection();
-			stmtR = connR.createStatement();
-			ResultSet rs = stmtR.executeQuery("SELECT * FROM tournament WHERE tournamentName=" + tournamentName);
+			connT= ConnectionFactory.getConnection();
+			stmtT = connT.createStatement();
+			ResultSet rs = stmtT.executeQuery("SELECT * FROM tournament WHERE tournamentName=" + tournamentName);
 			
 			if(rs.next()) {
 				return extractTournamentFromResultSet(rs);
 			}
-			stmtR.close();
-			connR.close();
+			stmtT.close();
+			connT.close();
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		finally {
-			if (stmtR != null) {
-				stmtR.close();
+			if (stmtT != null) {
+				stmtT.close();
 			}
-			if (connR != null) {
-				connR.close();
+			if (connT != null) {
+				connT.close();
             }
 		}
 		return null;
@@ -41,33 +41,32 @@ public Tournament getTournament(String tournamentName) throws MyRuntimeException
 	
 public boolean insertTournament(Tournament tournament) throws MyRuntimeException, SQLException{
 		
-		PreparedStatement psR = null;
-		Connection connR = null;
+		PreparedStatement psT = null;
+		Connection connT = null;
 		
 		try {
-			connR= ConnectionFactory.getConnection();
-			psR = connR.prepareStatement("INSERT INTO tournament VALUES (NULL,?,?,?)");
-			psR.setString(1, tournament.getTournamentName());
-			psR.setString(2, tournament.getTournamentRoom());
-			psR.setString(3, tournament.getTournamentGame());
-			psR.setString(4, tournament.getTournamentHardware());
-			int i = psR.executeUpdate();
+			connT= ConnectionFactory.getConnection();
+			psT = connT.prepareStatement("INSERT INTO tournament VALUES (NULL,?,?,?)");
+			psT.setString(2, tournament.getTournamentRoom());
+			psT.setString(3, tournament.getTournamentGame());
+			psT.setString(4, tournament.getTournamentHardware());
+			int i = psT.executeUpdate();
 			
 			if(i == 1) {
 				return true;
 			}
-			psR.close();
-			connR.close();
+			psT.close();
+			connT.close();
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 		finally {
-			if (psR != null) {
-				psR.close();
+			if (psT != null) {
+				psT.close();
 			}
-			if (connR != null) {
-				connR.close();
+			if (connT != null) {
+				connT.close();
             }
 		}
 		return false;

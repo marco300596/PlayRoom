@@ -11,63 +11,62 @@ public class VideoGameDAO {
 	
 public VideoGame getVideoGame(String gameName) throws MyRuntimeException, SQLException {
 		
-		Statement stmtR = null;
-		Connection connR = null;
+		Statement stmtV = null;
+		Connection connV = null;
 		try {
-			connR= ConnectionFactory.getConnection();
-			stmtR = connR.createStatement();
-			ResultSet rs = stmtR.executeQuery("SELECT * FROM videogame WHERE gameName=" + gameName);
+			connV= ConnectionFactory.getConnection();
+			stmtV = connV.createStatement();
+			ResultSet rs = stmtV.executeQuery("SELECT * FROM videogame WHERE gameName=" + gameName);
 			
 			if(rs.next()) {
 				return extractVideoGameFromResultSet(rs);
 			}
-			stmtR.close();
-			connR.close();
+			stmtV.close();
+			connV.close();
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		finally {
-			if (stmtR != null) {
-				stmtR.close();
+			if (stmtV != null) {
+				stmtV.close();
 			}
-			if (connR != null) {
-				connR.close();
+			if (connV != null) {
+				connV.close();
             }
 		}
 		return null;
 	}
 	
-public boolean insertTournament(VideoGame videogame) throws MyRuntimeException, SQLException{
+public boolean insertVideoGame(VideoGame videogame) throws MyRuntimeException, SQLException{
 		
-		PreparedStatement psR = null;
-		Connection connR = null;
+		PreparedStatement psV = null;
+		Connection connV = null;
 		
 		try {
-			connR= ConnectionFactory.getConnection();
-			psR = connR.prepareStatement("INSERT INTO videogame VALUES (NULL,?,?,?,?)");
-			psR.setString(1, videogame.getGameName());
-			psR.setString(2, videogame.getGenre());
-			psR.setBoolean(3, videogame.getAvailability());
-			psR.setInt(4, videogame.getQuantity());
-			psR.setString(5, videogame.getDescription());
-			int i = psR.executeUpdate();
+			connV= ConnectionFactory.getConnection();
+			psV = connV.prepareStatement("INSERT INTO videogame VALUES (NULL,?,?,?,?)");
+			psV.setString(2, videogame.getGenre());
+			psV.setBoolean(3, videogame.getAvailability());
+			psV.setInt(4, videogame.getQuantity());
+			psV.setString(5, videogame.getDescription());
+			int i = psV.executeUpdate();
 			
 			if(i == 1) {
 				return true;
 			}
-			psR.close();
-			connR.close();
+			psV.close();
+			connV.close();
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 		finally {
-			if (psR != null) {
-				psR.close();
+			if (psV != null) {
+				psV.close();
 			}
-			if (connR != null) {
-				connR.close();
+			if (connV != null) {
+				connV.close();
             }
 		}
 		return false;
