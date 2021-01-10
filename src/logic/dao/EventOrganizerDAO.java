@@ -46,11 +46,12 @@ public boolean insertOrganizer(EventOrganizer org) throws MyRuntimeException, SQ
 		
 		try {
 			connO= ConnectionFactory.getConnection();
-			psO = connO.prepareStatement("INSERT INTO organizer VALUES (NULL,?,?,?,?)");
+			psO = connO.prepareStatement("INSERT INTO organizer VALUES (NULL,?,?,?,?,?)");
 			psO.setString(1, org.getOrgFirstname());
 			psO.setString(2, org.getOrgLastname());
-			psO.setString(3, org.getOrgEmail());
-			psO.setString(4, org.getOrgOwnRoom());
+			psO.setString(3, org.getOrgPassword());
+			psO.setString(4, org.getOrgEmail());
+			psO.setString(5, org.getOrgOwnRoom());
 			int i = psO.executeUpdate();
 			
 			if(i == 1) {
@@ -80,6 +81,7 @@ public boolean insertOrganizer(EventOrganizer org) throws MyRuntimeException, SQ
 		org.setOrgUsername(rs.getString("orgUsername"));
 		org.setOrgFirstname(rs.getString("orgFirstname"));
 		org.setOrgLastname(rs.getString("orgLastname"));
+		org.setOrgPassword(rs.getString("orgPassword"));
 		org.setOrgEmail(rs.getString("orgEmail"));
 		org.setOrgOwnRoom(rs.getString("orgOwnRoom"));
 		

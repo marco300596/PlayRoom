@@ -5,6 +5,7 @@ public class EventOrganizer {
 	private String orgUsername;
 	private String orgFirstname;
 	private String orgLastname;
+	private String orgPassword;
 	private String orgEmail;
 	private String orgOwnRoom;
 	
@@ -12,10 +13,11 @@ public class EventOrganizer {
 		// default constructor for dao impl
 	}
 	
-	public EventOrganizer(String orgUsername,String orgFirstname, String orgLastname, String orgEmail, String orgOwnRoom) {
+	public EventOrganizer(String orgUsername,String orgFirstname, String orgLastname, String orgPassword, String orgEmail, String orgOwnRoom) {
 		this.setOrgUsername(orgUsername);
 		this.setOrgFirstname(orgFirstname);
 		this.setOrgLastname(orgLastname);
+		this.setOrgPassword(orgPassword);
 		this.setOrgEmail(orgEmail);
 		this.setOrgOwnRoom(orgOwnRoom);
 	}
@@ -33,6 +35,10 @@ public class EventOrganizer {
 	public String getOrgLastname()
 	{
 		return orgLastname;
+	}
+	
+	public String getOrgPassword() {
+		return orgPassword;
 	}
 	
 	public String getOrgEmail()
@@ -58,6 +64,10 @@ public class EventOrganizer {
 	public void setOrgLastname(String orgLastname)
 	{
 		this.orgLastname = orgLastname;
+	}
+	
+	public void setOrgPassword(String orgPassword) {
+		this.orgPassword = orgPassword;
 	}
 	
 	public void setOrgEmail(String orgEmail)
