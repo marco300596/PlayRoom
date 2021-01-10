@@ -47,10 +47,9 @@ public Poll getPoll(String pollname) throws MyRuntimeException, SQLException {
 		try {
 			connPo= ConnectionFactory.getConnection();
 			psPo = connPo.prepareStatement("INSERT INTO poll VALUES (NULL,?,?,?)");
-			psPo.setString(1, poll.getPollName());
-			psPo.setString(2, poll.getQuestion());
-			psPo.setString(3, poll.getAnswer());
-			psPo.setString(4, poll.getTournamentName());
+			psPo.setString(1, poll.getQuestion());
+			psPo.setString(2, poll.getAnswer());
+			psPo.setString(3, poll.getTournamentName());
 			int i = psPo.executeUpdate();
 		
 			if(i == 1) {
