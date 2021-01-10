@@ -14,7 +14,7 @@
 
 <BorderPane fx:id="bp" prefHeight="660.0" prefWidth="1120.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.HomePageViewController">
    <top>
-      <HBox onMouseClicked="#registrationPage" prefHeight="100.0" prefWidth="875.0" style="-fx-background-color: #262628;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="875.0" style="-fx-background-color: #262628;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="100.0" fitWidth="100.0" onMouseClicked="#home" onMousePressed="#registrationPage" pickOnBounds="true" preserveRatio="true">
                <image>
