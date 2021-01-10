@@ -34,8 +34,8 @@ public class HomePageViewController {
     }
     
     @FXML
-    void loginPage(MouseEvent event) {
-    	loadMainPage("homepage");
+    void registrationPage(MouseEvent event) {
+    	loadMainPage("Registration");
     }
     
     @FXML
