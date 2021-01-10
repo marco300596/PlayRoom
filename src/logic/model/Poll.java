@@ -1,19 +1,19 @@
 package logic.model;
 
-public class Pool {
+public class Poll {
 
 	//attributes
-	private String poolName;
+	private String pollName;
 	private String question;
 	private String answer;
 	private String tournamentName;
 	
-	public Pool(){
+	public Poll(){
 		// default constructor for dao impl
 	}
 		
-	public Pool(String poolName, String question, String answer, String tournamentName) {
-		this.setPoolName(poolName);
+	public Poll(String pollName, String question, String answer, String tournamentName) {
+		this.setPollName(pollName);
 		this.setQuestion(question);
 		this.setAnswer(answer);
 		this.setTournamentName(tournamentName);
@@ -21,9 +21,9 @@ public class Pool {
 
 	//methods
 	//setter&getter
-	public String getPoolName()
+	public String getPollName()
 	{
-		return poolName;
+		return pollName;
 	}
 	
 	public String getQuestion()
@@ -41,9 +41,9 @@ public class Pool {
 		return tournamentName;
 	}
 
-	public void setPoolName(String poolName)
+	public void setPollName(String pollName)
 	{
-		this.poolName = poolName;
+		this.pollName = pollName;
 	}
 
 	public void setQuestion(String question)
