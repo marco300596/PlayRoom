@@ -14,9 +14,9 @@
 
 <BorderPane fx:id="bp" prefHeight="660.0" prefWidth="1120.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.HomePageViewController">
    <top>
-      <HBox onMouseClicked="#loginPage" prefHeight="100.0" prefWidth="875.0" style="-fx-background-color: #262628;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="875.0" style="-fx-background-color: #262628;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onMouseClicked="#home" onMousePressed="#loginPage" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="100.0" onMouseClicked="#home" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/home.png" />
                </image>
@@ -37,7 +37,7 @@
                   <Image url="@../image/puffer-fish.png" />
                </image>
             </ImageView>
-            <Text fill="#6fd736" onMousePressed="#loginPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Login/Register" underline="true">
+            <Text fill="#6fd736" onMousePressed="#registrationPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" underline="true">
                <HBox.margin>
                   <Insets left="5.0" right="10.0" top="35.0" />
                </HBox.margin>

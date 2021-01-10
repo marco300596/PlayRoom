@@ -28,8 +28,8 @@ public class OrganizerPageViewController {
     }
 
     @FXML
-    void loginPage(MouseEvent event) {
-    	homeOrg("homepage");
+    void registrationPage(MouseEvent event) {
+    	homeOrg("Registration");
     }
 
     @FXML

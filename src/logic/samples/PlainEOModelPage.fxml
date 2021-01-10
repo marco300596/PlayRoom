@@ -97,7 +97,7 @@
                         <Image url="@../image/puffer-fish.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#395dd4" strokeType="OUTSIDE" strokeWidth="0.0" text="Login/Register" underline="true">
+                  <Text fill="#395dd4" onMousePressed="#registrationPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" underline="true">
                      <HBox.margin>
                         <Insets left="5.0" right="10.0" top="35.0" />
                      </HBox.margin>
