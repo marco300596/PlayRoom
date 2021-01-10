@@ -10,7 +10,7 @@ import logic.model.Tournament;
 
 
 public class TournamentDAO {
-public Tournament getTournament(String tournamentName) throws MyRuntimeException, SQLException {
+	public Tournament getTournament(String tournamentName) throws MyRuntimeException, SQLException {
 		
 		Statement stmtT = null;
 		Connection connT = null;
@@ -47,9 +47,9 @@ public boolean insertTournament(Tournament tournament) throws MyRuntimeException
 		try {
 			connT= ConnectionFactory.getConnection();
 			psT = connT.prepareStatement("INSERT INTO tournament VALUES (NULL,?,?,?)");
-			psT.setString(2, tournament.getTournamentRoom());
-			psT.setString(3, tournament.getTournamentGame());
-			psT.setString(4, tournament.getTournamentHardware());
+			psT.setString(1, tournament.getTournamentRoom());
+			psT.setString(2, tournament.getTournamentGame());
+			psT.setString(3, tournament.getTournamentHardware());
 			int i = psT.executeUpdate();
 			
 			if(i == 1) {

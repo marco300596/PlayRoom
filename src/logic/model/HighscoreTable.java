@@ -5,6 +5,7 @@ import java.util.List;
 public class HighscoreTable {
 	
 	//attributes
+	private int htid;
 	private List<String> highscoreList;
 	private String highscore;
 	private String tournamentName;
@@ -15,14 +16,18 @@ public class HighscoreTable {
 	
 	//methods
 	//non-default constructor
-	public HighscoreTable(List<String> highscoreList, String tournamentName,String highscore)
+	public HighscoreTable(int htid,List<String> highscoreList, String tournamentName,String highscore)
 	{
+		this.setHtid(htid);
 		this.setHighscoreList(highscoreList);
 		this.setTournamentName(tournamentName);
 		this.setHighscore(highscore);
 	}
 	
 	//setter&getter
+	public int getHtid() {
+		return htid;
+	}
 	public List<String> getHighscoreList()
 	{
 		return highscoreList;
@@ -36,6 +41,10 @@ public class HighscoreTable {
 	public String getTournamentName()
 	{
 		return tournamentName;
+	}
+	
+	public void setHtid(int id) {
+		this.htid = id;
 	}
 
 	public void setHighscoreList(List<String> highscoreList)

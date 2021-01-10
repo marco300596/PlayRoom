@@ -1,4 +1,5 @@
 package logic.dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +8,10 @@ import java.sql.Statement;
 
 import logic.exception.MyRuntimeException;
 import logic.model.VideoGame;
+
 public class VideoGameDAO {
 	
-public VideoGame getVideoGame(String gameName) throws MyRuntimeException, SQLException {
+	public VideoGame getVideoGame(String gameName) throws MyRuntimeException, SQLException {
 		
 		Statement stmtV = null;
 		Connection connV = null;
@@ -46,10 +48,10 @@ public boolean insertVideoGame(VideoGame videogame) throws MyRuntimeException, S
 		try {
 			connV= ConnectionFactory.getConnection();
 			psV = connV.prepareStatement("INSERT INTO videogame VALUES (NULL,?,?,?,?)");
-			psV.setString(2, videogame.getGenre());
-			psV.setBoolean(3, videogame.getAvailability());
-			psV.setInt(4, videogame.getQuantity());
-			psV.setString(5, videogame.getDescription());
+			psV.setString(1, videogame.getGenre());
+			psV.setBoolean(2, videogame.getAvailability());
+			psV.setInt(3, videogame.getQuantity());
+			psV.setString(4, videogame.getDescription());
 			int i = psV.executeUpdate();
 			
 			if(i == 1) {

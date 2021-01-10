@@ -1,19 +1,16 @@
 package logic.dao;
-import java.sql.Array;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import logic.model.Hardware;
 import logic.model.Reservation;
-import logic.model.Room;
-import logic.model.VideoGame;
 import logic.exception.MyRuntimeException;
 
 public class ReservationDAO {
-public Reservation getReservation(int rsid) throws MyRuntimeException, SQLException {
+	public Reservation getReservation(int rsid) throws MyRuntimeException, SQLException {
 		
 		Statement stmtRS = null;
 		Connection connRS = null;
@@ -49,7 +46,7 @@ public boolean insertReservation(Reservation reservation) throws MyRuntimeExcept
 		
 		try {
 			connRS= ConnectionFactory.getConnection();
-			psRS = connRS.prepareStatement("INSERT INTO room VALUES (NULL,?,?,?,?,?)");
+			psRS = connRS.prepareStatement("INSERT INTO reservation VALUES (NULL,?,?,?,?,?)");
 			psRS.setInt(1, reservation.getReservationStatus());
 			psRS.setInt(2, reservation.getNumberOfPlayer());
 			psRS.setString(3, reservation.getReservationRoom());
@@ -88,8 +85,6 @@ public boolean insertReservation(Reservation reservation) throws MyRuntimeExcept
 		reservation.setReservationRoom(rs.getString("reservationRoom"));
 		reservation.setPlayerUsername(rs.getString("PlayerUsername"));
 		reservation.setOrganizerMail(rs.getString("organizerMail"));
-		
-		
 		
 		
 		return reservation;

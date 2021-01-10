@@ -5,10 +5,6 @@ public class Reservation
 	
 	//attributes
 	private int rsid;
-	
-
-	
-
 	private int reservationStatus;
 	private int numberOfPlayer;
 	private String reservationRoom;
@@ -85,6 +81,6 @@ public class Reservation
 	}
 	
 	public void setRsid(int rsid) {
-		rsid = rsid;
+		this.rsid = rsid;
 	}
 }
