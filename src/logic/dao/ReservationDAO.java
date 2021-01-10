@@ -83,7 +83,7 @@ public boolean insertReservation(Reservation reservation) throws MyRuntimeExcept
 		reservation.setReservationStatus(rs.getInt("reservationStatus"));
 		reservation.setNumberOfPlayer(rs.getInt("numberOfPlayer"));
 		reservation.setReservationRoom(rs.getString("reservationRoom"));
-		reservation.setPlayerUsername(rs.getString("PlayerUsername"));
+		reservation.setPlayerUsername(rs.getString("playerUsername"));
 		reservation.setOrganizerMail(rs.getString("organizerMail"));
 		
 		
