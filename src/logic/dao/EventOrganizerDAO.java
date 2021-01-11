@@ -40,7 +40,7 @@ public class EventOrganizerDAO {
 		return null;
 	}
 	
-	public static LoginBean getPlayerByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
+	public static LoginBean getOrgByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psO = null;
 		Connection connO = null;

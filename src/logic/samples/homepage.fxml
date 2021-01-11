@@ -114,7 +114,7 @@
       </VBox>
    </right>
    <bottom>  
-     <Button fx:id="logBtn" accessibleRole="BUTTON" mnemonicParsing="false" onMousePressed="#loginPression" text="Login" BorderPane.alignment="CENTER">
+     <Button fx:id="logBtn" accessibleRole="BUTTON" mnemonicParsing="false" onAction="#loginPression" onMousePressed="#loginPression" text="Login" BorderPane.alignment="CENTER">
          <font>
             <Font size="40.0" />
          </font>

@@ -3,6 +3,7 @@ package logic.controller;
 import java.sql.SQLException;
 
 import logic.bean.LoginBean;
+import logic.dao.EventOrganizerDAO;
 import logic.dao.PlayerDAO;
 import logic.exception.MyRuntimeException;
 import logic.model.Player;
