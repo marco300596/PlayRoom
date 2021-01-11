@@ -46,8 +46,8 @@ public class PlayerPageViewController {
    
 
    @FXML
-   void loginPage(MouseEvent event) {
-	   homePlayer("homepage");
+   void registrationPage(MouseEvent event) {
+	   homePlayer("Registration");
    }
     
     
