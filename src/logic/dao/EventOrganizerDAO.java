@@ -6,8 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.bean.LoginBean;
 import logic.exception.MyRuntimeException;
 import logic.model.EventOrganizer;
+import logic.model.Player;
 
 public class EventOrganizerDAO {
 	public EventOrganizer getOrganizer(String orgUsername) throws MyRuntimeException, SQLException {
@@ -20,7 +22,7 @@ public class EventOrganizerDAO {
 			ResultSet rs = stmtO.executeQuery("SELECT * FROM organizer WHERE orgUsername=" + orgUsername);
 			
 			if(rs.next()) {
-				return extractRatingFromResultSet(rs);
+				return extractEventOrganizerFromResultSet(rs);
 			}
 			stmtO.close();
 			connO.close();
@@ -31,6 +33,45 @@ public class EventOrganizerDAO {
 		finally {
 			if (stmtO != null) {
 				stmtO.close();
+			}
+			if (connO != null) {
+				connO.close();
+            }
+		}
+		return null;
+	}
+	
+	public static LoginBean getPlayerByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
+		
+		PreparedStatement psO = null;
+		Connection connO = null;
+		
+		
+		try {
+			connO= ConnectionFactory.getConnection();
+			psO = connO.prepareStatement("SELECT * FROM player WHERE username=? AND password=?");
+			psO.setString(1, username);
+			psO.setString(2, password);
+			ResultSet rs = psO.executeQuery();
+			
+			if(rs.next()) {
+				
+				LoginBean eventOrganizer = new LoginBean();
+				
+				eventOrganizer.setUsername(rs.getString("username"));
+				eventOrganizer.setPassword(rs.getString("password"));
+				
+				return eventOrganizer;
+			}
+			psO.close();
+			connO.close();
+			
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+		finally {
+			if (psO != null) {
+				psO.close();
 			}
 			if (connO != null) {
 				connO.close();
@@ -74,7 +115,7 @@ public boolean insertOrganizer(EventOrganizer org) throws MyRuntimeException, SQ
 		return false;
 	}
 	
-	private EventOrganizer extractRatingFromResultSet(ResultSet rs) throws SQLException{
+	private EventOrganizer extractEventOrganizerFromResultSet(ResultSet rs) throws SQLException{
 		
 		EventOrganizer org = new EventOrganizer();
 		
