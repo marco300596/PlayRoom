@@ -2,6 +2,7 @@ package logic.view;
 
 import java.awt.Button;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,11 +11,16 @@ import javax.swing.JOptionPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import logic.controller.LoginController;
+import logic.exception.MyRuntimeException;
+import logic.exception.UserDoesNotExist;
 
 public class HomePageViewController {
 
@@ -28,7 +34,16 @@ public class HomePageViewController {
     private CheckBox cbeo;
     
     @FXML
-    private Button btn;
+    private TextField usTxt;
+
+    @FXML
+    private TextField pwdTxt;
+
+    @FXML
+    private Button logBtn;
+    
+    @FXML
+    private Label msg;
     
     @FXML
     void home(MouseEvent event) {
@@ -50,14 +65,21 @@ public class HomePageViewController {
     }
     
     @FXML
-    void pression(MouseEvent event){
-    	 if (cbp.isSelected() && cbeo.isSelected()){
-     		JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
-     	}else if(cbp.isSelected()){
-    		showPlayerPage();
-    	} else if(cbeo.isSelected()){
-    		showOrganizerPage();
-    	}
+    void loginPression(MouseEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+    	
+    	LoginController controller = LoginController.getInstance();
+    	controller.getBean().setUsername(usTxt.getText());
+    	controller.getBean().setPassword(pwdTxt.getText());
+    	
+    	if (cbp.isSelected() && cbeo.isSelected()){
+			JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
+		}else if(controller.findPlayerIdentity() && cbp.isSelected()) {
+			showPlayerPage();
+		} else if (controller.findOrgIdentity() && cbeo.isSelected()) {
+			showOrganizerPage();
+		}
+    	
+ 
     }
     
     private void loadMainPage(String page) {

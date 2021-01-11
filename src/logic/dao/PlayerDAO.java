@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
 
+import logic.bean.LoginBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Player;
 
@@ -42,10 +43,11 @@ public class PlayerDAO {
 		return null;
 	}
 	
-	public Player getPlayerByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
+	public static LoginBean getPlayerByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psP = null;
 		Connection connP = null;
+		
 		
 		try {
 			connP= ConnectionFactory.getConnection();
@@ -55,7 +57,13 @@ public class PlayerDAO {
 			ResultSet rs = psP.executeQuery();
 			
 			if(rs.next()) {
-				return extractPlayerFromResultSet(rs);
+				
+				LoginBean player = new LoginBean();
+				
+				player.setUsername(rs.getString("username"));
+				player.setPassword(rs.getString("password"));
+				
+				return player;
 			}
 			psP.close();
 			connP.close();

@@ -92,20 +92,7 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField>
-               <VBox.margin>
-                  <Insets right="20.0" />
-               </VBox.margin>
-            </TextField>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="20.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-            <TextField>
+            <TextField fx:id="usTxt">
                <VBox.margin>
                   <Insets right="20.0" />
                </VBox.margin>
@@ -118,7 +105,7 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField>
+            <TextField fx:id="pwdTxt">
                <VBox.margin>
                   <Insets right="20.0" />
                </VBox.margin>
@@ -127,7 +114,7 @@
       </VBox>
    </right>
    <bottom>  
-     <Button fx:id="log" accessibleRole="BUTTON" mnemonicParsing="false" onAction="#pression" onMousePressed="#pression" text="Login" BorderPane.alignment="CENTER">
+     <Button fx:id="logBtn" accessibleRole="BUTTON" mnemonicParsing="false" onMousePressed="#loginPression" text="Login" BorderPane.alignment="CENTER">
          <font>
             <Font size="40.0" />
          </font>
