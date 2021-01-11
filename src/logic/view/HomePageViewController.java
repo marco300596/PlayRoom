@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
@@ -48,30 +50,14 @@ public class HomePageViewController {
     }
     
     @FXML
-    void pression(MouseEvent event) {
-    	if(cbp.isSelected()) {
+    void pression(MouseEvent event){
+    	 if (cbp.isSelected() && cbeo.isSelected()){
+     		JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
+     	}else if(cbp.isSelected()){
     		showPlayerPage();
     	} else if(cbeo.isSelected()){
     		showOrganizerPage();
-    	}else if (cbp.isSelected() & cbp.isSelected()) {
-    		showErrorPage();
     	}
-    }
-    
-    private void showErrorPage(){
-    	Parent root = null;
-    	Stage st = new Stage();
-    	try {
-    		
-    		root = FXMLLoader.load(getClass().getResource("/logic/samples/RegisterError.fxml"));
-    		st.setScene(new Scene(root));
-            st.show();
-            
-    	} catch(IOException e){
-    		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
-    	}
-   
-    	
     }
     
     private void loadMainPage(String page) {
