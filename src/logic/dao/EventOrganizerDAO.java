@@ -9,7 +9,6 @@ import java.sql.Statement;
 import logic.bean.LoginBean;
 import logic.exception.MyRuntimeException;
 import logic.model.EventOrganizer;
-import logic.model.Player;
 
 public class EventOrganizerDAO {
 	public EventOrganizer getOrganizer(String orgUsername) throws MyRuntimeException, SQLException {
