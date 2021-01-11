@@ -53,9 +53,26 @@ public class HomePageViewController {
     		showPlayerPage();
     	} else if(cbeo.isSelected()){
     		showOrganizerPage();
+    	}else if (cbp.isSelected() & cbp.isSelected()) {
+    		showErrorPage();
     	}
     }
     
+    private void showErrorPage(){
+    	Parent root = null;
+    	Stage st = new Stage();
+    	try {
+    		
+    		root = FXMLLoader.load(getClass().getResource("/logic/samples/RegisterError.fxml"));
+    		st.setScene(new Scene(root));
+            st.show();
+            
+    	} catch(IOException e){
+    		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
+    	}
+   
+    	
+    }
     
     private void loadMainPage(String page) {
     	Parent root = null;
