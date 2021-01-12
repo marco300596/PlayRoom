@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="810.0" prefWidth="811.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="810.0" prefWidth="811.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterRoomViewController">
    <children>
       <HBox prefHeight="810.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -33,7 +33,7 @@
                         <Insets bottom="5.0" left="50.0" right="50.0" top="50.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                  <TextArea fx:id="Nametxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <VBox.margin>
                         <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -46,7 +46,7 @@
                         <Insets bottom="5.0" left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                  <TextArea fx:id="Gametxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -62,7 +62,7 @@
                         <Insets bottom="5.0" left="50.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                  <TextArea fx:id="Hardwaretxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -78,7 +78,7 @@
                         <Insets bottom="5.0" left="50.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="110.0" prefWidth="370.0">
+                  <TextArea fx:id="desctxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="110.0" prefWidth="370.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="50.0" />
                      </VBox.margin>
@@ -99,7 +99,7 @@
                         <Insets bottom="20.0" left="50.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button mnemonicParsing="false" text="Register Room">
+                  <Button fx:id="regroombtn" mnemonicParsing="false" text="Register Room">
                      <VBox.margin>
                         <Insets bottom="90.0" left="350.0" right="50.0" top="-60.0" />
                      </VBox.margin>
@@ -122,12 +122,12 @@
                         <Insets bottom="20.0" left="10.0" top="110.0" />
                      </VBox.margin>
                   </Text>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="phfield" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button mnemonicParsing="false" text="Add photo">
+                  <Button fx:id="phbtn" mnemonicParsing="false" text="Add photo">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

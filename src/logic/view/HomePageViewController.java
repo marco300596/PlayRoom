@@ -25,6 +25,9 @@ import logic.exception.UserDoesNotExist;
 
 public class HomePageViewController {
 
+	
+	
+
     @FXML
     private BorderPane bp;
     
