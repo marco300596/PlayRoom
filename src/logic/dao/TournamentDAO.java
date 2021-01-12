@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.bean.TournamentBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Tournament;
 
@@ -39,17 +40,18 @@ public class TournamentDAO {
 		return null;
 	}
 	
-public boolean insertTournament(Tournament tournament) throws MyRuntimeException, SQLException{
+public static boolean insertTournament(TournamentBean tournament) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psT = null;
 		Connection connT = null;
 		
 		try {
 			connT= ConnectionFactory.getConnection();
-			psT = connT.prepareStatement("INSERT INTO tournament VALUES (NULL,?,?,?)");
+			psT = connT.prepareStatement("INSERT INTO tournament VALUES (NULL,?,?,?,?)");
 			psT.setString(1, tournament.getTournamentRoom());
 			psT.setString(2, tournament.getTournamentGame());
 			psT.setString(3, tournament.getTournamentHardware());
+			psT.setInt(4, tournament.getTournamentPartecipants());
 			int i = psT.executeUpdate();
 			
 			if(i == 1) {
@@ -80,6 +82,7 @@ public boolean insertTournament(Tournament tournament) throws MyRuntimeException
 		tournament.setTournamentRoom(rs.getString("tournamentRoom"));
 		tournament.setTournamentGame(rs.getString("tournamentGame"));
 		tournament.setTournamentHardware(rs.getString("tournamentHardware"));
+		tournament.setTournamentPartecipants(rs.getInt("tournamentPartecipants"));
 		
 		return tournament;
 	}

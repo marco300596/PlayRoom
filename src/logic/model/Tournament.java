@@ -7,6 +7,7 @@ public class Tournament {
 	private String tournamentRoom;
 	private String tournamentGame;
 	private String tournamentHardware;
+	private int	tournamentPartecipants;
 	
 	public Tournament(){
 		// default constructor for dao impl
@@ -14,12 +15,13 @@ public class Tournament {
 	
 	//methods
 	//non-default constructor
-	public Tournament(String tournamentName, String tournamentRoom, String tournamentGame, String tournamentHardware)
+	public Tournament(String tournamentName, String tournamentRoom, String tournamentGame, String tournamentHardware,int tournamentPartecipants)
 	{
 		this.setTournamentName(tournamentName);
 		this.setTournamentRoom(tournamentRoom);
 		this.setTournamentGame(tournamentGame);
 		this.setTournamentHardware(tournamentHardware);
+		this.setTournamentPartecipants(tournamentPartecipants);
 	}
 	
 	//setter&getter
@@ -42,6 +44,9 @@ public class Tournament {
 	{
 		return tournamentHardware;
 	}
+	public int getTournamentPartecipants() {
+		return tournamentPartecipants;
+	}
 	
 	public void setTournamentName(String tournamentName)
 	{
@@ -61,6 +66,10 @@ public class Tournament {
 	public void setTournamentHardware(String tournamentHardware)
 	{
 		this.tournamentHardware = tournamentHardware;
+	}
+	
+	public void setTournamentPartecipants(int tournamentPartecipants) {
+		this.tournamentPartecipants = tournamentPartecipants;
 	}
 	
 }
