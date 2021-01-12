@@ -63,18 +63,28 @@
                   <Insets />
                </VBox.margin>
             </HBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="L'utente event organizer mette a disposizione una propria stanza da gioco per gli utenti player, la stanza verrà prenotata da questi ultimi. Si ha anche la possibilità di bloccare o cancellare player che non seguiranno le norme della propria stanza, e di creare tornei nei quali i player immetteranno le proprie highscore" wrappingWidth="583.9765625">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </Text>
             <HBox prefHeight="70.0" prefWidth="668.0">
                <children>
                   <CheckBox id="CBP" fx:id="cbp" mnemonicParsing="false" text="PLAYER USER" textFill="#6fd736">
                      <font>
                         <Font size="35.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets top="90.0" />
-                     </HBox.margin>
                   </CheckBox>
                </children>
             </HBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="L'utente player ha la possibilità di registrarsi per prenotare stanze, partecipare a tornei videoludici, e , una volta ottenuta abbastanza esperienza, creare tornei pubblici" wrappingWidth="568.375">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children>
          <BorderPane.margin>
             <Insets left="20.0" top="20.0" />
@@ -82,9 +92,9 @@
       </VBox>
    </center>
    <right>
-      <VBox prefHeight="613.0" prefWidth="432.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="579.0" prefWidth="432.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Firstname:">
                <VBox.margin>
                   <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
@@ -92,20 +102,72 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="usTxt">
+            <TextField>
+               <VBox.margin>
+                  <Insets right="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Lastname:">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField>
+               <VBox.margin>
+                  <Insets right="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField>
+               <VBox.margin>
+                  <Insets right="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            <TextField>
                <VBox.margin>
                   <Insets right="20.0" />
                </VBox.margin>
             </TextField>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="20.0" />
-               </VBox.margin>
                <font>
                   <Font size="20.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </Text>
-            <TextField fx:id="pwdTxt">
+            <TextField>
+               <VBox.margin>
+                  <Insets right="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Text>
+            <TextField>
                <VBox.margin>
                   <Insets right="20.0" />
                </VBox.margin>
@@ -113,8 +175,8 @@
          </children>
       </VBox>
    </right>
-   <bottom>  
-     <Button fx:id="logBtn" accessibleRole="BUTTON" mnemonicParsing="false" onAction="#loginPression" text="Login" BorderPane.alignment="CENTER">
+   <bottom>
+      <Button fx:id="log" accessibleRole="BUTTON" mnemonicParsing="false" onAction="#pression" onMousePressed="#pression" text="register" BorderPane.alignment="CENTER">
          <font>
             <Font size="40.0" />
          </font>

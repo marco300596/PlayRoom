@@ -1,6 +1,5 @@
 package logic.view;
 
-import java.awt.Button;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -8,8 +7,10 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -65,7 +66,7 @@ public class HomePageViewController {
     }
     
     @FXML
-    void loginPression(MouseEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+    void loginPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
     	
     	LoginController controller = LoginController.getInstance();
     	controller.getBean().setUsername(usTxt.getText());
@@ -73,6 +74,7 @@ public class HomePageViewController {
     	
     	if (cbp.isSelected() && cbeo.isSelected()){
 			JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
+			//loadMainPage("homepage");
 		}else if(controller.findPlayerIdentity() && cbp.isSelected()) {
 			showPlayerPage();
 		} else if (controller.findOrgIdentity() && cbeo.isSelected()) {
