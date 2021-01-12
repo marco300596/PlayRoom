@@ -18,7 +18,7 @@ public class EventOrganizerDAO {
 		try {
 			connO= ConnectionFactory.getConnection();
 			stmtO = connO.createStatement();
-			ResultSet rs = stmtO.executeQuery("SELECT * FROM organizer WHERE orgUsername=" + orgUsername);
+			ResultSet rs = stmtO.executeQuery("SELECT * FROM organizer WHERE orgusername=" + orgUsername);
 			
 			if(rs.next()) {
 				return extractEventOrganizerFromResultSet(rs);
@@ -48,7 +48,7 @@ public class EventOrganizerDAO {
 		
 		try {
 			connO= ConnectionFactory.getConnection();
-			psO = connO.prepareStatement("SELECT * FROM player WHERE username=? AND password=?");
+			psO = connO.prepareStatement("SELECT * FROM organizer WHERE orgusername=? AND orgpassword=?");
 			psO.setString(1, username);
 			psO.setString(2, password);
 			ResultSet rs = psO.executeQuery();
@@ -57,8 +57,8 @@ public class EventOrganizerDAO {
 				
 				LoginBean eventOrganizer = new LoginBean();
 				
-				eventOrganizer.setUsername(rs.getString("username"));
-				eventOrganizer.setPassword(rs.getString("password"));
+				eventOrganizer.setUsername(rs.getString("orgUsername"));
+				eventOrganizer.setPassword(rs.getString("orgPassword"));
 				
 				return eventOrganizer;
 			}

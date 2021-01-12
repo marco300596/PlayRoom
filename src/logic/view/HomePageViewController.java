@@ -74,12 +74,15 @@ public class HomePageViewController {
     	
     	if (cbp.isSelected() && cbeo.isSelected()){
 			JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
-			//loadMainPage("homepage");
-		}else if(controller.findPlayerIdentity() && cbp.isSelected()) {
+		}
+    	if(cbp.isSelected() && controller.findPlayerIdentity()) {
 			showPlayerPage();
-		} else if (controller.findOrgIdentity() && cbeo.isSelected()) {
+		}
+    	if (cbeo.isSelected() && controller.findOrgIdentity()) {
 			showOrganizerPage();
 		}
+    	
+    	/*inserire eccezione campi vuoti*/
     	
  
     }
