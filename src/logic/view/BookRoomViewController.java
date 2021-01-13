@@ -42,7 +42,7 @@ public class BookRoomViewController {
 
     @FXML
     private TableColumn<Room, String> rName;
-    
+
     @FXML
     private TableColumn<Room, Integer> maxGS;
 
@@ -50,7 +50,7 @@ public class BookRoomViewController {
     private TableColumn<Room, Integer> price;
 
     @FXML
-    private TableColumn<Room, String> location;
+    private TableColumn<Room, String> Location;
 
     @FXML
     private Button bkBtn;
@@ -70,7 +70,7 @@ public class BookRoomViewController {
     	rName.setCellValueFactory(new PropertyValueFactory<Room, String>("roomName"));
     	maxGS.setCellValueFactory(new PropertyValueFactory<Room, Integer>("numSeat"));
 		price.setCellValueFactory(new PropertyValueFactory<Room, Integer>("price"));
-		location.setCellValueFactory(new PropertyValueFactory<Room, String>("location"));
+		Location.setCellValueFactory(new PropertyValueFactory<Room, String>("location"));
     }
 	
     //ObservableList selectedItems = taview.getSelectionModel().getSelectedItems(); per selezionare una riga

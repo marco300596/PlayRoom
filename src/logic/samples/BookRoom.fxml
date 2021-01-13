@@ -76,10 +76,10 @@
                   </Button>
                   <TableView fx:id="frhTab" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn fx:id="RName" prefWidth="221.0" text="Room's Name" />
-                      <TableColumn fx:id="MaxGS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="190.0" text="Max Group Size" />
-                        <TableColumn fx:id="Price" prefWidth="139.0" text="Price" />
-                        <TableColumn fx:id="Location" prefWidth="141.0" text="Location" />
+                      <TableColumn fx:id="rName" prefWidth="221.0" text="Room's Name" />
+                      <TableColumn fx:id="maxGS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="190.0" text="Max Group Size" />
+                        <TableColumn fx:id="price" prefWidth="139.0" text="Price" />
+                        <TableColumn fx:id="location" prefWidth="141.0" text="Location" />
                     </columns>
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="10.0" />

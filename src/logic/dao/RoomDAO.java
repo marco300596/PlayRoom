@@ -89,8 +89,6 @@ public static boolean insertRoom(RoomBean room) throws MyRuntimeException, SQLEx
 			psR.setInt(3, room.getPrice());
 			psR.setString(4, room.getLocation());
 			psR.setString(5, room.getPhoto());
-			//psR.setArray(6, (Array) room.getHw());
-			//psR.setArray(7, (Array) room.getVg());
 			int i = psR.executeUpdate();
 			
 			if(i == 1) {
@@ -138,8 +136,6 @@ private static RoomBean extractRoomBeanFromResultSet(ResultSet rs) throws SQLExc
 		room.setPrice(rs.getInt("price"));
 		room.setLocation(rs.getString("location"));
 		room.setPhoto(rs.getString("photo"));
-		//room.addGame((VideoGame) rs.getArray("vg"));
-		//room.addHardware((Hardware) rs.getArray("hw"));
 		
 		
 		return room;
