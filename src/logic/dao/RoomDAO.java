@@ -1,11 +1,9 @@
 package logic.dao;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 import logic.bean.RoomBean;
 import logic.exception.MyRuntimeException;
@@ -58,8 +56,8 @@ public static RoomBean getRoomFromName(String roomName) throws MyRuntimeExceptio
 		
 		if(rs.next()) {
 			
-			RoomBean room = extractRoomBeanFromResultSet(rs);
-			return room;
+			return extractRoomBeanFromResultSet(rs);
+			
 		}
 		psR.close();
 		connR.close();
@@ -91,8 +89,8 @@ public static boolean insertRoom(RoomBean room) throws MyRuntimeException, SQLEx
 			psR.setInt(3, room.getPrice());
 			psR.setString(4, room.getLocation());
 			psR.setString(5, room.getPhoto());
-			psR.setArray(6, (Array) room.getHw());
-			psR.setArray(7, (Array) room.getVg());
+			//psR.setArray(6, (Array) room.getHw());
+			//psR.setArray(7, (Array) room.getVg());
 			int i = psR.executeUpdate();
 			
 			if(i == 1) {

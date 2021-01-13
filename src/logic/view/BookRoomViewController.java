@@ -41,16 +41,16 @@ public class BookRoomViewController {
     private TableView<RoomBean> frhTab;
 
     @FXML
-    private TableColumn<Room, String> RName;
+    private TableColumn<Room, String> rName;
     
     @FXML
-    private TableColumn<Room, Integer> MaxGS;
+    private TableColumn<Room, Integer> maxGS;
 
     @FXML
-    private TableColumn<Room, Integer> Price;
+    private TableColumn<Room, Integer> price;
 
     @FXML
-    private TableColumn<Room, String> Location;
+    private TableColumn<Room, String> location;
 
     @FXML
     private Button bkBtn;
@@ -60,16 +60,19 @@ public class BookRoomViewController {
     	
     	BookRoomController controller = BookRoomController.getInstance();
     	controller.getRoomBean().setRoomName(sprTxt.getText());
-    	RoomBean rb = controller.findRoom();
+    	RoomBean rb = controller.findRoomForPreno();
     	//creare un observablelist a quanto sembra è necessario per creare una tabella
     	ObservableList<RoomBean> room = FXCollections.observableArrayList(rb);
     	//set item è la funzione per settare un insieme di valori all'interno di una tabella
     	frhTab.setItems(room);
     	/*script di popolazione delle celle 
     	 ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
-    	RName.setCellValueFactory(new PropertyValueFactory<Room, String>("roomName"));
-    	MaxGS.setCellValueFactory(new PropertyValueFactory<Room, Integer>("numSeat"));
-		Price.setCellValueFactory(new PropertyValueFactory<Room, Integer>("price"));
-		Location.setCellValueFactory(new PropertyValueFactory<Room, String>("location"));
+    	rName.setCellValueFactory(new PropertyValueFactory<Room, String>("roomName"));
+    	maxGS.setCellValueFactory(new PropertyValueFactory<Room, Integer>("numSeat"));
+		price.setCellValueFactory(new PropertyValueFactory<Room, Integer>("price"));
+		location.setCellValueFactory(new PropertyValueFactory<Room, String>("location"));
     }
+	
+    //ObservableList selectedItems = taview.getSelectionModel().getSelectedItems(); per selezionare una riga
+	
 }

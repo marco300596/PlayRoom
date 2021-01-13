@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import logic.bean.ReservationBean;
 import logic.bean.RoomBean;
 import logic.dao.RoomDAO;
-import logic.dao.PlayerDAO;
 import logic.dao.ReservationDAO;
 import logic.exception.MyRuntimeException;
 import logic.model.Room;
@@ -62,7 +61,7 @@ public class BookRoomController {
 	}
 	
 	
-	public RoomBean findRoom() throws MyRuntimeException, SQLException{
+	public RoomBean findRoomForPreno() throws MyRuntimeException, SQLException{
 		robean = RoomDAO.getRoomFromName(this.robean.getRoomName());
 		return robean;
 	}
