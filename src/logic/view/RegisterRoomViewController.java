@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -54,7 +55,22 @@ public class RegisterRoomViewController {
     
     
     @FXML
-    void RegisterPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+    private void handleButtonPhoto(ActionEvent event) {
+    	
+    	Image image=new Image("");//da mettere il percorso della foto
+    	
+    	phfield.setImage(image);
+    	
+    	
+    }
+    
+    
+    
+    
+    
+    
+    @FXML
+    private void RegisterPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
     	
     	RegisterRoomController controller = RegisterRoomController.getInstance();
     	int numSeat=Integer.parseInt(nstxt.getText());
@@ -64,7 +80,7 @@ public class RegisterRoomViewController {
     	
         //controller.getBean().setLocation(?.getText());  
     //	controller.getBean().setPhoto(phfield.getText());//da vedere
-    	if (nstxt==null||Nametxt==null||desctxt==null){
+    	if (nstxt.getText().isEmpty()||Nametxt.getText().isEmpty()||desctxt.getText().isEmpty()){
 			JOptionPane.showMessageDialog(null, "you have to fill the text fields!", "alert", JOptionPane.ERROR_MESSAGE);
 		
 		

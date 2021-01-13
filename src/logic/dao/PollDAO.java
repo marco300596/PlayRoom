@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.bean.PollBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Poll;
 
@@ -39,16 +40,16 @@ public Poll getPoll(String pollname) throws MyRuntimeException, SQLException {
 		}
 		return null;
 	}
-	public boolean insertPoll(Poll poll) throws MyRuntimeException, SQLException{
+	public static boolean insertPoll(PollBean poll) throws MyRuntimeException, SQLException{
 	
 		PreparedStatement psPo = null;
 		Connection connPo = null;
 	
 		try {
 			connPo= ConnectionFactory.getConnection();
-			psPo = connPo.prepareStatement("INSERT INTO poll VALUES (NULL,?,?,?)");
-			psPo.setString(1, poll.getQuestion());
-			psPo.setString(2, poll.getAnswer());
+			psPo = connPo.prepareStatement("INSERT INTO poll VALUES (?,?,?)");
+			psPo.setString(1, poll.getPollName());
+			psPo.setString(2, poll.getQuestion());
 			psPo.setString(3, poll.getTournamentName());
 			int i = psPo.executeUpdate();
 		

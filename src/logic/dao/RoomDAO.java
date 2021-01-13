@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.bean.RoomBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Hardware;
 import logic.model.Room;
@@ -43,20 +44,21 @@ public class RoomDAO {
 		return null;
 	}
 	
-public boolean insertRoom(Room room) throws MyRuntimeException, SQLException{
+public static boolean insertRoom(RoomBean room) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psR = null;
 		Connection connR = null;
 		
 		try {
 			connR= ConnectionFactory.getConnection();
-			psR = connR.prepareStatement("INSERT INTO room VALUES (NULL,?,?,?,?,?,?)");
+			psR = connR.prepareStatement("INSERT INTO room VALUES (?,?,?,?,?,?,?)");
+			psR.setString(1, room.getRoomName());
 			psR.setInt(1, room.getNumSeat());
-			psR.setInt(2, room.getPrice());
-			psR.setString(3, room.getLocation());
-			psR.setString(4, room.getPhoto());
-			psR.setArray(5, (Array) room.getHw());
-			psR.setArray(6, (Array) room.getVg());
+			psR.setInt(3, room.getPrice());
+			psR.setString(4, room.getLocation());
+			psR.setString(5, room.getPhoto());
+			psR.setArray(6, (Array) room.getHw());
+			psR.setArray(7, (Array) room.getVg());
 			int i = psR.executeUpdate();
 			
 			if(i == 1) {

@@ -1,13 +1,8 @@
 package logic.controller;
 import java.sql.SQLException;
-
-import logic.bean.LoginBean;
 import logic.bean.RoomBean;
-import logic.dao.EventOrganizerDAO;
-import logic.dao.PlayerDAO;
 import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;
-import logic.model.Player;
 import logic.model.Room;
 public class RegisterRoomController {
 
@@ -51,33 +46,9 @@ public class RegisterRoomController {
 		this.bean = bean;
 	}
 	
-//	public boolean insertRoom()throws MyRuntimeException, SQLException{
+	public void insertnewRoom(RoomBean bean)throws MyRuntimeException, SQLException{
 		
-		
-		
-		
-		
+		RoomDAO.insertRoom(bean);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
