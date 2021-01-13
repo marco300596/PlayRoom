@@ -10,13 +10,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class OrganizerPageViewController {
-
+	 
     @FXML
     private BorderPane bp;
-
+    
+    @FXML
+    private Text logtxt;
+    
     @FXML
     void highscorePage(MouseEvent event) {
     	loadOrgPage("HighscoreTableView");

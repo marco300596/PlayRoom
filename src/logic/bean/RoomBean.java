@@ -8,6 +8,7 @@ import logic.model.VideoGame;
 public class RoomBean {
 		
 	private String roomName;
+	private List<String> freeHours;
 	private int numSeat;
 	private int price;
 	private String location;
@@ -22,6 +23,10 @@ public class RoomBean {
 
 	public String getRoomName() {
 		return roomName;
+	}
+	
+	public List<String> getFreeHours() {
+		return freeHours;
 	}
 
 	public int getNumSeat() {
@@ -54,6 +59,10 @@ public class RoomBean {
 	
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
+	}
+	
+	public void setFreeHours(List<String> freeHours) {
+		this.freeHours = freeHours;
 	}
 
 	public void setNumSeat(int numSeat) {

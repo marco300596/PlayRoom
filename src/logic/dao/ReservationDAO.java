@@ -51,7 +51,7 @@ public boolean insertReservation(Reservation reservation) throws MyRuntimeExcept
 			psRS.setInt(2, reservation.getNumberOfPlayer());
 			psRS.setString(3, reservation.getReservationRoom());
 			psRS.setString(4, reservation.getPlayerUsername());
-			psRS.setString(5,  reservation.getOrganizerMail());
+			psRS.setString(5,  reservation.getDate());
 			
 			int i = psRS.executeUpdate();
 			
@@ -84,7 +84,7 @@ public boolean insertReservation(Reservation reservation) throws MyRuntimeExcept
 		reservation.setNumberOfPlayer(rs.getInt("numberOfPlayer"));
 		reservation.setReservationRoom(rs.getString("reservationRoom"));
 		reservation.setPlayerUsername(rs.getString("playerUsername"));
-		reservation.setOrganizerMail(rs.getString("organizerMail"));
+		reservation.setDate(rs.getString("date"));
 		
 		
 		return reservation;

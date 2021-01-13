@@ -4,12 +4,12 @@ public class Reservation
 {
 	
 	//attributes
-	private int rsid;
+	private int rsid;//usefull???
 	private int reservationStatus;
 	private int numberOfPlayer;
 	private String reservationRoom;
 	private String playerUsername;
-	private String organizerMail;
+	private String date;//replace with date??
 	
 	public Reservation(){
 		// default constructor for dao impl
@@ -17,13 +17,13 @@ public class Reservation
 	
 	//methods
 	//non-default constructor
-	public Reservation(int reservationStatus, int numberOfPlayer, String reservationRoom, String playerUsername, String organizerMail) 
+	public Reservation(int reservationStatus, int numberOfPlayer, String reservationRoom, String playerUsername, String date) 
 	{
 		this.setReservationStatus(reservationStatus);
 		this.setNumberOfPlayer(numberOfPlayer);
 		this.setReservationRoom(reservationRoom);
 		this.setPlayerUsername(playerUsername);
-		this.setOrganizerMail(organizerMail);
+		this.setDate(date);
 	}
 	
 	//setter&getter
@@ -50,9 +50,9 @@ public class Reservation
 		return playerUsername;
 	}
 	
-	public String getOrganizerMail()
+	public String getDate()
 	{
-		return organizerMail;
+		return date;
 	}
 	
 	public void setReservationStatus(int reservationStatus)
@@ -75,9 +75,9 @@ public class Reservation
 		this.playerUsername = playerUsername;
 	}
 	
-	public void setOrganizerMail(String organizerMail)
+	public void setDate(String date)
 	{
-		this.organizerMail = organizerMail;
+		this.date = date;
 	}
 	
 	public void setRsid(int rsid) {

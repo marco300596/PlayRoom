@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import logic.bean.RoomBean;
 import logic.exception.MyRuntimeException;
@@ -22,7 +23,7 @@ public class RoomDAO {
 		try {
 			connR= ConnectionFactory.getConnection();
 			stmtR = connR.createStatement();
-			ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE roomName=" + roomName);
+			ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE roomname=" + roomName);
 			
 			if(rs.next()) {
 				return extractRoomFromResultSet(rs);
@@ -43,6 +44,39 @@ public class RoomDAO {
 		}
 		return null;
 	}
+
+public static RoomBean getRoomFromName(String roomName) throws MyRuntimeException, SQLException{
+	PreparedStatement psR = null;
+	Connection connR = null;
+	
+	
+	try {
+		connR= ConnectionFactory.getConnection();
+		psR = connR.prepareStatement("SELECT * FROM room WHERE roomname=?");
+		psR.setString(1, roomName);
+		ResultSet rs = psR.executeQuery();
+		
+		if(rs.next()) {
+			
+			RoomBean room = extractRoomBeanFromResultSet(rs);
+			return room;
+		}
+		psR.close();
+		connR.close();
+		
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psR != null) {
+			psR.close();
+		}
+		if (connR != null) {
+			connR.close();
+        }
+	}
+	return null;
+}
 	
 public static boolean insertRoom(RoomBean room) throws MyRuntimeException, SQLException{
 		
@@ -85,13 +119,29 @@ public static boolean insertRoom(RoomBean room) throws MyRuntimeException, SQLEx
 		
 		Room room = new Room();
 		
-		room.setRoomName(rs.getString("roomName"));
-		room.setNumSeat(rs.getInt("numSeat"));
+		room.setRoomName(rs.getString("roomname"));
+		room.setNumSeat(rs.getInt("numseat"));
 		room.setPrice(rs.getInt("price"));
 		room.setLocation(rs.getString("location"));
 		room.setPhoto(rs.getString("photo"));
 		room.addGame((VideoGame) rs.getArray("vg"));
 		room.addHardware((Hardware) rs.getArray("hw"));
+		
+		
+		return room;
+	}
+	
+private static RoomBean extractRoomBeanFromResultSet(ResultSet rs) throws SQLException{
+		
+		RoomBean room = new RoomBean();
+		
+		room.setRoomName(rs.getString("roomname"));
+		room.setNumSeat(rs.getInt("numseat"));
+		room.setPrice(rs.getInt("price"));
+		room.setLocation(rs.getString("location"));
+		room.setPhoto(rs.getString("photo"));
+		//room.addGame((VideoGame) rs.getArray("vg"));
+		//room.addHardware((Hardware) rs.getArray("hw"));
 		
 		
 		return room;
