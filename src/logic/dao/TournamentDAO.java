@@ -47,11 +47,12 @@ public static boolean insertTournament(TournamentBean tournament) throws MyRunti
 		
 		try {
 			connT= ConnectionFactory.getConnection();
-			psT = connT.prepareStatement("INSERT INTO tournament VALUES (NULL,?,?,?,?)");
-			psT.setString(1, tournament.getTournamentRoom());
-			psT.setString(2, tournament.getTournamentGame());
-			psT.setString(3, tournament.getTournamentHardware());
-			psT.setInt(4, tournament.getTournamentPartecipants());
+			psT = connT.prepareStatement("INSERT INTO tournament VALUES (?,?,?,?,?)");
+			psT.setString(1, tournament.getTournamentName());
+			psT.setString(2, tournament.getTournamentRoom());
+			psT.setString(3, tournament.getTournamentGame());
+			psT.setString(4, tournament.getTournamentHardware());
+			psT.setInt(5, tournament.getTournamentPartecipants());
 			int i = psT.executeUpdate();
 			
 			if(i == 1) {

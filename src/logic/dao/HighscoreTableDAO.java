@@ -22,7 +22,7 @@ public class HighscoreTableDAO {
 			ResultSet rs = stmtHt.executeQuery("SELECT * FROM highscoreTable WHERE htid=" + htid);
 			
 			if(rs.next()) {
-				return extractHardwareFromResultSet(rs);
+				return extractHighscoreTableFromResultSet(rs);
 			}
 			stmtHt.close();
 			connHt.close();
@@ -74,7 +74,7 @@ public boolean insertHighscoreTable(HighscoreTable hTable) throws MyRuntimeExcep
 		return false;
 	}
 	
-	private HighscoreTable extractHardwareFromResultSet(ResultSet rs) throws SQLException{
+	private HighscoreTable extractHighscoreTableFromResultSet(ResultSet rs) throws SQLException{
 		
 		HighscoreTable hTable = new HighscoreTable();
 		
@@ -82,7 +82,6 @@ public boolean insertHighscoreTable(HighscoreTable hTable) throws MyRuntimeExcep
 		hTable.setHighscoreList((List<String>)rs.getArray("highscoreList"));
 		hTable.setTournamentName(rs.getString("tournamentName"));
 		hTable.setHighscore(rs.getString("highscore"));
-		
 		
 		return hTable;
 	}

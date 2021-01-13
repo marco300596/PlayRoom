@@ -14,10 +14,10 @@ public class LoginController {
 
     private Player player;
 
-
+    
     private LoginBean bean = new LoginBean();
 
-
+    /*singleton*/
 	public static LoginController getInstance() {
 
         if (inst == null)
