@@ -1,6 +1,7 @@
 package logic.view;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,13 +18,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import logic.controller.LoginController;
+import logic.controller.RegisterRoomController;
 import logic.exception.MyRuntimeException;
 import logic.exception.UserDoesNotExist;
+import logic.model.VideoGame;
 public class RegisterRoomViewController {
 	
 	
+	
 	@FXML
-	private AnchorPane ap;
+	private TextArea nstxt;
+
 	
 	@FXML
     private TextArea Nametxt;
@@ -47,32 +52,33 @@ public class RegisterRoomViewController {
     private Button phbtn;
     
     
- /*   
+    
     @FXML
-    void loginPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+    void RegisterPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
     	
-    	LoginController controller = LoginController.getInstance();
-    	controller.getBean().setUsername(usTxt.getText());
-    	controller.getBean().setPassword(pwdTxt.getText());
+    	RegisterRoomController controller = RegisterRoomController.getInstance();
+    	int numSeat=Integer.parseInt(nstxt.getText());
+    	controller.getBean().setNumSeat(numSeat);
+    	controller.getBean().setRoomName(Nametxt.getText());
+    	controller.getBean().setDescription(desctxt.getText());
     	
-    	if (cbp.isSelected() && cbeo.isSelected()){
-			JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
+        //controller.getBean().setLocation(?.getText());  
+    //	controller.getBean().setPhoto(phfield.getText());//da vedere
+    	if (nstxt==null||Nametxt==null||desctxt==null){
+			JOptionPane.showMessageDialog(null, "you have to fill the text fields!", "alert", JOptionPane.ERROR_MESSAGE);
+		
+		
+    	}
 		}
-    	if(cbp.isSelected() && controller.findPlayerIdentity()) {
-			showPlayerPage();
-		}
-    	if (cbeo.isSelected() && controller.findOrgIdentity()) {
-			showOrganizerPage();
-		}
-    
-   */ 
+}
+   
     
     
     
     
     
     
-    }
+    
 
    
 

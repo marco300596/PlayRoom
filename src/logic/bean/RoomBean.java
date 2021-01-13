@@ -12,6 +12,7 @@ public class RoomBean {
 	private int price;
 	private String location;
 	private String photo;
+	private String description;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
 	
@@ -45,6 +46,10 @@ public class RoomBean {
 	
 	public List<VideoGame> getVg(){
 		return vg;
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 	
 	public void setRoomName(String roomName) {
@@ -84,5 +89,8 @@ public class RoomBean {
 		this.vg.remove(vid);
 	}
 	
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
 }
