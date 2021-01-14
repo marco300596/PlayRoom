@@ -3,13 +3,9 @@ package logic.view;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
