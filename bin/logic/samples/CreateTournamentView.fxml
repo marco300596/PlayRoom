@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #262628;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #262628;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.CreateTournamentViewController">
    <children>
       <HBox prefHeight="780.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
@@ -25,7 +25,7 @@
                         <Insets bottom="5.0" left="50.0" right="50.0" top="50.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0">
+                  <TextField fx:id="nameTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -38,7 +38,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="60.0" layoutY="86.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0">
+                  <TextField fx:id="partTxt" layoutX="60.0" layoutY="86.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -51,7 +51,7 @@
                         <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0">
+                  <TextField fx:id="catTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -80,7 +80,7 @@
                         <Image url="@../image/icons8-google-calendar-100.png" />
                      </image>
                   </ImageView>
-                  <Button mnemonicParsing="false" text="Create">
+                  <Button fx:id="createBtn" mnemonicParsing="false" onMousePressed="#createTournament" text="Create">
                      <VBox.margin>
                         <Insets left="50.0" top="100.0" />
                      </VBox.margin>
