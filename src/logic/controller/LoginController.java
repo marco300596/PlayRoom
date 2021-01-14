@@ -51,11 +51,18 @@ public class LoginController {
 	}
 	
 	public boolean findPlayerIdentity() throws MyRuntimeException, SQLException{
+		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
+			return (this.bean.getUsername() == null);
+		}
 		this.bean = PlayerDAO.getPlayerByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
 		return (this.bean.getUsername() != null);
+		
 	}
 	
 	public boolean findOrgIdentity() throws MyRuntimeException, SQLException{
+		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
+			return (this.bean.getUsername() == null);
+		}
 		this.bean = EventOrganizerDAO.getOrgByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
 		return (this.bean.getUsername() != null);
 	}
