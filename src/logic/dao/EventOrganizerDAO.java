@@ -79,7 +79,7 @@ public class EventOrganizerDAO {
 		return null;
 	}
 	
-public boolean insertOrganizer(EventOrganizer org) throws MyRuntimeException, SQLException{
+public static boolean insertOrganizer(RegistrationBean org) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psO = null;
 		Connection connO = null;

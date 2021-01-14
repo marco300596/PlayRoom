@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import logic.bean.LoginBean;
+import logic.bean.RegistrationBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Player;
 
@@ -116,18 +117,19 @@ public class PlayerDAO {
 		return new HashSet<>();
 	}
 	
-	public boolean insertPlayer(Player player) throws MyRuntimeException, SQLException{
+	public static boolean insertPlayer(RegistrationBean player) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psP = null;
 		Connection connP = null;
 		
 		try {
 			connP= ConnectionFactory.getConnection();
-			psP = connP.prepareStatement("INSERT INTO player VALUES (NULL,?,?,?,?)");
-			psP.setString(1, player.getFirstname());
-			psP.setString(2, player.getLastname());
-			psP.setString(3, player.getEmail());
-			psP.setString(4, player.getPassword());
+			psP = connP.prepareStatement("INSERT INTO player VALUES (?,?,?,?,?)");
+			psP.setString(1, player.getUserNameReg());
+			psP.setString(1, player.getFirstNameReg());
+			psP.setString(2, player.getLastNameReg());
+			psP.setString(3, player.getEmailReg());
+			psP.setString(4, player.getPasswordReg());
 			int i = psP.executeUpdate();
 			
 			if(i == 1) {
