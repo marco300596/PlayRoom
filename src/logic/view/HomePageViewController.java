@@ -69,9 +69,10 @@ public class HomePageViewController {
     void loginPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
     	
     	LoginController controller = LoginController.getInstance();
-    	controller.getBean().setUsername(usTxt.getText());
-    	controller.getBean().setPassword(pwdTxt.getText());
-    	
+    	if(verifyLogFields()) {
+        	controller.getBean().setUsername(usTxt.getText());
+        	controller.getBean().setPassword(pwdTxt.getText());
+    	}
     	if (cbp.isSelected() && cbeo.isSelected()){
 			JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
 		}
@@ -100,4 +101,14 @@ public class HomePageViewController {
     	sce.setScene(new Scene(root));
     	sce.show();
     }
+    
+	private boolean verifyLogFields() {
+    	if(usTxt.getText().equals("") || pwdTxt.getText().equals("")) {
+    		JOptionPane.showMessageDialog(null, "Please fill all textfield!","Error", JOptionPane.INFORMATION_MESSAGE);
+			return false;
+		}else {
+			return true;
+		}    	
+    }
+		
 }
