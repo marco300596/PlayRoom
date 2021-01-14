@@ -21,7 +21,7 @@ public class RegisterRoomViewController {
 
 	
 	@FXML
-    private TextArea Nametxt;
+    private TextArea nametxt;
 
     
 
@@ -42,7 +42,7 @@ public class RegisterRoomViewController {
     @FXML
     private void handleButtonPhoto(ActionEvent event) {
     	
-    	Image image=new Image("");//da mettere il percorso della foto
+    	Image image=new Image("");
     	
     	phfield.setImage(image);
     	
@@ -55,17 +55,17 @@ public class RegisterRoomViewController {
     
     
     @FXML
-    private void RegisterPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+    private void registerPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
     	
     	if(verifyFields()) {
     	RegisterRoomController controller = RegisterRoomController.getInstance();
     	int numSeat=Integer.parseInt(nstxt.getText());
     	controller.getBean().setNumSeat(numSeat);
-    	controller.getBean().setRoomName(Nametxt.getText());
+    	controller.getBean().setRoomName(nametxt.getText());
     	controller.getBean().setDescription(desctxt.getText());
     	
         //controller.getBean().setLocation(?.getText());  
-    //	controller.getBean().setPhoto(phfield.getText());//da vedere
+    //	controller.getBean().setPhoto(phfield.getText());
     	try {
     		controller.insertnewRoom(controller.getBean());
     		new Thread(() ->
@@ -88,10 +88,10 @@ public class RegisterRoomViewController {
     
     
     
-    
+
     
     private boolean verifyFields() {
-    	return !(nstxt.getText().equals("") || Nametxt.getText().equals("") || desctxt.getText().equals("") || Nametxt.getText().equals(""));
+    	return !(nstxt.getText().equals("") || nametxt.getText().equals("") || desctxt.getText().equals("") || nametxt.getText().equals(""));
     }
 
     

@@ -17,9 +17,30 @@ public class RoomBean {
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
 	
+	
+	
 	public RoomBean() {
-		//this is empty
+		this.roomName = "";
+		this.location="";
+		this.photo="";
+		this.description="";
+		
 	}
+	
+	public RoomBean(String roomName,List<String>freeHours, int numSeat,int price,String location,String photo,String description,List<VideoGame>vg,List<Hardware>hw) {
+		this.roomName =roomName;
+		this.freeHours = freeHours;
+		this.price = price;
+		this.location = location;
+		this.photo = photo;
+		this.description = description;
+		this.vg = vg;
+		this.hw = hw;
+	}
+	
+	
+	
+	
 
 	public String getRoomName() {
 		return roomName;

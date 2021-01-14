@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.bean.RatingBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Rating;
 
@@ -40,7 +41,7 @@ public class RatingDAO {
 		return null;
 	}
 	
-public boolean insertRating(Rating rating) throws MyRuntimeException, SQLException{
+public static boolean insertRating(RatingBean rating) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psRt = null;
 		Connection connRt = null;
