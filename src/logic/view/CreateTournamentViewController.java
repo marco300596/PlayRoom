@@ -46,24 +46,19 @@ public class CreateTournamentViewController {
 	    	
 	    	try {
 	    		controller.insertNewTournament(controller.getBean());
-	    		JOptionPane.showConfirmDialog(null,"GZ! new tournament created!", "Success", JOptionPane.INFORMATION_MESSAGE);
+	    		new Thread(() ->
+            	JOptionPane.showMessageDialog(null, "Your tournament has been created!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
 	    	} catch(Exception e){
 	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
 	    	}
 		} else {
-			JOptionPane.showMessageDialog(null, "Please fill all textfield!","Error", JOptionPane.INFORMATION_MESSAGE);
-			//da correggere
-		}
-    	
+			new Thread(() ->
+        	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+		}	
     }
     
     private boolean verifyFields() {
-    	boolean ok = true;
-    	if(nameTxt.getText().equals("") || catTxt.getText().equals("") || partTxt.getText().equals("")) {
-			return !ok;
-		}else {
-			return ok;
-		}    	
+    	return !(nameTxt.getText().equals("") || catTxt.getText().equals("") || partTxt.getText().equals(""));
     }
 
 }
