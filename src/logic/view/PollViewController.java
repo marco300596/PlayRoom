@@ -30,7 +30,7 @@ public class PollViewController {
 	  
 	  
 	  @FXML
-	  private void PollPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+	  private void pollPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
 	    	
 		  	if(verifyFields()) {
 	    	PollController controller = PollController.getInstance();

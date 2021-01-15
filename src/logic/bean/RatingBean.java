@@ -4,7 +4,7 @@ package logic.bean;
 public class RatingBean {
 		
 	private String roomName;
-	private int	rate;
+	private double	rate;
 	private String comment;
 	
 	
@@ -32,7 +32,7 @@ public class RatingBean {
 	
 	
 
-	public int getRate() {
+	public double getRate() {
 		return rate;
 	}
 
@@ -45,14 +45,13 @@ public class RatingBean {
 		this.roomName =roomName;
 	}
 
-	public void setRating(int rate) {
+	public void setRate(double rate) {
 		this.rate = rate;
 	}
 
 	public void setComment(String comment) {
 		this.comment =comment;
 	}
-
 	
 	
 }

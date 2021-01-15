@@ -48,9 +48,10 @@ public static boolean insertRating(RatingBean rating) throws MyRuntimeException,
 		
 		try {
 			connRt= ConnectionFactory.getConnection();
-			psRt = connRt.prepareStatement("INSERT INTO room VALUES (NULL,?,?)");
-			psRt.setInt(1, rating.getRate());
-			psRt.setString(2, rating.getComment());
+			psRt = connRt.prepareStatement("INSERT INTO room VALUES (?,?,?)");
+			psRt.setString(1, rating.getRoomName());
+			psRt.setDouble(2, rating.getRate());
+			psRt.setString(3, rating.getComment());
 			int i = psRt.executeUpdate();
 			
 			if(i == 1) {
@@ -78,7 +79,7 @@ public static boolean insertRating(RatingBean rating) throws MyRuntimeException,
 		Rating rating = new Rating();
 		
 		rating.setRoomName(rs.getString("roomName"));
-		rating.setRate(rs.getInt("rate"));
+		rating.setRate(rs.getDouble("rate"));
 		rating.setComment(rs.getString("comment"));
 		
 		

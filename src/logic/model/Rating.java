@@ -3,7 +3,7 @@ package logic.model;
 public class Rating {
 	
 	private String roomName;
-	private int	rate;
+	private double	rate;
 	private String comment;
 	
 	public Rating(){
@@ -21,7 +21,7 @@ public class Rating {
 	public String getRoomName() {
 		return roomName;
 	}
-	public int getRate() {
+	public double getRate() {
 		return rate;
 	}
 	public String getComment() {
@@ -30,7 +30,7 @@ public class Rating {
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
 	}
-	public void setRate(int rate) {
+	public void setRate(double rate) {
 		this.rate = rate;
 	}
 	public void setComment(String comment) {
