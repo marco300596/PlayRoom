@@ -21,7 +21,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import logic.controller.LoginController;
 import logic.exception.MyRuntimeException;
-import logic.exception.UserDoesNotExist;
 
 public class HomePageViewController {
 

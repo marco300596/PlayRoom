@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PollViewController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="780.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
@@ -23,7 +23,7 @@
                         <Insets bottom="5.0" left="50.0" right="50.0" top="50.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea fx:id="nametxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <VBox.margin>
                         <Insets bottom="20.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -36,7 +36,7 @@
                         <Insets bottom="5.0" left="50.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea fx:id="qsttxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="110.0" prefWidth="370.0">
+                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="110.0" prefWidth="370.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="50.0" right="20.0" />
                      </VBox.margin>
@@ -49,12 +49,12 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <TextArea fx:id="tntxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="50.0" right="20.0" />
                      </VBox.margin>
                   </TextArea>
-                  <Button mnemonicParsing="false" onMousePressed="#pollPression" text="Create Pool">
+                  <Button mnemonicParsing="false" text="Create Pool">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="50.0" />
                      </VBox.margin>

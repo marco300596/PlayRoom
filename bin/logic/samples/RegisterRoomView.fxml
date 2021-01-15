@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="810.0" prefWidth="811.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterRoomViewController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="810.0" prefWidth="811.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="810.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -99,7 +99,7 @@
                         <Insets bottom="20.0" left="50.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button mnemonicParsing="false" onMousePressed="#registerPression" text="Register Room">
+                  <Button mnemonicParsing="false" text="Register Room">
                      <VBox.margin>
                         <Insets bottom="90.0" left="350.0" right="50.0" top="-60.0" />
                      </VBox.margin>
