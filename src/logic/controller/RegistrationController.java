@@ -2,7 +2,6 @@ package logic.controller;
 
 import java.sql.SQLException;
 
-import logic.bean.LoginBean;
 import logic.bean.RegistrationBean;
 import logic.dao.EventOrganizerDAO;
 import logic.dao.PlayerDAO;
@@ -51,20 +50,11 @@ public class RegistrationController {
 		this.bean = bean;
 	}
 	
-	public boolean findPlayerIdentity() throws MyRuntimeException, SQLException{
-		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
-			return (this.bean.getUsername() == null);
-		}
-		this.bean = PlayerDAO.getPlayerByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
-		return (this.bean.getUsername() != null);
-		
+	public void insertNewPlayer(RegistrationBean bean) throws MyRuntimeException, SQLException {
+		PlayerDAO.insertPlayer(bean);
 	}
 	
-	public boolean findOrgIdentity() throws MyRuntimeException, SQLException{
-		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
-			return (this.bean.getUsername() == null);
-		}
-		this.bean = EventOrganizerDAO.getOrgByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
-		return (this.bean.getUsername() != null);
+	public void insertNewOrganizer(RegistrationBean bean) throws MyRuntimeException, SQLException {
+		EventOrganizerDAO.insertOrganizer(bean);
 	}
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import logic.bean.LoginBean;
+import logic.bean.RegistrationBean;
 import logic.exception.MyRuntimeException;
 import logic.model.EventOrganizer;
 

@@ -125,11 +125,11 @@ public class PlayerDAO {
 		try {
 			connP= ConnectionFactory.getConnection();
 			psP = connP.prepareStatement("INSERT INTO player VALUES (?,?,?,?,?)");
-			psP.setString(1, player.getUserNameReg());
-			psP.setString(1, player.getFirstNameReg());
-			psP.setString(2, player.getLastNameReg());
-			psP.setString(3, player.getEmailReg());
-			psP.setString(4, player.getPasswordReg());
+			psP.setString(1, player.getUsername());
+			psP.setString(1, player.getFirstname());
+			psP.setString(2, player.getLastname());
+			psP.setString(3, player.getEmail());
+			psP.setString(4, player.getPassword());
 			int i = psP.executeUpdate();
 			
 			if(i == 1) {
