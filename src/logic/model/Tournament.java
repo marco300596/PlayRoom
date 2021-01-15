@@ -28,45 +28,60 @@ public class Tournament {
 	public String getTournamentName()
 	{
 		return tournamentName;
-	}
-	
-	public String getTournamentRoom()
-	{
-		return tournamentRoom;
-	}
-	
-	public String getTournamentGame()
-	{
-		return tournamentGame;
-	}
-	
-	public String getTournamentHardware()
-	{
-		return tournamentHardware;
-	}
-	public int getTournamentPartecipants() {
-		return tournamentPartecipants;
+		
 	}
 	
 	public void setTournamentName(String tournamentName)
 	{
 		this.tournamentName = tournamentName;
+		
+	}
+	
+	public String getTournamentRoom()
+	{
+		return tournamentRoom;
+		
 	}
 	
 	public void setTournamentRoom(String tournamentRoom)
 	{
 		this.tournamentRoom = tournamentRoom;
+		
+	}
+	
+	
+	public String getTournamentGame()
+	{
+		return tournamentGame;
+		
 	}
 	
 	public void setTournamentGame(String tournamentGame)
 	{
 		this.tournamentGame = tournamentGame;
+		
+	}
+	
+	
+	public String getTournamentHardware()
+	{
+		return tournamentHardware;
+		
 	}
 	
 	public void setTournamentHardware(String tournamentHardware)
 	{
 		this.tournamentHardware = tournamentHardware;
+		
 	}
+	
+	
+	public int getTournamentPartecipants() {
+		return tournamentPartecipants;
+	}
+	
+	
+	
 	
 	public void setTournamentPartecipants(int tournamentPartecipants) {
 		this.tournamentPartecipants = tournamentPartecipants;
