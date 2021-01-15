@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import logic.controller.RegisterRoomController;
 import logic.exception.MyRuntimeException;
-import logic.exception.UserDoesNotExist;
+
 public class RegisterRoomViewController {
 	
 	
@@ -55,7 +55,7 @@ public class RegisterRoomViewController {
     
     
     @FXML
-    private void registerPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+    private void registerPression(ActionEvent event) throws MyRuntimeException, SQLException{
     	
     	if(verifyFields()) {
     	RegisterRoomController controller = RegisterRoomController.getInstance();
@@ -91,7 +91,7 @@ public class RegisterRoomViewController {
 
     
     private boolean verifyFields() {
-    	return !(nstxt.getText().equals("") || nametxt.getText().equals("") || desctxt.getText().equals("") || nametxt.getText().equals(""));
+    	return !(nstxt.getText().equals("") || nametxt.getText().equals("") || desctxt.getText().equals(""));
     }
 
     

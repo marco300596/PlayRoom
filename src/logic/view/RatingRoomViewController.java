@@ -7,7 +7,6 @@ import javafx.scene.control.TextArea;
 import logic.controller.PollController;
 import logic.controller.RoomRatingController;
 import logic.exception.MyRuntimeException;
-import logic.exception.UserDoesNotExist;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -34,7 +33,7 @@ public class RatingRoomViewController {
     
     
     @FXML
-	  private void ratingPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+	  private void ratingPression(ActionEvent event) throws MyRuntimeException, SQLException{
 	    	
 		  	if(verifyFields()) {
 	    	RoomRatingController controller = RoomRatingController.getInstance();

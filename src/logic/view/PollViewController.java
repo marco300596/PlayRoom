@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import logic.controller.PollController;
 import logic.exception.MyRuntimeException;
-import logic.exception.UserDoesNotExist;
 
 public class PollViewController {
 	
@@ -30,7 +29,7 @@ public class PollViewController {
 	  
 	  
 	  @FXML
-	  private void pollPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+	  private void pollPression(ActionEvent event) throws MyRuntimeException, SQLException{
 	    	
 		  	if(verifyFields()) {
 	    	PollController controller = PollController.getInstance();
