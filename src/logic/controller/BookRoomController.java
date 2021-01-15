@@ -1,14 +1,11 @@
 package logic.controller;
 
 import java.sql.SQLException;
-
 import logic.bean.ReservationBean;
 import logic.bean.RoomBean;
 import logic.dao.RoomDAO;
-import logic.dao.ReservationDAO;
 import logic.exception.MyRuntimeException;
 import logic.model.Room;
-import logic.model.Reservation;
 
 public class BookRoomController {
 	

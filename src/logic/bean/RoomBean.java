@@ -30,6 +30,7 @@ public class RoomBean {
 	public RoomBean(String roomName,List<String>freeHours, int numSeat,int price,String location,String photo,String description,List<VideoGame>vg,List<Hardware>hw) {
 		this.roomName =roomName;
 		this.freeHours = freeHours;
+		this.numSeat=numSeat;
 		this.price = price;
 		this.location = location;
 		this.photo = photo;

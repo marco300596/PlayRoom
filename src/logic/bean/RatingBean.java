@@ -17,7 +17,7 @@ public class RatingBean {
 	}
 	
 	
-	public RatingBean(String roomName, int rate, String comment) {
+	public RatingBean(String roomName, double rate, String comment) {
 		this.roomName =roomName;
 		this.rate = rate;
 		this.comment = comment;
@@ -25,32 +25,38 @@ public class RatingBean {
 	}
 	
 	
-	
 	public String getRoomName() {
 		return roomName;
+		
 	}
-	
-	
-
-	public double getRate() {
-		return rate;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
 	
 	public void setRoomName(String roomName) {
 		this.roomName =roomName;
+		
 	}
 
+	public double getRate() {
+		return rate;
+	
+	}
+	
 	public void setRate(double rate) {
 		this.rate = rate;
+		
 	}
+	
+	
+
+	public String getComment() {
+		return comment;
+		
+	}
+
+
 
 	public void setComment(String comment) {
 		this.comment =comment;
+		
 	}
 	
 	
