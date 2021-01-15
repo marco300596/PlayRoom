@@ -37,19 +37,6 @@ public class Tournament {
 		
 	}
 	
-	public String getTournamentRoom()
-	{
-		return tournamentRoom;
-		
-	}
-	
-	public void setTournamentRoom(String tournamentRoom)
-	{
-		this.tournamentRoom = tournamentRoom;
-		
-	}
-	
-	
 	public String getTournamentGame()
 	{
 		return tournamentGame;
@@ -79,12 +66,22 @@ public class Tournament {
 	public int getTournamentPartecipants() {
 		return tournamentPartecipants;
 	}
-	
-	
-	
+
 	
 	public void setTournamentPartecipants(int tournamentPartecipants) {
 		this.tournamentPartecipants = tournamentPartecipants;
+	}
+	
+	public String getTournamentRoom()
+	{
+		return tournamentRoom;
+		
+	}
+	
+	public void setTournamentRoom(String tournamentRoom)
+	{
+		this.tournamentRoom = tournamentRoom;
+		
 	}
 	
 }

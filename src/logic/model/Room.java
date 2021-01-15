@@ -62,6 +62,18 @@ public class Room {
 		this.freeHours = freeHours;
 		
 	}
+	
+	public int getPrice()
+	{
+		return price;
+		
+	}
+	
+	public void setPrice(int price)
+	{
+		this.price = price;
+		
+	}
 
 	public String getPhoto()
 	{
@@ -90,19 +102,6 @@ public class Room {
 	}
 	
 	
-	
-	public int getPrice()
-	{
-		return price;
-		
-	}
-	
-	public void setPrice(int price)
-	{
-		this.price = price;
-		
-	}
-	
 	public String getLocation()
 	{
 		return location;
@@ -114,12 +113,7 @@ public class Room {
 		this.location = location;
 		
 	}
-	
-
-	
-
-	
-	
+		
 	
 	public void addHardware(Hardware hardw) {
 		this.hw.add(hardw);
