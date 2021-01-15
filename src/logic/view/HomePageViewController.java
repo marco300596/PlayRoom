@@ -66,7 +66,7 @@ public class HomePageViewController {
     }
     
     @FXML
-    void loginPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
+    void loginPression(ActionEvent event) throws MyRuntimeException, SQLException{
     	
     	LoginController controller = LoginController.getInstance();
     	if(verifyLogFields()) {
@@ -83,7 +83,7 @@ public class HomePageViewController {
 			showOrganizerPage();
 		}
     	
-    	/*inserire eccezione campi vuoti*/
+  
     	
  
     }

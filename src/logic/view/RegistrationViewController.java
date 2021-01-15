@@ -63,8 +63,12 @@ public class RegistrationViewController {
 
     @FXML
     void regPression(MouseEvent event) {
-    	if (verifyRegFields() && verifyPassword()){
+    	if (verifyPassword() && verifyRegFields()){
 			RegistrationController controller = RegistrationController.getInstance();
+			if (cbp.isSelected() && cbeo.isSelected()){
+				new Thread(()->JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE)).start();
+				return;
+			}
 			if(cbp.isSelected()) {
 				controller.getBean().setFirstname(fnameTxt.getText());
 				controller.getBean().setLastname(lnameTxt.getText());
@@ -121,12 +125,12 @@ public class RegistrationViewController {
    	}
     
     private boolean verifyPassword() {
-    	if (pwdTxt.getText() != cpwdTxt.getText()) {
-    		new Thread(() ->
-        	JOptionPane.showMessageDialog(null, "Password does not match!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
-    		return false;
+    	if (pwdTxt.getText().equals(cpwdTxt.getText())) {
+    		return true;
     	}
-    	return true;
+    	new Thread(() ->
+    	JOptionPane.showMessageDialog(null, "Password does not match!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+		return false;
     }
 }
 
