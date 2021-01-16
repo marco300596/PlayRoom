@@ -6,7 +6,6 @@ import java.util.List;
 public class Room {
 	
 	private String roomName;
-	private List<String> freeHours;
 	private int numSeat;
 	private int price;
 	private String location;
@@ -19,9 +18,8 @@ public class Room {
 	}
 	
 	
-	public Room(String roomName, List<String> freeHours, int numSeat, int price, String location, String photo) {
+	public Room(String roomName, int numSeat, int price, String location, String photo) {
 		this.setRoomName(roomName);
-		this.setFreeHours(freeHours);
 		this.setNumSeat(numSeat);
 		this.setPrice(price);
 		this.setLocation(location);
@@ -51,17 +49,6 @@ public class Room {
 		
 	}
 	
-	
-
-	public List<String> getFreeHours() {
-		return freeHours;
-		
-	}
-	
-	public void setFreeHours(List<String> freeHours) {
-		this.freeHours = freeHours;
-		
-	}
 	
 	public int getPrice()
 	{
