@@ -5,17 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashSet;
-import java.util.Set;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import logic.bean.LoginBean;
 import logic.bean.RegistrationBean;
 import logic.exception.MyRuntimeException;
-import logic.model.Player;
+
 
 public class PlayerDAO {
 	
-	public Player getPlayer(String username) throws MyRuntimeException, SQLException {
+	public RegistrationBean getPlayer(String username) throws MyRuntimeException, SQLException {
 		
 		Statement stmtP = null;
 		Connection connP = null;
@@ -82,20 +82,20 @@ public class PlayerDAO {
 		}
 		return null;
 	}
-	
-	public Set<Player> getAllPlayers() throws MyRuntimeException, SQLException{
+	/*mi serve per riempire la table in management*/
+	public static ObservableList<RegistrationBean> getAllPlayers() throws MyRuntimeException, SQLException{
 		
 		Statement stmtP = null;
 		Connection connP = null;
+		ObservableList<RegistrationBean> players = FXCollections.observableArrayList();
+		
 		try {
 			connP= ConnectionFactory.getConnection();
 			stmtP = connP.createStatement();
 			ResultSet rs = stmtP.executeQuery("SELECT * FROM player");
 			
-			Set<Player> players = new HashSet<>();
-			
 			while(rs.next()) {
-				Player player = extractPlayerFromResultSet(rs);
+				RegistrationBean player = extractPlayerFromResultSet(rs);
 				players.add(player);
 			}
 			
@@ -114,7 +114,7 @@ public class PlayerDAO {
 				connP.close();
             }
 		}
-		return new HashSet<>();
+		return players;
 	}
 	
 	public static boolean insertPlayer(RegistrationBean player) throws MyRuntimeException, SQLException{
@@ -182,8 +182,8 @@ public class PlayerDAO {
 		return false;
 	}
 	
-	private Player extractPlayerFromResultSet(ResultSet rs) throws SQLException{
-		Player player = new Player();
+	private static RegistrationBean extractPlayerFromResultSet(ResultSet rs) throws SQLException{
+		RegistrationBean player = new RegistrationBean();
 		
 		player.setUsername(rs.getString("username"));
 		player.setFirstname(rs.getString("firstname"));

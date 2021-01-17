@@ -63,7 +63,8 @@ public class RegistrationViewController {
 
     @FXML
     void regPression(MouseEvent event) {
-    	if (verifyPassword() && verifyRegFields()){
+    	//TODO verify password
+    	if (verifyRegFields()){
 			RegistrationController controller = RegistrationController.getInstance();
 			if (cbp.isSelected() && cbeo.isSelected()){
 				new Thread(()->JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE)).start();
@@ -119,6 +120,7 @@ public class RegistrationViewController {
     			|| usTxt.getText().equals("") || pwdTxt.getText().equals("") || cpwdTxt.getText().equals("")) {
     		new Thread(() ->
         	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		verifyPassword();
     		return false;
     	}
     	return true;

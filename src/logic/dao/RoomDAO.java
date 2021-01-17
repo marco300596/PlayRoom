@@ -51,7 +51,7 @@ public static RoomBean getRoomFromName(String roomName) throws MyRuntimeExceptio
 	try {
 		connR= ConnectionFactory.getConnection();
 		psR = connR.prepareStatement("SELECT * FROM room WHERE roomname=?");
-		psR.setString(1, roomName);
+		psR.setString(1, roomName);		// a cosa serve?
 		ResultSet rs = psR.executeQuery();
 		
 		if(rs.next()) {
@@ -85,7 +85,7 @@ public static boolean insertRoom(RoomBean room) throws MyRuntimeException, SQLEx
 			connR= ConnectionFactory.getConnection();
 			psR = connR.prepareStatement("INSERT INTO room VALUES (?,?,?,?,?,?,?)");
 			psR.setString(1, room.getRoomName());
-			psR.setInt(1, room.getNumSeat());
+			psR.setInt(2, room.getNumSeat());
 			psR.setInt(3, room.getPrice());
 			psR.setString(4, room.getLocation());
 			psR.setString(5, room.getPhoto());
