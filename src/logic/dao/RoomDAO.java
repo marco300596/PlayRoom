@@ -110,6 +110,47 @@ public static boolean insertRoom(RoomBean room) throws MyRuntimeException, SQLEx
 		}
 		return false;
 	}
+
+
+public static boolean insertRoomGame() {
+	
+	
+	
+	
+	return true;
+}
+
+public static boolean insertRoomHardware() {
+	
+	
+	
+	
+	return true;
+}
+public static boolean insertRoomGenre() {
+	
+	
+	
+	
+	return true;
+}
+
+public static boolean insertRoomQuantity() {
+	
+	
+	
+	
+	return true;
+}
+public static boolean insertRoomDescription() {
+	
+	
+	
+	
+	return true;
+}
+
+
 	
 	private Room extractRoomFromResultSet(ResultSet rs) throws SQLException{
 		
