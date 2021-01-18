@@ -57,4 +57,8 @@ public class ManagementController {
 		return this.beanList;
 	}
 	
+	public boolean delPlayer(RegistrationBean regBean) throws MyRuntimeException, SQLException {
+		 return PlayerDAO.deletePlayer(regBean);
+	}
+	
 }

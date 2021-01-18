@@ -16,12 +16,12 @@
          <children>
             <VBox fx:id="vBox" prefHeight="790.0" prefWidth="907.0">
                <children>
-                  <TableView fx:id="usTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="657.0" style="-fx-background-color: #262628;">
+                  <TableView fx:id="usTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="301.0" prefWidth="682.0" style="-fx-background-color: #262628;">
                     <columns>
                       <TableColumn fx:id="nameCol" prefWidth="150.0" text="Username" />
                       <TableColumn fx:id="emailCol" prefWidth="250.0" text="Email" />
-                        <TableColumn fx:id="blockCol" prefWidth="140.0" text="Block" />
-                        <TableColumn fx:id="delCol" prefWidth="140.0" text="Delete" />
+                        <TableColumn fx:id="fnameCol" prefWidth="140.0" text="Firstname" />
+                        <TableColumn fx:id="lnameCol" prefWidth="140.0" text="Lastname" />
                     </columns>
                      <VBox.margin>
                         <Insets left="50.0" top="100.0" />

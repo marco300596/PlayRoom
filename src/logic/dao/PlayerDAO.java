@@ -152,7 +152,7 @@ public class PlayerDAO {
 		return false;
 	}
 	
-	public boolean deletePlayer(String username) throws MyRuntimeException, SQLException {
+	public static boolean deletePlayer(RegistrationBean username) throws MyRuntimeException, SQLException {
 		
 		Statement stmtP = null;
 		Connection connP = null;
