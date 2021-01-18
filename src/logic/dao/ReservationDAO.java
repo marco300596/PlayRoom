@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import logic.model.Reservation;
+import logic.bean.ReservationBean;
 import logic.exception.MyRuntimeException;
 
 public class ReservationDAO {
@@ -39,19 +40,55 @@ public class ReservationDAO {
 		return null;
 	}
 	
-public boolean insertReservation(Reservation reservation) throws MyRuntimeException, SQLException{
+public static boolean checkReservationByRoomNameAndDate(String roomName, String date, String hour) throws MyRuntimeException, SQLException{ 
+
+
+	PreparedStatement psRS = null;
+	Connection connRS = null;
+	
+	try {
+		connRS= ConnectionFactory.getConnection();
+		psRS = connRS.prepareStatement("SELECT * FROM reservation WHERE reservationroom = ?" + "& date = ?" + date +"& hour = ?" + hour);
+		psRS.setString(1, roomName);
+		psRS.setString(2, date);
+		psRS.setString(3, hour);
+		
+		int i = psRS.executeUpdate();
+		
+		if(i == 1) {
+			return true;
+		}
+		psRS.close();
+		connRS.close();
+		
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psRS != null) {
+			psRS.close();
+		}
+		if (connRS != null) {
+			connRS.close();
+        }
+	}
+	return false;
+}
+	
+public static boolean insertReservation(ReservationBean reservation) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psRS = null;
 		Connection connRS = null;
 		
 		try {
 			connRS= ConnectionFactory.getConnection();
-			psRS = connRS.prepareStatement("INSERT INTO reservation VALUES (NULL,?,?,?,?,?)");
+			psRS = connRS.prepareStatement("INSERT INTO reservation VALUES (NULL,?,?,?,?,?,?)");
 			psRS.setInt(1, reservation.getReservationStatus());
 			psRS.setInt(2, reservation.getNumberOfPlayer());
 			psRS.setString(3, reservation.getReservationRoom());
 			psRS.setString(4, reservation.getPlayerUsername());
 			psRS.setString(5,  reservation.getDate());
+			psRS.setString(6, reservation.getHour());
 			
 			int i = psRS.executeUpdate();
 			

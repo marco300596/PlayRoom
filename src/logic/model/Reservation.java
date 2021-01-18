@@ -10,7 +10,10 @@ public class Reservation
 	private String reservationRoom;
 	private String playerUsername;
 	private String date;//replace with date??
+	private String hour;
 	
+
+
 	public Reservation(){
 		// default constructor for dao impl
 	}
@@ -55,6 +58,10 @@ public class Reservation
 		return date;
 	}
 	
+	public String getHour() {
+		return hour;
+	}
+	
 	public void setReservationStatus(int reservationStatus)
 	{
 		this.reservationStatus = reservationStatus;
@@ -82,5 +89,9 @@ public class Reservation
 	
 	public void setRsid(int rsid) {
 		this.rsid = rsid;
+	}
+
+	public void setHour(String hour) {
+		this.hour = hour;
 	}
 }

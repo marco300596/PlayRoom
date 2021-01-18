@@ -2,11 +2,14 @@ package logic.view;
 
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -23,11 +26,20 @@ import logic.model.Room;
 public class BookRoomViewController {
 
     @FXML
-    private TextField gameTxt;
+    private Button bkBtn1;
 
     @FXML
-    private TextField hwTxt;
+    private TextField hTxt;
 
+    @FXML
+    private CheckBox gCBox;
+
+    @FXML
+    private CheckBox lCBox;
+
+    @FXML
+    private CheckBox hCBox;
+    
     @FXML
     private ImageView locBtn;
 
@@ -35,7 +47,13 @@ public class BookRoomViewController {
     private TextField sprTxt;
 
     @FXML
-    private Button actBtn;
+    private TextField gameTxt;
+
+    @FXML
+    private TextField hwTxt;
+
+    @FXML
+    private TextField gsTxt;
 
     @FXML
     private TableView<RoomBean> frhTab;
@@ -50,29 +68,127 @@ public class BookRoomViewController {
     private TableColumn<Room, Integer> price;
 
     @FXML
-    private TableColumn<Room, String> location;
+    private TableColumn<Room, String> loc;
 
     @FXML
-    private Button bkBtn;
+    private Button fBtn, bkBtn, h1, h2, h3, h4, h5, h6, h7, h8;
 
+    @FXML
+    private MenuButton dSB, hSB;
+
+    @FXML
+    private Button d1, d2, d3, d4, d5, d6;
+
+    @FXML
+    void settingHour(MouseEvent event){
+    	if(h1.isPressed()){
+    		hSB.setText(h1.getText());
+    	}
+    	if(h2.isPressed()){
+    		hSB.setText(h2.getText());
+    	}
+    	if(h3.isPressed()){
+    		hSB.setText(h3.getText());
+    	}
+    	if(h4.isPressed()){
+    		hSB.setText(h4.getText());
+    	}
+    	if(h5.isPressed()){
+    		hSB.setText(h5.getText());
+    	}
+    	if(h6.isPressed()){
+    		hSB.setText(h6.getText());
+    	}
+    	if(h7.isPressed()){
+    		hSB.setText(h7.getText());
+    	}    	
+    	if(h8.isPressed()){
+    		hSB.setText(h8.getText());
+    	}    	
+    }
+    
+    @FXML
+    void setDate(MouseEvent event){
+    	if(d1.isPressed()){
+    		dSB.setText(d1.getText());
+    	}
+    	if(d2.isPressed()){
+    		dSB.setText(d2.getText());
+    	}
+    	if(d3.isPressed()){
+    		dSB.setText(d3.getText());
+    	}
+    	if(d4.isPressed()){
+    		dSB.setText(d4.getText());
+    	}
+    	if(d5.isPressed()){
+    		dSB.setText(d5.getText());
+    	}
+    	if(d6.isPressed()){
+    		dSB.setText(d6.getText());
+    	}    	
+    }
+    
     @FXML
     void showRooms(MouseEvent event) throws MyRuntimeException, SQLException{
     	
     	BookRoomController controller = BookRoomController.getInstance();
-    	controller.getRoomBean().setRoomName(sprTxt.getText());
-    	RoomBean rb = controller.findRoomForPreno();
-    	//creare un observablelist a quanto sembra è necessario per creare una tabella
-    	ObservableList<RoomBean> room = FXCollections.observableArrayList(rb);
-    	//set item è la funzione per settare un insieme di valori all'interno di una tabella
-    	frhTab.setItems(room);
-    	/*script di popolazione delle celle 
-    	 ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
-    	rName.setCellValueFactory(new PropertyValueFactory<Room, String>("roomName"));
-    	maxGS.setCellValueFactory(new PropertyValueFactory<Room, Integer>("numSeat"));
-		price.setCellValueFactory(new PropertyValueFactory<Room, Integer>("price"));
-		location.setCellValueFactory(new PropertyValueFactory<Room, String>("location"));
+    	ObservableList<RoomBean> room = FXCollections.observableArrayList();
+    	if(verifyTxtFields()) {
+    		//if (gCBox.isSelected()) {
+
+    			
+
+			//} else if (hCBox.isSelected()) {
+
+				
+
+			 if (lCBox.isSelected()) {
+
+				controller.getRoomBean().setRoomName(sprTxt.getText());
+				controller.getReservationBean().setDate(dSB.getText());
+				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText()));
+				controller.getReservationBean().setHour(hSB.getText());
+	    		room = controller.findRoomForPreno();
+
+			}
+    		
+    		//creare un observablelist a quanto sembra è necessario per creare una tabella
+    		
+    		//set item è la funzione per settare un insieme di valori all'interno di una tabella
+    		frhTab.setItems(room);
+    		/*script di popolazione delle celle 
+    		ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
+    		rName.setCellValueFactory(new PropertyValueFactory<Room, String>("roomName"));
+    		maxGS.setCellValueFactory(new PropertyValueFactory<Room, Integer>("numSeat"));
+    		price.setCellValueFactory(new PropertyValueFactory<Room, Integer>("price"));
+    		loc.setCellValueFactory(new PropertyValueFactory<Room, String>("location"));
+    	}
+
     }
 	
+    @FXML
+    void bookRoom() throws MyRuntimeException, SQLException{
+    	
+    	BookRoomController controller = BookRoomController.getInstance();
+    	controller.getReservationBean().setReservationRoom(frhTab.getSelectionModel().getSelectedItems().get(1).getRoomName());
+    	boolean val = controller.createReservation(controller.getReservationBean().getReservationRoom(),controller.getReservationBean().getDate(),controller.getReservationBean().getHour());
+    	if (val == true) {
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + dSB.getText() + "at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    	}else {
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+    	}
+    }
+    
+   
     //ObservableList selectedItems = taview.getSelectionModel().getSelectedItems(); per selezionare una riga
 	
+	private boolean verifyTxtFields() {
+    	if(gameTxt.getText().equals("") && hwTxt.getText().equals("") && sprTxt.getText().equals("")) {
+       		  new Thread(()-> JOptionPane.showMessageDialog(null, "Please fill at least one textfield!","Fill Text Field", JOptionPane.INFORMATION_MESSAGE)).start();
+       		  return false;
+		}else{
+			  return true;
+		}
+	}
 }
