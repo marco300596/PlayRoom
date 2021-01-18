@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,28 +10,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ManagementViewController">
    <children>
       <HBox prefHeight="780.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
-            <VBox prefHeight="790.0" prefWidth="907.0">
+            <VBox fx:id="vBox" prefHeight="790.0" prefWidth="907.0">
                <children>
-                  <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="657.0" style="-fx-background-color: #262628;">
+                  <TableView fx:id="usTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="301.0" prefWidth="682.0" style="-fx-background-color: #262628;">
                     <columns>
-                      <TableColumn prefWidth="150.0" text="Username" />
-                      <TableColumn prefWidth="250.0" text="Email" />
-                        <TableColumn prefWidth="140.0" text="Block" />
-                        <TableColumn prefWidth="140.0" text="Delete" />
+                      <TableColumn fx:id="nameCol" prefWidth="150.0" text="Username" />
+                      <TableColumn fx:id="emailCol" prefWidth="250.0" text="Email" />
+                        <TableColumn fx:id="fnameCol" prefWidth="140.0" text="Firstname" />
+                        <TableColumn fx:id="lnameCol" prefWidth="140.0" text="Lastname" />
                     </columns>
                      <VBox.margin>
                         <Insets left="50.0" top="100.0" />
                      </VBox.margin>
                   </TableView>
+                  <Button fx:id="upBtn" alignment="BOTTOM_LEFT" mnemonicParsing="false" onMousePressed="#updateList" text="update">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </children>
       </HBox>
-      <Text boundsType="VISUAL" fill="#6fd736" layoutX="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Management" textAlignment="RIGHT" wrappingWidth="458.68359375" x="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="20.0">
+      <Text boundsType="VISUAL" fill="#395dd4" layoutX="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Management" textAlignment="RIGHT" wrappingWidth="458.68359375" x="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>

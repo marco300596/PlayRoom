@@ -1,99 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.BookRoomViewController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefWidth="700.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.BookRoomViewController">
    <children>
-      <HBox prefHeight="780.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
-         <children>
-            <VBox prefHeight="790.0" prefWidth="907.0">
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the Game Name:">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" right="50.0" top="50.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="gameTxt" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="183.0">
-                     <VBox.margin>
-                        <Insets bottom="20.0" left="50.0" right="50.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the specific Hardware:">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" right="50.0" />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="hwTxt" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="183.0">
-                     <VBox.margin>
-                        <Insets bottom="20.0" left="50.0" right="50.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the specific Location:">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" right="50.0" />
-                     </VBox.margin>
-                  </Text>
-                  <ImageView fx:id="locBtn" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/icons8-google-maps-48.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" right="50.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <TextField fx:id="sprTxt" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="183.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" right="50.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Button fx:id="actBtn" mnemonicParsing="false" onMousePressed="#showRooms" text="Search">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="50.0" top="30.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <TableView fx:id="frhTab" prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn fx:id="rName" prefWidth="221.0" text="Room's Name" />
-                      <TableColumn fx:id="maxGS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="190.0" text="Max Group Size" />
-                        <TableColumn fx:id="price" prefWidth="139.0" text="Price" />
-                        <TableColumn fx:id="Location" prefWidth="141.0" text="Location" />
-                    </columns>
-                     <VBox.margin>
-                        <Insets left="20.0" right="20.0" top="10.0" />
-                     </VBox.margin>
-                  </TableView>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
+      <Text fill="WHITE" layoutX="50.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the specific Location:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="locBtn" fitHeight="60.0" fitWidth="60.0" layoutX="50.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-google-maps-48.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="sprTxt" layoutX="50.0" layoutY="268.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="183.0" />
+      <Text fill="WHITE" layoutX="50.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the Game Name:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="gameTxt" layoutX="50.0" layoutY="98.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="183.0" />
+      <Text fill="WHITE" layoutX="50.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the specific Hardware:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="hwTxt" layoutX="50.0" layoutY="179.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="183.0" />
+      <Text fill="WHITE" layoutX="369.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert your group size(a number):">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="gsTxt" layoutX="369.0" layoutY="100.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="60.0" />
+      <Button fx:id="fBtn" layoutX="52.0" layoutY="392.0" mnemonicParsing="false" onMousePressed="#showRooms" text="Search">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TableView fx:id="frhTab" layoutX="10.0" layoutY="430.0" prefHeight="220.0" prefWidth="690.0" translateX="5.0">
+        <columns>
+          <TableColumn fx:id="rName" prefWidth="175.0" text="Room's Name" />
+          <TableColumn fx:id="maxGS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="122.0" text="Max Group Size" />
+            <TableColumn fx:id="price" prefWidth="118.0" text="Price" />
+            <TableColumn fx:id="loc" prefWidth="274.0" text="Location" />
+        </columns>
+      </TableView>
       <Text boundsType="VISUAL" fill="#6fd736" layoutX="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Booking" textAlignment="RIGHT" wrappingWidth="458.68359375" x="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="bkBtn" layoutX="330.0" layoutY="700.0" mnemonicParsing="false" style="-fx-background-color: trans; -fx-border-color: #6fd736; -fx-border-width: 2;" text="BOOK IT!" textFill="#6fd736" />
+      <Button fx:id="bkBtn" layoutX="320.0" layoutY="655.0" mnemonicParsing="false" style="-fx-background-color: trans; -fx-border-color: #6fd736; -fx-border-width: 2;" text="BOOK IT!" textFill="#6fd736" />
+      <Text fill="WHITE" layoutX="369.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert reservation's hour (hh):">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="gCBox" layoutX="257.0" layoutY="107.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+      <CheckBox fx:id="lCBox" layoutX="257.0" layoutY="277.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+      <CheckBox fx:id="hCBox" layoutX="257.0" layoutY="188.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+      <MenuButton fx:id="hSB" layoutX="369.0" layoutY="178.0" mnemonicParsing="false" text="HH:">
+        <items>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="h1" mnemonicParsing="false" onMousePressed="#settingHour" text="11" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="h2" mnemonicParsing="false" onMousePressed="#settingHour" text="12" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="h3" mnemonicParsing="false" onMousePressed="#settingHour" text="14" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="h4" mnemonicParsing="false" onMousePressed="#settingHour" text="15" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="h5" mnemonicParsing="false" onMousePressed="#settingHour" text="16" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="h6" mnemonicParsing="false" onMousePressed="#settingHour" text="17" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="h7" mnemonicParsing="false" onMousePressed="#settingHour" text="18" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="h8" mnemonicParsing="false" onMousePressed="#settingHour" text="19" />
+               </content>
+            </CustomMenuItem>
+        </items>
+      </MenuButton>
+      <MenuButton fx:id="dSB" layoutX="372.0" layoutY="245.0" mnemonicParsing="false" text="gg">
+         <items>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="d1" mnemonicParsing="false" onMousePressed="#setDate" text="MON" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="d2" mnemonicParsing="false" onMousePressed="#setDate" text="TUE" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="d3" mnemonicParsing="false" onMousePressed="#setDate" text="THIR" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="d4" mnemonicParsing="false" onMousePressed="#setDate" text="WED" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="d5" mnemonicParsing="false" onMousePressed="#setDate" text="FRI" />
+               </content>
+            </CustomMenuItem>
+            <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+               <content>
+                  <Button fx:id="d6" mnemonicParsing="false" onMousePressed="#setDate" text="SAT" />
+               </content>
+            </CustomMenuItem>
+         </items>
+      </MenuButton>
+      <Text fill="WHITE" layoutX="369.0" layoutY="234.0" onMousePressed="#setDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert reservation's day (gg):">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
