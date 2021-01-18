@@ -12,7 +12,6 @@ public class Room {
 	private String photo;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
-	
 	public Room() {
 		// default constructor for dao impl
 	}

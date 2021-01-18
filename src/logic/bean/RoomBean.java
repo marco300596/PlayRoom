@@ -15,6 +15,14 @@ public class RoomBean {
 	private String description;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
+	private String genre;
+	private String quantity;
+	private String hdescription;
+	private String vdescription;
+	private String gameName;
+	private String hardwareName;
+	
+
 	
 	
 	// deleting arguments to fix smells.
@@ -29,6 +37,62 @@ public class RoomBean {
 		this.hw = null;
 	}
 	
+	
+	public String getGameName() {
+		return gameName;
+	}
+
+	public String getHardwareName() {
+		return hardwareName;
+	}
+
+	public void setGameName(String gameName) {
+		this.gameName = gameName;
+	}
+
+	public void setHardwareName(String hardwareName) {
+		this.hardwareName = hardwareName;
+	}
+	
+	public String getGenre() {
+		return genre;
+	}
+
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+
+	public String getHdescription() {
+		return hdescription;
+	}
+
+
+	public String getVdescription() {
+		return vdescription;
+	}
+
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+
+
+	public void setHdescription(String hdescription) {
+		this.hdescription = hdescription;
+	}
+
+
+	public void setVdescription(String vdescription) {
+		this.vdescription = vdescription;
+	}
+
 
 	public String getRoomName() {
 		return roomName;
@@ -129,13 +193,6 @@ public class RoomBean {
 		this.description = description;
 		
 	}
-	
-	
-
-	
-	
-	
-	
 	
 	
 	

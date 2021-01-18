@@ -27,14 +27,22 @@ public class ModifyRoomController {
 			this.bean = bean;
 		}
 		
-		public void addComponent(RoomBean bean) throws MyRuntimeException, SQLException {
+		public void addComponentH(RoomBean bean) throws MyRuntimeException, SQLException {
 			
-			RoomDAO.insertRoomGame();
-			RoomDAO.insertRoomHardware();
-			RoomDAO.insertRoomGenre();
-			RoomDAO.insertRoomQuantity();
-			RoomDAO.insertRoomDescription();
+			
+			
+			RoomDAO.hardwareInfo();
 		}
+		
+		
+		
+		public void addComponentV(RoomBean bean) throws MyRuntimeException, SQLException {
+			
+			
+			RoomDAO.gameInfo();
+			
+		}
+		
 		
 	}
 
