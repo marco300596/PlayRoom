@@ -46,25 +46,24 @@ public class RoomDAO {
 	
 	public static ObservableList<RoomBean> getAllRoomsAvailable(String date, String hour, Integer nOP) throws MyRuntimeException, SQLException{
 		
-		Statement stmtR = null;
+		PreparedStatement pStmtR = null;
 		Connection connR = null;
 		ObservableList<RoomBean> rooms = FXCollections.observableArrayList();
 		
 		try {
 			connR= ConnectionFactory.getConnection();
-			stmtR = connR.createStatement();
-			ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat =?" + nOP);
+			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE numseat >= ? and WHERE  NOT EXISTS (SELECT   FROM   reservation WHERE reservationroom = r.roomname and date = ? and hour = ?;)");
+			pStmtR.setInt(1, nOP);
+			pStmtR.setString(2, date);
+			pStmtR.setString(2, hour);
+			ResultSet rs =  pStmtR.executeQuery();
 			
 			while(rs.next()) {
-				Boolean b = false;
 				RoomBean room = extractRoomBeanFromResultSet(rs);
-				b = ReservationDAO.checkReservationByRoomNameAndDate(room.getRoomName(), date, hour);
-				if (Boolean.FALSE.equals(b)) {
 				rooms.add(room);
 				}
-			}
 			
-			stmtR.close();
+			pStmtR.close();
 			connR.close();
 			return rooms;
 			
@@ -72,8 +71,8 @@ public class RoomDAO {
 			ex.printStackTrace();
 		}
 		finally {
-			if (stmtR != null) {
-				stmtR.close();
+			if (pStmtR != null) {
+				pStmtR.close();
 			}
 			if (connR != null) {
 				connR.close();

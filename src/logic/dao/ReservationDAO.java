@@ -40,41 +40,6 @@ public class ReservationDAO {
 		return null;
 	}
 	
-public static boolean checkReservationByRoomNameAndDate(String roomName, String date, String hour) throws MyRuntimeException, SQLException{ 
-
-
-	PreparedStatement psRS = null;
-	Connection connRS = null;
-	
-	try {
-		connRS= ConnectionFactory.getConnection();
-		psRS = connRS.prepareStatement("SELECT * FROM reservation WHERE reservationroom = ?" + "& date = ?" + date +"& hour = ?" + hour);
-		psRS.setString(1, roomName);
-		psRS.setString(2, date);
-		psRS.setString(3, hour);
-		
-		int i = psRS.executeUpdate();
-		
-		if(i == 1) {
-			return true;
-		}
-		psRS.close();
-		connRS.close();
-		
-	}catch(SQLException ex){
-		ex.printStackTrace();
-	}
-	finally {
-		if (psRS != null) {
-			psRS.close();
-		}
-		if (connRS != null) {
-			connRS.close();
-        }
-	}
-	return false;
-}
-	
 public static boolean insertReservation(ReservationBean reservation) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psRS = null;
