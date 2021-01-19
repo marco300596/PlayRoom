@@ -52,7 +52,7 @@ public class RoomDAO {
 		
 		try {
 			connR= ConnectionFactory.getConnection();
-			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE numseat >= ? and WHERE  NOT EXISTS (SELECT   FROM   reservation WHERE reservationroom = r.roomname and date = ? and hour = ?;)");
+			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE numseat >= ? and WHERE NOT EXISTS (SELECT FROM reservation WHERE reservationroom = r.roomname and date = ? and hour = ?;)");
 			pStmtR.setInt(1, nOP);
 			pStmtR.setString(2, date);
 			pStmtR.setString(2, hour);
@@ -93,12 +93,8 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, St
 			ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat = ?" + nOP);
 			
 			while(rs.next()) {
-				Boolean b = true;
 				RoomBean room = extractRoomBeanFromResultSet(rs);
-				b = ReservationDAO.checkReservationByRoomNameAndDate(room.getRoomName(), date, hour);
-				if (Boolean.FALSE.equals(b)) {
 				rooms.add(room);
-				}
 			}
 			
 			stmtR.close();
@@ -131,12 +127,8 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 		ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat>=?" + nOP);
 		
 		while(rs.next()) {
-			Boolean b = false;
 			RoomBean room = extractRoomBeanFromResultSet(rs);
-			b = ReservationDAO.checkReservationByRoomNameAndDate(room.getRoomName(), date, hour);
-			if (Boolean.FALSE.equals(b)) {
 			rooms.add(room);
-			}
 		}
 		
 		stmtR.close();
