@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.RatingRoomViewController">
    <children>
       <HBox prefHeight="810.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,7 +24,7 @@
                         <Insets bottom="5.0" left="50.0" right="50.0" top="50.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                  <TextArea fx:id="nametxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <VBox.margin>
                         <Insets bottom="20.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -37,7 +37,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Rating>
+                  <Rating fx:id="ratefield">
                      <VBox.margin>
                         <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -50,12 +50,12 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="92.0" prefWidth="248.0">
+                  <TextArea fx:id="commenttxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="92.0" prefWidth="248.0">
                      <VBox.margin>
                         <Insets bottom="5.0" left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </TextArea>
-                  <Button mnemonicParsing="false" text="Submit">
+                  <Button fx:id="subbtn" mnemonicParsing="false" onMousePressed="#ratingPression" text="Submit">
                      <VBox.margin>
                         <Insets bottom="10.0" left="50.0" right="50.0" top="50.0" />
                      </VBox.margin>
