@@ -50,14 +50,15 @@ public class ModifyRoomViewController {
     	if(cbeo1.isSelected()) {
     	if (verifyFields()){
 			ModifyRoomController controller = ModifyRoomController.getInstance();
-			controller.getBean().setRoomName(nameroomtxt.getText());
-			controller.getBean().setHardwareName(nametxt.getText());
-	    	controller.getBean().setHardwareGenre(genretxt.getText());
-	  		controller.getBean().setHardwareQuantity(quantxt.getText());
-	  		controller.getBean().setHardwareDescription(desctxt.getText());
+		//	controller.getHVBean().setRoomName(nameroomtxt.getText());
+			controller.getHVBean().setHardwareName(nametxt.getText());
+	    	controller.getHVBean().setHardwareGenre(genretxt.getText());
+	    	int hardwareQuantity=Integer.parseInt(quantxt.getText());
+	    	controller.getHVBean().setHardwareQuantity(hardwareQuantity);
+	  		controller.getHVBean().setHardwareDescription(desctxt.getText());
 	    	
 	    	try {
-	    		controller.addComponentH(controller.getBean());
+	    		controller.addComponentH(controller.getHVBean());
 	    		new Thread(() ->
             	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
 	    	} catch(Exception e){
@@ -72,14 +73,15 @@ public class ModifyRoomViewController {
     	if(cbeo2.isSelected()) {
         	if (verifyFields()){
     			ModifyRoomController controller = ModifyRoomController.getInstance();
-    			controller.getBean().setRoomName(nameroomtxt.getText());
-    			controller.getBean().setGameName(nametxt.getText());
-    			controller.getBean().setGameGenre(genretxt.getText());
-    	  		controller.getBean().setGameQuantity(quantxt.getText());
-    	  		controller.getBean().setGameDescription(desctxt.getText());
+    		//	controller.getHVBean().setRoomName(nameroomtxt.getText());
+    			controller.getHVBean().setGameName(nametxt.getText());
+    			controller.getHVBean().setGameGenre(genretxt.getText());
+    			int gameQuantity=Integer.parseInt(quantxt.getText());
+    	  		controller.getHVBean().setGameQuantity(gameQuantity);
+    	  		controller.getHVBean().setGameDescription(desctxt.getText());
     	  		
     	    	try {
-    	    		controller.addComponentV(controller.getBean());
+    	    		controller.addComponentV(controller.getHVBean());
     	    		new Thread(() ->
                 	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
     	    	} catch(Exception e){

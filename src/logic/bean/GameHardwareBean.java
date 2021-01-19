@@ -1,5 +1,6 @@
 package logic.bean;
 
+
 public class GameHardwareBean {
 	
 	private String hardwareName;
@@ -10,7 +11,10 @@ public class GameHardwareBean {
 	private String gameDescription;
 	private String gameName;
 	private int gameQuantity;
+	private Boolean hardwareAvailability;
+	private Boolean gameAvailability;
 		
+	
 	
 	public GameHardwareBean() {
 		
@@ -22,6 +26,19 @@ public class GameHardwareBean {
 		this.gameDescription = "";
 		this.gameName = "";
 		this.gameQuantity = 0;
+	}
+	
+	public Boolean getHardwareAvailability() {
+		return hardwareAvailability;
+	}
+	public Boolean getGameAvailability() {
+		return gameAvailability;
+	}
+	public void setHardwareAvailability(Boolean hardwareAvailability) {
+		this.hardwareAvailability = hardwareAvailability;
+	}
+	public void setGameAvailability(Boolean gameAvailability) {
+		GameAvailability = gameAvailability;
 	}
 	public String getHardwareName() {
 		return hardwareName;

@@ -14,7 +14,10 @@ public class RoomBean {
 	private String photo;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
+	private String Description;
 	
+	
+
 	// deleting arguments to fix smells.
 	public RoomBean() {
 		this.roomName = "";
@@ -26,6 +29,15 @@ public class RoomBean {
 		this.hw = null;
 	}
 
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
+	}
+	
+	
 	public String getRoomName() {
 		return roomName;
 		
