@@ -16,13 +16,12 @@ public class RoomBean {
 	private List<Hardware>	hw;
 	private String hardwareName;
 	private String hardwareGenre;
-	private String hardwareQuantity;
+	private int hardwareQuantity;
 	private String hardwareDescription;
 	private String gameGenre;
 	private String gameDescription;
-	
 	private String gameName;
-	private String gameQuantity;
+	private int gameQuantity;
 	
 	
 
@@ -37,11 +36,9 @@ public class RoomBean {
 		this.photo = "";
 		this.hardwareName = "";
 		this.hardwareGenre = "";
-		this.hardwareQuantity = "";
 		this.hardwareDescription = "";
 		this.gameName = "";
 		this.gameGenre = "";
-		this.gameQuantity = "";
 		this.gameDescription = "";
 		this.vg = null;
 		this.hw = null;
@@ -52,7 +49,7 @@ public class RoomBean {
 	}
 
 
-	public String getHardwareQuantity() {
+	public int getHardwareQuantity() {
 		return hardwareQuantity;
 	}
 
@@ -72,7 +69,7 @@ public class RoomBean {
 	}
 
 
-	public String getGameQuantity() {
+	public int getGameQuantity() {
 		return gameQuantity;
 	}
 
@@ -82,7 +79,7 @@ public class RoomBean {
 	}
 
 
-	public void setHardwareQuantity(String hardwareQuantity) {
+	public void setHardwareQuantity(int hardwareQuantity) {
 		this.hardwareQuantity = hardwareQuantity;
 	}
 
@@ -102,7 +99,7 @@ public class RoomBean {
 	}
 
 
-	public void setGameQuantity(String gameQuantity) {
+	public void setGameQuantity(int gameQuantity) {
 		this.gameQuantity = gameQuantity;
 	}
 
