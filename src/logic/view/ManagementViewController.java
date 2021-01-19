@@ -2,6 +2,8 @@ package logic.view;
 
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -42,6 +44,11 @@ public class ManagementViewController {
     @FXML
     private Button upBtn;
     
+    private TextField nameInput;
+    private Button blockBtn;
+    private Button delBtn;
+    private HBox hBox;
+    
    // private static final String GREY = "-fx-background-color: #48484a;";
 
     @FXML
@@ -61,12 +68,13 @@ public class ManagementViewController {
     	 * funzionalita', visto che viene aggiunta dinamicamente?
     	 */
     	
-    	TextField nameInput = new TextField();
-    	nameInput.setPromptText("username");
-    	Button blockBtn = new Button("Block");
-    	Button delBtn = new Button("Delete");
+    	/*instanzio nuovi oggetti una sola volta quando premo il bottone*/
+    	if(nameInput == null)	nameInput 	= new TextField();
+    	if(blockBtn == null) 	blockBtn 	= new Button("Block");
+    	if(delBtn == null)		delBtn 		= new Button("Delete");
+    	if(hBox == null)		hBox 		= new HBox();
     	
-    	HBox hBox = new HBox();
+    	nameInput.setPromptText("username");
     	hBox.setPadding(new Insets(10,10,10,50));
     	hBox.setSpacing(10);
     	hBox.getChildren().addAll(nameInput,delBtn,blockBtn);
@@ -76,8 +84,13 @@ public class ManagementViewController {
     	delBtn.setOnAction(e -> {
     		controller.getRegBean().setFirstname(nameInput.getText());
 			try {
-				//TODO
-				controller.delPlayer(controller.getRegBean());
+				if(controller.delPlayer(controller.getRegBean())) {
+					new Thread(() ->
+		        	JOptionPane.showMessageDialog(null, "Deleted user. Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+				} else {
+					new Thread(() ->
+		        	JOptionPane.showMessageDialog(null, "User not found. Please refresh the page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+				}
 			} catch (MyRuntimeException | SQLException e1) {
 				e1.printStackTrace();
 			}

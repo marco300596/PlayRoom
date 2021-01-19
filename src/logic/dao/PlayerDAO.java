@@ -152,28 +152,31 @@ public class PlayerDAO {
 		return false;
 	}
 	
-	public static boolean deletePlayer(RegistrationBean username) throws MyRuntimeException, SQLException {
+	public static boolean deletePlayer(RegistrationBean player) throws MyRuntimeException, SQLException {
 		
-		Statement stmtP = null;
+		PreparedStatement psP = null;
 		Connection connP = null;
 		try {
 			connP= ConnectionFactory.getConnection();
-			stmtP = connP.createStatement();
-			int i = stmtP.executeUpdate("DELETE FROM player WHERE username=" + username);
+			psP = connP.prepareStatement("DELETE FROM player WHERE username=?");
+			psP.setString(1, player.getUsername());
+			//perche cazzo non mi trovi il player????
+			System.out.println("ciao"+player.getUsername());
+			int i = psP.executeUpdate();
 			
 			if (i == 1) {
 				return true;
 			}
 			
-			stmtP.close();
+			psP.close();
 			connP.close();
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		finally {
-			if (stmtP != null) {
-				stmtP.close();
+			if (psP != null) {
+				psP.close();
 			}
 			if (connP != null) {
 				connP.close();
