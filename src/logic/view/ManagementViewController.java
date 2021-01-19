@@ -77,9 +77,10 @@ public class ManagementViewController {
     	nameInput.setPromptText("username");
     	hBox.setPadding(new Insets(10,10,10,50));
     	hBox.setSpacing(10);
+    	//TODO modifica duplicate children
     	hBox.getChildren().addAll(nameInput,delBtn,blockBtn);
     	vBox.getChildren().add(hBox);
-    	/* come faccio ad aggiungere il block e il delete se non posso aggiungere tasti nella cella?*/
+    	
     	
     	delBtn.setOnAction(e -> {
     		controller.getRegBean().setUsername(nameInput.getText());
