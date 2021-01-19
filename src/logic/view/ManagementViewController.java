@@ -82,7 +82,7 @@ public class ManagementViewController {
     	/* come faccio ad aggiungere il block e il delete se non posso aggiungere tasti nella cella?*/
     	
     	delBtn.setOnAction(e -> {
-    		controller.getRegBean().setFirstname(nameInput.getText());
+    		controller.getRegBean().setUsername(nameInput.getText());
 			try {
 				if(controller.delPlayer(controller.getRegBean())) {
 					new Thread(() ->

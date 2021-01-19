@@ -160,8 +160,6 @@ public class PlayerDAO {
 			connP= ConnectionFactory.getConnection();
 			psP = connP.prepareStatement("DELETE FROM player WHERE username=?");
 			psP.setString(1, player.getUsername());
-			//perche cazzo non mi trovi il player????
-			System.out.println("ciao"+player.getUsername());
 			int i = psP.executeUpdate();
 			
 			if (i == 1) {
