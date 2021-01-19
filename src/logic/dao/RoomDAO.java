@@ -59,7 +59,7 @@ public class RoomDAO {
 				Boolean b = false;
 				RoomBean room = extractRoomBeanFromResultSet(rs);
 				b = ReservationDAO.checkReservationByRoomNameAndDate(room.getRoomName(), date, hour);
-				if (!b) {
+				if (Boolean.FALSE.equals(b)) {
 				rooms.add(room);
 				}
 			}
@@ -97,7 +97,7 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, St
 				Boolean b = true;
 				RoomBean room = extractRoomBeanFromResultSet(rs);
 				b = ReservationDAO.checkReservationByRoomNameAndDate(room.getRoomName(), date, hour);
-				if (!b) {
+				if (Boolean.FALSE.equals(b)) {
 				rooms.add(room);
 				}
 			}
@@ -135,7 +135,7 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 			Boolean b = false;
 			RoomBean room = extractRoomBeanFromResultSet(rs);
 			b = ReservationDAO.checkReservationByRoomNameAndDate(room.getRoomName(), date, hour);
-			if (!b) {
+			if (Boolean.FALSE.equals(b)) {
 			rooms.add(room);
 			}
 		}
