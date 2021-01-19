@@ -27,57 +27,70 @@ public class BookRoomViewController {
 
     @FXML
     private Button bkBtn1;
-
     @FXML
     private TextField hTxt;
-
     @FXML
     private CheckBox gCBox;
-
     @FXML
     private CheckBox lCBox;
-
     @FXML
     private CheckBox hCBox;
-    
     @FXML
     private ImageView locBtn;
-
     @FXML
     private TextField sprTxt;
-
     @FXML
     private TextField gameTxt;
-
     @FXML
     private TextField hwTxt;
-
     @FXML
     private TextField gsTxt;
-
     @FXML
     private TableView<RoomBean> frhTab;
-
     @FXML
     private TableColumn<Room, String> rName;
-
     @FXML
     private TableColumn<Room, Integer> maxGS;
-
     @FXML
     private TableColumn<Room, Integer> price;
-
     @FXML
     private TableColumn<Room, String> loc;
-
     @FXML
-    private Button fBtn, bkBtn, h1, h2, h3, h4, h5, h6, h7, h8;
-
+    private Button fBtn;
     @FXML
-    private MenuButton dSB, hSB;
-
+    private Button bkBtn;
     @FXML
-    private Button d1, d2, d3, d4, d5, d6;
+    private Button h1;
+    @FXML
+    private Button h2;
+    @FXML
+    private Button h3;
+    @FXML
+    private Button h4;
+    @FXML
+    private Button h5;
+    @FXML
+    private Button h6;
+    @FXML
+    private Button h7;
+    @FXML
+    private Button h8;
+    @FXML
+    private Button d1;
+    @FXML
+    private Button d2;
+    @FXML
+    private Button d3;
+    @FXML
+    private Button d4;
+    @FXML
+    private Button d5;
+    @FXML
+    private Button d6;
+    @FXML
+    private MenuButton dSB;
+    @FXML
+    private MenuButton hSB;
 
     @FXML
     void settingHour(MouseEvent event){
@@ -134,7 +147,7 @@ public class BookRoomViewController {
     	
     	BookRoomController controller = BookRoomController.getInstance();
     	ObservableList<RoomBean> room = FXCollections.observableArrayList();
-    	if(verifyTxtFields()) {
+    	//if(verifyTxtFields()) {
     		//if (gCBox.isSelected()) {
 
     			
@@ -145,7 +158,6 @@ public class BookRoomViewController {
 
 			 if (lCBox.isSelected()) {
 
-				controller.getRoomBean().setRoomName(sprTxt.getText());
 				controller.getReservationBean().setDate(dSB.getText());
 				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText()));
 				controller.getReservationBean().setHour(hSB.getText());
@@ -159,21 +171,21 @@ public class BookRoomViewController {
     		frhTab.setItems(room);
     		/*script di popolazione delle celle 
     		ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
-    		rName.setCellValueFactory(new PropertyValueFactory<Room, String>("roomName"));
-    		maxGS.setCellValueFactory(new PropertyValueFactory<Room, Integer>("numSeat"));
-    		price.setCellValueFactory(new PropertyValueFactory<Room, Integer>("price"));
-    		loc.setCellValueFactory(new PropertyValueFactory<Room, String>("location"));
+    		rName.setCellValueFactory(new PropertyValueFactory<>("roomName"));
+    		maxGS.setCellValueFactory(new PropertyValueFactory<>("numSeat"));
+    		price.setCellValueFactory(new PropertyValueFactory<>("price"));
+    		loc.setCellValueFactory(new PropertyValueFactory<>("location"));
     	}
 
-    }
+    //}
 	
     @FXML
     void bookRoom() throws MyRuntimeException, SQLException{
     	
     	BookRoomController controller = BookRoomController.getInstance();
     	controller.getReservationBean().setReservationRoom(frhTab.getSelectionModel().getSelectedItems().get(1).getRoomName());
-    	boolean val = controller.createReservation(controller.getReservationBean().getReservationRoom(),controller.getReservationBean().getDate(),controller.getReservationBean().getHour());
-    	if (val == true) {
+    	boolean val = controller.createReservation();
+    	if (val) {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + dSB.getText() + "at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
     	}else {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
@@ -183,12 +195,12 @@ public class BookRoomViewController {
    
     //ObservableList selectedItems = taview.getSelectionModel().getSelectedItems(); per selezionare una riga
 	
-	private boolean verifyTxtFields() {
+	/*private boolean verifyTxtFields() {
     	if(gameTxt.getText().equals("") && hwTxt.getText().equals("") && sprTxt.getText().equals("")) {
        		  new Thread(()-> JOptionPane.showMessageDialog(null, "Please fill at least one textfield!","Fill Text Field", JOptionPane.INFORMATION_MESSAGE)).start();
        		  return false;
 		}else{
 			  return true;
 		}
-	}
+	}*/
 }

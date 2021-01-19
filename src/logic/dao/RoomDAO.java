@@ -10,11 +10,8 @@ import javafx.collections.ObservableList;
 import logic.bean.RoomBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Hardware;
-import logic.model.Player;
-import logic.model.Reservation;
 import logic.model.Room;
 import logic.model.VideoGame;
-import logic.dao.ReservationDAO;
 
 public class RoomDAO {
 	
@@ -47,7 +44,7 @@ public class RoomDAO {
 		return null;
 	}
 	
-	public static ObservableList<RoomBean> getAllRoomsAvailable(String date, String hour, int nOP) throws MyRuntimeException, SQLException{
+	public static ObservableList<RoomBean> getAllRoomsAvailable(String date, String hour, Integer nOP) throws MyRuntimeException, SQLException{
 		
 		Statement stmtR = null;
 		Connection connR = null;
@@ -56,16 +53,14 @@ public class RoomDAO {
 		try {
 			connR= ConnectionFactory.getConnection();
 			stmtR = connR.createStatement();
-			ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat >= ?" + nOP);
+			ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat =?" + nOP);
 			
 			while(rs.next()) {
 				Boolean b = false;
 				RoomBean room = extractRoomBeanFromResultSet(rs);
 				b = ReservationDAO.checkReservationByRoomNameAndDate(room.getRoomName(), date, hour);
-				if (b == true) {
+				if (!b) {
 				rooms.add(room);
-				}else{
-					continue;
 				}
 			}
 			
@@ -87,7 +82,7 @@ public class RoomDAO {
 		return rooms;
 	}
 	
-public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, String hour, int nOP) throws MyRuntimeException, SQLException{
+public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, String hour, int nOP,  String hwName) throws MyRuntimeException, SQLException{
 		
 		Statement stmtR = null;
 		Connection connR = null;
@@ -99,13 +94,11 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, St
 			ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat = ?" + nOP);
 			
 			while(rs.next()) {
-				Boolean b = false;
+				Boolean b = true;
 				RoomBean room = extractRoomBeanFromResultSet(rs);
 				b = ReservationDAO.checkReservationByRoomNameAndDate(room.getRoomName(), date, hour);
-				if (b == true) {
+				if (!b) {
 				rooms.add(room);
-				}else{
-					continue;
 				}
 			}
 			
@@ -136,16 +129,14 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 	try {
 		connR= ConnectionFactory.getConnection();
 		stmtR = connR.createStatement();
-		ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat = ?" + nOP);
+		ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat>=?" + nOP);
 		
 		while(rs.next()) {
 			Boolean b = false;
 			RoomBean room = extractRoomBeanFromResultSet(rs);
 			b = ReservationDAO.checkReservationByRoomNameAndDate(room.getRoomName(), date, hour);
-			if (b == true) {
+			if (!b) {
 			rooms.add(room);
-			}else{
-				continue;
 			}
 		}
 		
