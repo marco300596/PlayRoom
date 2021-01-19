@@ -38,7 +38,7 @@ public class GameHardwareBean {
 		this.hardwareAvailability = hardwareAvailability;
 	}
 	public void setGameAvailability(Boolean gameAvailability) {
-		GameAvailability = gameAvailability;
+		this.gameAvailability = gameAvailability;
 	}
 	public String getHardwareName() {
 		return hardwareName;
