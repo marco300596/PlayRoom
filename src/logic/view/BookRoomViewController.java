@@ -183,7 +183,7 @@ public class BookRoomViewController {
     void bookRoom() throws MyRuntimeException, SQLException{
     	
     	BookRoomController controller = BookRoomController.getInstance();
-    	controller.getReservationBean().setReservationRoom(frhTab.getSelectionModel().getSelectedItems().get(1).getRoomName());
+    	controller.getReservationBean().setReservationRoom(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
     	boolean val = controller.createReservation();
     	if (val) {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + dSB.getText() + "at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();

@@ -52,12 +52,12 @@ public class RoomDAO {
 		
 		try {
 			connR= ConnectionFactory.getConnection();
-			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE numseat >= ? and WHERE NOT EXISTS (SELECT FROM reservation WHERE reservationroom = r.roomname and date = ? and hour = ?;)");
+			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE reservationroom = r.roomname and date = ? and hour = ?)");
 			pStmtR.setInt(1, nOP);
 			pStmtR.setString(2, date);
-			pStmtR.setString(2, hour);
+			pStmtR.setString(3, hour);
 			ResultSet rs =  pStmtR.executeQuery();
-			
+		 	
 			while(rs.next()) {
 				RoomBean room = extractRoomBeanFromResultSet(rs);
 				rooms.add(room);

@@ -62,7 +62,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="bkBtn" layoutX="320.0" layoutY="655.0" mnemonicParsing="false" style="-fx-background-color: trans; -fx-border-color: #6fd736; -fx-border-width: 2;" text="BOOK IT!" textFill="#6fd736" />
+      <Button fx:id="bkBtn" layoutX="320.0" layoutY="655.0" mnemonicParsing="false" onMousePressed="#bookRoom" style="-fx-background-color: trans; -fx-border-color: #6fd736; -fx-border-width: 2;" text="BOOK IT!" textFill="#6fd736" />
       <Text fill="WHITE" layoutX="369.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert reservation's hour (hh):">
          <font>
             <Font name="System Bold" size="15.0" />
