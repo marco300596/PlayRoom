@@ -14,18 +14,6 @@ public class RoomBean {
 	private String photo;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
-	private String hardwareName;
-	private String hardwareGenre;
-	private int hardwareQuantity;
-	private String hardwareDescription;
-	private String gameGenre;
-	private String gameDescription;
-	private String gameName;
-	private int gameQuantity;
-	
-	
-
-	
 	
 	// deleting arguments to fix smells.
 	public RoomBean() {
@@ -34,92 +22,9 @@ public class RoomBean {
 		this.price = 0;
 		this.location = "";
 		this.photo = "";
-		this.hardwareName = "";
-		this.hardwareGenre = "";
-		this.hardwareDescription = "";
-		this.gameName = "";
-		this.gameGenre = "";
-		this.gameDescription = "";
 		this.vg = null;
 		this.hw = null;
 	}
-	
-	public String getHardwareGenre() {
-		return hardwareGenre;
-	}
-
-
-	public int getHardwareQuantity() {
-		return hardwareQuantity;
-	}
-
-
-	public String getHardwareDescription() {
-		return hardwareDescription;
-	}
-
-
-	public String getGameGenre() {
-		return gameGenre;
-	}
-
-
-	public String getGameDescription() {
-		return gameDescription;
-	}
-
-
-	public int getGameQuantity() {
-		return gameQuantity;
-	}
-
-
-	public void setHardwareGenre(String hardwareGenre) {
-		this.hardwareGenre = hardwareGenre;
-	}
-
-
-	public void setHardwareQuantity(int hardwareQuantity) {
-		this.hardwareQuantity = hardwareQuantity;
-	}
-
-
-	public void setHardwareDescription(String hardwareDescription) {
-		this.hardwareDescription = hardwareDescription;
-	}
-
-
-	public void setGameGenre(String gameGenre) {
-		this.gameGenre = gameGenre;
-	}
-
-
-	public void setGameDescription(String gameDescription) {
-		this.gameDescription = gameDescription;
-	}
-
-
-	public void setGameQuantity(int gameQuantity) {
-		this.gameQuantity = gameQuantity;
-	}
-
-	public String getGameName() {
-		return gameName;
-	}
-
-	public String getHardwareName() {
-		return hardwareName;
-	}
-
-	public void setGameName(String gameName) {
-		this.gameName = gameName;
-	}
-
-	public void setHardwareName(String hardwareName) {
-		this.hardwareName = hardwareName;
-	}
-	
-	
 
 	public String getRoomName() {
 		return roomName;
