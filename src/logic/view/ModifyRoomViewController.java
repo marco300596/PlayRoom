@@ -50,10 +50,11 @@ public class ModifyRoomViewController {
     	if(cbeo1.isSelected()) {
     	if (verifyFields()){
 			ModifyRoomController controller = ModifyRoomController.getInstance();
+			controller.getBean().setRoomName(nameroomtxt.getText());
 			controller.getBean().setHardwareName(nametxt.getText());
-	    	controller.getBean().setGenre(genretxt.getText());
-	  		controller.getBean().setQuantity(quantxt.getText());
-	  		controller.getBean().setHdescription(desctxt.getText());
+	    	controller.getBean().setHardwareGenre(genretxt.getText());
+	  		controller.getBean().setHardwareQuantity(quantxt.getText());
+	  		controller.getBean().setHardwareDescription(desctxt.getText());
 	    	
 	    	try {
 	    		controller.addComponentH(controller.getBean());
@@ -71,11 +72,11 @@ public class ModifyRoomViewController {
     	if(cbeo2.isSelected()) {
         	if (verifyFields()){
     			ModifyRoomController controller = ModifyRoomController.getInstance();
-    			
+    			controller.getBean().setRoomName(nameroomtxt.getText());
     			controller.getBean().setGameName(nametxt.getText());
-    			controller.getBean().setGenre(genretxt.getText());
-    	  		controller.getBean().setQuantity(quantxt.getText());
-    	  		controller.getBean().setHdescription(desctxt.getText());
+    			controller.getBean().setGameGenre(genretxt.getText());
+    	  		controller.getBean().setGameQuantity(quantxt.getText());
+    	  		controller.getBean().setGameDescription(desctxt.getText());
     	  		
     	    	try {
     	    		controller.addComponentV(controller.getBean());
@@ -95,7 +96,7 @@ public class ModifyRoomViewController {
     }
     
     private boolean verifyFields() {
-    	return !(nametxt.getText().equals("") || genretxt.getText().equals("") || quantxt.getText().equals("") || desctxt.getText().equals("") );
+    	return !(nameroomtxt.getText().equals("") ||nametxt.getText().equals("") || genretxt.getText().equals("") || quantxt.getText().equals("") || desctxt.getText().equals("") );
     }
 
 }

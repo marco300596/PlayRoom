@@ -12,15 +12,18 @@ public class RoomBean {
 	private int price;
 	private String location;
 	private String photo;
-	private String description;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
-	private String genre;
-	private String quantity;
-	private String hdescription;
-	private String vdescription;
-	private String gameName;
 	private String hardwareName;
+	private String hardwareGenre;
+	private String hardwareQuantity;
+	private String hardwareDescription;
+	private String gameGenre;
+	private String gameDescription;
+	
+	private String gameName;
+	private String gameQuantity;
+	
 	
 
 	
@@ -32,12 +35,77 @@ public class RoomBean {
 		this.price = 0;
 		this.location = "";
 		this.photo = "";
-		this.description = "";
+		this.hardwareName = "";
+		this.hardwareGenre = "";
+		this.hardwareQuantity = "";
+		this.hardwareDescription = "";
+		this.gameName = "";
+		this.gameGenre = "";
+		this.gameQuantity = "";
+		this.gameDescription = "";
 		this.vg = null;
 		this.hw = null;
 	}
 	
-	
+	public String getHardwareGenre() {
+		return hardwareGenre;
+	}
+
+
+	public String getHardwareQuantity() {
+		return hardwareQuantity;
+	}
+
+
+	public String getHardwareDescription() {
+		return hardwareDescription;
+	}
+
+
+	public String getGameGenre() {
+		return gameGenre;
+	}
+
+
+	public String getGameDescription() {
+		return gameDescription;
+	}
+
+
+	public String getGameQuantity() {
+		return gameQuantity;
+	}
+
+
+	public void setHardwareGenre(String hardwareGenre) {
+		this.hardwareGenre = hardwareGenre;
+	}
+
+
+	public void setHardwareQuantity(String hardwareQuantity) {
+		this.hardwareQuantity = hardwareQuantity;
+	}
+
+
+	public void setHardwareDescription(String hardwareDescription) {
+		this.hardwareDescription = hardwareDescription;
+	}
+
+
+	public void setGameGenre(String gameGenre) {
+		this.gameGenre = gameGenre;
+	}
+
+
+	public void setGameDescription(String gameDescription) {
+		this.gameDescription = gameDescription;
+	}
+
+
+	public void setGameQuantity(String gameQuantity) {
+		this.gameQuantity = gameQuantity;
+	}
+
 	public String getGameName() {
 		return gameName;
 	}
@@ -54,45 +122,7 @@ public class RoomBean {
 		this.hardwareName = hardwareName;
 	}
 	
-	public String getGenre() {
-		return genre;
-	}
-
-
-	public String getQuantity() {
-		return quantity;
-	}
-
-
-	public String getHdescription() {
-		return hdescription;
-	}
-
-
-	public String getVdescription() {
-		return vdescription;
-	}
-
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-
-
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
-	}
-
-
-	public void setHdescription(String hdescription) {
-		this.hdescription = hdescription;
-	}
-
-
-	public void setVdescription(String vdescription) {
-		this.vdescription = vdescription;
-	}
-
+	
 
 	public String getRoomName() {
 		return roomName;
@@ -185,15 +215,6 @@ public class RoomBean {
 		
 	}
 	
-	public String getDescription() {
-		return description;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-		
-	}
-	
-	
+
 	
 }
