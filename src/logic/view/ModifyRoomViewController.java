@@ -18,6 +18,9 @@ import logic.exception.MyRuntimeException;
 public class ModifyRoomViewController {
 
 	@FXML
+    private TextField nameroomtxt;
+	
+	@FXML
     private CheckBox cbeo1;
 
     @FXML
