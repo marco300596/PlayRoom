@@ -255,5 +255,26 @@ private static RoomBean extractRoomBeanFromResultSet(ResultSet rs) throws SQLExc
 		
 		return room;
 	}
+
+
+public static RoomBean hardwareInfo() throws SQLException{
+	
+	RoomBean room = new RoomBean();
+	
+	return room;
 }
 
+
+
+
+
+public static RoomBean gameInfo() throws SQLException{
+	
+	RoomBean room = new RoomBean();
+	
+	return room;
+}
+
+
+
+}
