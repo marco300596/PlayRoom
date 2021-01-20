@@ -3,7 +3,6 @@ package logic.controller;
 import java.sql.SQLException;
 
 import logic.bean.GameHardwareBean;
-import logic.bean.RoomBean;
 import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;
 

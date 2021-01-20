@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import logic.bean.GameHardwareBean;
 import logic.bean.RoomBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Hardware;
@@ -217,7 +218,7 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 			return false;
 		}
 	
-	private Room extractRoomFromResultSet(ResultSet rs) throws SQLException{
+	private Room extractRoomFromResultSet(ResultSet rs) throws MyRuntimeException, SQLException{
 		
 		Room room = new Room();
 		
@@ -248,24 +249,88 @@ private static RoomBean extractRoomBeanFromResultSet(ResultSet rs) throws SQLExc
 	}
 
 
-public static RoomBean hardwareInfo() throws SQLException{
+public static Boolean  hardwareInfo() throws  MyRuntimeException,SQLException{
+	PreparedStatement psR = null;
+	Connection connR = null;
+	GameHardwareBean  gh= new GameHardwareBean();
+
+	try {
+		connR= ConnectionFactory.getConnection();
+		psR = connR.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?)");
+		psR.setString(1, gh.getHardwareName());
+		psR.setString(2, gh.getHardwareGenre());
+		psR.setInt(4, gh.getHardwareQuantity());
+		psR.setString(5, gh.getHardwareDescription());
+		int i = psR.executeUpdate();
 	
-	RoomBean room = new RoomBean();
+		if(i == 1) {
+			return true;
+		}
+		psR.close();
+		connR.close();
 	
-	return room;
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psR != null) {
+			psR.close();
+		}
+		if (connR != null) {
+			connR.close();
+    	}
+	}
+	return false;
+	
 }
 
 
 
 
 
-public static RoomBean gameInfo() throws SQLException{
+public static Boolean gameInfo() throws  MyRuntimeException,SQLException{
 	
-	RoomBean room = new RoomBean();
+	PreparedStatement psR = null;
+	Connection connR = null;
+	GameHardwareBean  gh= new GameHardwareBean();
 	
-	return room;
+	try {
+		connR= ConnectionFactory.getConnection();
+		psR = connR.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
+	
+		psR.setString(2, gh.getGameName());
+		psR.setString(3, gh.getGameGenre());
+		psR.setInt(4, gh.getGameQuantity());
+		psR.setString(5, gh.getGameDescription());
+		int i = psR.executeUpdate();
+	
+		if(i == 1) {
+			return true;
+		}
+		psR.close();
+		connR.close();
+	
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psR != null) {
+			psR.close();
+		}
+		if (connR != null) {
+			connR.close();
+    	}
+	}
+	return false;
+	
+	
+	
+	
+	
+	
+	
 }
 
 
-
 }
+
