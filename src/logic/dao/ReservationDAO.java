@@ -6,12 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import logic.model.Reservation;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import logic.bean.ReservationBean;
 import logic.exception.MyRuntimeException;
 
 public class ReservationDAO {
-	public Reservation getReservation(int rsid) throws MyRuntimeException, SQLException {
+	public ReservationBean getReservation(int rsid) throws MyRuntimeException, SQLException {
 		
 		Statement stmtRS = null;
 		Connection connRS = null;
@@ -75,17 +76,52 @@ public static boolean insertReservation(ReservationBean reservation) throws MyRu
 		}
 		return false;
 	}
+
+public static ObservableList<ReservationBean> getAllUncheckReservations() throws MyRuntimeException, SQLException{
 	
-	private Reservation extractReservationFromResultSet(ResultSet rs) throws SQLException{
+	Statement stmtP = null;
+	Connection connP = null;
+	ObservableList<ReservationBean> reservations = FXCollections.observableArrayList();
+	
+	try {
+		connP= ConnectionFactory.getConnection();
+		stmtP = connP.createStatement();
+		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus=0");
 		
-		Reservation reservation = new Reservation();
+		while(rs.next()) {
+			ReservationBean reservation = extractReservationFromResultSet(rs);
+			reservations.add(reservation);
+		}
 		
-		reservation.setRsid(rs.getInt("rsid"));
-		reservation.setReservationStatus(rs.getInt("reservationStatus"));
-		reservation.setNumberOfPlayer(rs.getInt("numberOfPlayer"));
-		reservation.setReservationRoom(rs.getString("reservationRoom"));
-		reservation.setPlayerUsername(rs.getString("playerUsername"));
+		stmtP.close();
+		connP.close();
+		return reservations;
+		
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+	finally {
+		if (stmtP != null) {
+			stmtP.close();
+		}
+		if (connP != null) {
+			connP.close();
+        }
+	}
+	return reservations;
+}
+	
+	private static ReservationBean extractReservationFromResultSet(ResultSet rs) throws SQLException{
+		
+		ReservationBean reservation = new ReservationBean();
+		
+		reservation.setRoomid(rs.getInt("roomid"));
+		reservation.setReservationStatus(rs.getInt("reservationstatus"));
+		reservation.setNumberOfPlayer(rs.getInt("numberofplayer"));
+		reservation.setReservationRoom(rs.getString("reservationroom"));
+		reservation.setPlayerUsername(rs.getString("playerusername"));
 		reservation.setDate(rs.getString("date"));
+		reservation.setHour(rs.getString("hour"));
 		
 		
 		return reservation;

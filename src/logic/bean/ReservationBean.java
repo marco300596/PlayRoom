@@ -2,7 +2,7 @@ package logic.bean;
 
 public class ReservationBean {
 
-	private int rsid;
+	private int roomid;
 	private int reservationStatus;
 	private int numberOfPlayer;
 	private String reservationRoom;
@@ -14,8 +14,8 @@ public class ReservationBean {
 		//this is empty
 	}
 
-	public int getRsid() {
-		return rsid;
+	public int getRoomid() {
+		return roomid;
 	}
 
 	public int getReservationStatus() {
@@ -42,8 +42,8 @@ public class ReservationBean {
 		return hour;
 	}
 
-	public void setRsid(int rsid) {
-		this.rsid = rsid;
+	public void setRoomid(int rsid) {
+		this.roomid = rsid;
 	}
 
 	public void setReservationStatus(int reservationStatus) {
