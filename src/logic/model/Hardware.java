@@ -4,14 +4,14 @@ public class Hardware {
 
 	private String hardwareName;
 	private int quantity;
-	private int availability;
+	private boolean availability;
 	private String description;
 	
 	public Hardware(){
 		// default constructor for dao impl
 	}
 	
-	public Hardware(String hardwareName, int quantity, int availability, String description) {
+	public Hardware(String hardwareName, int quantity, boolean availability, String description) {
 		
 		this.setHardwareName(hardwareName);
 		this.setQuantity(quantity);
@@ -29,7 +29,7 @@ public class Hardware {
 		return quantity;
 	}
 
-	public int getAvailability() {
+	public boolean getAvailability() {
 		return availability;
 	}
 	
@@ -48,7 +48,7 @@ public class Hardware {
 		this.quantity = quantity;
 	}
 	
-	public void setAvailability(int availability)
+	public void setAvailability(boolean availability)
 	{
 		this.availability = availability;
 	}

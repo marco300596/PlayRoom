@@ -11,7 +11,7 @@ import logic.model.Player;
 public class RegistrationController {
 	
 	private static RegistrationController inst;
-
+	private LoginController logc = LoginController.getInstance();
     private Player player;
 
     
@@ -44,17 +44,17 @@ public class RegistrationController {
 		this.player = player;
 	}
 
-
-
 	public void setBean(RegistrationBean bean) {
 		this.bean = bean;
 	}
 	
 	public void insertNewPlayer(RegistrationBean bean) throws MyRuntimeException, SQLException {
 		PlayerDAO.insertPlayer(bean);
+		logc.setBeanFromReg(this.getBean().getUsername());
 	}
 	
 	public void insertNewOrganizer(RegistrationBean bean) throws MyRuntimeException, SQLException {
 		EventOrganizerDAO.insertOrganizer(bean);
+		logc.setBeanFromReg(this.getBean().getUsername());
 	}
 }

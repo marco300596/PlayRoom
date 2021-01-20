@@ -43,8 +43,10 @@ public class LoginController {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-
-
+	
+	public void setBeanFromReg(String str) {
+		this.bean.setUsername(str);
+	}
 
 	public void setBean(LoginBean bean) {
 		this.bean = bean;
