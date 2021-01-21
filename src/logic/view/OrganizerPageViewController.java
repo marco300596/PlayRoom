@@ -61,6 +61,11 @@ public class OrganizerPageViewController {
     	loadOrgPage("ModifyRoom");
     }
     
+    @FXML
+    void checkReservationPage(MouseEvent event) {
+    	loadOrgPage("CheckBooking");
+    }
+    
     private void loadOrgPage(String page) {
     	Parent root = null;
    

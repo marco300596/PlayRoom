@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import logic.controller.RegisterRoomController;
 import logic.exception.MyRuntimeException;
 
@@ -55,7 +56,7 @@ public class RegisterRoomViewController {
     
     
     @FXML
-    private void registerPression(ActionEvent event) throws MyRuntimeException, SQLException{
+    private void registerPression(MouseEvent event) throws MyRuntimeException, SQLException{
     	
     	if(verifyFields()) {
     	RegisterRoomController controller = RegisterRoomController.getInstance();

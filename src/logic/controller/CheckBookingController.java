@@ -4,10 +4,12 @@ import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import logic.bean.LoginBean;
 import logic.bean.RegistrationBean;
 import logic.bean.ReservationBean;
 import logic.dao.PlayerDAO;
 import logic.dao.ReservationDAO;
+import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;
 
 public class CheckBookingController {
@@ -15,7 +17,7 @@ public class CheckBookingController {
     
     private ObservableList<ReservationBean> beanList = FXCollections.observableArrayList();
     private ReservationBean resBean = new ReservationBean();
-    private RegistrationBean regBean = RegistrationController.getInstance().getBean();
+    private LoginBean logBean = LoginController.getInstance().getBean();
 
     /*singleton*/
 	public static CheckBookingController getInstance() {
@@ -42,19 +44,18 @@ public class CheckBookingController {
 
 
 
-	public ReservationBean getRegBean() {
+	public ReservationBean getResBean() {
 		return resBean;
 	}
 
 
 
-	public void setRegBean(ReservationBean regBean) {
+	public void setResBean(ReservationBean regBean) {
 		this.resBean = regBean;
 	}
-
-	int roomid = regBean.getRoomid();
 	
-	public ObservableList<ReservationBean> updateReservation(int roomid) throws MyRuntimeException, SQLException {
+	public ObservableList<ReservationBean> updateReservation() throws MyRuntimeException, SQLException {
+		int roomid = RoomDAO.getRoomIdFromOrgUsername(logBean.getUsername());
 		this.beanList = ReservationDAO.getAllUncheckReservations(roomid);
 		return this.beanList;
 	}
