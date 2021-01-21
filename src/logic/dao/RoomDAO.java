@@ -44,6 +44,39 @@ public static int getRoomId(String roomName, String location) throws MyRuntimeEx
 		}
 		return 0;
 	}
+
+public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeException, SQLException {
+	
+	Statement stmtR = null;
+	Connection connR = null;
+	try {
+		connR= ConnectionFactory.getConnection();
+		stmtR = connR.createStatement();
+		ResultSet rs = stmtR.executeQuery("SELECT roomid FROM organizer WHERE orgusername =" + orgUserName + ";");
+		
+		if(rs.next()) {
+			return extractRoomIDFromResultSet(rs);
+		}
+		stmtR.close();
+		connR.close();
+		
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+	finally {
+		if (stmtR != null) {
+			stmtR.close();
+		}
+		if (connR != null) {
+			connR.close();
+        }
+	}
+	return 0;
+}
+
+
+
+
 	
 	public Room getRoom(String roomName) throws MyRuntimeException, SQLException {
 		
@@ -288,18 +321,19 @@ private static RoomBean extractRoomBeanFromResultSet(ResultSet rs) throws SQLExc
 	}
 
 
-public static Boolean  hardwareInfo() throws  MyRuntimeException,SQLException{
+public static Boolean  hardwareInfo(int id) throws  MyRuntimeException,SQLException{
 	PreparedStatement psR = null;
 	Connection connR = null;
 	GameHardwareBean  gh= new GameHardwareBean();
 
 	try {
 		connR= ConnectionFactory.getConnection();
-		psR = connR.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?)");
+		psR = connR.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?,?)");
 		psR.setString(1, gh.getHardwareName());
-		psR.setString(2, gh.getHardwareGenre());
-		psR.setInt(4, gh.getHardwareQuantity());
-		psR.setString(5, gh.getHardwareDescription());
+		psR.setInt(2, gh.getHardwareQuantity());
+		psR.setString(3, gh.getHardwareDescription());
+		psR.setString(4, gh.getHardwareGenre());
+		psR.setInt(5, id);
 		int i = psR.executeUpdate();
 	
 		if(i == 1) {
@@ -327,7 +361,7 @@ public static Boolean  hardwareInfo() throws  MyRuntimeException,SQLException{
 
 
 
-public static Boolean gameInfo() throws  MyRuntimeException,SQLException{
+public static Boolean gameInfo(int id) throws  MyRuntimeException,SQLException{
 	
 	PreparedStatement psR = null;
 	Connection connR = null;
@@ -336,11 +370,11 @@ public static Boolean gameInfo() throws  MyRuntimeException,SQLException{
 	try {
 		connR= ConnectionFactory.getConnection();
 		psR = connR.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
-	
-		psR.setString(2, gh.getGameName());
-		psR.setString(3, gh.getGameGenre());
-		psR.setInt(4, gh.getGameQuantity());
-		psR.setString(5, gh.getGameDescription());
+		psR.setString(1, gh.getGameName());
+		psR.setString(2, gh.getGameGenre());
+		psR.setInt(3, gh.getGameQuantity());
+		psR.setString(4, gh.getGameDescription());
+		psR.setInt(5, id);
 		int i = psR.executeUpdate();
 	
 		if(i == 1) {

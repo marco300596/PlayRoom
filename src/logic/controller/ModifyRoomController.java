@@ -32,17 +32,17 @@ public class ModifyRoomController {
 		
 		public void addComponentH(GameHardwareBean bean) throws MyRuntimeException, SQLException {
 			
-			
-			
-			RoomDAO.hardwareInfo();
+			int id;
+			id=RoomDAO.getRoomIdFromOrgUsername(bean.getOrgUserName());
+			RoomDAO.hardwareInfo(id);
 		}
 		
 		
 		
 		public void addComponentV(GameHardwareBean bean) throws MyRuntimeException, SQLException {
-			
-			
-			RoomDAO.gameInfo();
+			int id;
+			id=RoomDAO.getRoomIdFromOrgUsername(bean.getOrgUserName());
+			RoomDAO.gameInfo(id);
 			
 		}
 		

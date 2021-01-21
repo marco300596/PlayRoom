@@ -18,7 +18,7 @@ import logic.exception.MyRuntimeException;
 public class ModifyRoomViewController {
 
 	@FXML
-    private TextField nameroomtxt;
+    private TextField orgustxt;
 	
 	@FXML
     private CheckBox cbeo1;
@@ -50,7 +50,7 @@ public class ModifyRoomViewController {
     	if(cbeo1.isSelected()) {
     	if (verifyFields()){
 			ModifyRoomController controller = ModifyRoomController.getInstance();
-		//	controller.getHVBean().setRoomName(nameroomtxt.getText());
+			controller.getHVBean().setOrgUserName(orgustxt.getText());
 			controller.getHVBean().setHardwareName(nametxt.getText());
 	    	controller.getHVBean().setHardwareGenre(genretxt.getText());
 	    	int hardwareQuantity=Integer.parseInt(quantxt.getText());
@@ -73,8 +73,7 @@ public class ModifyRoomViewController {
     	if(cbeo2.isSelected()) {
         	if (verifyFields()){
     			ModifyRoomController controller = ModifyRoomController.getInstance();
-    		//	controller.getHVBean().setRoomName(nameroomtxt.getText());
-    			controller.getHVBean().setGameName(nametxt.getText());
+    			controller.getHVBean().setOrgUserName(orgustxt.getText());
     			controller.getHVBean().setGameGenre(genretxt.getText());
     			int gameQuantity=Integer.parseInt(quantxt.getText());
     	  		controller.getHVBean().setGameQuantity(gameQuantity);
@@ -98,7 +97,7 @@ public class ModifyRoomViewController {
     }
     
     private boolean verifyFields() {
-    	return !(nameroomtxt.getText().equals("") ||nametxt.getText().equals("") || genretxt.getText().equals("") || quantxt.getText().equals("") || desctxt.getText().equals("") );
+    	return !(orgustxt.getText().equals("") ||nametxt.getText().equals("") || genretxt.getText().equals("") || quantxt.getText().equals("") || desctxt.getText().equals("") );
     }
 
 }

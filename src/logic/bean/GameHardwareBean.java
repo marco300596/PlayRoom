@@ -13,11 +13,13 @@ public class GameHardwareBean {
 	private int gameQuantity;
 	private Boolean hardwareAvailability;
 	private Boolean gameAvailability;
-		
+	private String orgUserName;	
 	
 	
+	
+
 	public GameHardwareBean() {
-		
+		this.orgUserName= "";
 		this.hardwareName = "";
 		this.hardwareGenre = "";
 		this.hardwareQuantity = 0;
@@ -27,6 +29,17 @@ public class GameHardwareBean {
 		this.gameName = "";
 		this.gameQuantity = 0;
 	}
+	
+	
+	public String getOrgUserName() {
+		return orgUserName;
+	}
+
+	public void setOrgUserName(String orgUserName) {
+		this.orgUserName = orgUserName;
+	}
+	
+	
 	
 	public Boolean getHardwareAvailability() {
 		return hardwareAvailability;
