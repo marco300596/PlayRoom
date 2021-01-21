@@ -12,7 +12,7 @@ public class RegistrationBean {
 		private String orgLastname;
 		private String orgPassword;
 		private String orgEmail;
-		private String orgOwnRoom;
+		private int roomid;
 		
 			
 		public RegistrationBean() {
@@ -26,7 +26,7 @@ public class RegistrationBean {
 			this.orgLastname = "";
 			this.orgPassword = "";
 			this.orgEmail = "";
-			this.orgOwnRoom = "";
+			this.roomid = 0;
 		}
 		
 		public String getFirstname() {
@@ -89,11 +89,11 @@ public class RegistrationBean {
 		public void setOrgEmail(String orgEmail) {
 			this.orgEmail = orgEmail;
 		}
-		public String getOrgOwnRoom() {
-			return orgOwnRoom;
+		public int getRoomid() {
+			return roomid;
 		}
-		public void setOrgOwnRoom(String orgOwnRoom) {
-			this.orgOwnRoom = orgOwnRoom;
+		public void setRoomid(int roomid) {
+			this.roomid = roomid;
 		}
 		
 

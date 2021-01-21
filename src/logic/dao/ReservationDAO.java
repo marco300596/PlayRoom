@@ -77,7 +77,7 @@ public static boolean insertReservation(ReservationBean reservation, int id) thr
 		return false;
 	}
 
-public static ObservableList<ReservationBean> getAllUncheckReservations() throws MyRuntimeException, SQLException{
+public static ObservableList<ReservationBean> getAllUncheckReservations(int roomid) throws MyRuntimeException, SQLException{
 	
 	Statement stmtP = null;
 	Connection connP = null;
@@ -86,7 +86,7 @@ public static ObservableList<ReservationBean> getAllUncheckReservations() throws
 	try {
 		connP= ConnectionFactory.getConnection();
 		stmtP = connP.createStatement();
-		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 0 and ");
+		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 0 and roomid=" + roomid+";");
 		
 		while(rs.next()) {
 			ReservationBean reservation = extractReservationFromResultSet(rs);

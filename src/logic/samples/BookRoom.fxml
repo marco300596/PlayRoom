@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefWidth="700.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.BookRoomViewController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefWidth="700.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.BookRoomViewController">
    <children>
       <Text fill="WHITE" layoutX="50.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the specific Location:">
          <font>
@@ -72,7 +72,13 @@
       <CheckBox fx:id="gCBox" layoutX="257.0" layoutY="107.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
       <CheckBox fx:id="lCBox" layoutX="257.0" layoutY="277.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
       <CheckBox fx:id="hCBox" layoutX="257.0" layoutY="188.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
-      <MenuButton fx:id="hSB" layoutX="369.0" layoutY="178.0" mnemonicParsing="false" onMousePressed="#settingHour" text="HH:">
+      <DatePicker fx:id="dpField" layoutX="369.0" layoutY="268.0" prefHeight="37.0" prefWidth="183.0" />
+      <Text fill="WHITE" layoutX="369.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert reservation's day (gg):">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <MenuButton fx:id="hSB" layoutX="369.0" layoutY="178.0" mnemonicParsing="false" onMouseClicked="#settingHour" text="HH:">
         <items>
             <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
                <content>
@@ -116,11 +122,5 @@
             </CustomMenuItem>
         </items>
       </MenuButton>
-      <Text fill="WHITE" layoutX="369.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert reservation's day (gg):">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Text>
-      <DatePicker fx:id="dpField" layoutX="369.0" layoutY="268.0" prefHeight="37.0" prefWidth="183.0" />
    </children>
 </AnchorPane>

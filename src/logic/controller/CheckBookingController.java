@@ -14,7 +14,8 @@ public class CheckBookingController {
 	private static CheckBookingController inst;
     
     private ObservableList<ReservationBean> beanList = FXCollections.observableArrayList();
-    private ReservationBean regBean = new ReservationBean();
+    private ReservationBean resBean = new ReservationBean();
+    private RegistrationBean regBean = RegistrationController.getInstance().getBean();
 
     /*singleton*/
 	public static CheckBookingController getInstance() {
@@ -42,23 +43,23 @@ public class CheckBookingController {
 
 
 	public ReservationBean getRegBean() {
-		return regBean;
+		return resBean;
 	}
 
 
 
 	public void setRegBean(ReservationBean regBean) {
-		this.regBean = regBean;
+		this.resBean = regBean;
 	}
 
-
-
-	public ObservableList<ReservationBean> updateReservation() throws MyRuntimeException, SQLException {
-		this.beanList = ReservationDAO.getAllUncheckReservations();
+	int roomid = regBean.getRoomid();
+	
+	public ObservableList<ReservationBean> updateReservation(int roomid) throws MyRuntimeException, SQLException {
+		this.beanList = ReservationDAO.getAllUncheckReservations(roomid);
 		return this.beanList;
 	}
 	//TODO conferma la prenotazione 
-	public boolean checkReservation(ReservationBean regBean) throws MyRuntimeException, SQLException {
-		 return ReservationDAO.insertReservation(regBean);
+	public boolean checkReservation(ReservationBean resBean) throws MyRuntimeException, SQLException {
+		 return ReservationDAO.insertReservation(resBean);
 	}
 }

@@ -254,12 +254,12 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 				connR= ConnectionFactory.getConnection();
 				psR = connR.prepareStatement("INSERT INTO room VALUES (?,?,?,?,?,?,?)");
 				psR.setString(1, room.getRoomName());
-				psR.setInt(1, room.getNumSeat());
+				psR.setInt(2, room.getNumSeat());
 				psR.setInt(3, room.getPrice());
 				psR.setString(4, room.getLocation());
 				psR.setString(5, room.getPhoto());
 				int i = psR.executeUpdate();
-			
+				
 				if(i == 1) {
 					return true;
 				}
