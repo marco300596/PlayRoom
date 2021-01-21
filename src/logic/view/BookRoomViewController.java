@@ -1,6 +1,8 @@
 package logic.view;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JOptionPane;
 
@@ -9,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -88,7 +91,7 @@ public class BookRoomViewController {
     @FXML
     private Button d6;
     @FXML
-    private MenuButton dSB;
+    private DatePicker dpField;
     @FXML
     private MenuButton hSB;
 
@@ -121,28 +124,6 @@ public class BookRoomViewController {
     }
     
     @FXML
-    void setDate(MouseEvent event){
-    	if(d1.isPressed()){
-    		dSB.setText(d1.getText());
-    	}
-    	if(d2.isPressed()){
-    		dSB.setText(d2.getText());
-    	}
-    	if(d3.isPressed()){
-    		dSB.setText(d3.getText());
-    	}
-    	if(d4.isPressed()){
-    		dSB.setText(d4.getText());
-    	}
-    	if(d5.isPressed()){
-    		dSB.setText(d5.getText());
-    	}
-    	if(d6.isPressed()){
-    		dSB.setText(d6.getText());
-    	}    	
-    }
-    
-    @FXML
     void showRooms(MouseEvent event) throws MyRuntimeException, SQLException{
     	
     	BookRoomController controller = BookRoomController.getInstance();
@@ -157,8 +138,10 @@ public class BookRoomViewController {
 				
 
 			 if (lCBox.isSelected()) {
-
-				controller.getReservationBean().setDate(dSB.getText());
+				 LocalDate localDate = dpField.getValue();//For reference
+				 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+				 String formattedString = localDate.format(formatter);
+				controller.getReservationBean().setDate(formattedString);
 				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText()));
 				controller.getReservationBean().setHour(hSB.getText());
 	    		room = controller.findRoomForPreno();
@@ -186,7 +169,7 @@ public class BookRoomViewController {
     	controller.getReservationBean().setReservationRoom(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
     	boolean val = controller.createReservation();
     	if (val) {
-    		new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + dSB.getText() + "at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + dpField.getAccessibleText() + "at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
     	}else {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
     	}

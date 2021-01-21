@@ -16,6 +16,35 @@ import logic.model.VideoGame;
 
 public class RoomDAO {
 	
+public static int getRoomId(String roomName, String location) throws MyRuntimeException, SQLException {
+		
+		Statement stmtR = null;
+		Connection connR = null;
+		try {
+			connR= ConnectionFactory.getConnection();
+			stmtR = connR.createStatement();
+			ResultSet rs = stmtR.executeQuery("SELECT roomid FROM room WHERE roomname =" + roomName + " and location =" + location + ";");
+			
+			if(rs.next()) {
+				return extractRoomIDFromResultSet(rs);
+			}
+			stmtR.close();
+			connR.close();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			if (stmtR != null) {
+				stmtR.close();
+			}
+			if (connR != null) {
+				connR.close();
+            }
+		}
+		return 0;
+	}
+	
 	public Room getRoom(String roomName) throws MyRuntimeException, SQLException {
 		
 		Statement stmtR = null;
@@ -53,7 +82,7 @@ public class RoomDAO {
 		
 		try {
 			connR= ConnectionFactory.getConnection();
-			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE reservationroom = r.roomname and date = ? and hour = ?)");
+			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?)");
 			pStmtR.setInt(1, nOP);
 			pStmtR.setString(2, date);
 			pStmtR.setString(3, hour);
@@ -218,7 +247,17 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 			return false;
 		}
 	
-	private Room extractRoomFromResultSet(ResultSet rs) throws MyRuntimeException, SQLException{
+private static int extractRoomIDFromResultSet(ResultSet rs) throws MyRuntimeException, SQLException{
+		
+		int i = 0;
+		
+		i = rs.getInt("roomid");
+		
+		
+		return i;
+	}
+	
+private Room extractRoomFromResultSet(ResultSet rs) throws MyRuntimeException, SQLException{
 		
 		Room room = new Room();
 		
