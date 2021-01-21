@@ -52,8 +52,9 @@ public static boolean insertReservation(ReservationBean reservation, int id) thr
 			psRS.setInt(1, reservation.getNumberOfPlayer());
 			psRS.setString(2, reservation.getPlayerUsername());
 			psRS.setString(3,  reservation.getDate());
-			psRS.setString(4, reservation.getHour());
-			psRS.setInt(5, id);
+			psRS.setInt(4, id);
+			psRS.setString(5, reservation.getHour());
+			
 			
 			int i = psRS.executeUpdate();
 			

@@ -138,9 +138,9 @@ public class BookRoomViewController {
 				
 
 			 if (lCBox.isSelected()) {
-				 LocalDate localDate = dpField.getValue();//For reference
-				 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
-				 String formattedString = localDate.format(formatter);
+				LocalDate localDate = dpField.getValue();//For reference
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+				String formattedString = localDate.format(formatter);
 				controller.getReservationBean().setDate(formattedString);
 				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText()));
 				controller.getReservationBean().setHour(hSB.getText());
@@ -166,10 +166,17 @@ public class BookRoomViewController {
     void bookRoom() throws MyRuntimeException, SQLException{
     	
     	BookRoomController controller = BookRoomController.getInstance();
-    	controller.getReservationBean().setReservationRoom(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
+    	controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
+    	controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());
+    	System.out.println(controller.getRoomBean().getRoomName());
+    	System.out.println(controller.getRoomBean().getLocation());
+    	
     	boolean val = controller.createReservation();
     	if (val) {
-    		new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + dpField.getAccessibleText() + "at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    		LocalDate localDate = dpField.getValue();//For reference
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+			String formattedString = localDate.format(formatter);
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + formattedString + " at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
     	}else {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
     	}

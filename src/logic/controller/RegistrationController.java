@@ -50,11 +50,11 @@ public class RegistrationController {
 	
 	public void insertNewPlayer(RegistrationBean bean) throws MyRuntimeException, SQLException {
 		PlayerDAO.insertPlayer(bean);
-		logc.setBeanFromReg(this.getBean().getUsername());
+		logc.setBeanFromReg(bean.getUsername());
 	}
 	
 	public void insertNewOrganizer(RegistrationBean bean) throws MyRuntimeException, SQLException {
 		EventOrganizerDAO.insertOrganizer(bean);
-		logc.setBeanFromReg(this.getBean().getUsername());
+		logc.setBeanFromReg(bean.getUsername());
 	}
 }

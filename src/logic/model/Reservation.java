@@ -9,7 +9,8 @@ public class Reservation
 	private int numberOfPlayer;
 	private String reservationRoom;
 	private String playerUsername;
-	private String date;//replace with date??
+	private String date;
+	//attenzione in database c'è roomid qui poi hour
 	private String hour;
 	
 

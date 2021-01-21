@@ -45,7 +45,7 @@ public class LoginController {
 	}
 	
 	public void setBeanFromReg(String str) {
-		this.bean.setUsername(str);
+		bean.setUsername(str);
 	}
 
 	public void setBean(LoginBean bean) {

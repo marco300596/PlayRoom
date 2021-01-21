@@ -18,25 +18,28 @@ public class RoomDAO {
 	
 public static int getRoomId(String roomName, String location) throws MyRuntimeException, SQLException {
 		
-		Statement stmtR = null;
+		PreparedStatement pStmtR = null;
 		Connection connR = null;
+		
 		try {
 			connR= ConnectionFactory.getConnection();
-			stmtR = connR.createStatement();
-			ResultSet rs = stmtR.executeQuery("SELECT roomid FROM room WHERE roomname =" + roomName + " and location =" + location + ";");
+			pStmtR = connR.prepareStatement("SELECT roomid FROM public.room WHERE roomname= ? and location= ? ;");
+			pStmtR.setString(1, roomName);
+			pStmtR.setString(2, location);
+			ResultSet rs =  pStmtR.executeQuery();
 			
 			if(rs.next()) {
 				return extractRoomIDFromResultSet(rs);
 			}
-			stmtR.close();
+			pStmtR.close();
 			connR.close();
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		finally {
-			if (stmtR != null) {
-				stmtR.close();
+			if (pStmtR != null) {
+				pStmtR.close();
 			}
 			if (connR != null) {
 				connR.close();
