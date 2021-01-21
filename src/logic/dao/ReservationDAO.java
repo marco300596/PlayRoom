@@ -48,7 +48,7 @@ public static boolean insertReservation(ReservationBean reservation) throws MyRu
 		
 		try {
 			connRS= ConnectionFactory.getConnection();
-			psRS = connRS.prepareStatement("INSERT INTO reservation VALUES (1,?,?,?,?,?)");
+			psRS = connRS.prepareStatement("INSERT INTO reservation VALUES (0,?,?,?,?,?)");
 			psRS.setInt(1, reservation.getNumberOfPlayer());
 			psRS.setString(2, reservation.getReservationRoom());
 			psRS.setString(3, reservation.getPlayerUsername());
@@ -86,7 +86,7 @@ public static ObservableList<ReservationBean> getAllUncheckReservations() throws
 	try {
 		connP= ConnectionFactory.getConnection();
 		stmtP = connP.createStatement();
-		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus=0");
+		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 0 and ");
 		
 		while(rs.next()) {
 			ReservationBean reservation = extractReservationFromResultSet(rs);

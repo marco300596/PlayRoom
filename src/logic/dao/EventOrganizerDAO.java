@@ -87,13 +87,13 @@ public static boolean insertOrganizer(RegistrationBean org) throws MyRuntimeExce
 		
 		try {
 			connO= ConnectionFactory.getConnection();
-			psO = connO.prepareStatement("INSERT INTO organizer VALUES (?,?,?,?,?,?)");
+			psO = connO.prepareStatement("INSERT INTO organizer VALUES (?,?,?,?,?,NULL)");
 			psO.setString(1, org.getOrgUsername());
 			psO.setString(2, org.getOrgFirstname());
 			psO.setString(3, org.getOrgLastname());
 			psO.setString(4, org.getOrgPassword());
 			psO.setString(5, org.getOrgEmail());
-			psO.setString(6, org.getOrgOwnRoom());
+			
 			int i = psO.executeUpdate();
 			
 			if(i == 1) {

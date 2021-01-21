@@ -10,10 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import logic.bean.RegistrationBean;
 import logic.bean.ReservationBean;
 import logic.controller.CheckBookingController;
-import logic.controller.ManagementController;
 import logic.exception.MyRuntimeException;
 
 public class CheckBookingViewController {
