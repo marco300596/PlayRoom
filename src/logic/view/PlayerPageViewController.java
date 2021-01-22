@@ -52,6 +52,13 @@ public class PlayerPageViewController {
     
     
    @FXML
+   void JoinTournamentPageView(MouseEvent event) {
+	   loadPlayerPage("JoinTournamentPageView");
+   }
+    
+   
+   
+   @FXML
    void highscoreHistoryPage(MouseEvent event) {
     	loadPlayerPage("HighscoreProgressionView");
    }

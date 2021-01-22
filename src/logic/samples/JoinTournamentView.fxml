@@ -40,7 +40,7 @@
             </HBox>
             <Button fx:id="subBtn" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000;" text="JOIN TOURNAMENT" textAlignment="JUSTIFY" textFill="#6fd736" underline="true">
                <VBox.margin>
-                  <Insets left="600.0" right="62.0" top="10.0" />
+                  <Insets left="450.0" right="62.0" top="10.0" />
                </VBox.margin>
                <font>
                   <Font size="25.0" />
@@ -48,10 +48,10 @@
             </Button>
             <TableView fx:id="hTab" editable="true" fixedCellSize="20.0" prefHeight="336.0" prefWidth="693.0" style="-fx-border-color: #000000;">
                <columns>
-                  <TableColumn fx:id="posCol" maxWidth="175.0" minWidth="35.0" prefWidth="121.0" resizable="false" text="Tournament Name" />
-                  <TableColumn fx:id="plNCol" maxWidth="449.0" minWidth="-1.0" prefWidth="316.0" text="Room" />
-                  <TableColumn fx:id="highValCol" maxWidth="482.0" minWidth="-1.0" prefWidth="157.0" text="VideoGame" />
-                  <TableColumn fx:id="highValCol2" maxWidth="482.0" minWidth="-1.0" prefWidth="407.0" text="Hardware" />
+                  <TableColumn fx:id="posCol" maxWidth="175.0" minWidth="35.0" prefWidth="151.0" resizable="false" text="Tournament Name" />
+                  <TableColumn fx:id="plNCol" maxWidth="449.0" minWidth="-1.0" prefWidth="220.0" text="Room" />
+                  <TableColumn fx:id="highValCol" maxWidth="482.0" minWidth="-1.0" prefWidth="204.0" text="VideoGame" />
+                  <TableColumn fx:id="highValCol2" maxWidth="482.0" minWidth="-1.0" prefWidth="343.0" text="Hardware" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
