@@ -106,8 +106,42 @@ public static boolean insertTournament(TournamentBean tournament) throws MyRunti
 		}
 		return false;
 	}
+
+
+public static Tournament joinTournament(TournamentBean tournament) throws MyRuntimeException, SQLException {
 	
-	private Tournament extractTournamentFromResultSet(ResultSet rs) throws SQLException{
+	Statement stmtT = null;
+	Connection connT = null;
+	try {
+		connT= ConnectionFactory.getConnection();
+		stmtT = connT.createStatement();
+		ResultSet rs = stmtT.executeQuery("SELECT * FROM tournament WHERE tournamentName=" + tournamentName);
+		
+		if(rs.next()) {
+			return extractTournamentFromResultSet(rs);
+		}
+		stmtT.close();
+		connT.close();
+		
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+	finally {
+		if (stmtT != null) {
+			stmtT.close();
+		}
+		if (connT != null) {
+			connT.close();
+        }
+	}
+	return null;
+}
+
+
+
+
+	
+	private static Tournament extractTournamentFromResultSet(ResultSet rs) throws SQLException{
 		
 		Tournament tournament = new Tournament();
 		
