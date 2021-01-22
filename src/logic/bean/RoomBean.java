@@ -11,6 +11,7 @@ public class RoomBean {
 	private int numSeat;
 	private int price;
 	private String location;
+	private String city;
 	private String photo;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
@@ -28,6 +29,20 @@ public class RoomBean {
 		this.vg = null;
 		this.hw = null;
 	}
+	
+	
+
+	public String getCity() {
+		return city;
+	}
+
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
 
 	public String getDescription() {
 		return Description;

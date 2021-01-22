@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="810.0" prefWidth="811.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.RegisterRoomViewController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="810.0" prefWidth="811.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.RegisterRoomViewController">
    <children>
       <HBox prefHeight="810.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -64,7 +63,20 @@
                         <Insets bottom="10.0" left="50.0" />
                      </VBox.margin>
                   </TextArea>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Location:">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add city">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="50.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextArea fx:id="cTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="50.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add address">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -72,17 +84,14 @@
                         <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
                   </Text>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/icons8-google-maps-48.png" />
-                     </image>
+                  <TextArea fx:id="addrTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <VBox.margin>
-                        <Insets bottom="20.0" left="50.0" />
+                        <Insets left="50.0" />
                      </VBox.margin>
-                  </ImageView>
-                  <Button fx:id="regroombtn" mnemonicParsing="false" onMousePressed="#registerPression" text="Register Room">
+                  </TextArea>
+                  <Button fx:id="regroombtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#registerPression" prefHeight="30.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-border-color: #6fd736;" text="Register Room" textFill="#6fd736">
                      <VBox.margin>
-                        <Insets bottom="90.0" left="350.0" right="50.0" top="-60.0" />
+                        <Insets left="350.0" right="50.0" top="20.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />

@@ -257,19 +257,21 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 		return null;
 	}
 	
-	public static boolean insertRoom(RoomBean room) throws MyRuntimeException, SQLException{
+	public static boolean insertRoom(RoomBean room, int id) throws MyRuntimeException, SQLException{
 		
 			PreparedStatement psR = null;
 			Connection connR = null;
 		
 			try {
 				connR= ConnectionFactory.getConnection();
-				psR = connR.prepareStatement("INSERT INTO room VALUES (?,?,?,?,?)");
+				psR = connR.prepareStatement("INSERT INTO room VALUES (?,?,?,?,?,?,?)");
 				psR.setString(1, room.getRoomName());
 				psR.setInt(2, room.getNumSeat());
 				psR.setInt(3, room.getPrice());
 				psR.setString(4, room.getLocation());
 				psR.setString(5, room.getPhoto());
+				psR.setInt(6, id);
+				psR.setString(7, room.getCity());
 				int i = psR.executeUpdate();
 				
 				if(i == 1) {

@@ -10,7 +10,6 @@ public class RegisterRoomController {
 
     private Room room;
 
-
     private RoomBean bean = new RoomBean();
 
 
@@ -47,8 +46,8 @@ public class RegisterRoomController {
 	}
 	
 	public void insertnewRoom(RoomBean bean)throws MyRuntimeException, SQLException{
-		
-		RoomDAO.insertRoom(bean);
+		int i = RoomDAO.getRoomIdFromOrgUsername(LoginController.getInstance().getBean().getUsername());
+		RoomDAO.insertRoom(bean, i);
 		
 	}
 }

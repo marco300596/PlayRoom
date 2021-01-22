@@ -24,7 +24,11 @@ public class RegisterRoomViewController {
 	@FXML
     private TextArea nametxt;
 
-    
+	@FXML
+    private TextArea cTxt;
+
+    @FXML
+    private TextArea addrTxt;
 
     @FXML
     private TextArea desctxt;
@@ -64,6 +68,7 @@ public class RegisterRoomViewController {
     	controller.getBean().setNumSeat(numSeat);
     	controller.getBean().setRoomName(nametxt.getText());
     	controller.getBean().setDescription(desctxt.getText());
+    	controller.getBean().setCity(cTxt.getText());
     	
         //controller.getBean().setLocation(?.getText());  
     //	controller.getBean().setPhoto(phfield.getText());
@@ -92,7 +97,7 @@ public class RegisterRoomViewController {
 
     
     private boolean verifyFields() {
-    	return !(nstxt.getText().equals("") || nametxt.getText().equals("") || desctxt.getText().equals(""));
+    	return !(nstxt.getText().equals("") || nametxt.getText().equals("") || desctxt.getText().equals("") || cTxt.getText().equals("") || addrTxt.getText().equals(""));
     }
 
     
