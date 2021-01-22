@@ -12,7 +12,13 @@ public class ReservationBean {
 	private String hour;
 
 	public ReservationBean() {
-		//this is empty
+		this.roomid = 0;
+		this.reservationStatus= 0;
+		this.numberOfPlayer = 0;
+		this.reservationRoom = "";
+		this.playerUsername ="";
+		this.date = "";
+		this.hour = "";
 	}
 
 	public int getRoomid() {

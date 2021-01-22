@@ -16,13 +16,12 @@
          <children>
             <VBox fx:id="vBox" prefHeight="790.0" prefWidth="907.0">
                <children>
-                  <TableView fx:id="chkTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="305.0" style="-fx-background-color: #262628;">
+                  <TableView fx:id="chkTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="301.0" prefWidth="682.0" style="-fx-background-color: #262628;">
                      <columns>
-                        <TableColumn fx:id="usCol" prefWidth="125.0" text="Username" />
-                        <TableColumn fx:id="dtCol" prefWidth="137.0" text="Date" />
-                        <TableColumn fx:id="hCol" prefWidth="93.0" text="Hour" />
-                        <TableColumn fx:id="numCol" prefWidth="160.0" text="Numseat" />
-                        <TableColumn fx:id="roomCol" prefWidth="165.0" text="Roomname" />
+                        <TableColumn fx:id="usCol" prefWidth="157.0" text="Username" />
+                        <TableColumn fx:id="dtCol" prefWidth="163.0" text="Date" />
+                        <TableColumn fx:id="hCol" prefWidth="178.0" text="Hour" />
+                        <TableColumn fx:id="numCol" prefWidth="182.0" text="Numseat" />
                      </columns>
                      <VBox.margin>
                         <Insets left="50.0" top="100.0" />

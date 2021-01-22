@@ -55,7 +55,8 @@ public class CheckBookingController {
 	}
 	
 	public ObservableList<ReservationBean> updateReservation() throws MyRuntimeException, SQLException {
-		int roomid = RoomDAO.getRoomIdFromOrgUsername(logBean.getUsername());
+		int roomid = 0;
+		roomid = RoomDAO.getRoomIdFromOrgUsername(logBean.getUsername());
 		this.beanList = ReservationDAO.getAllUncheckReservations(roomid);
 		return this.beanList;
 	}

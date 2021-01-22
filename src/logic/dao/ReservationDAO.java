@@ -48,12 +48,14 @@ public static boolean insertReservation(ReservationBean reservation, int id) thr
 		
 		try {
 			connRS= ConnectionFactory.getConnection();
-			psRS = connRS.prepareStatement("INSERT INTO reservation VALUES (0,?,?,?,?,?)");
+			psRS = connRS.prepareStatement("INSERT INTO reservation VALUES (0,?,?,?,?,?,?)");
 			psRS.setInt(1, reservation.getNumberOfPlayer());
 			psRS.setString(2, reservation.getPlayerUsername());
 			psRS.setString(3,  reservation.getDate());
 			psRS.setInt(4, id);
 			psRS.setString(5, reservation.getHour());
+
+			psRS.setString(5, reservation.getReservationRoom());
 			
 			
 			int i = psRS.executeUpdate();
@@ -111,6 +113,36 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
 	}
 	return reservations;
 }
+
+	public static boolean checkReservation(ReservationBean bean,String player,String hour,String date) throws MyRuntimeException {
+		PreparedStatement psRS = null;
+		Connection connRS = null;
+		
+		try {
+			connRS= ConnectionFactory.getConnection();
+			//TODO da verificare
+			psRS = connRS.prepareStatement("UPDATE reservation WHERE username ='"+player+"' and hour='"+hour+"' and date='"+date+"'SET VALUES (1)");
+			int i = psRS.executeUpdate();
+			
+			if(i == 1) {
+				return true;
+			}
+			psRS.close();
+			connRS.close();
+			
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+		finally {
+			if (psRS != null) {
+				psRS.close();
+			}
+			if (connRS != null) {
+				connRS.close();
+            }
+		}
+		return false;
+	}
 	
 	private static ReservationBean extractReservationFromResultSet(ResultSet rs) throws SQLException{
 		
@@ -119,7 +151,7 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
 		reservation.setRoomid(rs.getInt("roomid"));
 		reservation.setReservationStatus(rs.getInt("reservationstatus"));
 		reservation.setNumberOfPlayer(rs.getInt("numberofplayer"));
-		reservation.setReservationRoom(rs.getString("reservationroom"));
+		reservation.setReservationRoom(rs.getString("roomname"));
 		reservation.setPlayerUsername(rs.getString("playerusername"));
 		reservation.setDate(rs.getString("date"));
 		reservation.setHour(rs.getString("hour"));

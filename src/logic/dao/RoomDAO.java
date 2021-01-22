@@ -55,7 +55,7 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 	try {
 		connR= ConnectionFactory.getConnection();
 		stmtR = connR.createStatement();
-		ResultSet rs = stmtR.executeQuery("SELECT roomid FROM organizer WHERE orgusername =" + orgUserName + ";");
+		ResultSet rs = stmtR.executeQuery("SELECT roomid FROM organizer WHERE orgusername ='" + orgUserName + "';");
 		
 		if(rs.next()) {
 			return extractRoomIDFromResultSet(rs);
