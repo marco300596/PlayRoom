@@ -8,6 +8,7 @@ public class ReservationBean {
 	private String reservationRoom;
 	private String playerUsername;
 	private String date;
+	private String city;
 	private String hour;
 
 	public ReservationBean() {
@@ -38,6 +39,10 @@ public class ReservationBean {
 		return date;
 	}
 
+	public String getCity() {
+		return city;
+	}
+	
 	public String getHour() {
 		return hour;
 	}
@@ -64,6 +69,10 @@ public class ReservationBean {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+	
+	public void setCity(String city) {
+		this.city = city;
 	}
 	
 	public void setHour(String hour) {

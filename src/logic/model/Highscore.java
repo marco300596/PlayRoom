@@ -3,9 +3,9 @@ package logic.model;
 public class Highscore {
 	
 	//attributes
-	private String best;
-	private String highscore;
+	private int highscore;
 	private String tournament;
+	private String playerUN;
 	private boolean hStatus;
 	
 
@@ -15,40 +15,35 @@ public class Highscore {
 	
 	//methods
 	//non-default constructor
-	public Highscore(String best, String tournament,String highscore, boolean hStatus)
+	public Highscore(String tournament,int highscore, boolean hStatus)
 	{
-		this.setBest(best);
 		this.setTournament(tournament);
 		this.setHighscore(highscore);
 		this.sethStatus(hStatus);
 	}
 	
 	//setter&getter
-	public String getBest()
-	{
-		return best;
-	}
 	
-	public String getHighscore()
+	public int getHighscore()
 	{
 		return highscore;
 	}
 
-	public String getTournamentid()
+	public String getTournament()
 	{
 		return tournament;
+	}
+	
+	public String getPlayerUserName()
+	{
+		return playerUN;
 	}
 	
 	public boolean gethStatus() {
 		return hStatus;
 	}
 
-	public void setBest(String best)
-	{
-		this.best = best;
-	}
-	
-	public void setHighscore(String highscore)
+	public void setHighscore(int highscore)
 	{
 		this.highscore = highscore;
 	}
@@ -56,6 +51,11 @@ public class Highscore {
 	public void setTournament(String tournament)
 	{
 		this.tournament = tournament;
+	}
+	
+	public void setPlayerUserName(String username)
+	{
+		this.playerUN = username;
 	}
 
 	public void sethStatus(boolean hStatus) {

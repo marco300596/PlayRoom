@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import logic.bean.GameHardwareBean;
 import logic.bean.ReservationBean;
 import logic.bean.RoomBean;
 import logic.dao.RoomDAO;
@@ -17,6 +18,7 @@ public class BookRoomController {
     private ReservationBean bean = new ReservationBean();
     private RoomBean robean = new RoomBean();
 	private LoginController logc = LoginController.getInstance();
+	private GameHardwareBean ghbean = new GameHardwareBean();
 
 	public static BookRoomController getInstance() {
 
@@ -27,6 +29,10 @@ public class BookRoomController {
         return inst;
 
     }
+	
+	public GameHardwareBean getGHBean() {
+		return ghbean;
+	}
 	
 	public ReservationBean getReservationBean() {
 		return bean;
@@ -46,17 +52,17 @@ public class BookRoomController {
 	
 	
 	public ObservableList<RoomBean> findRoomForPreno() throws MyRuntimeException, SQLException{
-		beanList = RoomDAO.getAllRoomsAvailable(bean.getDate(), this.bean.getHour(), this.bean.getNumberOfPlayer());
+		beanList = RoomDAO.getAllRoomsAvailable(bean.getDate(), bean.getHour(), bean.getNumberOfPlayer(), bean.getCity());
 		return beanList;
 	}
 	
 	public ObservableList<RoomBean> findRoomForPrenoByHardware() throws MyRuntimeException, SQLException{
-		beanList = RoomDAO.getAllRoomsAvailableForHW(this.bean.getDate(), this.bean.getHour(), this.bean.getNumberOfPlayer(), this.robean.getHardwareName());
+		beanList = RoomDAO.getAllRoomsAvailableForHW(bean.getDate(), bean.getHour(), bean.getNumberOfPlayer(), ghbean.getHardwareName(), bean.getCity());
 		return beanList;
 	}
 	
 	public ObservableList<RoomBean> findRoomForPrenoByVideoGame() throws MyRuntimeException, SQLException{
-		beanList = RoomDAO.getAllRoomsAvailableForVG(this.bean.getDate(), this.bean.getHour(), this.bean.getNumberOfPlayer(), this.robean.getGameName());
+		beanList = RoomDAO.getAllRoomsAvailableForVG(bean.getDate(), bean.getHour(), bean.getNumberOfPlayer(), ghbean.getGameName(), bean.getCity());
 		return beanList;
 	}
 	

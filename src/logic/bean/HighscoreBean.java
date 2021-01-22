@@ -3,17 +3,16 @@ package logic.bean;
 public class HighscoreBean {
 	
 	//attributes
-	private String highscore;
+	private int highscore;
 	private String tournament;
 	private boolean hStatus;
 	private String playerUN;
 	
 	public HighscoreBean() {
-		this.highscore = "";
 		this.tournament = "";
 		}
 
-	public String getHighscore() {
+	public int getHighscore() {
 		return highscore;
 	}
 	
@@ -29,7 +28,7 @@ public class HighscoreBean {
 		return playerUN;
 	}
 		
-	public void setHighscore(String highscore) {
+	public void setHighscore(int highscore) {
 		this.highscore = highscore;
 	}
 	

@@ -110,7 +110,7 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 		return null;
 	}
 	
-	public static ObservableList<RoomBean> getAllRoomsAvailable(String date, String hour, Integer nOP) throws MyRuntimeException, SQLException{
+	public static ObservableList<RoomBean> getAllRoomsAvailable(String date, String hour, Integer nOP, String city) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement pStmtR = null;
 		Connection connR = null;
@@ -118,10 +118,11 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 		
 		try {
 			connR= ConnectionFactory.getConnection();
-			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?)");
-			pStmtR.setInt(1, nOP);
-			pStmtR.setString(2, date);
-			pStmtR.setString(3, hour);
+			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?)");
+			pStmtR.setString(1, city);
+			pStmtR.setInt(2, nOP);
+			pStmtR.setString(3, date);
+			pStmtR.setString(4, hour);
 			ResultSet rs =  pStmtR.executeQuery();
 		 	
 			while(rs.next()) {
@@ -147,57 +148,27 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 		return rooms;
 	}
 	
-public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, String hour, int nOP,  String hwName) throws MyRuntimeException, SQLException{
+public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, String hour, int nOP,  String hwName, String city) throws MyRuntimeException, SQLException{
 		
-		Statement stmtR = null;
-		Connection connR = null;
-		ObservableList<RoomBean> rooms = FXCollections.observableArrayList();
-		
-		try {
-			connR= ConnectionFactory.getConnection();
-			stmtR = connR.createStatement();
-			ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat = ?" + nOP);
-			
-			while(rs.next()) {
-				RoomBean room = extractRoomBeanFromResultSet(rs);
-				rooms.add(room);
-			}
-			
-			stmtR.close();
-			connR.close();
-			return rooms;
-			
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		finally {
-			if (stmtR != null) {
-				stmtR.close();
-			}
-			if (connR != null) {
-				connR.close();
-            }
-		}
-		return rooms;
-	}
-
-public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, String hour, int nOP, String vgName) throws MyRuntimeException, SQLException{
-	
-	Statement stmtR = null;
+	PreparedStatement pStmtR = null;
 	Connection connR = null;
 	ObservableList<RoomBean> rooms = FXCollections.observableArrayList();
 	
 	try {
 		connR= ConnectionFactory.getConnection();
-		stmtR = connR.createStatement();
-		ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE numseat>=?" + nOP);
-		
+		pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM hardware WHERE hardwarename = ? and roomid = r.roomid);");
+		pStmtR.setString(1, city);
+		pStmtR.setInt(2, nOP);
+		pStmtR.setString(3, date);
+		pStmtR.setString(4, hour);
+		ResultSet rs =  pStmtR.executeQuery();
+	 	
 		while(rs.next()) {
 			RoomBean room = extractRoomBeanFromResultSet(rs);
 			rooms.add(room);
-		}
+			}
 		
-		stmtR.close();
+		pStmtR.close();
 		connR.close();
 		return rooms;
 		
@@ -205,8 +176,46 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 		ex.printStackTrace();
 	}
 	finally {
-		if (stmtR != null) {
-			stmtR.close();
+		if (pStmtR != null) {
+			pStmtR.close();
+		}
+		if (connR != null) {
+			connR.close();
+        }
+	}
+	return rooms;
+}
+
+public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, String hour, int nOP, String vgName, String city) throws MyRuntimeException, SQLException{
+	
+	PreparedStatement pStmtR = null;
+	Connection connR = null;
+	ObservableList<RoomBean> rooms = FXCollections.observableArrayList();
+	
+	try {
+		connR= ConnectionFactory.getConnection();
+		pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM videogame WHERE gamename = ? and roomid = r.roomid);");
+		pStmtR.setString(1, city);
+		pStmtR.setInt(2, nOP);
+		pStmtR.setString(3, date);
+		pStmtR.setString(4, hour);
+		ResultSet rs =  pStmtR.executeQuery();
+	 	
+		while(rs.next()) {
+			RoomBean room = extractRoomBeanFromResultSet(rs);
+			rooms.add(room);
+			}
+		
+		pStmtR.close();
+		connR.close();
+		return rooms;
+		
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+	finally {
+		if (pStmtR != null) {
+			pStmtR.close();
 		}
 		if (connR != null) {
 			connR.close();

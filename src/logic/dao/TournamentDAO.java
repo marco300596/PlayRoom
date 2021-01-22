@@ -40,6 +40,38 @@ public class TournamentDAO {
 		return null;
 	}
 	
+public static boolean checkAdehesion(String playerUN, String tournamentName) throws MyRuntimeException, SQLException{
+		
+		PreparedStatement psT = null;
+		Connection connT = null;
+		
+		try {
+			connT= ConnectionFactory.getConnection();
+			psT = connT.prepareStatement("SELECT * FROM PLAYER WHERE username = ? and tournamentname = ?");
+			psT.setString(1, playerUN);
+			psT.setString(2, tournamentName);
+			int i = psT.executeUpdate();
+			
+			if(i == 1) {
+				return true;
+			}
+			psT.close();
+			connT.close();
+			
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+		finally {
+			if (psT != null) {
+				psT.close();
+			}
+			if (connT != null) {
+				connT.close();
+            }
+		}
+		return false;
+	}
+	
 public static boolean insertTournament(TournamentBean tournament) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psT = null;
