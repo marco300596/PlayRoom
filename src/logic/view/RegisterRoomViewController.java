@@ -68,6 +68,7 @@ public class RegisterRoomViewController {
     	controller.getBean().setNumSeat(numSeat);
     	controller.getBean().setRoomName(nametxt.getText());
     	controller.getBean().setDescription(desctxt.getText());
+    	controller.getBean().setLocation(addrTxt.getText());	
     	controller.getBean().setCity(cTxt.getText());
     	
         //controller.getBean().setLocation(?.getText());  
@@ -75,13 +76,13 @@ public class RegisterRoomViewController {
     	try {
     		controller.insertnewRoom(controller.getBean());
     		new Thread(() ->
-    		JOptionPane.showConfirmDialog(null,"GZ! new Room created!", "Success", JOptionPane.INFORMATION_MESSAGE));
+    		JOptionPane.showConfirmDialog(null,"GZ! new Room created!", "Success", JOptionPane.INFORMATION_MESSAGE)).start();
     	} catch(Exception e){
     		Logger.getLogger(RegisterRoomController.class.getName()).log(Level.SEVERE, null, e);
     	}
 	} else {
 		new Thread(() ->
-		JOptionPane.showMessageDialog(null, "fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE));
+		JOptionPane.showMessageDialog(null, "fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
 		
 	}
     	

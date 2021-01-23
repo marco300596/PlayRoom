@@ -52,6 +52,8 @@ public class JoinTournamentViewController {
     @FXML
     private TableColumn<Hardware,String> hardCol;
 
+    
+    
     public void initialize() {
         
     	ObservableList<TournamentBean> tournament = FXCollections.observableArrayList();
