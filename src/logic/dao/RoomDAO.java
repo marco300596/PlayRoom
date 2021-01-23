@@ -294,7 +294,7 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 			return false;
 		}
 	
-private static int extractRoomIDFromResultSet(ResultSet rs) throws MyRuntimeException, SQLException{
+private static int extractRoomIDFromResultSet(ResultSet rs) throws SQLException{
 		
 		int i = 0;
 		
@@ -304,7 +304,7 @@ private static int extractRoomIDFromResultSet(ResultSet rs) throws MyRuntimeExce
 		return i;
 	}
 	
-private Room extractRoomFromResultSet(ResultSet rs) throws MyRuntimeException, SQLException{
+private Room extractRoomFromResultSet(ResultSet rs) throws  SQLException{
 		
 		Room room = new Room();
 		

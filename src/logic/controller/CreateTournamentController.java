@@ -27,9 +27,9 @@ public class CreateTournamentController {
 		this.bean = bean;
 	}
 	
-	public void joinNewTournament(TournamentBean bean) throws MyRuntimeException, SQLException {
+	public void insertNewTournament(TournamentBean bean) throws MyRuntimeException, SQLException {
 		
-		TournamentDAO.joinTournament(bean);
+		TournamentDAO.insertTournament(bean);
 		
 	}
 	

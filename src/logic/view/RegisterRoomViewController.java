@@ -71,8 +71,6 @@ public class RegisterRoomViewController {
     	controller.getBean().setLocation(addrTxt.getText());	
     	controller.getBean().setCity(cTxt.getText());
     	
-        //controller.getBean().setLocation(?.getText());  
-    //	controller.getBean().setPhoto(phfield.getText());
     	try {
     		controller.insertnewRoom(controller.getBean());
     		new Thread(() ->

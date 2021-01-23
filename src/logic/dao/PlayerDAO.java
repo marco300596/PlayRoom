@@ -44,7 +44,7 @@ public class PlayerDAO {
 		return null;
 	}
 	
-public static Boolean checkPlayer(String username) throws MyRuntimeException, SQLException {
+public static boolean checkPlayer(String username) throws MyRuntimeException, SQLException {
 		
 	PreparedStatement psP = null;
 	Connection connP = null;

@@ -116,7 +116,7 @@ private Highscore extractHighscoreFromResultSet(ResultSet rs) throws SQLExceptio
 		Highscore hTable = new Highscore();
 		
 		hTable.setTournament(rs.getString("tournamentName"));
-		hTable.setHighscore(rs.getInt("highscore"));
+		hTable.setScore(rs.getInt("highscore"));
 		hTable.setPlayerUserName(rs.getString("username"));
 		
 		return hTable;

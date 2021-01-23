@@ -31,8 +31,6 @@ import logic.controller.BookRoomController;
 import logic.exception.MyRuntimeException;
 import logic.model.Room;
 
-//non lo so altre due classi no?????
-
 public class BookRoomViewController {
 
     @FXML
@@ -163,7 +161,7 @@ public class BookRoomViewController {
     @FXML
     void bookRoom() throws MyRuntimeException, SQLException{
     	BookRoomController controller = BookRoomController.getInstance();
-    	if (controller.CheckPlayerExistance()) {
+    	if (controller.checkPlayerExistance()) {
     	controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
     	controller.getRoomBean().setCity(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());
     	

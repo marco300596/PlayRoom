@@ -3,7 +3,7 @@ package logic.model;
 public class Highscore {
 	
 	//attributes
-	private int highscore;
+	private int score;
 	private String tournament;
 	private String playerUN;
 	private boolean hStatus;
@@ -15,18 +15,18 @@ public class Highscore {
 	
 	//methods
 	//non-default constructor
-	public Highscore(String tournament,int highscore, boolean hStatus)
+	public Highscore(String tournament,int score, boolean hStatus)
 	{
 		this.setTournament(tournament);
-		this.setHighscore(highscore);
+		this.setScore(score);
 		this.sethStatus(hStatus);
 	}
 	
 	//setter&getter
 	
-	public int getHighscore()
+	public int getScore()
 	{
-		return highscore;
+		return score;
 	}
 
 	public String getTournament()
@@ -43,9 +43,9 @@ public class Highscore {
 		return hStatus;
 	}
 
-	public void setHighscore(int highscore)
+	public void setScore(int score)
 	{
-		this.highscore = highscore;
+		this.score = score;
 	}
 
 	public void setTournament(String tournament)

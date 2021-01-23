@@ -28,13 +28,12 @@ public class SubmitHighscoreController {
 	public HighscoreBean getHighscoreBean() {
 		return bean;
 	}
-	public Boolean CheckPlayerExistance() throws MyRuntimeException, SQLException{
+	public boolean checkPlayerExistance() throws MyRuntimeException, SQLException{
 		return PlayerDAO.checkPlayer(bean.getPlayerUN());
 	}
 	
 	public boolean checkTournamentAdehesion() throws MyRuntimeException, SQLException {
-		boolean res = TournamentDAO.checkAdehesion(bean.getPlayerUN(), bean.getTournament());
-		return res;
+		return TournamentDAO.checkAdehesion(bean.getPlayerUN(), bean.getTournament());
 	}
 	
 	public ObservableList<HighscoreBean> submitHighscoreAndShow() throws MyRuntimeException, SQLException{

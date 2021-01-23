@@ -15,7 +15,7 @@ public class RoomBean {
 	private String photo;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
-	private String Description;
+	private String description;
 	
 	
 
@@ -45,11 +45,11 @@ public class RoomBean {
 
 
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	
 	

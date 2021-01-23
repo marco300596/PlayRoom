@@ -49,8 +49,6 @@ public class ManagementViewController {
     private Button delBtn;
     private HBox hBox;
     
-   // private static final String GREY = "-fx-background-color: #48484a;";
-
     @FXML
     void updateList(MouseEvent event) throws MyRuntimeException, SQLException {
     	ManagementController controller = ManagementController.getInstance();
@@ -61,9 +59,7 @@ public class ManagementViewController {
     	fnameCol.setCellValueFactory(new PropertyValueFactory<>("firstname"));
     	lnameCol.setCellValueFactory(new PropertyValueFactory<>("lastname"));
     	
-    	/*nameCol.setStyle(GREY);	 	per adesso lo tolgo perche' non si vede una minchia
-    	 *emailCol.setStyle(GREY);
-    	 *
+    	/*
     	 * potremmo usare il pattern decorator per aggiungere questa 
     	 * funzionalita', visto che viene aggiunta dinamicamente?
     	 */

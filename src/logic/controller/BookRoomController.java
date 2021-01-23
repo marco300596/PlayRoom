@@ -51,7 +51,7 @@ public class BookRoomController {
 		this.robean = robean;
 	}
 	
-	public Boolean CheckPlayerExistance() throws MyRuntimeException, SQLException{
+	public boolean checkPlayerExistance() throws MyRuntimeException, SQLException{
 		return PlayerDAO.checkPlayer(logc.getBean().getUsername());
 	}
 	

@@ -1,11 +1,5 @@
 package logic.view;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.swing.JOptionPane;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,24 +8,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-import logic.bean.HighscoreBean;
 import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
 import logic.controller.JoinTournamentController;
-import logic.controller.LoginController;
-import logic.controller.ModifyRoomController;
-import logic.controller.RegisterRoomController;
-import logic.exception.MyRuntimeException;
 import logic.model.Hardware;
 import logic.model.Room;
 import logic.model.Tournament;
 import logic.model.VideoGame;
 
 public class JoinTournamentViewController {
-
-	private JoinTournamentController jtournament= JoinTournamentController.getInstance();
-	
 	
     @FXML
     private TextField citytxt;
