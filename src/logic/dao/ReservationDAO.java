@@ -114,14 +114,13 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
 	return reservations;
 }
 
-	public static boolean checkReservation(ReservationBean bean,String player,String hour,String date) throws MyRuntimeException, SQLException {
+	public static boolean checkReservation(String player,String hour,String date) throws MyRuntimeException, SQLException {
 		PreparedStatement psRS = null;
 		Connection connRS = null;
 		
 		try {
 			connRS= ConnectionFactory.getConnection();
-			//TODO da verificare
-			psRS = connRS.prepareStatement("UPDATE reservation WHERE username ='"+player+"' and hour='"+hour+"' and date='"+date+"'SET VALUES (1)");
+			psRS = connRS.prepareStatement("UPDATE reservation SET reservationstatus=1 WHERE playerusername ='"+player+"' and hour='"+hour+"' and date='"+date+"'");
 			int i = psRS.executeUpdate();
 			
 			if(i == 1) {
