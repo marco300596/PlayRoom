@@ -51,7 +51,7 @@
                   </CustomMenuItem>
                   <CustomMenuItem text="1">
                      <content>
-                        <Button minHeight="110.0" mnemonicParsing="false" onMousePressed="#JoinTournamentPage" prefHeight="80.0" prefWidth="200.0" text="Join Tournament" />
+                        <Button minHeight="110.0" mnemonicParsing="false" onMousePressed="#joinTournamentPage" prefHeight="80.0" prefWidth="200.0" text="Join Tournament" />
                      </content>
                   </CustomMenuItem>
                </items>
