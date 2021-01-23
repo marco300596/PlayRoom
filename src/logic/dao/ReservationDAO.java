@@ -114,7 +114,7 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
 	return reservations;
 }
 
-	public static boolean checkReservation(ReservationBean bean,String player,String hour,String date) throws MyRuntimeException {
+	public static boolean checkReservation(ReservationBean bean,String player,String hour,String date) throws MyRuntimeException, SQLException {
 		PreparedStatement psRS = null;
 		Connection connRS = null;
 		

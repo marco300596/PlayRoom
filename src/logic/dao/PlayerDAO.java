@@ -44,6 +44,37 @@ public class PlayerDAO {
 		return null;
 	}
 	
+public static Boolean checkPlayer(String username) throws MyRuntimeException, SQLException {
+		
+	PreparedStatement psP = null;
+	Connection connP = null;
+	
+	try {
+		connP= ConnectionFactory.getConnection();
+		psP = connP.prepareStatement("SELECT * FROM player WHERE username = ?");
+		psP.setString(1, username);
+		int i = psP.executeUpdate();
+			
+		if(i == 1) {
+				return true;
+		}
+		psP.close();
+		connP.close();
+			
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psP != null) {
+			psP.close();
+		}
+		if (connP != null) {
+			connP.close();
+			}
+	}
+	return false;
+}
+	
 	public static LoginBean getPlayerByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psP = null;

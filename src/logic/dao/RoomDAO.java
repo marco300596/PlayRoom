@@ -118,7 +118,7 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 		
 		try {
 			connR= ConnectionFactory.getConnection();
-			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?)");
+			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?)");
 			pStmtR.setString(1, city);
 			pStmtR.setInt(2, nOP);
 			pStmtR.setString(3, date);
@@ -156,7 +156,7 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, St
 	
 	try {
 		connR= ConnectionFactory.getConnection();
-		pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM hardware WHERE hardwarename = ? and roomid = r.roomid);");
+		pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM hardware WHERE hardwarename = ? and roomid = r.roomid);");
 		pStmtR.setString(1, city);
 		pStmtR.setInt(2, nOP);
 		pStmtR.setString(3, date);
@@ -194,7 +194,7 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 	
 	try {
 		connR= ConnectionFactory.getConnection();
-		pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM videogame WHERE gamename = ? and roomid = r.roomid);");
+		pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM videogame WHERE gamename = ? and roomid = r.roomid);");
 		pStmtR.setString(1, city);
 		pStmtR.setInt(2, nOP);
 		pStmtR.setString(3, date);
@@ -329,16 +329,16 @@ private static RoomBean extractRoomBeanFromResultSet(ResultSet rs) throws SQLExc
 		room.setPrice(rs.getInt("price"));
 		room.setLocation(rs.getString("location"));
 		room.setPhoto(rs.getString("photo"));
+		room.setCity(rs.getString("city"));
 		
 		
 		return room;
 	}
 
 
-public static Boolean  hardwareInfo(int id) throws  MyRuntimeException,SQLException{
+public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
 	PreparedStatement psR = null;
 	Connection connR = null;
-	GameHardwareBean  gh= new GameHardwareBean();
 
 	try {
 		connR= ConnectionFactory.getConnection();
@@ -375,11 +375,10 @@ public static Boolean  hardwareInfo(int id) throws  MyRuntimeException,SQLExcept
 
 
 
-public static Boolean gameInfo(int id) throws  MyRuntimeException,SQLException{
+public static Boolean gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
 	
 	PreparedStatement psR = null;
 	Connection connR = null;
-	GameHardwareBean  gh= new GameHardwareBean();
 	
 	try {
 		connR= ConnectionFactory.getConnection();
@@ -409,12 +408,6 @@ public static Boolean gameInfo(int id) throws  MyRuntimeException,SQLException{
     	}
 	}
 	return false;
-	
-	
-	
-	
-	
-	
 	
 }
 

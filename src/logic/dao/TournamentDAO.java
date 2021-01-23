@@ -115,7 +115,7 @@ public static Tournament joinTournament(TournamentBean tournament) throws MyRunt
 	try {
 		connT= ConnectionFactory.getConnection();
 		stmtT = connT.createStatement();
-		ResultSet rs = stmtT.executeQuery("SELECT * FROM tournament WHERE tournamentName=" + tournamentName);
+		ResultSet rs = stmtT.executeQuery("SELECT * FROM tournament WHERE tournamentName=" + tournament);
 		
 		if(rs.next()) {
 			return extractTournamentFromResultSet(rs);

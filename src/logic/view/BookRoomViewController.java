@@ -1,14 +1,20 @@
 package logic.view;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -18,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.scene.control.cell.PropertyValueFactory;
 import logic.bean.RoomBean;
 import logic.controller.BookRoomController;
@@ -78,18 +85,6 @@ public class BookRoomViewController {
     private Button h7;
     @FXML
     private Button h8;
-    @FXML
-    private Button d1;
-    @FXML
-    private Button d2;
-    @FXML
-    private Button d3;
-    @FXML
-    private Button d4;
-    @FXML
-    private Button d5;
-    @FXML
-    private Button d6;
     @FXML
     private DatePicker dpField;
     @FXML
@@ -167,14 +162,13 @@ public class BookRoomViewController {
 	
     @FXML
     void bookRoom() throws MyRuntimeException, SQLException{
-    	
     	BookRoomController controller = BookRoomController.getInstance();
+    	if (controller.CheckPlayerExistance()) {
     	controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
-    	controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());
-    	System.out.println(controller.getRoomBean().getRoomName());
-    	System.out.println(controller.getRoomBean().getLocation());
+    	controller.getRoomBean().setCity(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());
     	
     	boolean val = controller.createReservation();
+    	
     	if (val) {
     		LocalDate localDate = dpField.getValue();//For reference
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
@@ -182,6 +176,20 @@ public class BookRoomViewController {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + formattedString + " at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
     	}else {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+    	}
+    	}else {
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you are no longer registrated in the sistem;/n you have been deleted!","Deleted", JOptionPane.INFORMATION_MESSAGE)).start();
+    		Parent root = null;
+	    	Stage sce = (Stage)hTxt.getScene().getWindow();
+	    	try {
+	    		root = FXMLLoader.load(getClass().getResource("/logic/samples/registration.fxml"));
+	    		
+	    	} catch(IOException e){
+	    		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
+	    	}
+	   
+	    	sce.setScene(new Scene(root));
+	    	sce.show();
     	}
     }
     

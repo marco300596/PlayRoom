@@ -12,14 +12,14 @@ import logic.model.Hardware;
 
 public class HardwareDAO {
 	
-	public Hardware getHardware(String hardwareName) throws MyRuntimeException, SQLException {
+	public Hardware getHardware(String hardwareName, int id) throws MyRuntimeException, SQLException {
 		
 		Statement stmtH = null;
 		Connection connH = null;
 		try {
 			connH= ConnectionFactory.getConnection();
 			stmtH = connH.createStatement();
-			ResultSet rs = stmtH.executeQuery("SELECT * FROM hardware WHERE hardwareName=" + hardwareName);
+			ResultSet rs = stmtH.executeQuery("SELECT * FROM hardware WHERE hardwareName='" + hardwareName + "'roomid = " + id + ";");
 			
 			if(rs.next()) {
 				return extractHardwareFromResultSet(rs);
@@ -41,17 +41,18 @@ public class HardwareDAO {
 		return null;
 	}
 	
-public boolean insertHardware(Hardware hardware) throws MyRuntimeException, SQLException{
+public boolean insertHardware(Hardware hardware, int id) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psH = null;
 		Connection connH = null;
 		
 		try {
 			connH= ConnectionFactory.getConnection();
-			psH = connH.prepareStatement("INSERT INTO room VALUES (NULL,?,?,?)");
+			psH = connH.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?)");
 			psH.setInt(1, hardware.getQuantity());
-			psH.setInt(2, hardware.getAvailability());
+			psH.setBoolean(2, hardware.getAvailability());
 			psH.setString(3, hardware.getDescription());
+			psH.setInt(4, id);
 			int i = psH.executeUpdate();
 			
 			if(i == 1) {
@@ -80,7 +81,7 @@ public boolean insertHardware(Hardware hardware) throws MyRuntimeException, SQLE
 		
 		hardware.setHardwareName(rs.getString("hardwareName"));
 		hardware.setQuantity(rs.getInt("quantity"));
-		hardware.setAvailability(rs.getInt("availability"));
+		hardware.setAvailability(rs.getBoolean("availability"));
 		hardware.setDescription(rs.getString("description"));
 		
 		
