@@ -2,8 +2,10 @@ package logic.controller;
 
 import java.sql.SQLException;
 
+import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
 import logic.dao.PlayerDAO;
+import logic.dao.RoomDAO;
 import logic.dao.TournamentDAO;
 import logic.exception.MyRuntimeException;
 
@@ -12,6 +14,7 @@ public class JoinTournamentController {
 	private static JoinTournamentController inst;
 	private LoginController logc = LoginController.getInstance();
 	private TournamentBean bean = new TournamentBean();
+	private RoomBean rbean = new RoomBean();
 	
 	public static JoinTournamentController getInstance() {
 		if (inst == null) {
@@ -24,17 +27,32 @@ public class JoinTournamentController {
 		return bean;
 	}
 
+	public RoomBean getrBean() {
+		return rbean;
+	}
+
+	
+	
 	public void setBean(TournamentBean bean) {
 		this.bean = bean;
 	}
+	
+	public void setrBean(RoomBean rbean) {
+		this.rbean = rbean;
+	}
+	
+	
 	
 	public Boolean CheckPlayerExistance() throws MyRuntimeException, SQLException{
 		return PlayerDAO.checkPlayer(logc.getBean().getUsername());
 	}
 	
-	public void JoinTournament(TournamentBean bean) throws MyRuntimeException, SQLException {
+	
+	
+	public void JoinTournament(TournamentBean bean,RoomBean rbean) throws MyRuntimeException, SQLException {
 		
-		TournamentDAO.joinTournament(bean);
+		TournamentDAO.getRoomIdFromCity(bean,rbean);
+		
 		
 	}
 	

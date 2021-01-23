@@ -34,7 +34,7 @@ public class ModifyRoomController {
 			
 			int id;
 			id=RoomDAO.getRoomIdFromOrgUsername(bean.getOrgUserName());
-			RoomDAO.hardwareInfo(id);
+			RoomDAO.hardwareInfo(bean,id);
 		}
 		
 		
@@ -42,7 +42,7 @@ public class ModifyRoomController {
 		public void addComponentV(GameHardwareBean bean) throws MyRuntimeException, SQLException {
 			int id;
 			id=RoomDAO.getRoomIdFromOrgUsername(bean.getOrgUserName());
-			RoomDAO.gameInfo(id);
+			RoomDAO.gameInfo(bean,id);
 			
 		}
 		

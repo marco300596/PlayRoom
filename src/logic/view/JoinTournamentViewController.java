@@ -16,9 +16,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import logic.bean.HighscoreBean;
+import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
 import logic.controller.JoinTournamentController;
 import logic.controller.LoginController;
+import logic.controller.ModifyRoomController;
 import logic.controller.RegisterRoomController;
 import logic.exception.MyRuntimeException;
 import logic.model.Hardware;
@@ -51,22 +53,23 @@ public class JoinTournamentViewController {
 
     @FXML
     private TableColumn<Hardware,String> hardCol;
+    
+    RoomBean bean =new RoomBean();
 
     
     
     public void initialize() {
-        
+    	
     	ObservableList<TournamentBean> tournament = FXCollections.observableArrayList();
-    			jtournament.getCity().setCity(citytxt.getText());
-    			if (controller.checkTournamentAdehesion()) {
-        			highscore = controller.submitHighscoreAndShow();
-        			hTab.setItems(highscore);
-        			posCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        			plNCol.setCellValueFactory(new PropertyValueFactory<>("username"));
-        			highValCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
-    			}else {
-    				new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered in this tournament!\n please register","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+    				
+    				JoinTournamentController controller = JoinTournamentController.getInstance();
+    				controller.getrBean().setCity(citytxt.getText());
+        			tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentName"));
+        			roomCol.setCellValueFactory(new PropertyValueFactory<>("roomName"));
+        			gameCol.setCellValueFactory(new PropertyValueFactory<>("gameName"));
+        			gameCol.setCellValueFactory(new PropertyValueFactory<>("hardwareName"));
     			}
+    			
     	
     		
     	}
@@ -74,4 +77,3 @@ public class JoinTournamentViewController {
     
 
 		
-}

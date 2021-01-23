@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Tournament;
@@ -108,17 +109,18 @@ public static boolean insertTournament(TournamentBean tournament) throws MyRunti
 	}
 
 
-public static Tournament joinTournament(TournamentBean tournament) throws MyRuntimeException, SQLException {
+public static Tournament getRoomIdFromCity(TournamentBean tournament,RoomBean rbean) throws MyRuntimeException, SQLException {
 	
 	Statement stmtT = null;
 	Connection connT = null;
 	try {
 		connT= ConnectionFactory.getConnection();
 		stmtT = connT.createStatement();
-		ResultSet rs = stmtT.executeQuery("SELECT * FROM tournament WHERE tournamentName=" + tournament);
+		ResultSet rs = stmtT.executeQuery("SELECT * FROM  tournament WHERE roomid=(SELECT roomid FROM room WHERE city='" + rbean.getCity() + "');" );
 		
 		if(rs.next()) {
 			return extractTournamentFromResultSet(rs);
+			
 		}
 		stmtT.close();
 		connT.close();
