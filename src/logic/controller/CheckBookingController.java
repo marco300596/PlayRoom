@@ -5,14 +5,13 @@ import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import logic.bean.LoginBean;
-import logic.bean.RegistrationBean;
 import logic.bean.ReservationBean;
-import logic.dao.PlayerDAO;
 import logic.dao.ReservationDAO;
 import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;
 
 public class CheckBookingController {
+	
 	private static CheckBookingController inst;
     
     private ObservableList<ReservationBean> beanList = FXCollections.observableArrayList();
@@ -60,8 +59,8 @@ public class CheckBookingController {
 		this.beanList = ReservationDAO.getAllUncheckReservations(roomid);
 		return this.beanList;
 	}
-	//TODO conferma la prenotazione 
-	public boolean checkReservation(ReservationBean resBean) throws MyRuntimeException, SQLException {
-		 return ReservationDAO.insertReservation(resBean);
+
+	public boolean confirmReservation(String player, String hour, String date) throws MyRuntimeException, SQLException {
+		 return ReservationDAO.checkReservation(player,hour,date);
 	}
 }

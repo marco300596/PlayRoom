@@ -28,10 +28,10 @@ public class CheckBookingViewController {
     private TableColumn<ReservationBean, String> usCol;
 
     @FXML
-    private TableColumn<ReservationBean, Integer> dtCol;
+    private TableColumn<ReservationBean, String> dtCol;
 
     @FXML
-    private TableColumn<ReservationBean, Integer> hCol;
+    private TableColumn<ReservationBean, String> hCol;
 
     @FXML
     private TableColumn<ReservationBean, Integer> numCol;
@@ -41,6 +41,9 @@ public class CheckBookingViewController {
 
     @FXML
     private Button upBtn;
+    
+    @FXML
+    private Button okBtn;
 
     @FXML
     void checkList(MouseEvent event) throws MyRuntimeException, SQLException {
@@ -51,15 +54,28 @@ public class CheckBookingViewController {
     		return;
     	}
     	chkTable.setItems(reservations);
-    	usCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+    	usCol.setCellValueFactory(new PropertyValueFactory<>("playerUsername"));
     	dtCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-    	hCol.setCellValueFactory(new PropertyValueFactory<>("firstname"));
-    	numCol.setCellValueFactory(new PropertyValueFactory<>("lastname"));
-    	roomCol.setCellValueFactory(new PropertyValueFactory<>("roomname"));
+    	hCol.setCellValueFactory(new PropertyValueFactory<>("hour"));
+    	numCol.setCellValueFactory(new PropertyValueFactory<>("numberOfPlayer"));
+    	roomCol.setCellValueFactory(new PropertyValueFactory<>("reservationRoom"));
+    }
+    
+    @FXML
+    void confirm(MouseEvent event) throws MyRuntimeException, SQLException {
     	
-
-    	controller.getResBean().setPlayerUsername(chkTable.getSelectionModel().getSelectedItems().get(0).getPlayerUsername());
-    	//TODO aggiungi metodo per confermare la prenotazione.
+    	CheckBookingController controller = CheckBookingController.getInstance();
+    	String player;
+    	String date;
+    	String hour;
+    	player = chkTable.getSelectionModel().getSelectedItems().get(0).getPlayerUsername();
+    	date = chkTable.getSelectionModel().getSelectedItems().get(0).getDate();
+    	hour = chkTable.getSelectionModel().getSelectedItems().get(0).getHour();
+    	
+    	if(controller.confirmReservation(player, hour, date)) {
+    		new Thread(() ->
+    		JOptionPane.showMessageDialog(null, "Reservation confirmed! Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();    	
+    	}       
     }
 
 }
