@@ -124,17 +124,21 @@ public class BookRoomViewController {
     	ObservableList<RoomBean> room = FXCollections.observableArrayList();
     	if(verifyTxtFields()) {
     		LocalDate localDate = dpField.getValue();//For reference
-    		Calendar cal = Calendar.getInstance();
+    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+			String formattedString = localDate.format(formatter);
+    		String[] parts = formattedString.split("-");
+    		int year = Integer.parseInt(parts[2]);
+    		int month = Integer.parseInt(parts[1]);
+    		int day = Integer.parseInt(parts[0]);
+			Calendar cal = Calendar.getInstance();
     		cal.setLenient(false);
-    		cal.setTime(localDate);
+    		cal.set(year, month, day);
     		try{
     			cal.getTime();
     		}catch() {
     			
     		}
-    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
-			String formattedString = localDate.format(formatter);
-			controller.getReservationBean().setDate(formattedString);
+    		controller.getReservationBean().setDate(formattedString);
 			controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText()));
 			controller.getReservationBean().setHour(hSB.getText());
 			controller.getReservationBean().setCity(sprTxt.getText());
