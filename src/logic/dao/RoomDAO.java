@@ -345,8 +345,8 @@ public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRunti
 		psR = connR.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?,?)");
 		psR.setString(1, gh.getHardwareName());
 		psR.setInt(2, gh.getHardwareQuantity());
-		psR.setString(3, gh.getHardwareDescription());
-		psR.setString(4, gh.getHardwareGenre());
+		psR.setString(3, gh.getHardwareGenre());
+		psR.setString(4, gh.getHardwareDescription());
 		psR.setInt(5, id);
 		int i = psR.executeUpdate();
 	
