@@ -65,17 +65,18 @@ public class CheckBookingViewController {
     void confirm(MouseEvent event) throws MyRuntimeException, SQLException {
     	
     	CheckBookingController controller = CheckBookingController.getInstance();
-    	String player;
-    	String date;
-    	String hour;
-    	player = chkTable.getSelectionModel().getSelectedItems().get(0).getPlayerUsername();
-    	date = chkTable.getSelectionModel().getSelectedItems().get(0).getDate();
-    	hour = chkTable.getSelectionModel().getSelectedItems().get(0).getHour();
     	
-    	if(controller.confirmReservation(player, hour, date)) {
+    	controller.getResBean().setPlayerUsername(chkTable.getSelectionModel().getSelectedItems().get(0).getPlayerUsername());
+    	controller.getResBean().setDate(chkTable.getSelectionModel().getSelectedItems().get(0).getDate());
+    	controller.getResBean().setHour(chkTable.getSelectionModel().getSelectedItems().get(0).getHour());
+    	
+    	if(controller.confirmReservation()) {
     		new Thread(() ->
-    		JOptionPane.showMessageDialog(null, "Reservation confirmed! Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();    	
-    	}       
+    		JOptionPane.showMessageDialog(null, "Reservation confirmed! Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();  
+    	} else {
+    		new Thread(() ->
+    		JOptionPane.showMessageDialog(null, "No reservation found! Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    	}
     }
 
 }

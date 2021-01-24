@@ -49,8 +49,8 @@ public class CheckBookingController {
 
 
 
-	public void setResBean(ReservationBean regBean) {
-		this.resBean = regBean;
+	public void setResBean(ReservationBean resBean) {
+		this.resBean = resBean;
 	}
 	
 	public ObservableList<ReservationBean> updateReservation() throws MyRuntimeException, SQLException {
@@ -60,7 +60,7 @@ public class CheckBookingController {
 		return this.beanList;
 	}
 
-	public boolean confirmReservation(String player, String hour, String date) throws MyRuntimeException, SQLException {
-		 return ReservationDAO.checkReservation(player,hour,date);
+	public boolean confirmReservation() throws MyRuntimeException, SQLException {
+		 return ReservationDAO.checkReservation(resBean.getPlayerUsername(),resBean.getHour(),resBean.getDate());
 	}
 }
