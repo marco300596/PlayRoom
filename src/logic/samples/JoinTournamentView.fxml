@@ -38,7 +38,7 @@
                   <Insets left="25.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="joinbtn" mnemonicParsing="false" onMousePressed="#joinTournamentPage" style="-fx-background-color: transparent; -fx-border-color: #000000;" text="JOIN TOURNAMENT" textAlignment="JUSTIFY" textFill="#6fd736" underline="true">
+            <Button fx:id="joinbtn" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000;" text="JOIN TOURNAMENT" textAlignment="JUSTIFY" textFill="#6fd736" underline="true">
                <VBox.margin>
                   <Insets left="450.0" right="62.0" top="10.0" />
                </VBox.margin>
