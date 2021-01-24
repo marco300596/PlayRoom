@@ -68,6 +68,9 @@ public class HomePageViewController {
     void loginPression(ActionEvent event) throws MyRuntimeException, SQLException{
     	
     	LoginController controller = LoginController.getInstance();
+    	//trucchetto
+    	/*usTxt.setText("");
+    	pwdTxt.setText("");*/
     	if(verifyLogFields()) {
         	controller.getBean().setUsername(usTxt.getText());
         	controller.getBean().setPassword(pwdTxt.getText());

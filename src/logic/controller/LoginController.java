@@ -2,6 +2,8 @@ package logic.controller;
 
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import logic.bean.LoginBean;
 import logic.dao.EventOrganizerDAO;
 import logic.dao.PlayerDAO;
@@ -15,7 +17,7 @@ public class LoginController {
     private Player player;
 
     
-    private static LoginBean bean = new LoginBean();
+    private LoginBean bean = new LoginBean();
 
     /*singleton*/
 	public static LoginController getInstance() {
@@ -49,23 +51,30 @@ public class LoginController {
 	}
 
 	public void setBean(LoginBean bean) {
-		LoginController.bean = bean;
+		this.bean = bean;
 	}
 	
-	public static boolean findPlayerIdentity() throws MyRuntimeException, SQLException{
-		if (bean.getUsername().isEmpty() && bean.getPassword().isEmpty()) {
-			return (bean.getUsername() == null);
+	public boolean findPlayerIdentity() throws MyRuntimeException, SQLException{
+		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
+			return false;
 		}
-		bean = PlayerDAO.getPlayerByUserNameAndPassword(bean.getUsername(),bean.getPassword());
-		return (bean.getUsername() != null);
-		
+		this.bean = PlayerDAO.getPlayerByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
+		if(this.bean == null) {
+			new Thread(() ->
+        	JOptionPane.showMessageDialog(null, "User does not exist!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+		}
+		return this.bean != null;
 	}
 	
 	public boolean findOrgIdentity() throws MyRuntimeException, SQLException{
-		if (LoginController.bean.getUsername().isEmpty() && LoginController.bean.getPassword().isEmpty()) {
-			return (LoginController.bean.getUsername() == null);
+		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
+			return false;
 		}
-		LoginController.bean = EventOrganizerDAO.getOrgByUserNameAndPassword(LoginController.bean.getUsername(),LoginController.bean.getPassword());
-		return (LoginController.bean.getUsername() != null);
+		this.bean = EventOrganizerDAO.getOrgByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
+		if(this.bean == null) {
+			new Thread(() ->
+        	JOptionPane.showMessageDialog(null, "User does not exist!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+		}
+		return this.bean != null;
 	}
 }

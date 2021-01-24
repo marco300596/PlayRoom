@@ -59,7 +59,7 @@ public class SubmitHighscoreViewController {
 			controller.getHighscoreBean().setPlayerUN(logc.getBean().getUsername());
 			controller.getHighscoreBean().setTournament(tourTxt.getText());
 			
-			/*if (controller.checkPlayerExistance()) {
+			if (controller.checkPlayerExistance()) {
 				if (controller.checkTournamentAdehesion()) {
 					highscore = controller.submitHighscoreAndShow();
 					hTab.setItems(highscore);
@@ -82,7 +82,7 @@ public class SubmitHighscoreViewController {
 		   
 		    	sce.setScene(new Scene(root));
 		    	sce.show();
-		    }*/
+		    }
 		}
 		
 }
