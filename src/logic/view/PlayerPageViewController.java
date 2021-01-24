@@ -53,7 +53,7 @@ public class PlayerPageViewController {
     
    @FXML
    void joinTournamentPage(MouseEvent event) {
-	   loadPlayerPage("JoinTournamentPageView");
+	   loadPlayerPage("JoinTournamentView");
    }
     
    
