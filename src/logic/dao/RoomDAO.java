@@ -382,7 +382,7 @@ public static Boolean gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeExc
 	
 	try {
 		connR= ConnectionFactory.getConnection();
-		psR = connR.prepareStatement("INSERT INTO videoGame VALUES (?,?,?,?,?)");
+		psR = connR.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
 		psR.setString(1, gh.getGameName());
 		psR.setString(2, gh.getGameGenre());
 		psR.setInt(3, gh.getGameQuantity());
