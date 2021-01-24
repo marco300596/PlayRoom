@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -123,7 +124,15 @@ public class BookRoomViewController {
     	ObservableList<RoomBean> room = FXCollections.observableArrayList();
     	if(verifyTxtFields()) {
     		LocalDate localDate = dpField.getValue();//For reference
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+    		Calendar cal = Calendar.getInstance();
+    		cal.setLenient(false);
+    		cal.setTime(localDate);
+    		try{
+    			cal.getTime();
+    		}catch() {
+    			
+    		}
+    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
 			String formattedString = localDate.format(formatter);
 			controller.getReservationBean().setDate(formattedString);
 			controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText()));
@@ -162,19 +171,19 @@ public class BookRoomViewController {
     void bookRoom() throws MyRuntimeException, SQLException{
     	BookRoomController controller = BookRoomController.getInstance();
     	if (controller.checkPlayerExistance()) {
-    	controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
-    	controller.getRoomBean().setCity(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());
+    		controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
+    		controller.getRoomBean().setCity(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());
     	
-    	boolean val = controller.createReservation();
-    	
-    	if (val) {
-    		LocalDate localDate = dpField.getValue();//For reference
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
-			String formattedString = localDate.format(formatter);
-    		new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + formattedString + " at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-    	}else {
-    		new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
-    	}
+    		boolean val = controller.createReservation();
+    		
+    		if (val) {
+    			LocalDate localDate = dpField.getValue();//For reference
+    			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+    			String formattedString = localDate.format(formatter);
+    			new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + formattedString + " at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    		}else {
+    			new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+    		}
     	}else {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you are no longer registrated in the sistem;/n you have been deleted!","Deleted", JOptionPane.INFORMATION_MESSAGE)).start();
     		Parent root = null;

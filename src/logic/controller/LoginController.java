@@ -15,7 +15,7 @@ public class LoginController {
     private Player player;
 
     
-    private LoginBean bean = new LoginBean();
+    private static LoginBean bean = new LoginBean();
 
     /*singleton*/
 	public static LoginController getInstance() {
@@ -49,23 +49,23 @@ public class LoginController {
 	}
 
 	public void setBean(LoginBean bean) {
-		this.bean = bean;
+		LoginController.bean = bean;
 	}
 	
-	public boolean findPlayerIdentity() throws MyRuntimeException, SQLException{
-		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
-			return (this.bean.getUsername() == null);
+	public static boolean findPlayerIdentity() throws MyRuntimeException, SQLException{
+		if (bean.getUsername().isEmpty() && bean.getPassword().isEmpty()) {
+			return (bean.getUsername() == null);
 		}
-		this.bean = PlayerDAO.getPlayerByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
-		return (this.bean.getUsername() != null);
+		bean = PlayerDAO.getPlayerByUserNameAndPassword(bean.getUsername(),bean.getPassword());
+		return (bean.getUsername() != null);
 		
 	}
 	
 	public boolean findOrgIdentity() throws MyRuntimeException, SQLException{
-		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
-			return (this.bean.getUsername() == null);
+		if (LoginController.bean.getUsername().isEmpty() && LoginController.bean.getPassword().isEmpty()) {
+			return (LoginController.bean.getUsername() == null);
 		}
-		this.bean = EventOrganizerDAO.getOrgByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
-		return (this.bean.getUsername() != null);
+		LoginController.bean = EventOrganizerDAO.getOrgByUserNameAndPassword(LoginController.bean.getUsername(),LoginController.bean.getPassword());
+		return (LoginController.bean.getUsername() != null);
 	}
 }

@@ -8,7 +8,6 @@ import logic.bean.GameHardwareBean;
 import logic.bean.ReservationBean;
 import logic.bean.RoomBean;
 import logic.dao.RoomDAO;
-import logic.dao.PlayerDAO;
 import logic.dao.ReservationDAO;
 import logic.exception.MyRuntimeException;
 
@@ -52,7 +51,7 @@ public class BookRoomController {
 	}
 	
 	public boolean checkPlayerExistance() throws MyRuntimeException, SQLException{
-		return PlayerDAO.checkPlayer(logc.getBean().getUsername());
+		return LoginController.findPlayerIdentity();
 	}
 	
 	public ObservableList<RoomBean> findRoomForPreno() throws MyRuntimeException, SQLException{
@@ -75,6 +74,7 @@ public class BookRoomController {
 		int id;
 		this.bean.setPlayerUsername(logc.getBean().getUsername());
 		id = RoomDAO.getRoomId(this.robean.getRoomName(), this.robean.getLocation());
+		this.bean.setReservationRoom(this.robean.getRoomName());
 		chk = ReservationDAO.insertReservation(this.bean, id);
 		return chk;
 		}
