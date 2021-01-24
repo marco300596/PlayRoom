@@ -49,6 +49,7 @@ public class JoinTournamentViewController {
     				
     				JoinTournamentController controller = JoinTournamentController.getInstance();
     				controller.getrBean().setCity(citytxt.getText());
+    				hTab.setItems(tournament);
         			tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentName"));
         			roomCol.setCellValueFactory(new PropertyValueFactory<>("roomName"));
         			gameCol.setCellValueFactory(new PropertyValueFactory<>("gameName"));
