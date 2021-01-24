@@ -10,13 +10,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="810.0" prefWidth="811.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.RegisterRoomViewController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="810.0" prefWidth="811.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.RegisterRoomViewController">
    <children>
       <HBox prefHeight="810.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox prefHeight="810.0" prefWidth="511.0">
                <children>
-                  <Text boundsType="VISUAL" fill="#6fd736" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Registration" textAlignment="RIGHT" wrappingWidth="458.68359375" x="300.0">
+                  <Text boundsType="VISUAL" fill="#395dd4" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Registration" textAlignment="RIGHT" wrappingWidth="458.68359375" x="300.0">
                      <font>
                         <Font name="System Bold" size="40.0" />
                      </font>
@@ -29,7 +29,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" right="50.0" top="30.0" />
+                        <Insets bottom="5.0" left="50.0" top="30.0" />
                      </VBox.margin>
                   </Text>
                   <TextArea fx:id="nametxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
@@ -42,12 +42,12 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="5.0" left="50.0" right="50.0" top="10.0" />
+                        <Insets bottom="5.0" left="50.0" top="10.0" />
                      </VBox.margin>
                   </Text>
                   <TextArea fx:id="nstxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <VBox.margin>
-                        <Insets left="50.0" />
+                        <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextArea>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Description:">
@@ -60,7 +60,7 @@
                   </Text>
                   <TextArea fx:id="desctxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="110.0" prefWidth="370.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="50.0" />
+                        <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextArea>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add city">
@@ -68,12 +68,12 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
+                        <Insets bottom="5.0" left="50.0" />
                      </VBox.margin>
                   </Text>
                   <TextArea fx:id="cTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="50.0" />
+                        <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextArea>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add address">
@@ -86,10 +86,10 @@
                   </Text>
                   <TextArea fx:id="addrTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
                      <VBox.margin>
-                        <Insets left="50.0" />
+                        <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextArea>
-                  <Button fx:id="regroombtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#registerPression" prefHeight="30.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-border-color: #6fd736;" text="Register Room" textFill="#6fd736">
+                  <Button fx:id="regroombtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#registerPression" prefHeight="30.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-border-color: #6fd736;" text="Register Room" textFill="#395dd4">
                      <VBox.margin>
                         <Insets left="350.0" right="50.0" top="20.0" />
                      </VBox.margin>
