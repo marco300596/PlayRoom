@@ -42,9 +42,9 @@ public class JoinTournamentController {
 	
 	
 	
-	public Boolean checkPlayerExistance() throws MyRuntimeException, SQLException{
+	/*public Boolean checkPlayerExistance() throws MyRuntimeException, SQLException{
 		return PlayerDAO.checkPlayer(logc.getBean().getUsername());
-	}
+	}*/
 	
 	
 	

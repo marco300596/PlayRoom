@@ -133,11 +133,12 @@ public class BookRoomViewController {
 			Calendar cal = Calendar.getInstance();
     		cal.setLenient(false);
     		cal.set(year, month, day);
+    		/*
     		try{
     			cal.getTime();
     		}catch() {
     			
-    		}
+    		}*/
     		controller.getReservationBean().setDate(formattedString);
 			controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText()));
 			controller.getReservationBean().setHour(hSB.getText());
