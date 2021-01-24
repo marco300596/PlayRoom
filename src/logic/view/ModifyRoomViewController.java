@@ -74,6 +74,7 @@ public class ModifyRoomViewController {
         	if (verifyFields()){
     			ModifyRoomController controller = ModifyRoomController.getInstance();
     			controller.getHVBean().setOrgUserName(orgustxt.getText());
+    			controller.getHVBean().setGameName(nametxt.getText());
     			controller.getHVBean().setGameGenre(genretxt.getText());
     			int gameQuantity=Integer.parseInt(quantxt.getText());
     	  		controller.getHVBean().setGameQuantity(gameQuantity);
