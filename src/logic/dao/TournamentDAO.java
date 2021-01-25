@@ -116,33 +116,33 @@ public static boolean insertTournament(TournamentBean tournament) throws MyRunti
 	
 public static ObservableList<TournamentBean> getAllTournamentsAvailable(int roomid) throws MyRuntimeException, SQLException{
 	
-	Statement stmtP = null;
-	Connection connP = null;
+	Statement stmtTm = null;
+	Connection connTm = null;
 	ObservableList<TournamentBean> tournaments = FXCollections.observableArrayList();
 	
 	try {
-		connP= ConnectionFactory.getConnection();
-		stmtP = connP.createStatement();
-		ResultSet rs = stmtP.executeQuery("SELECT * FROM tournament WHERE  roomid=" + roomid+ ";");
+		connTm= ConnectionFactory.getConnection();
+		stmtTm = connTm.createStatement();
+		ResultSet rs = stmtTm.executeQuery("SELECT * FROM tournament WHERE  roomid=" + roomid+ ";");
 		
 		while(rs.next()) {
 			TournamentBean tournament = extractTournamentsFromResultSet(rs);
 			tournaments.add(tournament);
 		}
 		
-		stmtP.close();
-		connP.close();
+		stmtTm.close();
+		connTm.close();
 		return tournaments;
 		
 	} catch (SQLException ex) {
 		ex.printStackTrace();
 	}
 	finally {
-		if (stmtP != null) {
-			stmtP.close();
+		if (stmtTm != null) {
+			stmtTm.close();
 		}
-		if (connP != null) {
-			connP.close();
+		if (connTm != null) {
+			connTm.close();
         }
 	}
 	return tournaments;

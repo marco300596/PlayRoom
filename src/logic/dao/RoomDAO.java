@@ -161,6 +161,8 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, St
 		pStmtRh.setInt(2, nOP);
 		pStmtRh.setString(3, date);
 		pStmtRh.setString(4, hour);
+		pStmtRh.setString(5, hwName);
+		
 		ResultSet rs =  pStmtRh.executeQuery();
 	 	
 		while(rs.next()) {
@@ -199,6 +201,7 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 		pStmtRv.setInt(2, nOP);
 		pStmtRv.setString(3, date);
 		pStmtRv.setString(4, hour);
+		pStmtRv.setString(5, vgName);
 		ResultSet rs =  pStmtRv.executeQuery();
 	 	
 		while(rs.next()) {

@@ -12,10 +12,11 @@ import logic.exception.MyRuntimeException;
 
 public class SubmitHighscoreController {
 	
-	private static ObservableList<HighscoreBean> beanList = FXCollections.observableArrayList();
+	private ObservableList<HighscoreBean> beanList = FXCollections.observableArrayList();
 	private static SubmitHighscoreController inst;
-    private static HighscoreBean bean = new HighscoreBean();
-	public static SubmitHighscoreController getInstance() {
+    private HighscoreBean bean = new HighscoreBean();
+	
+    public static SubmitHighscoreController getInstance() {
 
         if (inst == null)
 

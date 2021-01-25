@@ -2,8 +2,6 @@ package logic.controller;
 
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
 import logic.bean.LoginBean;
 import logic.dao.EventOrganizerDAO;
 import logic.dao.PlayerDAO;
