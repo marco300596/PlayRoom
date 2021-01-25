@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
 import logic.controller.JoinTournamentController;
 import logic.exception.MyRuntimeException;
@@ -56,9 +55,10 @@ public class JoinTournamentViewController {
     	controller.getrBean().setCity(citytxt.getText());
     	ObservableList<TournamentBean> tournament = controller.joinTournament(controller.getrBean());
     	if(tournament.isEmpty())	{
-    		new Thread(() ->JOptionPane.showMessageDialog(null, "No room registered! Please go to room registration page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		new Thread(() ->JOptionPane.showMessageDialog(null, "No tournaments for the city selected! Please go to Create Tournament page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
     		return;
     	}
+    	
     	hTab.setItems(tournament);
         tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentName"));
         roomCol.setCellValueFactory(new PropertyValueFactory<>("tournamentRoom"));

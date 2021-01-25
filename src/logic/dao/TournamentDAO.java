@@ -110,35 +110,7 @@ public static boolean insertTournament(TournamentBean tournament) throws MyRunti
 	}
 
 
-public static int getRoomIdFromCity(String city) throws MyRuntimeException, SQLException {
-	
-	Statement stmtT = null;
-	Connection connT = null;
-	try {
-		connT= ConnectionFactory.getConnection();
-		stmtT = connT.createStatement();
-		ResultSet rs = stmtT.executeQuery("SELECT * FROM  tournament WHERE roomid IN (SELECT roomid FROM room WHERE city='" + city + "');" );
-		
-		if(rs.next()) {
-			return extractRoomIDFromResultSet(rs);
-			
-		}
-		stmtT.close();
-		connT.close();
-		
-	} catch (SQLException ex) {
-		ex.printStackTrace();
-	}
-	finally {
-		if (stmtT != null) {
-			stmtT.close();
-		}
-		if (connT != null) {
-			connT.close();
-        }
-	}
-	return 0;
-}
+
 
 
 
@@ -159,16 +131,7 @@ public static int getRoomIdFromCity(String city) throws MyRuntimeException, SQLE
 	
 	
 	
-	
-private static int extractRoomIDFromResultSet(ResultSet rs) throws SQLException{
-		
-		int i = 0;
-		
-		i = rs.getInt("roomid");
-		
-		
-		return i;
-	}
+
 	
 	
 public static ObservableList<TournamentBean> getAllTournamentsAvailable(int roomid) throws MyRuntimeException, SQLException{
@@ -220,7 +183,53 @@ private static TournamentBean extractTournamentsFromResultSet(ResultSet rs) thro
 	return tournament;
 }
 	
+
+public static ObservableList<TournamentBean> getRoomIDbyCity(String city) throws MyRuntimeException, SQLException{
 	
+	Statement stmtP = null;
+	Connection connP = null;
+	ObservableList<TournamentBean> tournaments = FXCollections.observableArrayList();
+	
+	try {
+		connP= ConnectionFactory.getConnection();
+		stmtP = connP.createStatement();
+		ResultSet rs = stmtP.executeQuery("SELECT tournamentname,tournamentroom,tournamentgame,tournamenthardware FROM tournament WHERE roomid IN(SELECT roomid FROM room WHERE city='" + city +"');");
+		
+		while(rs.next()) {
+			TournamentBean tournament = extractTournamentsbyid(rs);
+			tournaments.add(tournament);
+		}
+		
+		stmtP.close();
+		connP.close();
+		return tournaments;
+		
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+	finally {
+		if (stmtP != null) {
+			stmtP.close();
+		}
+		if (connP != null) {
+			connP.close();
+        }
+	}
+	return tournaments;
+}
+
+private static TournamentBean extractTournamentsbyid(ResultSet rs) throws SQLException{
+	
+	TournamentBean tournament = new TournamentBean();
+	
+	tournament.setTournamentName(rs.getString("tournamentName"));
+	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
+	tournament.setTournamentGame(rs.getString("tournamentGame"));
+	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
+	
+	
+	return tournament;
+}
 	
 	
 }

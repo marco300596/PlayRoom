@@ -67,9 +67,8 @@ public class JoinTournamentController {
 	
 	public ObservableList<TournamentBean> joinTournament(RoomBean rbean) throws MyRuntimeException, SQLException  {
 		
-		int id;
-		id=TournamentDAO.getRoomIdFromCity(rbean.getCity());
-		this.beanList=TournamentDAO.getAllTournamentsAvailable(id);
+	
+		this.beanList=TournamentDAO.getRoomIDbyCity(rbean.getCity());
 		return this.beanList;
 		
 		
