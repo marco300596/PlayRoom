@@ -68,14 +68,6 @@ public class ReservationBean {
 	public void setReservationRoom(String reservationRoom) {
 		this.reservationRoom = reservationRoom;
 	}
-
-	public void setPlayerUsername(String playerUsername) {
-		this.playerUsername = playerUsername;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
 	
 	public void setCity(String city) {
 		this.city = city;
@@ -84,5 +76,13 @@ public class ReservationBean {
 	public void setHour(String hour) {
 		this.hour = hour;
 	}	
+	
+	public void setPlayerUsername(String playerUsername) {
+		this.playerUsername = playerUsername;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 	
 }
