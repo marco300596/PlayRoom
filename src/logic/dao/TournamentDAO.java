@@ -5,7 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import logic.bean.RoomBean;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import logic.bean.TournamentBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Tournament;
@@ -109,17 +110,17 @@ public static boolean insertTournament(TournamentBean tournament) throws MyRunti
 	}
 
 
-public static Tournament getRoomIdFromCity(TournamentBean tournament,RoomBean rbean) throws MyRuntimeException, SQLException {
+public static int getRoomIdFromCity(String city) throws MyRuntimeException, SQLException {
 	
 	Statement stmtT = null;
 	Connection connT = null;
 	try {
 		connT= ConnectionFactory.getConnection();
 		stmtT = connT.createStatement();
-		ResultSet rs = stmtT.executeQuery("SELECT * FROM  tournament WHERE roomid=(SELECT roomid FROM room WHERE city='" + rbean.getCity() + "');" );
+		ResultSet rs = stmtT.executeQuery("SELECT * FROM  tournament WHERE roomid=(SELECT roomid FROM room WHERE city='" + city + "');" );
 		
 		if(rs.next()) {
-			return extractTournamentFromResultSet(rs);
+			return extractRoomIDFromResultSet(rs);
 			
 		}
 		stmtT.close();
@@ -136,7 +137,7 @@ public static Tournament getRoomIdFromCity(TournamentBean tournament,RoomBean rb
 			connT.close();
         }
 	}
-	return null;
+	return 0;
 }
 
 
@@ -155,4 +156,71 @@ public static Tournament getRoomIdFromCity(TournamentBean tournament,RoomBean rb
 		
 		return tournament;
 	}
+	
+	
+	
+	
+private static int extractRoomIDFromResultSet(ResultSet rs) throws SQLException{
+		
+		int i = 0;
+		
+		i = rs.getInt("roomid");
+		
+		
+		return i;
+	}
+	
+	
+public static ObservableList<TournamentBean> getAllTournamentsAvailable(int roomid) throws MyRuntimeException, SQLException{
+	
+	Statement stmtP = null;
+	Connection connP = null;
+	ObservableList<TournamentBean> tournaments = FXCollections.observableArrayList();
+	
+	try {
+		connP= ConnectionFactory.getConnection();
+		stmtP = connP.createStatement();
+		ResultSet rs = stmtP.executeQuery("SELECT * FROM tournament WHERE  roomid=" + roomid+ ";");
+		
+		while(rs.next()) {
+			TournamentBean tournament = extractTournamentsFromResultSet(rs);
+			tournaments.add(tournament);
+		}
+		
+		stmtP.close();
+		connP.close();
+		return tournaments;
+		
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+	finally {
+		if (stmtP != null) {
+			stmtP.close();
+		}
+		if (connP != null) {
+			connP.close();
+        }
+	}
+	return tournaments;
+}
+	
+	
+	
+private static TournamentBean extractTournamentsFromResultSet(ResultSet rs) throws SQLException{
+	
+	TournamentBean tournament = new TournamentBean();
+	
+	tournament.setTournamentName(rs.getString("tournamentName"));
+	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
+	tournament.setTournamentGame(rs.getString("tournamentGame"));
+	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
+	tournament.setTournamentPartecipants(rs.getInt("tournamentPartecipants"));
+	
+	return tournament;
+}
+	
+	
+	
+	
 }

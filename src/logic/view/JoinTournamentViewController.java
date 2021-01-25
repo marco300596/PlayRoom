@@ -1,5 +1,7 @@
 package logic.view;
 
+import java.sql.SQLException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
 import logic.controller.JoinTournamentController;
+import logic.exception.MyRuntimeException;
 import logic.model.Hardware;
 import logic.model.Room;
 import logic.model.Tournament;
@@ -40,22 +43,21 @@ public class JoinTournamentViewController {
     @FXML
     private TableColumn<Hardware,String> hardCol;
     
-    RoomBean bean =new RoomBean();
+    
 
     
     @FXML
-    public void initialize(MouseEvent event) {
+    void initialize(MouseEvent event) throws MyRuntimeException, SQLException {
+    	JoinTournamentController controller = JoinTournamentController.getInstance();
     	
-    	ObservableList<TournamentBean> tournament = FXCollections.observableArrayList();
-    				
-    				JoinTournamentController controller = JoinTournamentController.getInstance();
-    				controller.getrBean().setCity(citytxt.getText());
-    				hTab.setItems(tournament);
-        			tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentName"));
-        			roomCol.setCellValueFactory(new PropertyValueFactory<>("roomName"));
-        			gameCol.setCellValueFactory(new PropertyValueFactory<>("gameName"));
-        			gameCol.setCellValueFactory(new PropertyValueFactory<>("hardwareName"));
-    			}
+    	controller.getrBean().setCity(citytxt.getText());
+    	ObservableList<TournamentBean> tournament = controller.joinTournament();
+    	hTab.setItems(tournament);
+        tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentname"));
+        roomCol.setCellValueFactory(new PropertyValueFactory<>("tournamentroom"));
+        gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentgame"));
+        gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamenthardware"));
+   	}
     			
     	
     		

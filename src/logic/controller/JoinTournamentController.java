@@ -2,16 +2,22 @@ package logic.controller;
 
 import java.sql.SQLException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
-import logic.dao.PlayerDAO;
+
 import logic.dao.TournamentDAO;
 import logic.exception.MyRuntimeException;
 
 public class JoinTournamentController {
 	
+	
+	
 	private static JoinTournamentController inst;
-	private LoginController logc = LoginController.getInstance();
+	private ObservableList<TournamentBean> beanList = FXCollections.observableArrayList();
+	//private LoginController logc = LoginController.getInstance();
 	private TournamentBean bean = new TournamentBean();
 	private RoomBean rbean = new RoomBean();
 	
@@ -41,6 +47,17 @@ public class JoinTournamentController {
 	}
 	
 	
+	public ObservableList<TournamentBean> getBeanList() {
+		return beanList;
+	}
+
+
+
+	public void setBeanList(ObservableList<TournamentBean> beanList) {
+		this.beanList = beanList;
+	}
+	
+	
 	
 	/*public Boolean checkPlayerExistance() throws MyRuntimeException, SQLException{
 		return PlayerDAO.checkPlayer(logc.getBean().getUsername());
@@ -48,9 +65,12 @@ public class JoinTournamentController {
 	
 	
 	
-	public void joinTournament(TournamentBean bean,RoomBean rbean) throws MyRuntimeException, SQLException {
+	public ObservableList<TournamentBean> joinTournament() throws MyRuntimeException, SQLException  {
 		
-		TournamentDAO.getRoomIdFromCity(bean,rbean);
+		int id;
+		id=TournamentDAO.getRoomIdFromCity(rbean.getCity());
+		this.beanList=TournamentDAO.getAllTournamentsAvailable(id);
+		return this.beanList;
 		
 		
 	}
