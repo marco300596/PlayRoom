@@ -63,7 +63,7 @@ public class JoinTournamentViewController {
         tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentName"));
         roomCol.setCellValueFactory(new PropertyValueFactory<>("tournamentRoom"));
         gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentGame"));
-        gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentHardware"));
+        hardCol.setCellValueFactory(new PropertyValueFactory<>("tournamentHardware"));
    	}
     			
     	

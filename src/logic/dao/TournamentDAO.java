@@ -215,7 +215,7 @@ private static TournamentBean extractTournamentsFromResultSet(ResultSet rs) thro
 	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
 	tournament.setTournamentGame(rs.getString("tournamentGame"));
 	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
-	//tournament.setTournamentPartecipants(rs.getInt("tournamentPartecipants"));
+	
 	
 	return tournament;
 }
