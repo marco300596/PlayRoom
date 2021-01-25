@@ -44,28 +44,28 @@ public class TournamentDAO {
 	
 public static boolean checkAdehesion(String playerUN, String tournamentName) throws MyRuntimeException, SQLException{
 		
-		PreparedStatement psT = null;
+		PreparedStatement psTm = null;
 		Connection connT = null;
 		
 		try {
 			connT= ConnectionFactory.getConnection();
-			psT = connT.prepareStatement("SELECT * FROM PLAYER WHERE username = ? and tournamentname = ?");
-			psT.setString(1, playerUN);
-			psT.setString(2, tournamentName);
-			int i = psT.executeUpdate();
+			psTm = connT.prepareStatement("SELECT * FROM PLAYER WHERE username = ? and tournamentname = ?");
+			psTm.setString(1, playerUN);
+			psTm.setString(2, tournamentName);
+			int i = psTm.executeUpdate();
 			
 			if(i == 1) {
 				return true;
 			}
-			psT.close();
+			psTm.close();
 			connT.close();
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 		finally {
-			if (psT != null) {
-				psT.close();
+			if (psTm != null) {
+				psTm.close();
 			}
 			if (connT != null) {
 				connT.close();
@@ -77,11 +77,11 @@ public static boolean checkAdehesion(String playerUN, String tournamentName) thr
 public static boolean insertTournament(TournamentBean tournament) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psT = null;
-		Connection connT = null;
+		Connection connTm = null;
 		
 		try {
-			connT= ConnectionFactory.getConnection();
-			psT = connT.prepareStatement("INSERT INTO tournament VALUES (?,?,?,?,?)");
+			connTm= ConnectionFactory.getConnection();
+			psT = connTm.prepareStatement("INSERT INTO tournament VALUES (?,?,?,?,?)");
 			psT.setString(1, tournament.getTournamentName());
 			psT.setString(2, tournament.getTournamentRoom());
 			psT.setString(3, tournament.getTournamentGame());
@@ -93,7 +93,7 @@ public static boolean insertTournament(TournamentBean tournament) throws MyRunti
 				return true;
 			}
 			psT.close();
-			connT.close();
+			connTm.close();
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
@@ -102,8 +102,8 @@ public static boolean insertTournament(TournamentBean tournament) throws MyRunti
 			if (psT != null) {
 				psT.close();
 			}
-			if (connT != null) {
-				connT.close();
+			if (connTm != null) {
+				connTm.close();
             }
 		}
 		return false;

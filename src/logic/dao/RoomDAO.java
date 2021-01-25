@@ -112,25 +112,25 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 	
 	public static ObservableList<RoomBean> getAllRoomsAvailable(String date, String hour, Integer nOP, String city) throws MyRuntimeException, SQLException{
 		
-		PreparedStatement pStmtR = null;
+		PreparedStatement pStmtRm = null;
 		Connection connR = null;
 		ObservableList<RoomBean> rooms = FXCollections.observableArrayList();
 		
 		try {
 			connR= ConnectionFactory.getConnection();
-			pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?)");
-			pStmtR.setString(1, city);
-			pStmtR.setInt(2, nOP);
-			pStmtR.setString(3, date);
-			pStmtR.setString(4, hour);
-			ResultSet rs =  pStmtR.executeQuery();
+			pStmtRm = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?)");
+			pStmtRm.setString(1, city);
+			pStmtRm.setInt(2, nOP);
+			pStmtRm.setString(3, date);
+			pStmtRm.setString(4, hour);
+			ResultSet rs =  pStmtRm.executeQuery();
 		 	
 			while(rs.next()) {
 				RoomBean room = extractRoomBeanFromResultSet(rs);
 				rooms.add(room);
 				}
 			
-			pStmtR.close();
+			pStmtRm.close();
 			connR.close();
 			return rooms;
 			
@@ -138,8 +138,8 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 			ex.printStackTrace();
 		}
 		finally {
-			if (pStmtR != null) {
-				pStmtR.close();
+			if (pStmtRm != null) {
+				pStmtRm.close();
 			}
 			if (connR != null) {
 				connR.close();
@@ -150,25 +150,25 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 	
 public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, String hour, int nOP,  String hwName, String city) throws MyRuntimeException, SQLException{
 		
-	PreparedStatement pStmtR = null;
+	PreparedStatement pStmtRh = null;
 	Connection connR = null;
 	ObservableList<RoomBean> rooms = FXCollections.observableArrayList();
 	
 	try {
 		connR= ConnectionFactory.getConnection();
-		pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM hardware WHERE hardwarename = ? and roomid = r.roomid);");
-		pStmtR.setString(1, city);
-		pStmtR.setInt(2, nOP);
-		pStmtR.setString(3, date);
-		pStmtR.setString(4, hour);
-		ResultSet rs =  pStmtR.executeQuery();
+		pStmtRh = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM hardware WHERE hardwarename = ? and roomid = r.roomid);");
+		pStmtRh.setString(1, city);
+		pStmtRh.setInt(2, nOP);
+		pStmtRh.setString(3, date);
+		pStmtRh.setString(4, hour);
+		ResultSet rs =  pStmtRh.executeQuery();
 	 	
 		while(rs.next()) {
 			RoomBean room = extractRoomBeanFromResultSet(rs);
 			rooms.add(room);
 			}
 		
-		pStmtR.close();
+		pStmtRh.close();
 		connR.close();
 		return rooms;
 		
@@ -176,8 +176,8 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, St
 		ex.printStackTrace();
 	}
 	finally {
-		if (pStmtR != null) {
-			pStmtR.close();
+		if (pStmtRh != null) {
+			pStmtRh.close();
 		}
 		if (connR != null) {
 			connR.close();
@@ -188,25 +188,25 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForHW(String date, St
 
 public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, String hour, int nOP, String vgName, String city) throws MyRuntimeException, SQLException{
 	
-	PreparedStatement pStmtR = null;
+	PreparedStatement pStmtRv = null;
 	Connection connR = null;
 	ObservableList<RoomBean> rooms = FXCollections.observableArrayList();
 	
 	try {
 		connR= ConnectionFactory.getConnection();
-		pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM videogame WHERE gamename = ? and roomid = r.roomid);");
-		pStmtR.setString(1, city);
-		pStmtR.setInt(2, nOP);
-		pStmtR.setString(3, date);
-		pStmtR.setString(4, hour);
-		ResultSet rs =  pStmtR.executeQuery();
+		pStmtRv = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM videogame WHERE gamename = ? and roomid = r.roomid);");
+		pStmtRv.setString(1, city);
+		pStmtRv.setInt(2, nOP);
+		pStmtRv.setString(3, date);
+		pStmtRv.setString(4, hour);
+		ResultSet rs =  pStmtRv.executeQuery();
 	 	
 		while(rs.next()) {
 			RoomBean room = extractRoomBeanFromResultSet(rs);
 			rooms.add(room);
 			}
 		
-		pStmtR.close();
+		pStmtRv.close();
 		connR.close();
 		return rooms;
 		
@@ -214,8 +214,8 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 		ex.printStackTrace();
 	}
 	finally {
-		if (pStmtR != null) {
-			pStmtR.close();
+		if (pStmtRv != null) {
+			pStmtRv.close();
 		}
 		if (connR != null) {
 			connR.close();
@@ -260,11 +260,11 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 	public static boolean insertRoom(RoomBean room, int id) throws MyRuntimeException, SQLException{
 		
 			PreparedStatement psR = null;
-			Connection connR = null;
+			Connection connRm = null;
 		
 			try {
-				connR= ConnectionFactory.getConnection();
-				psR = connR.prepareStatement("INSERT INTO room VALUES (?,?,?,?,?,?,?)");
+				connRm= ConnectionFactory.getConnection();
+				psR = connRm.prepareStatement("INSERT INTO room VALUES (?,?,?,?,?,?,?)");
 				psR.setString(1, room.getRoomName());
 				psR.setInt(2, room.getNumSeat());
 				psR.setInt(3, room.getPrice());
@@ -278,7 +278,7 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 					return true;
 				}
 				psR.close();
-				connR.close();
+				connRm.close();
 			
 			}catch(SQLException ex){
 				ex.printStackTrace();
@@ -287,8 +287,8 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 				if (psR != null) {
 					psR.close();
 				}
-				if (connR != null) {
-					connR.close();
+				if (connRm != null) {
+					connRm.close();
             	}
 			}
 			return false;
@@ -338,11 +338,11 @@ private static RoomBean extractRoomBeanFromResultSet(ResultSet rs) throws SQLExc
 
 public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
 	PreparedStatement psR = null;
-	Connection connR = null;
+	Connection connRh = null;
 
 	try {
-		connR= ConnectionFactory.getConnection();
-		psR = connR.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?,?)");
+		connRh= ConnectionFactory.getConnection();
+		psR = connRh.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?,?)");
 		psR.setString(1, gh.getHardwareName());
 		psR.setInt(2, gh.getHardwareQuantity());
 		psR.setString(3, gh.getHardwareGenre());
@@ -354,7 +354,7 @@ public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRunti
 			return true;
 		}
 		psR.close();
-		connR.close();
+		connRh.close();
 	
 	}catch(SQLException ex){
 		ex.printStackTrace();
@@ -363,8 +363,8 @@ public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRunti
 		if (psR != null) {
 			psR.close();
 		}
-		if (connR != null) {
-			connR.close();
+		if (connRh != null) {
+			connRh.close();
     	}
 	}
 	return false;
@@ -378,11 +378,11 @@ public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRunti
 public static Boolean gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
 	
 	PreparedStatement psR = null;
-	Connection connR = null;
+	Connection connRv = null;
 	
 	try {
-		connR= ConnectionFactory.getConnection();
-		psR = connR.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
+		connRv= ConnectionFactory.getConnection();
+		psR = connRv.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
 		psR.setString(1, gh.getGameName());
 		psR.setString(2, gh.getGameGenre());
 		psR.setInt(3, gh.getGameQuantity());
@@ -394,7 +394,7 @@ public static Boolean gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeExc
 			return true;
 		}
 		psR.close();
-		connR.close();
+		connRv.close();
 	
 	}catch(SQLException ex){
 		ex.printStackTrace();
@@ -403,8 +403,8 @@ public static Boolean gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeExc
 		if (psR != null) {
 			psR.close();
 		}
-		if (connR != null) {
-			connR.close();
+		if (connRv != null) {
+			connRv.close();
     	}
 	}
 	return false;

@@ -119,31 +119,31 @@ public class PlayerDAO {
 	
 	public static boolean insertPlayer(RegistrationBean player) throws MyRuntimeException, SQLException{
 		
-		PreparedStatement psP = null;
+		PreparedStatement psPl = null;
 		Connection connP = null;
 		
 		try {
 			connP= ConnectionFactory.getConnection();
-			psP = connP.prepareStatement("INSERT INTO player VALUES (?,?,?,?,?)");
-			psP.setString(1, player.getUsername());
-			psP.setString(2, player.getFirstname());
-			psP.setString(3, player.getLastname());
-			psP.setString(4, player.getEmail());
-			psP.setString(5, player.getPassword());
-			int i = psP.executeUpdate();
+			psPl = connP.prepareStatement("INSERT INTO player VALUES (?,?,?,?,?)");
+			psPl.setString(1, player.getUsername());
+			psPl.setString(2, player.getFirstname());
+			psPl.setString(3, player.getLastname());
+			psPl.setString(4, player.getEmail());
+			psPl.setString(5, player.getPassword());
+			int i = psPl.executeUpdate();
 			
 			if(i == 1) {
 				return true;
 			}
-			psP.close();
+			psPl.close();
 			connP.close();
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 		finally {
-			if (psP != null) {
-				psP.close();
+			if (psPl != null) {
+				psPl.close();
 			}
 			if (connP != null) {
 				connP.close();
@@ -155,10 +155,10 @@ public class PlayerDAO {
 	public static boolean deletePlayer(RegistrationBean player) throws MyRuntimeException, SQLException {
 		
 		PreparedStatement psP = null;
-		Connection connP = null;
+		Connection connPl = null;
 		try {
-			connP= ConnectionFactory.getConnection();
-			psP = connP.prepareStatement("DELETE FROM player WHERE username=?");
+			connPl= ConnectionFactory.getConnection();
+			psP = connPl.prepareStatement("DELETE FROM player WHERE username=?");
 			psP.setString(1, player.getUsername());
 			int i = psP.executeUpdate();
 			
@@ -167,7 +167,7 @@ public class PlayerDAO {
 			}
 			
 			psP.close();
-			connP.close();
+			connPl.close();
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -176,8 +176,8 @@ public class PlayerDAO {
 			if (psP != null) {
 				psP.close();
 			}
-			if (connP != null) {
-				connP.close();
+			if (connPl != null) {
+				connPl.close();
             }
 		}
 		return false;

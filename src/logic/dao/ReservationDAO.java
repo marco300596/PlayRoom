@@ -44,11 +44,11 @@ public class ReservationDAO {
 public static boolean insertReservation(ReservationBean reservation, int id) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psRS = null;
-		Connection connRS = null;
+		Connection connRes = null;
 		
 		try {
-			connRS= ConnectionFactory.getConnection();
-			psRS = connRS.prepareStatement("INSERT INTO reservation VALUES (0,?,?,?,?,?,?)");
+			connRes= ConnectionFactory.getConnection();
+			psRS = connRes.prepareStatement("INSERT INTO reservation VALUES (0,?,?,?,?,?,?)");
 			psRS.setInt(1, reservation.getNumberOfPlayer());
 			psRS.setString(2, reservation.getPlayerUsername());
 			psRS.setString(3,  reservation.getDate());
@@ -63,7 +63,7 @@ public static boolean insertReservation(ReservationBean reservation, int id) thr
 				return true;
 			}
 			psRS.close();
-			connRS.close();
+			connRes.close();
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
@@ -72,8 +72,8 @@ public static boolean insertReservation(ReservationBean reservation, int id) thr
 			if (psRS != null) {
 				psRS.close();
 			}
-			if (connRS != null) {
-				connRS.close();
+			if (connRes != null) {
+				connRes.close();
             }
 		}
 		return false;
@@ -114,26 +114,26 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
 }
 
 	public static boolean checkReservation(String player,String hour,String date) throws MyRuntimeException, SQLException {
-		PreparedStatement psRS = null;
+		PreparedStatement psRes = null;
 		Connection connRS = null;
 		
 		try {
 			connRS= ConnectionFactory.getConnection();
-			psRS = connRS.prepareStatement("UPDATE reservation SET reservationstatus=1 WHERE playerusername ='"+player+"' and hour='"+hour+"' and date='"+date+"'");
-			int i = psRS.executeUpdate();
+			psRes = connRS.prepareStatement("UPDATE reservation SET reservationstatus=1 WHERE playerusername ='"+player+"' and hour='"+hour+"' and date='"+date+"'");
+			int i = psRes.executeUpdate();
 			
 			if(i == 1) {
 				return true;
 			}
-			psRS.close();
+			psRes.close();
 			connRS.close();
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 		finally {
-			if (psRS != null) {
-				psRS.close();
+			if (psRes != null) {
+				psRes.close();
 			}
 			if (connRS != null) {
 				connRS.close();
