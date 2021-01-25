@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
 import logic.controller.JoinTournamentController;
@@ -42,8 +43,8 @@ public class JoinTournamentViewController {
     RoomBean bean =new RoomBean();
 
     
-    
-    public void initialize() {
+    @FXML
+    public void initialize(MouseEvent event) {
     	
     	ObservableList<TournamentBean> tournament = FXCollections.observableArrayList();
     				

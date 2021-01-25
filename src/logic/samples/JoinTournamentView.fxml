@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.JoinTournamentViewController">
+<AnchorPane style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.JoinTournamentViewController">
    <children>
       <VBox prefHeight="723.0" prefWidth="980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -38,7 +38,7 @@
                   <Insets left="25.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="joinbtn" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000;" text="JOIN TOURNAMENT" textAlignment="JUSTIFY" textFill="#6fd736" underline="true">
+            <Button fx:id="joinbtn" mnemonicParsing="false" onMousePressed="#initialize" style="-fx-background-color: transparent; -fx-border-color: #000000;" text="JOIN TOURNAMENT" textAlignment="JUSTIFY" textFill="#6fd736" underline="true">
                <VBox.margin>
                   <Insets left="450.0" right="62.0" top="10.0" />
                </VBox.margin>
