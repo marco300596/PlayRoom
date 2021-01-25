@@ -9,11 +9,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import logic.bean.TournamentBean;
 import logic.exception.MyRuntimeException;
-import logic.model.Tournament;
+
 
 
 public class TournamentDAO {
-	public Tournament getTournament(String tournamentName) throws MyRuntimeException, SQLException {
+	public TournamentBean getTournament(String tournamentName) throws MyRuntimeException, SQLException {
 		
 		Statement stmtT = null;
 		Connection connT = null;
@@ -23,7 +23,7 @@ public class TournamentDAO {
 			ResultSet rs = stmtT.executeQuery("SELECT * FROM tournament WHERE tournamentName=" + tournamentName);
 			
 			if(rs.next()) {
-				return extractTournamentFromResultSet(rs);
+				return extractTournamentsFromResultSet(rs);
 			}
 			stmtT.close();
 			connT.close();
@@ -111,27 +111,7 @@ public static boolean insertTournament(TournamentBean tournament) throws MyRunti
 
 
 
-
-
-
-
 	
-	private static Tournament extractTournamentFromResultSet(ResultSet rs) throws SQLException{
-		
-		Tournament tournament = new Tournament();
-		
-		tournament.setTournamentName(rs.getString("tournamentName"));
-		tournament.setTournamentRoom(rs.getString("tournamentRoom"));
-		tournament.setTournamentGame(rs.getString("tournamentGame"));
-		tournament.setTournamentHardware(rs.getString("tournamentHardware"));
-		tournament.setTournamentPartecipants(rs.getInt("tournamentPartecipants"));
-		
-		return tournament;
-	}
-	
-	
-	
-
 	
 	
 public static ObservableList<TournamentBean> getAllTournamentsAvailable(int roomid) throws MyRuntimeException, SQLException{
@@ -196,7 +176,7 @@ public static ObservableList<TournamentBean> getRoomIDbyCity(String city) throws
 		ResultSet rs = stmtP.executeQuery("SELECT tournamentname,tournamentroom,tournamentgame,tournamenthardware FROM tournament WHERE roomid IN(SELECT roomid FROM room WHERE city='" + city +"');");
 		
 		while(rs.next()) {
-			TournamentBean tournament = extractTournamentsbyid(rs);
+			TournamentBean tournament = extractTournamentsFromResultSet(rs);
 			tournaments.add(tournament);
 		}
 		
@@ -218,18 +198,7 @@ public static ObservableList<TournamentBean> getRoomIDbyCity(String city) throws
 	return tournaments;
 }
 
-private static TournamentBean extractTournamentsbyid(ResultSet rs) throws SQLException{
-	
-	TournamentBean tournament = new TournamentBean();
-	
-	tournament.setTournamentName(rs.getString("tournamentName"));
-	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
-	tournament.setTournamentGame(rs.getString("tournamentGame"));
-	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
-	
-	
-	return tournament;
-}
+
 	
 	
 }
