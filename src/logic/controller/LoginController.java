@@ -8,6 +8,7 @@ import logic.bean.LoginBean;
 import logic.dao.EventOrganizerDAO;
 import logic.dao.PlayerDAO;
 import logic.exception.MyRuntimeException;
+import logic.exception.UserDoesNotExist;
 import logic.model.Player;
 
 public class LoginController {
@@ -54,27 +55,25 @@ public class LoginController {
 		this.bean = bean;
 	}
 	
-	public boolean findPlayerIdentity() throws MyRuntimeException, SQLException{
+	public boolean findPlayerIdentity() throws MyRuntimeException, SQLException, UserDoesNotExist{
 		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
 			return false;
 		}
 		this.bean = PlayerDAO.getPlayerByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
-		if(this.bean == null) {
-			new Thread(() ->
-        	JOptionPane.showMessageDialog(null, "User does not exist!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+		if(this.bean.getUsername().isEmpty()) {
+			 throw new UserDoesNotExist();
 		}
-		return this.bean != null;
+		return !(this.bean.getUsername().isEmpty());
 	}
 	
-	public boolean findOrgIdentity() throws MyRuntimeException, SQLException{
+	public boolean findOrgIdentity() throws MyRuntimeException, SQLException, UserDoesNotExist{
 		if (this.bean.getUsername().isEmpty() && this.bean.getPassword().isEmpty()) {
 			return false;
 		}
 		this.bean = EventOrganizerDAO.getOrgByUserNameAndPassword(this.bean.getUsername(),this.bean.getPassword());
-		if(this.bean == null) {
-			new Thread(() ->
-        	JOptionPane.showMessageDialog(null, "User does not exist!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+		if(this.bean.getUsername().isEmpty()) {
+			 throw new UserDoesNotExist();
 		}
-		return this.bean != null;
+		return !(this.bean.getUsername().isEmpty());
 	}
 }

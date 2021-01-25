@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import logic.controller.LoginController;
 import logic.exception.MyRuntimeException;
+import logic.exception.UserDoesNotExist;
 
 public class HomePageViewController {
 
@@ -65,12 +66,10 @@ public class HomePageViewController {
     }
     
     @FXML
-    void loginPression(ActionEvent event) throws MyRuntimeException, SQLException{
+    void loginPression(ActionEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist{
     	
     	LoginController controller = LoginController.getInstance();
-    	//trucchetto
-    	/*usTxt.setText("");
-    	pwdTxt.setText("");*/
+    	
     	if(verifyLogFields()) {
         	controller.getBean().setUsername(usTxt.getText());
         	controller.getBean().setPassword(pwdTxt.getText());
@@ -78,16 +77,24 @@ public class HomePageViewController {
     	if (cbp.isSelected() && cbeo.isSelected()){
 			JOptionPane.showMessageDialog(null, "you cannot select both user type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
 		}
-    	if(cbp.isSelected() && controller.findPlayerIdentity()) {
-			showPlayerPage();
+    	if(cbp.isSelected()) {
+    		try {
+    			if(controller.findPlayerIdentity()) {
+    				showPlayerPage();
+    			}
+    		}catch(UserDoesNotExist e){
+    			Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
+    		}
 		}
-    	if (cbeo.isSelected() && controller.findOrgIdentity()) {
-			showOrganizerPage();
+    	if (cbeo.isSelected()) {
+    		try {
+    			if(controller.findOrgIdentity()) {
+    				showOrganizerPage();
+    			}
+    		}catch(UserDoesNotExist e){
+    			Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
+    		}
 		}
-    	
-  
-    	
- 
     }
     
     private void loadMainPage(String page) {

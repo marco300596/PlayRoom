@@ -80,7 +80,7 @@ public class PlayerDAO {
 				connP.close();
             }
 		}
-		return null;
+		return new LoginBean();
 	}
 	/*mi serve per riempire la table in management*/
 	public static ObservableList<RegistrationBean> getAllPlayers() throws MyRuntimeException, SQLException{

@@ -77,7 +77,7 @@ public class EventOrganizerDAO {
 				connO.close();
             }
 		}
-		return null;
+		return new LoginBean();
 	}
 	
 public static boolean insertOrganizer(RegistrationBean org) throws MyRuntimeException, SQLException{
