@@ -117,7 +117,7 @@ public static int getRoomIdFromCity(String city) throws MyRuntimeException, SQLE
 	try {
 		connT= ConnectionFactory.getConnection();
 		stmtT = connT.createStatement();
-		ResultSet rs = stmtT.executeQuery("SELECT * FROM  tournament WHERE roomid=(SELECT roomid FROM room WHERE city='" + city + "');" );
+		ResultSet rs = stmtT.executeQuery("SELECT * FROM  tournament WHERE roomid IN (SELECT roomid FROM room WHERE city='" + city + "');" );
 		
 		if(rs.next()) {
 			return extractRoomIDFromResultSet(rs);
@@ -215,7 +215,7 @@ private static TournamentBean extractTournamentsFromResultSet(ResultSet rs) thro
 	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
 	tournament.setTournamentGame(rs.getString("tournamentGame"));
 	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
-	tournament.setTournamentPartecipants(rs.getInt("tournamentPartecipants"));
+	//tournament.setTournamentPartecipants(rs.getInt("tournamentPartecipants"));
 	
 	return tournament;
 }

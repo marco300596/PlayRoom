@@ -2,6 +2,8 @@ package logic.view;
 
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -50,13 +52,18 @@ public class JoinTournamentViewController {
     void initialize(MouseEvent event) throws MyRuntimeException, SQLException {
     	JoinTournamentController controller = JoinTournamentController.getInstance();
     	
+    	
     	controller.getrBean().setCity(citytxt.getText());
-    	ObservableList<TournamentBean> tournament = controller.joinTournament();
+    	ObservableList<TournamentBean> tournament = controller.joinTournament(controller.getrBean());
+    	if(tournament.isEmpty())	{
+    		new Thread(() ->JOptionPane.showMessageDialog(null, "No room registered! Please go to room registration page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		return;
+    	}
     	hTab.setItems(tournament);
-        tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentname"));
-        roomCol.setCellValueFactory(new PropertyValueFactory<>("tournamentroom"));
-        gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentgame"));
-        gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamenthardware"));
+        tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentName"));
+        roomCol.setCellValueFactory(new PropertyValueFactory<>("tournamentRoom"));
+        gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentGame"));
+        gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentHardware"));
    	}
     			
     	
