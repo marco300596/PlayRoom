@@ -49,9 +49,10 @@ public static boolean checkAdehesion(String playerUN, String tournamentName) thr
 		
 		try {
 			connT= ConnectionFactory.getConnection();
-			psTm = connT.prepareStatement("SELECT * FROM PLAYER WHERE username = ? and tournamentname = ?");
+			psTm = connT.prepareStatement("SELECT * FROM player WHERE username = ? and tournamentname = ? AND SELECT * FROM tournament WHERE and tournamentname = ?");
 			psTm.setString(1, playerUN);
 			psTm.setString(2, tournamentName);
+			psTm.setString(3, tournamentName);
 			int i = psTm.executeUpdate();
 			
 			if(i == 1) {

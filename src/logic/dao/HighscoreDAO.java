@@ -56,7 +56,7 @@ public static ObservableList<HighscoreBean> showAllHighscoreForTournament(String
 		ResultSet rs =  pStmtH.executeQuery();
 	 	
 		while(rs.next()) {
-			HighscoreBean highscore = extracHighscoreBeanFromResultSet(rs);
+			HighscoreBean highscore = extractHighscoreBeanFromResultSet(rs);
 			highscores.add(highscore);
 			}
 		
@@ -122,7 +122,7 @@ private Highscore extractHighscoreFromResultSet(ResultSet rs) throws SQLExceptio
 		return hTable;
 	}
 	
-private static HighscoreBean extracHighscoreBeanFromResultSet(ResultSet rs) throws SQLException{
+private static HighscoreBean extractHighscoreBeanFromResultSet(ResultSet rs) throws SQLException{
 		
 		HighscoreBean highscore = new HighscoreBean();
 		

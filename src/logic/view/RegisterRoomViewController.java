@@ -98,16 +98,7 @@ public class RegisterRoomViewController {
 		
 	}
     	
-		}		
-		
-    	
-		
-    
-    
-    
-    
-    
-
+		}
     
     private boolean verifyFields() {
     	return !(nstxt.getText().equals("") || nametxt.getText().equals("") || desctxt.getText().equals("") || cTxt.getText().equals("") || addrTxt.getText().equals(""));

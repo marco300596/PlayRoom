@@ -6,13 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import logic.bean.HighscoreBean;
 import logic.dao.HighscoreDAO;
-import logic.dao.PlayerDAO;
 import logic.dao.TournamentDAO;
 import logic.exception.MyRuntimeException;
 
 public class SubmitHighscoreController {
 	
-	private ObservableList<HighscoreBean> beanList = FXCollections.observableArrayList();
 	private static SubmitHighscoreController inst;
     private HighscoreBean bean = new HighscoreBean();
 	
@@ -35,6 +33,8 @@ public class SubmitHighscoreController {
 	}
 	
 	public ObservableList<HighscoreBean> submitHighscoreAndShow() throws MyRuntimeException, SQLException{
+
+		ObservableList<HighscoreBean> beanList = FXCollections.observableArrayList();
 		HighscoreDAO.insertHighscore(bean);
 		beanList = HighscoreDAO.showAllHighscoreForTournament(bean.getTournament());
 		return beanList;
