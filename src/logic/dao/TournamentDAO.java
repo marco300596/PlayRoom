@@ -74,19 +74,21 @@ public static boolean checkAdehesion(String playerUN, String tournamentName) thr
 		return false;
 	}
 	
-public static boolean insertTournament(TournamentBean tournament) throws MyRuntimeException, SQLException{
+public static boolean insertTournament(TournamentBean tournament, int id) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psT = null;
 		Connection connTm = null;
 		
 		try {
 			connTm= ConnectionFactory.getConnection();
-			psT = connTm.prepareStatement("INSERT INTO tournament VALUES (?,?,?,?,?)");
+			psT = connTm.prepareStatement("INSERT INTO tournament VALUES (?,?,?,?,?,?,?)");
 			psT.setString(1, tournament.getTournamentName());
-			psT.setString(2, tournament.getTournamentRoom());
-			psT.setString(3, tournament.getTournamentGame());
-			psT.setString(4, tournament.getTournamentHardware());
-			psT.setInt(5, tournament.getTournamentPartecipants());
+			psT.setString(2, tournament.getTournamentGame());
+			psT.setInt(3, tournament.getTournamentPartecipants());
+			psT.setInt(4, id);
+			psT.setString(5, tournament.getTournamentRoom());
+			psT.setString(6, tournament.getTournamentHardware());
+			psT.setString(7, tournament.getTournamentDate());
 			int i = psT.executeUpdate();
 			
 			if(i == 1) {
@@ -158,6 +160,8 @@ private static TournamentBean extractTournamentsFromResultSet(ResultSet rs) thro
 	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
 	tournament.setTournamentGame(rs.getString("tournamentGame"));
 	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
+	tournament.setTournamentPartecipants(rs.getInt("tournamentPartecipants"));
+	tournament.setTournamentDate(rs.getString("tournamentDate"));
 	
 	
 	return tournament;
@@ -176,7 +180,7 @@ public static ObservableList<TournamentBean> getRoomIDbyCity(String city) throws
 		ResultSet rs = stmtP.executeQuery("SELECT tournamentname,tournamentroom,tournamentgame,tournamenthardware FROM tournament WHERE roomid IN(SELECT roomid FROM room WHERE city='" + city +"');");
 		
 		while(rs.next()) {
-			TournamentBean tournament = extractTournamentsFromResultSet(rs);
+			TournamentBean tournament = extractTournamentFromResultSet(rs);
 			tournaments.add(tournament);
 		}
 		
@@ -199,6 +203,16 @@ public static ObservableList<TournamentBean> getRoomIDbyCity(String city) throws
 }
 
 
+private static TournamentBean extractTournamentFromResultSet(ResultSet rs) throws SQLException{
 	
+	TournamentBean tournament = new TournamentBean();
+	
+	tournament.setTournamentName(rs.getString("tournamentName"));
+	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
+	tournament.setTournamentGame(rs.getString("tournamentGame"));
+	tournament.setTournamentHardware(rs.getString("tournamentHardware"));	
+	
+	return tournament;
+}
 	
 }

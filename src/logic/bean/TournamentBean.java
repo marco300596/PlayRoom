@@ -6,6 +6,8 @@ public class TournamentBean {
 	private String tournamentRoom;
 	private String tournamentGame;
 	private String tournamentHardware;
+	private String tournamentCity;
+	private String tournamentDate;
 	private int	tournamentPartecipants;
 
 
@@ -14,10 +16,10 @@ public class TournamentBean {
 		this.tournamentRoom = "";
 		this.tournamentGame = "";
 		this.tournamentHardware = "";
+		this.tournamentDate = "";
+		this.tournamentPartecipants = 0;
 	}
-	
-	
-	
+
 	public TournamentBean(String tournamentName, String tournamentRoom, String tournamentGame,
 			String tournamentHardware, int tournamentPartecipants) {
 		this.tournamentName = tournamentName;
@@ -82,6 +84,14 @@ public class TournamentBean {
 		
 	}
 	
-	
+	public String getTournamentDate() {
+		return tournamentDate;
+	}
+
+
+
+	public void setTournamentDate(String tournamentDate) {
+		this.tournamentDate = tournamentDate;
+	}
 	
 }

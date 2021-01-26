@@ -21,7 +21,13 @@ public class CreateTournamentViewController {
     private TextField partTxt;
 
     @FXML
-    private TextField catTxt;
+    private TextField gameTxt;
+    
+    @FXML
+    private TextField roomTxt;
+       
+    @FXML
+    private TextField hwTxt;
 
     @FXML
     private Button createBtn;
@@ -35,8 +41,10 @@ public class CreateTournamentViewController {
     	
     	if (verifyFields()){
 			CreateTournamentController controller = CreateTournamentController.getInstance();
+			controller.getBean().setTournamentRoom(roomTxt.getText());
 	    	controller.getBean().setTournamentName(nameTxt.getText());
-	    	controller.getBean().setTournamentGame(catTxt.getText());
+	    	controller.getBean().setTournamentGame(gameTxt.getText());
+	    	controller.getBean().setTournamentHardware(hwTxt.getText());
 	    	int num = Integer.parseInt(partTxt.getText());
 	    	controller.getBean().setTournamentPartecipants(num);
 	    	
@@ -54,7 +62,7 @@ public class CreateTournamentViewController {
     }
     
     private boolean verifyFields() {
-    	return !(nameTxt.getText().equals("") || catTxt.getText().equals("") || partTxt.getText().equals(""));
+    	return !(nameTxt.getText().equals("") || gameTxt.getText().equals("") || partTxt.getText().equals("")|| hwTxt.getText().equals(""));
     }
 
 }
