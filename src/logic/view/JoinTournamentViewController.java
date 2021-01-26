@@ -28,6 +28,9 @@ public class JoinTournamentViewController {
 
     @FXML
     private Button joinbtn;
+    
+    @FXML
+    private Button srcbtn;
 
     @FXML
     private TableView<TournamentBean> hTab;
@@ -49,9 +52,9 @@ public class JoinTournamentViewController {
     
     @FXML
     void initialize(MouseEvent event) throws MyRuntimeException, SQLException {
+    	
+    	
     	JoinTournamentController controller = JoinTournamentController.getInstance();
-    	
-    	
     	controller.getrBean().setCity(citytxt.getText());
     	ObservableList<TournamentBean> tournament = controller.joinTournament(controller.getrBean());
     	if(tournament.isEmpty())	{
@@ -65,6 +68,30 @@ public class JoinTournamentViewController {
         gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentGame"));
         hardCol.setCellValueFactory(new PropertyValueFactory<>("tournamentHardware"));
    	}
+    
+    
+    
+    //da completare
+    @FXML
+    void joinTournament(MouseEvent event) throws MyRuntimeException, SQLException {
+    	
+    	
+    	JoinTournamentController controller = JoinTournamentController.getInstance();
+    	ObservableList<TournamentBean> tournament = controller.joinTournament(controller.getrBean());
+    	if(tournament.isEmpty())	{
+    		new Thread(() ->JOptionPane.showMessageDialog(null, "No tournaments for the city selected! Please go to Create Tournament page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		return;
+    	}
+    	
+    	hTab.setItems(tournament);
+        tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentName"));
+        roomCol.setCellValueFactory(new PropertyValueFactory<>("tournamentRoom"));
+        gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentGame"));
+        hardCol.setCellValueFactory(new PropertyValueFactory<>("tournamentHardware"));
+   	}
+    
+    
+    
     			
     	
     		

@@ -47,6 +47,12 @@ public class ModifyRoomViewController {
     @FXML
     void addComponent(MouseEvent event) throws MyRuntimeException, SQLException {
     	
+    	
+    	if(cbeo1.isSelected() && cbeo2.isSelected()) {
+    		JOptionPane.showMessageDialog(null, "you cannot select both hardware and  type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
+    	
+    	}
+    	
     	if(cbeo1.isSelected()) {
     	if (verifyFields()){
 			ModifyRoomController controller = ModifyRoomController.getInstance();
