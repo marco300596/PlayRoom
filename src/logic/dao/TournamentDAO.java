@@ -218,28 +218,28 @@ private static TournamentBean extractTournamentFromResultSet(ResultSet rs) throw
 
 
 public static boolean setTournamentNameByPlayerUsername(String playerus,String tournamentName)throws MyRuntimeException, SQLException {
-	PreparedStatement psTm = null;
-	Connection connT = null;
+	PreparedStatement ps = null;
+	Connection conn = null;
 	
 	try {
-		connT= ConnectionFactory.getConnection();
-		psTm = connT.prepareStatement("UPDATE player SET tournamentname='"+tournamentName+"'WHERE username='"+ playerus+"';" );
-		int i = psTm.executeUpdate();
+		conn= ConnectionFactory.getConnection();
+		ps = conn.prepareStatement("UPDATE player SET tournamentname='"+tournamentName+"'WHERE username='"+ playerus+"';" );
+		int i = ps.executeUpdate();
 		if(i == 1) {
 			return true;
 		}
-		psTm.close();
-		connT.close();
+		ps.close();
+		conn.close();
 		
 	}catch(SQLException ex){
 		ex.printStackTrace();
 	}
 	finally {
-		if (psTm != null) {
-			psTm.close();
+		if (ps != null) {
+			ps.close();
 		}
-		if (connT != null) {
-			connT.close();
+		if (conn != null) {
+			conn.close();
         }
 	}
 	return false;
