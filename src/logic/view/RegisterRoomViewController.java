@@ -7,10 +7,14 @@ import java.util.logging.Logger;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -52,9 +56,11 @@ public class RegisterRoomViewController {
     
     @FXML
     private void handleButtonPhoto(ActionEvent event) throws MalformedURLException {
-    	if (phfield.getImage()!=null) {
+    	if (phfield.getImage()==null) {
         	
     		JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+    		FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG ,JPEG & GIF Images", "jpg", "jpeg", "gif");
+    		chooser.setFileFilter(filter);
     		int returnValue = chooser.showOpenDialog(null);
     		if (returnValue == JFileChooser.APPROVE_OPTION) {
     			try {
