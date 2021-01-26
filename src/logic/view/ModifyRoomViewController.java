@@ -54,16 +54,18 @@ public class ModifyRoomViewController {
     	}
     	
     	if(cbeo1.isSelected()) {
-    	if (verifyFields()){
-			ModifyRoomController controller = ModifyRoomController.getInstance();
-			controller.getHVBean().setOrgUserName(orgustxt.getText());
-			controller.getHVBean().setHardwareName(nametxt.getText());
-	    	controller.getHVBean().setHardwareGenre(genretxt.getText());
-	    	int hardwareQuantity=Integer.parseInt(quantxt.getText());
-	    	controller.getHVBean().setHardwareQuantity(hardwareQuantity);
-	  		controller.getHVBean().setHardwareDescription(desctxt.getText());
+    		if (verifyFields()){
+			
+    			ModifyRoomController controller = ModifyRoomController.getInstance();
+    			controller.getHVBean().setOrgUserName(orgustxt.getText());
+    			controller.getHVBean().setHardwareName(nametxt.getText());
+    			controller.getHVBean().setHardwareGenre(genretxt.getText());
+    			int hardwareQuantity = Integer.parseInt(quantxt.getText());
+    			controller.getHVBean().setHardwareQuantity(hardwareQuantity);
+    			controller.getHVBean().setHardwareDescription(desctxt.getText());
 	    	
 	    	try {
+	    		
 	    		controller.addComponentH(controller.getHVBean());
 	    		new Thread(() ->
             	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
@@ -71,6 +73,7 @@ public class ModifyRoomViewController {
 	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
 	    	}
 		} else {
+			
 			new Thread(() ->
         	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
 		}	
@@ -78,22 +81,25 @@ public class ModifyRoomViewController {
     	
     	if(cbeo2.isSelected()) {
         	if (verifyFields()){
+    			
     			ModifyRoomController controller = ModifyRoomController.getInstance();
     			controller.getHVBean().setOrgUserName(orgustxt.getText());
     			controller.getHVBean().setGameName(nametxt.getText());
     			controller.getHVBean().setGameGenre(genretxt.getText());
-    			int gameQuantity=Integer.parseInt(quantxt.getText());
+    			int gameQuantity = Integer.parseInt(quantxt.getText());
     	  		controller.getHVBean().setGameQuantity(gameQuantity);
     	  		controller.getHVBean().setGameDescription(desctxt.getText());
     	  		
     	    	try {
+    	    		
     	    		controller.addComponentV(controller.getHVBean());
     	    		new Thread(() ->
                 	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-    	    	} catch(Exception e){
+    	    	}catch(Exception e) {
     	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
     	    	}
     		} else {
+    			
     			new Thread(() ->
             	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
     		}	
@@ -104,7 +110,7 @@ public class ModifyRoomViewController {
     }
     
     private boolean verifyFields() {
-    	return !(orgustxt.getText().equals("") ||nametxt.getText().equals("") || genretxt.getText().equals("") || quantxt.getText().equals("") || desctxt.getText().equals("") );
+    	return !(orgustxt.getText().equals("") || nametxt.getText().equals("") || genretxt.getText().equals("") || quantxt.getText().equals("") || desctxt.getText().equals("") );
     }
 
 }
