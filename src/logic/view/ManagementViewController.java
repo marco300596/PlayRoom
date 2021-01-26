@@ -1,6 +1,8 @@
 package logic.view;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -18,6 +20,7 @@ import javafx.scene.layout.VBox;
 import logic.bean.RegistrationBean;
 import logic.controller.ManagementController;
 import logic.exception.MyRuntimeException;
+import logic.exception.UserDoesNotExist;
 
 
 
@@ -48,6 +51,7 @@ public class ManagementViewController {
     private Button blockBtn;
     private Button delBtn;
     private HBox hBox;
+    private int click = 0;
     
     @FXML
     void updateList(MouseEvent event) throws MyRuntimeException, SQLException {
@@ -59,24 +63,21 @@ public class ManagementViewController {
     	fnameCol.setCellValueFactory(new PropertyValueFactory<>("firstname"));
     	lnameCol.setCellValueFactory(new PropertyValueFactory<>("lastname"));
     	
-    	/*
-    	 * potremmo usare il pattern decorator per aggiungere questa 
-    	 * funzionalita', visto che viene aggiunta dinamicamente?
-    	 */
-    	
-    	/*instanzio nuovi oggetti una sola volta quando premo il bottone*/
+    
     	if(nameInput == null)	nameInput 	= new TextField();
     	if(blockBtn == null) 	blockBtn 	= new Button("Block");
     	if(delBtn == null)		delBtn 		= new Button("Delete");
-    	if(hBox == null)		hBox 		= new HBox();
+    	if(hBox == null) 		hBox 		= new HBox();
+    		
     	
-    	nameInput.setPromptText("username");
-    	hBox.setPadding(new Insets(10,10,10,50));
-    	hBox.setSpacing(10);
-    	//TODO modifica duplicate children
-    	hBox.getChildren().addAll(nameInput,delBtn,blockBtn);
-    	vBox.getChildren().add(hBox);
-    	
+   		nameInput.setPromptText("username");
+   		while(click<1) {
+   			hBox.setPadding(new Insets(10,10,10,50));
+   	   		hBox.setSpacing(10);
+   	   		hBox.getChildren().addAll(nameInput,delBtn,blockBtn);
+   	       	vBox.getChildren().add(hBox);
+   	       	click++;
+   		}
     	
     	delBtn.setOnAction(e -> {
     		controller.getRegBean().setUsername(nameInput.getText());
@@ -85,14 +86,12 @@ public class ManagementViewController {
 					new Thread(() ->
 		        	JOptionPane.showMessageDialog(null, "Deleted user. Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
 				} else {
-					new Thread(() ->
-		        	JOptionPane.showMessageDialog(null, "User not found. Please refresh the page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+					throw new UserDoesNotExist();
 				}
-			} catch (MyRuntimeException | SQLException e1) {
-				e1.printStackTrace();
+			} catch (MyRuntimeException | SQLException | UserDoesNotExist e1) {
+				Logger.getLogger(ManagementViewController.class.getName()).log(Level.SEVERE, null, e);
 			}
 		});
     }
-
 }
 
