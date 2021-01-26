@@ -67,7 +67,7 @@ public class BookRoomController {
 	}
 	
 	public ObservableList<RoomBean> findRoomForPrenoByGameandHardware() throws MyRuntimeException, SQLException{
-		beanList = RoomDAO.getAllRoomsAvailableForVGAndHW(bean.getDate(), bean.getHour(), bean.getNumberOfPlayer(), ghbean.getGameName(), bean.getCity());
+		beanList = RoomDAO.getAllRoomsAvailableForVGAndHW(bean.getDate(), bean.getHour(), bean.getNumberOfPlayer(), ghbean.getGameName(), ghbean.getHardwareName(), bean.getCity());
 		return beanList;
 	}
 	
