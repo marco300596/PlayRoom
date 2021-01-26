@@ -50,9 +50,6 @@ public class BookRoomController {
 		this.robean = robean;
 	}
 	
-	public boolean checkPlayerExistance() throws MyRuntimeException, SQLException{
-		return LoginController.findPlayerIdentity();
-	}
 	
 	public ObservableList<RoomBean> findRoomForPreno() throws MyRuntimeException, SQLException{
 		beanList = RoomDAO.getAllRoomsAvailable(bean.getDate(), bean.getHour(), bean.getNumberOfPlayer(), bean.getCity());
@@ -66,6 +63,11 @@ public class BookRoomController {
 	
 	public ObservableList<RoomBean> findRoomForPrenoByVideoGame() throws MyRuntimeException, SQLException{
 		beanList = RoomDAO.getAllRoomsAvailableForVG(bean.getDate(), bean.getHour(), bean.getNumberOfPlayer(), ghbean.getGameName(), bean.getCity());
+		return beanList;
+	}
+	
+	public ObservableList<RoomBean> findRoomForPrenoByGameandHardware() throws MyRuntimeException, SQLException{
+		beanList = RoomDAO.getAllRoomsAvailableForVGAndHW(bean.getDate(), bean.getHour(), bean.getNumberOfPlayer(), ghbean.getGameName(), bean.getCity());
 		return beanList;
 	}
 	

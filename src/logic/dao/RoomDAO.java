@@ -227,6 +227,44 @@ public static ObservableList<RoomBean> getAllRoomsAvailableForVG(String date, St
 	return rooms;
 }
 
+public static ObservableList<RoomBean> getAllRoomsAvailableForVGAndHW(String date, String hour, int nOP,  String hwName, String city) throws MyRuntimeException, SQLException{
+	
+	PreparedStatement pStmtR = null;
+	Connection connR = null;
+	ObservableList<RoomBean> rooms = FXCollections.observableArrayList();
+	
+	try {
+		connR= ConnectionFactory.getConnection();
+		pStmtR = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?) and EXISTS (SELECT FROM hardware WHERE hardwarename = ? and roomid = r.roomid) and EXISTS (SELECT FROM videogame WHERE gamename = ? and roomid = r.roomid);");
+		pStmtR.setString(1, city);
+		pStmtR.setInt(2, nOP);
+		pStmtR.setString(3, date);
+		pStmtR.setString(4, hour);
+		ResultSet rs =  pStmtR.executeQuery();
+	 	
+		while(rs.next()) {
+			RoomBean room = extractRoomBeanFromResultSet(rs);
+			rooms.add(room);
+			}
+		
+		pStmtR.close();
+		connR.close();
+		return rooms;
+		
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+	finally {
+		if (pStmtR != null) {
+			pStmtR.close();
+		}
+		if (connR != null) {
+			connR.close();
+        }
+	}
+	return rooms;
+}
+
 	public static RoomBean getRoomFromName(String roomName) throws MyRuntimeException, SQLException{
 		PreparedStatement psR = null;
 		Connection connR = null;

@@ -1,8 +1,14 @@
 package logic.view;
+import java.io.File;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -45,20 +51,25 @@ public class RegisterRoomViewController {
     
     
     @FXML
-    private void handleButtonPhoto(ActionEvent event) {
-    	
-    	Image image=new Image("");
-    	
-    	phfield.setImage(image);
-    	
-    	
+    private void handleButtonPhoto(ActionEvent event) throws MalformedURLException {
+    	if (phfield.getImage()!=null) {
+        	
+    		JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+    		int returnValue = chooser.showOpenDialog(null);
+    		if (returnValue == JFileChooser.APPROVE_OPTION) {
+    			try {
+    				File file = new File(chooser.getSelectedFile().getAbsolutePath());
+    				String localURL = file.toURI().toURL().toString();
+    				phfield.setImage(new Image(localURL));
+    			}catch(MalformedURLException m) {
+    			new Thread(()-> JOptionPane.showMessageDialog(null, "choose a correct photo!","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
+    			}
+    		}
+    	}else {
+    			phbtn.setDisable(true);
+    		}
     }
-    
-    
-    
-    
-    
-    
+
     @FXML
     private void registerPression(MouseEvent event) throws MyRuntimeException, SQLException{
     	
