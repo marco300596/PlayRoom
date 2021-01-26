@@ -29,8 +29,6 @@ import logic.model.Highscore;
 import logic.model.Player;
 
 public class SubmitHighscoreViewController {
-
-public class submitHighscoreViewController {
 		
     private LoginController logc = LoginController.getInstance();
 	private SubmitHighscoreController controller = SubmitHighscoreController.getInstance();
@@ -64,30 +62,31 @@ public class submitHighscoreViewController {
 		controller.getHighscoreBean().setPlayerUN(logc.getBean().getUsername());
 		controller.getHighscoreBean().setTournament(tourTxt.getText());
 			
-		if (logc.findPlayerIdentity()) {
-			if (controller.checkTournamentAdehesion()) {
-				highscore = controller.submitHighscoreAndShow();
-				hTab.setItems(highscore);
-				posCol.setCellValueFactory(new PropertyValueFactory<>(""));
-				plNCol.setCellValueFactory(new PropertyValueFactory<>("username"));
-				highValCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
-			}else {
-				new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered in this tournament!\n please register","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+		try {
+			if (logc.findPlayerIdentity()) {
+				if (controller.checkTournamentAdehesion()) {
+					highscore = controller.submitHighscoreAndShow();
+					hTab.setItems(highscore);
+					posCol.setCellValueFactory(new PropertyValueFactory<>(""));
+					plNCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+					highValCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
+				}else {
+					new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered in this tournament!\n please register","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+				}
 			}
-		}else {
-			new Thread(()-> JOptionPane.showMessageDialog(null, "you are no longer registrated in the sistem;/n you have been deleted!","Deleted", JOptionPane.INFORMATION_MESSAGE)).start();
-			Parent root = null;
-		   	Stage sce = (Stage)scoreTxt.getScene().getWindow();
-		   	try {
-		   		root = FXMLLoader.load(getClass().getResource("/logic/samples/registration.fxml"));
+		}catch(UserDoesNotExist u) {
+				new Thread(()-> JOptionPane.showMessageDialog(null, "you are no longer registrated in the sistem;/n you have been deleted!","Deleted", JOptionPane.INFORMATION_MESSAGE)).start();
+				Parent root = null;
+				Stage sce = (Stage)scoreTxt.getScene().getWindow();
+				try {
+					root = FXMLLoader.load(getClass().getResource("/logic/samples/registration.fxml"));
 		   		
-		   	} catch(IOException e){
-		   		Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
-		   	}
+				} catch(IOException e){
+					Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
+				}
 		  
-		   	sce.setScene(new Scene(root));
-		  	sce.show();
-			}
-    	}
-	}
+				sce.setScene(new Scene(root));
+				sce.show();
+		}
+    }
 }
