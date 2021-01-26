@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import logic.controller.CreateTournamentController;
 import logic.controller.LoginController;
 import logic.controller.RegistrationController;
 
@@ -112,7 +111,7 @@ public class RegistrationViewController {
     		return true;
     	}
     	new Thread(() ->
-    	JOptionPane.showMessageDialog(null, "Password does not match!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    	JOptionPane.showMessageDialog(null, "Password does not match!",ERROR, JOptionPane.INFORMATION_MESSAGE)).start();
 		return false;
     }
     
