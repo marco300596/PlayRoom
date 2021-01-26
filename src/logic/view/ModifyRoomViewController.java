@@ -47,14 +47,17 @@ public class ModifyRoomViewController {
     @FXML
     void addComponent(MouseEvent event) throws MyRuntimeException, SQLException {
     	
-    	
-    	if(cbeo1.isSelected() && cbeo2.isSelected()) {
-    		JOptionPane.showMessageDialog(null, "you cannot select both hardware and  type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
+    	if(!cbeo1.isSelected() && !cbeo2.isSelected()) {
+    		JOptionPane.showMessageDialog(null, "you have to select one  between hardware and videogame type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
     	
     	}
     	
-    	if(cbeo1.isSelected()) {
-    		if (verifyFields()){
+    	if(cbeo1.isSelected() && cbeo2.isSelected()) {
+    		JOptionPane.showMessageDialog(null, "you cannot select both hardware and videogame type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
+    	
+    	}
+    	
+    	if(cbeo1.isSelected() && verifyFields()){
 			
     			ModifyRoomController controller = ModifyRoomController.getInstance();
     			controller.getHVBean().setOrgUserName(orgustxt.getText());
@@ -76,11 +79,9 @@ public class ModifyRoomViewController {
 			
 			new Thread(() ->
         	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
-		}	
-    }
+		}
     	
-    	if(cbeo2.isSelected()) {
-        	if (verifyFields()){
+    	if(cbeo2.isSelected() && verifyFields()){
     			
     			ModifyRoomController controller = ModifyRoomController.getInstance();
     			controller.getHVBean().setOrgUserName(orgustxt.getText());
@@ -102,11 +103,7 @@ public class ModifyRoomViewController {
     			
     			new Thread(() ->
             	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
-    		}	
-        }
-    	
-    	
-    	
+    		}
     }
     
     private boolean verifyFields() {
