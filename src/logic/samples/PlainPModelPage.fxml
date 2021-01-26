@@ -26,11 +26,6 @@
                         <Button minHeight="110.0" mnemonicParsing="false" onMousePressed="#bookingPage" prefHeight="80.0" prefWidth="200.0" text="Room Booking" />
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                     <content>
-                        <Button minHeight="100.0" mnemonicParsing="false" onMousePressed="#ratePage" prefHeight="80.0" prefWidth="200.0" text="RatePage" />
-                     </content>
-                  </CustomMenuItem>
                </items>
             </MenuButton>
             <MenuButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="110.0" prefWidth="321.0" style="-fx-background-color: transparent;" text="Tournaments" textAlignment="JUSTIFY" textFill="#6fd736">
@@ -39,16 +34,6 @@
                </font>
                <items>
                   <CustomMenuItem mnemonicParsing="false" />
-                  <CustomMenuItem text="1">
-                     <content>
-                        <Button minHeight="110.0" mnemonicParsing="false" onMousePressed="#poolPage" prefHeight="80.0" prefWidth="200.0" text="CreatePool" />
-                     </content>
-                  </CustomMenuItem>
-                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                     <content>
-                        <Button mnemonicParsing="false" onMousePressed="#highscoreHistoryPage" prefHeight="80.0" prefWidth="200.0" text="Your Highscore Progression" />
-                     </content>
-                  </CustomMenuItem>
                   <CustomMenuItem text="1">
                      <content>
                         <Button minHeight="110.0" mnemonicParsing="false" onMousePressed="#joinTournamentPage" prefHeight="80.0" prefWidth="200.0" text="Join Tournament" />
@@ -66,21 +51,6 @@
                         <Button mnemonicParsing="false" text="Button" />
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem text="1">
-                     <content>
-                        <Button mnemonicParsing="false" text="Button" />
-                     </content>
-                  </CustomMenuItem>
-                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                     <content>
-                        <Button mnemonicParsing="false" text="Button" />
-                     </content>
-                  </CustomMenuItem>
-                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                     <content>
-                        <Button mnemonicParsing="false" text="Button" />
-                     </content>
-                  </CustomMenuItem>
                </items>
             </MenuButton>
             <MenuButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="110.0" prefWidth="321.0" style="-fx-background-color: transparent;" text="Maps" textAlignment="JUSTIFY" textFill="#6fd736">
@@ -88,21 +58,6 @@
                   <Font name="Arial" size="20.0" />
                </font>
                <items>
-                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                     <content>
-                        <Button mnemonicParsing="false" text="Button" />
-                     </content>
-                  </CustomMenuItem>
-                  <CustomMenuItem text="1">
-                     <content>
-                        <Button mnemonicParsing="false" text="Button" />
-                     </content>
-                  </CustomMenuItem>
-                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                     <content>
-                        <Button mnemonicParsing="false" text="Button" />
-                     </content>
-                  </CustomMenuItem>
                   <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
                      <content>
                         <Button mnemonicParsing="false" text="Button" />

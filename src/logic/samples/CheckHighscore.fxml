@@ -16,7 +16,7 @@
          <children>
             <VBox prefHeight="790.0" prefWidth="907.0">
                <children>
-                  <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="657.0" style="-fx-background-color: #262628;">
+                  <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="358.0" prefWidth="682.0" style="-fx-background-color: #262628;">
                      <columns>
                         <TableColumn prefWidth="150.0" text="Username" />
                         <TableColumn prefWidth="250.0" text="Email" />
@@ -28,6 +28,9 @@
                      </VBox.margin>
                   </TableView>
                </children>
+               <HBox.margin>
+                  <Insets top="60.0" />
+               </HBox.margin>
             </VBox>
          </children>
       </HBox>
