@@ -46,7 +46,7 @@
                   <Insets left="25.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="subBtn" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #000000;" text="SUBMIT HIGHSCORE" textAlignment="JUSTIFY" textFill="#6fd736" underline="true">
+            <Button fx:id="subBtn" mnemonicParsing="false" onMousePressed="#show" style="-fx-background-color: transparent; -fx-border-color: #000000;" text="SUBMIT HIGHSCORE" textAlignment="JUSTIFY" textFill="#6fd736" underline="true">
                <VBox.margin>
                   <Insets left="250.0" right="62.0" top="10.0" />
                </VBox.margin>
