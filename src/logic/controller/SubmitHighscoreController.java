@@ -29,9 +29,6 @@ public class SubmitHighscoreController {
 	public HighscoreBean getHighscoreBean() {
 		return bean;
 	}
-	/*public boolean checkPlayerExistance() throws MyRuntimeException, SQLException{
-		return PlayerDAO.checkPlayer(bean.getPlayerUN());
-	}*/
 	
 	public boolean checkTournamentAdehesion() throws MyRuntimeException, SQLException {
 		return TournamentDAO.checkAdehesion(bean.getPlayerUN(), bean.getTournament());

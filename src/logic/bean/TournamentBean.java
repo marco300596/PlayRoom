@@ -6,7 +6,6 @@ public class TournamentBean {
 	private String tournamentRoom;
 	private String tournamentGame;
 	private String tournamentHardware;
-	private String tournamentCity;
 	private String tournamentDate;
 	private int	tournamentPartecipants;
 

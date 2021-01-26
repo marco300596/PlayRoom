@@ -83,11 +83,11 @@ public class JoinTournamentViewController {
     		controller.joinTournament(tname.getTournamentName());
     		
     	
-   	}
+    	}
     
     	else {
     		new Thread(() ->JOptionPane.showMessageDialog(null, "No tournaments  selected! Please select a tournament","Error", JOptionPane.INFORMATION_MESSAGE)).start();
-    		return;
+    		
     		
     	}
     }
