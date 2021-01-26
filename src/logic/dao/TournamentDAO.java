@@ -214,5 +214,37 @@ private static TournamentBean extractTournamentFromResultSet(ResultSet rs) throw
 	
 	return tournament;
 }
+
+
+public static boolean setTournamentNameByPlayerUsername(String playerus,String tournamentName)throws MyRuntimeException, SQLException {
+	PreparedStatement psTm = null;
+	Connection connT = null;
 	
+	try {
+		connT= ConnectionFactory.getConnection();
+		psTm = connT.prepareStatement("UPDATE player SET tournamentname='"+tournamentName+"'WHERE username='"+ playerus+"';" );
+		int i = psTm.executeUpdate();
+		if(i == 1) {
+			return true;
+		}
+		psTm.close();
+		connT.close();
+		
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psTm != null) {
+			psTm.close();
+		}
+		if (connT != null) {
+			connT.close();
+        }
+	}
+	return false;
+
+
+
+	
+}
 }

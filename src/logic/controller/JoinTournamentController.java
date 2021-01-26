@@ -4,10 +4,9 @@ import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+import logic.bean.LoginBean;
 import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
-
 import logic.dao.TournamentDAO;
 import logic.exception.MyRuntimeException;
 
@@ -17,9 +16,9 @@ public class JoinTournamentController {
 	
 	private static JoinTournamentController inst;
 	private ObservableList<TournamentBean> beanList = FXCollections.observableArrayList();
-	//private LoginController logc = LoginController.getInstance();
 	private TournamentBean bean = new TournamentBean();
 	private RoomBean rbean = new RoomBean();
+	private LoginBean logBean = LoginController.getInstance().getBean();
 	
 	public static JoinTournamentController getInstance() {
 		if (inst == null) {
@@ -65,11 +64,22 @@ public class JoinTournamentController {
 	
 	
 	
-	public ObservableList<TournamentBean> joinTournament(RoomBean rbean) throws MyRuntimeException, SQLException  {
+	public ObservableList<TournamentBean> searchTournament(RoomBean rbean) throws MyRuntimeException, SQLException  {
 		
 	
 		this.beanList=TournamentDAO.getRoomIDbyCity(rbean.getCity());
 		return this.beanList;
+		
+		
+	}
+	
+	
+	public void joinTournament(String tournamentName) throws MyRuntimeException, SQLException  {
+		
+		String playerus;
+		playerus=logBean.getUsername();
+		TournamentDAO.setTournamentNameByPlayerUsername(playerus,tournamentName);
+		
 		
 		
 	}
