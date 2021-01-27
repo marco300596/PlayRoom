@@ -1,5 +1,6 @@
 package logic.view;
 
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,6 +10,7 @@ import javax.swing.JOptionPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import logic.controller.CreateTournamentController;
@@ -36,7 +38,7 @@ public class ModifyRoomViewController {
     private TextField quantxt;
 
     @FXML
-    private TextField desctxt;
+    private TextArea desctxt;
 
     @FXML
     private Button addbtn;
@@ -47,7 +49,7 @@ public class ModifyRoomViewController {
     @FXML
     void addComponent(MouseEvent event) throws MyRuntimeException, SQLException {
     	
-    	if(!cbeo1.isSelected() && !cbeo2.isSelected()) {
+   /* 	if(!cbeo1.isSelected() && !cbeo2.isSelected()) {
     		JOptionPane.showMessageDialog(null, "you have to select one  between hardware and videogame type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
     	
     	}
@@ -56,7 +58,7 @@ public class ModifyRoomViewController {
     		JOptionPane.showMessageDialog(null, "you cannot select both hardware and videogame type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
     	
     	}
-    	
+    */	
     	if(cbeo1.isSelected() && verifyFields()){
 			
     			ModifyRoomController controller = ModifyRoomController.getInstance();
@@ -75,12 +77,15 @@ public class ModifyRoomViewController {
 	    	} catch(Exception e){
 	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
 	    	}
-		} else {
+		}
+    	
+    	/*
+    		else  {
 			
 			new Thread(() ->
         	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
 		}
-    	
+    	*/
     	if(cbeo2.isSelected() && verifyFields()){
     			
     			ModifyRoomController controller = ModifyRoomController.getInstance();
@@ -99,11 +104,14 @@ public class ModifyRoomViewController {
     	    	}catch(Exception e) {
     	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
     	    	}
-    		} else {
+    		} 
+    	/*
+    	else {
     			
     			new Thread(() ->
             	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
     		}
+    		*/
     }
     
     private boolean verifyFields() {
