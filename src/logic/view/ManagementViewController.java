@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 import logic.bean.RegistrationBean;
 import logic.controller.ManagementController;
 import logic.exception.MyRuntimeException;
+import logic.exception.StringIsEmptyException;
 import logic.exception.UserDoesNotExist;
 
 
@@ -80,17 +81,22 @@ public class ManagementViewController {
    		}
     	
     	delBtn.setOnAction(e -> {
-    		controller.getRegBean().setUsername(nameInput.getText());
-			try {
-				if(controller.delPlayer(controller.getRegBean())) {
-					new Thread(() ->
-		        	JOptionPane.showMessageDialog(null, "Deleted user. Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-				} else {
-					throw new UserDoesNotExist();
-				}
-			} catch (MyRuntimeException | SQLException | UserDoesNotExist e1) {
+    		try {
+    			if(nameInput.getText().equals("")) {
+    				controller.getRegBean().setUsername(nameInput.getText());
+    				if(controller.delPlayer(controller.getRegBean())) {
+    					new Thread(() ->
+    					JOptionPane.showMessageDialog(null, "Deleted user. Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    				} else {
+    					throw new UserDoesNotExist();
+    				}
+    			}else {
+    				throw new StringIsEmptyException();
+    			}
+    		}  catch (MyRuntimeException | SQLException | UserDoesNotExist | StringIsEmptyException e1) {
 				Logger.getLogger(ManagementViewController.class.getName()).log(Level.SEVERE, null, e);
 			}
+    		
 		});
     }
 }
