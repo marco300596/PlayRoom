@@ -13,10 +13,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import logic.bean.ReservationBean;
-import logic.controller.CheckBookingController;
+import logic.controller.CheckReservationController;
 import logic.exception.MyRuntimeException;
 
-public class CheckBookingViewController {
+public class CheckReservationViewController {
 
     @FXML
     private VBox vBox;
@@ -47,10 +47,10 @@ public class CheckBookingViewController {
 
     @FXML
     void checkList(MouseEvent event) throws MyRuntimeException, SQLException {
-    	CheckBookingController controller = CheckBookingController.getInstance();
+    	CheckReservationController controller = CheckReservationController.getInstance();
     	ObservableList<ReservationBean> reservations = controller.updateReservation();
     	if(reservations.isEmpty())	{
-    		new Thread(() ->JOptionPane.showMessageDialog(null, "No room registered! Please go to room registration page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		new Thread(() ->JOptionPane.showMessageDialog(null, "No reservation found! Please refresh the page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
     		return;
     	}
     	chkTable.setItems(reservations);
@@ -64,7 +64,7 @@ public class CheckBookingViewController {
     @FXML
     void confirm(MouseEvent event) throws MyRuntimeException, SQLException {
     	
-    	CheckBookingController controller = CheckBookingController.getInstance();
+    	CheckReservationController controller = CheckReservationController.getInstance();
     	
     	controller.getResBean().setPlayerUsername(chkTable.getSelectionModel().getSelectedItems().get(0).getPlayerUsername());
     	controller.getResBean().setDate(chkTable.getSelectionModel().getSelectedItems().get(0).getDate());
@@ -75,7 +75,7 @@ public class CheckBookingViewController {
     		JOptionPane.showMessageDialog(null, "Reservation confirmed! Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();  
     	} else {
     		new Thread(() ->
-    		JOptionPane.showMessageDialog(null, "No reservation found! Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    		JOptionPane.showMessageDialog(null, "No reservation found! Please refresh the page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
     	}
     }
 

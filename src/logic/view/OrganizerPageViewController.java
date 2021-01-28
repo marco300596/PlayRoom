@@ -63,7 +63,7 @@ public class OrganizerPageViewController {
     
     @FXML
     void checkReservationPage(MouseEvent event) {
-    	loadOrgPage("CheckBooking");
+    	loadOrgPage("CheckReservation");
     }
     
     private void loadOrgPage(String page) {

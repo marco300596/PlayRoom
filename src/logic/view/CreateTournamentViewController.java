@@ -49,9 +49,10 @@ public class CreateTournamentViewController {
 	    	controller.getBean().setTournamentPartecipants(num);
 	    	
 	    	try {
-	    		controller.insertNewTournament(controller.getBean());
-	    		new Thread(() ->
-            	JOptionPane.showMessageDialog(null, "Your tournament has been created!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+	    		if(controller.insertNewTournament(controller.getBean())) {
+	    			new Thread(() ->
+	            	JOptionPane.showMessageDialog(null, "Your tournament has been created!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+	    		}
 	    	} catch(Exception e){
 	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
 	    	}

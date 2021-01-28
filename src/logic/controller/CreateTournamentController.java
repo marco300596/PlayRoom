@@ -30,10 +30,10 @@ public class CreateTournamentController {
 		this.bean = bean;
 	}
 	
-	public void insertNewTournament(TournamentBean bean) throws MyRuntimeException, SQLException {
+	public boolean insertNewTournament(TournamentBean bean) throws MyRuntimeException, SQLException {
 		int id = 0;
 		id = RoomDAO.getRoomIdFromOrgUsername(logBean.getUsername());
-		TournamentDAO.insertTournament(bean,id);	
+		return TournamentDAO.insertTournament(bean,id);	
 	}
 	
 }

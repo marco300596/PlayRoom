@@ -10,20 +10,20 @@ import logic.dao.ReservationDAO;
 import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;
 
-public class CheckBookingController {
+public class CheckReservationController {
 	
-	private static CheckBookingController inst;
+	private static CheckReservationController inst;
     
     private ObservableList<ReservationBean> beanList = FXCollections.observableArrayList();
     private ReservationBean resBean = new ReservationBean();
     private LoginBean logBean = LoginController.getInstance().getBean();
 
     /*singleton*/
-	public static CheckBookingController getInstance() {
+	public static CheckReservationController getInstance() {
 
         if (inst == null)
 
-            inst = new CheckBookingController();
+            inst = new CheckReservationController();
 
         return inst;
 
