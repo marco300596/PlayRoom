@@ -121,8 +121,7 @@ public class BookRoomViewController {
     	BookRoomController controller = BookRoomController.getInstance();
     	ObservableList<RoomBean> room = FXCollections.observableArrayList();
     	try {
-    		if(verifyTxtFields()) {
-    		
+    			verifyTxtFields();
     			LocalDate localDate = dpField.getValue();//For reference
     			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     			String formattedString = localDate.format(formatter);
@@ -147,20 +146,20 @@ public class BookRoomViewController {
     				controller.getReservationBean().setHour(hSB.getText());
     				controller.getReservationBean().setCity(sprTxt.getText());
 
-    				if(!(gameTxt.getText().equals("") && hwTxt.getText().equals(""))) {
+    				if(!(gameTxt.getText().isEmpty() && hwTxt.getText().isEmpty())) {
     					controller.getGHBean().setGameName(gameTxt.getText());
     					controller.getGHBean().setHardwareName(hwTxt.getText());
     					room = controller.findRoomForPrenoByGameandHardware();
     					
-    				}else if(!gameTxt.getText().equals("") && hwTxt.getText().equals("") ) {
+    				}else if(!gameTxt.getText().isEmpty()) {
     					controller.getGHBean().setGameName(gameTxt.getText());
     		    		room = controller.findRoomForPrenoByVideoGame();
     				
-    				}else if (!hwTxt.getText().equals("")) {
+    				}else if (!hwTxt.getText().isEmpty()) {
     					controller.getGHBean().setHardwareName(hwTxt.getText());
     					room = controller.findRoomForPrenoByHardware();
     				
-    				}else if (!sprTxt.getText().equals("")) {
+    				}else if (!sprTxt.getText().isEmpty()) {
     					room = controller.findRoomForPreno();
     				}
     	    		
@@ -178,9 +177,7 @@ public class BookRoomViewController {
     			}else {
     	    		throw new TimeException("invalid date selected");
     	    	}
-    		}
     	}catch(TimeException t) {
-    			
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, t);
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you are not allowed to time travel","Alert!", JOptionPane.INFORMATION_MESSAGE)).start();
     		dpField.setValue(null);

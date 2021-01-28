@@ -29,14 +29,8 @@ public class CheckHighscoreViewController {
     private TableColumn<HighscoreBean, Integer> hScC;
 
     @FXML
-    private Button updBtn;
-
-    @FXML
     private Button confBtn;
-    
 
-    @FXML
-    private TextField tournTxt;
 
     @FXML
     void confirmHighscore(MouseEvent event) throws MyRuntimeException, SQLException {
@@ -56,7 +50,6 @@ public class CheckHighscoreViewController {
     void initialize(MouseEvent event) throws MyRuntimeException, SQLException {
     	
     	ObservableList<HighscoreBean> highscore = FXCollections.observableArrayList();
-    	controller.getHighscoreBean().setTournament(tournTxt.getText());
     	highscore = controller.findPendingHighscoreForTournament();
     	hscTbl.setItems(highscore);
 		usrNC.setCellValueFactory(new PropertyValueFactory<>("playerUN"));

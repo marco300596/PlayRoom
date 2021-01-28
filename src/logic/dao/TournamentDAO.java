@@ -13,6 +13,9 @@ import logic.exception.MyRuntimeException;
 
 
 public class TournamentDAO {
+	
+	private static final String s = "tournamentName";
+	
 	public TournamentBean getTournament(String tournamentName) throws MyRuntimeException, SQLException {
 		
 		Statement stmtT = null;
@@ -156,7 +159,7 @@ private static TournamentBean extractTournamentsFromResultSet(ResultSet rs) thro
 	
 	TournamentBean tournament = new TournamentBean();
 	
-	tournament.setTournamentName(rs.getString("tournamentName"));
+	tournament.setTournamentName(rs.getString(s));
 	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
 	tournament.setTournamentGame(rs.getString("tournamentGame"));
 	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
@@ -207,7 +210,7 @@ private static TournamentBean extractTournamentFromResultSet(ResultSet rs) throw
 	
 	TournamentBean tournament = new TournamentBean();
 	
-	tournament.setTournamentName(rs.getString("tournamentName"));
+	tournament.setTournamentName(rs.getString(s));
 	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
 	tournament.setTournamentGame(rs.getString("tournamentGame"));
 	tournament.setTournamentHardware(rs.getString("tournamentHardware"));	
@@ -254,7 +257,7 @@ public static boolean setTournamentNameByPlayerUsername(String playerus,String t
 			stmtP = conn.createStatement();
 			ResultSet rs = stmtP.executeQuery("SELECT * FROM player WHERE username='"+ playerus+"';" );
 			while(rs.next()) {
-				s = rs.getString("tournamentName");
+				s = rs.getString(s);
 				return s;
 			}
 			stmtP.close();

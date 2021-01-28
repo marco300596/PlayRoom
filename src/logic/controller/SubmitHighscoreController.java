@@ -34,10 +34,10 @@ public class SubmitHighscoreController {
 		return TournamentDAO.checkAdehesion(bean.getPlayerUN(), bean.getTournament());
 	}
 	
-	public ObservableList<HighscoreBean> ShowHighscore() throws MyRuntimeException, SQLException{
+	public ObservableList<HighscoreBean> showHighscore() throws MyRuntimeException, SQLException{
 		bean.setPlayerUN(logc.getBean().getUsername());
 		bean.setTournament(TournamentDAO.getTournamentNameByPlayerUsername(bean.getPlayerUN()));
-		if (!(bean.getTournament() == "")) {
+		if (!(bean.getTournament().isEmpty())) {
 			Highscore high = new Highscore(bean.getTournament(), true);
 			highscores = HighscoreDAO.showAllHighscoreForTournament(high);
 			return highscores;

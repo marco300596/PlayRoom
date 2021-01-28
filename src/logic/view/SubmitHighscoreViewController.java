@@ -50,7 +50,7 @@ public class SubmitHighscoreViewController {
     
     @FXML
     void initialize() throws MyRuntimeException, SQLException {
-    	controller.ShowHighscore();
+    	controller.showHighscore();
     }
     
     @FXML
