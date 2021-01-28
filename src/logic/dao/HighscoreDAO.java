@@ -49,7 +49,7 @@ public class HighscoreDAO {
 		try {
 			connHt= ConnectionFactory.getConnection();
 			stmtHt = connHt.createStatement();
-			ResultSet rs = stmtHt.executeQuery("UPDATE highscore SET highscorestatus = 1 WHERE username= '" + hi.getPlayerUserName() +"';");
+			ResultSet rs = stmtHt.executeQuery("UPDATE highscore SET highscorestatus = 1 WHERE username = '" +hi.getPlayerUserName()+"' AND tournamentname = '" +hi.getTournament()+"';");
 			
 			if(rs.next()) {
 				return true;

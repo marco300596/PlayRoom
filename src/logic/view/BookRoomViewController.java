@@ -225,10 +225,8 @@ public class BookRoomViewController {
     
    
 	private boolean verifyTxtFields() throws StringIsEmptyException {
-    	if(sprTxt.getText().equals("") && (gameTxt.getText().equals("") && hwTxt.getText().equals(""))) {
-       		  if (dpField.getValue().)
-    		throw new StringIsEmptyException();
-		
+    	if(sprTxt.getText().equals("") && (gameTxt.getText().equals("") && hwTxt.getText().equals(""))&&(dpField.getValue() == null || hSB.getText()== "HH" || gsTxt.getText().isEmpty())) {
+       			  throw new StringIsEmptyException();
     	}else{
 			return true;
 		}

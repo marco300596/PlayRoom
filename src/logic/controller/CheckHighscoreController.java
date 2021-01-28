@@ -1,6 +1,7 @@
 package logic.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -9,11 +10,13 @@ import javax.swing.JOptionPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import logic.bean.HighscoreBean;
+import logic.bean.TournamentBean;
 import logic.dao.HighscoreDAO;
+import logic.dao.RoomDAO;
+import logic.dao.TournamentDAO;
 import logic.exception.MyRuntimeException;
 import logic.exception.UserDoesNotExist;
 import logic.model.Highscore;
-import logic.view.BookRoomViewController;
 
 public class CheckHighscoreController {
 
@@ -39,9 +42,19 @@ public class CheckHighscoreController {
 	}
 	
 	public ObservableList<HighscoreBean> findPendingHighscoreForTournament() throws MyRuntimeException, SQLException{
-		
-		Highscore high = new Highscore(this.hibean.getTournament(), false);
-		return HighscoreDAO.showAllHighscoreForTournament(high);
+		int i = RoomDAO.getRoomIdFromOrgUsername(logc.getBean().getUsername());
+		ObservableList<TournamentBean> x = TournamentDAO.getAllTournamentsAvailable(i);
+		ObservableList<HighscoreBean> hbol = FXCollections.observableArrayList();
+		ArrayList<String> toru = new ArrayList<>();
+		for(TournamentBean j : x) {
+			toru.add(j.getTournamentName());
+		}
+		for(String s : toru) {
+			hibean.setTournament(s);
+			Highscore high = new Highscore(this.hibean.getTournament(), false);
+			hbol.addAll(HighscoreDAO.showAllHighscoreForTournament(high));
+		}
+		return hbol;
 	}
 	
 	public boolean confirmHighscore() throws MyRuntimeException, SQLException{
