@@ -20,7 +20,7 @@ public class HighscoreDAO {
 		try {
 			connHt= ConnectionFactory.getConnection();
 			stmtHt = connHt.createStatement();
-			ResultSet rs = stmtHt.executeQuery("SELECT * FROM highscoreTable WHERE htid=" + htid);
+			ResultSet rs = stmtHt.executeQuery("SELECT * FROM highscore WHERE htid=" + htid);
 			
 			if(rs.next()) {
 				return extractHighscoreFromResultSet(rs);
@@ -40,6 +40,35 @@ public class HighscoreDAO {
             }
 		}
 		return null;
+	}
+	
+	public static Boolean newHighscore(Highscore hi) throws MyRuntimeException, SQLException {
+		
+		Statement stmtHt = null;
+		Connection connHt = null;
+		try {
+			connHt= ConnectionFactory.getConnection();
+			stmtHt = connHt.createStatement();
+			ResultSet rs = stmtHt.executeQuery("UPDATE highscore SET highscorestatus = 1 WHERE username= '" + hi.getPlayerUserName() +"';");
+			
+			if(rs.next()) {
+				return true;
+			}
+			stmtHt.close();
+			connHt.close();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			if (stmtHt != null) {
+				stmtHt.close();
+			}
+			if (connHt != null) {
+				connHt.close();
+            }
+		}
+		return false;
 	}
 	
 public static ObservableList<HighscoreBean> showAllHighscoreForTournament(Highscore high) throws MyRuntimeException, SQLException {

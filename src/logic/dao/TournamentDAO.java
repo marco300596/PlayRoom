@@ -241,8 +241,9 @@ public static boolean setTournamentNameByPlayerUsername(String playerus,String t
 			conn.close();
         }
 	}
-	return false;	
+	return false;
 	}
+
 	public static String getTournamentNameByPlayerUsername(String playerus)throws MyRuntimeException, SQLException {
 		String s= "";
 		Statement stmtP = null;

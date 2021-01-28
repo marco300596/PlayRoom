@@ -31,6 +31,7 @@ import logic.bean.RoomBean;
 import logic.controller.BookRoomController;
 import logic.controller.LoginController;
 import logic.exception.MyRuntimeException;
+import logic.exception.StringIsEmptyException;
 import logic.exception.TimeException;
 import logic.exception.UserDoesNotExist;
 import logic.model.Room;
@@ -119,24 +120,20 @@ public class BookRoomViewController {
     	
     	BookRoomController controller = BookRoomController.getInstance();
     	ObservableList<RoomBean> room = FXCollections.observableArrayList();
-    	if(verifyTxtFields()) {
+    	try {
+    		if(verifyTxtFields()) {
     		
-    		LocalDate localDate = dpField.getValue();//For reference
-    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-			String formattedString = localDate.format(formatter);
-    		String[] parts = formattedString.split("-");
-    		int year = Integer.parseInt(parts[2]);
-    		int month = Integer.parseInt(parts[1])-1;
-    		int day = Integer.parseInt(parts[0]);
-			Calendar cal = Calendar.getInstance();
-			cal.clear();
-    		cal.setLenient(false);
-    		cal.set(year, month, day, 0, 0,0);
-    		
-    	
-    		
-    		try{
-    			
+    			LocalDate localDate = dpField.getValue();//For reference
+    			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    			String formattedString = localDate.format(formatter);
+    			String[] parts = formattedString.split("-");
+    			int year = Integer.parseInt(parts[2]);
+    			int month = Integer.parseInt(parts[1])-1;
+    			int day = Integer.parseInt(parts[0]);
+    			Calendar cal = Calendar.getInstance();
+    			cal.clear();
+    			cal.setLenient(false);
+    			cal.set(year, month, day, 0, 0,0);		
 
     			Calendar comp = Calendar.getInstance();
     			Date date = new Date();
@@ -181,14 +178,20 @@ public class BookRoomViewController {
     			}else {
     	    		throw new TimeException("invalid date selected");
     	    	}
-    		}catch(TimeException t) {
-    			
-    			Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, t);
-    			new Thread(()-> JOptionPane.showMessageDialog(null, "you are not allowed to time travel","Alert!", JOptionPane.INFORMATION_MESSAGE)).start();
-    			dpField.setValue(null);
     		}
+    	}catch(TimeException t) {
+    			
+    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, t);
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you are not allowed to time travel","Alert!", JOptionPane.INFORMATION_MESSAGE)).start();
+    		dpField.setValue(null);
+    		
+    	}catch(StringIsEmptyException s) {
+    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, s);
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "Please fill at least one textfield!","Fill Text Field", JOptionPane.INFORMATION_MESSAGE)).start();
+           		
     	}
     }
+    
     @FXML
     void bookRoom() throws MyRuntimeException, SQLException{
     	
@@ -221,11 +224,10 @@ public class BookRoomViewController {
     	}
     
    
-	private boolean verifyTxtFields() {
-    	if((gameTxt.getText().equals("") && hwTxt.getText().equals("")) && sprTxt.getText().equals("")) {
-       		  
-    		new Thread(()-> JOptionPane.showMessageDialog(null, "Please fill at least one textfield!","Fill Text Field", JOptionPane.INFORMATION_MESSAGE)).start();
-       		return false;
+	private boolean verifyTxtFields() throws StringIsEmptyException {
+    	if(sprTxt.getText().equals("") && (gameTxt.getText().equals("") && hwTxt.getText().equals(""))) {
+       		  if (dpField.getValue().)
+    		throw new StringIsEmptyException();
 		
     	}else{
 			return true;
