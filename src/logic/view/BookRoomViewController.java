@@ -146,7 +146,8 @@ public class BookRoomViewController {
     				controller.getReservationBean().setHour(hSB.getText());
     				controller.getReservationBean().setCity(sprTxt.getText());
 
-    				if(!(gameTxt.getText().isEmpty() && hwTxt.getText().isEmpty())) {
+    				//PORCA EVA
+    				if(!gameTxt.getText().isEmpty() && !hwTxt.getText().isEmpty()) {
     					controller.getGHBean().setGameName(gameTxt.getText());
     					controller.getGHBean().setHardwareName(hwTxt.getText());
     					room = controller.findRoomForPrenoByGameandHardware();
