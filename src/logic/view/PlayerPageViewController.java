@@ -39,6 +39,9 @@ public class PlayerPageViewController {
    private MenuButton btnMaps;
    
    @FXML
+   private MenuButton sHSBtn;
+   
+   @FXML
    void home(MouseEvent event) {
 	   homePlayer("homepage");
    }
@@ -60,7 +63,7 @@ public class PlayerPageViewController {
    
    @FXML
    void highscoreHistoryPage(MouseEvent event) {
-    	loadPlayerPage("HighscoreProgressionView");
+    	loadPlayerPage("HighscoreTableView");
    }
      
 

@@ -13,7 +13,7 @@ import logic.exception.MyRuntimeException;
 import logic.model.Highscore;
 
 public class HighscoreDAO {
-	public Highscore getHighscoreTable(int htid) throws MyRuntimeException, SQLException {
+	public Highscore getHighscore(int htid) throws MyRuntimeException, SQLException {
 		
 		Statement stmtHt = null;
 		Connection connHt = null;
@@ -42,7 +42,7 @@ public class HighscoreDAO {
 		return null;
 	}
 	
-public static ObservableList<HighscoreBean> showAllHighscoreForTournament(String tournamentName) throws MyRuntimeException, SQLException {
+public static ObservableList<HighscoreBean> showAllHighscoreForTournament(Highscore high) throws MyRuntimeException, SQLException {
 	
 	PreparedStatement pStmtH = null;
 	Connection connH = null;
@@ -50,9 +50,9 @@ public static ObservableList<HighscoreBean> showAllHighscoreForTournament(String
 	
 	try {
 		connH= ConnectionFactory.getConnection();
-		pStmtH = connH.prepareStatement("SELECT * FROM highscore r WHERE tournamentname = ? and highscorestatus = ? ;");
-		pStmtH.setString(1, tournamentName);
-		pStmtH.setInt(1, 1);	
+		pStmtH = connH.prepareStatement("SELECT * FROM highscore WHERE tournamentname = ? and highscorestatus = ? ORDER BY highscore DESC;");
+		pStmtH.setString(1, high.getTournament());
+		pStmtH.setBoolean(2, high.gethStatus());
 		ResultSet rs =  pStmtH.executeQuery();
 	 	
 		while(rs.next()) {

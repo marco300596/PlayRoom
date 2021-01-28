@@ -26,18 +26,15 @@ import logic.controller.SubmitHighscoreController;
 import logic.exception.MyRuntimeException;
 import logic.exception.UserDoesNotExist;
 import logic.model.Highscore;
-import logic.model.Player;
 
 public class SubmitHighscoreViewController {
 		
-    private LoginController logc = LoginController.getInstance();
+   
 	private SubmitHighscoreController controller = SubmitHighscoreController.getInstance();
+    private LoginController logc = LoginController.getInstance();
   
 	@FXML
     private TextField scoreTxt;
-
-    @FXML
-    private TextField tourTxt;
 
     @FXML
     private Button subBtn;
@@ -46,32 +43,31 @@ public class SubmitHighscoreViewController {
     private TableView<HighscoreBean> hTab;
 
     @FXML
-    private TableColumn<Player, String> posCol;
-
-    @FXML
     private TableColumn<Highscore, String> plNCol;
 
     @FXML
     private TableColumn<Highscore, Integer> highValCol;
     
     @FXML
-    void show(MouseEvent event)  throws MyRuntimeException, SQLException, UserDoesNotExist {
+    void initialize() throws MyRuntimeException, SQLException {
+    	controller.ShowHighscore();
+    }
+    
+    @FXML
+    void show(MouseEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist {
     
     	ObservableList<HighscoreBean> highscore = FXCollections.observableArrayList();
 		controller.getHighscoreBean().setHighscore(Integer.parseInt(scoreTxt.getText()));
-		controller.getHighscoreBean().setPlayerUN(logc.getBean().getUsername());
-		controller.getHighscoreBean().setTournament(tourTxt.getText());
 			
 		try {
 			if (logc.findPlayerIdentity()) {
 				if (controller.checkTournamentAdehesion()) {
 					highscore = controller.submitHighscoreAndShow();
 					hTab.setItems(highscore);
-					posCol.setCellValueFactory(new PropertyValueFactory<>(""));
 					plNCol.setCellValueFactory(new PropertyValueFactory<>("username"));
 					highValCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
 				}else {
-					new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered in this tournament!\n please register","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+					new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered in this tournament!/n please register","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
 				}
 			}
 		}catch(UserDoesNotExist u) {

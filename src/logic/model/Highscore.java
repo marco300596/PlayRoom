@@ -22,6 +22,20 @@ public class Highscore {
 		this.sethStatus(hStatus);
 	}
 	
+	public Highscore(String tournament, boolean hStatus) {
+		super();
+		this.tournament = tournament;
+		this.hStatus = hStatus;
+	}
+
+	public Highscore(int score, String tournament, String playerUN, boolean hStatus) {
+		super();
+		this.score = score;
+		this.tournament = tournament;
+		this.playerUN = playerUN;
+		this.hStatus = hStatus;
+	}
+
 	//setter&getter
 	
 	public int getScore()

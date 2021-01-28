@@ -88,7 +88,7 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
 	try {
 		connP= ConnectionFactory.getConnection();
 		stmtP = connP.createStatement();
-		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 0 and roomid=" + roomid+";");
+		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 0 and roomid=" + roomid +";");
 		
 		while(rs.next()) {
 			ReservationBean reservation = extractReservationFromResultSet(rs);

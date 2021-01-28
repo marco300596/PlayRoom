@@ -82,14 +82,13 @@ public static boolean insertTournament(TournamentBean tournament, int id) throws
 		
 		try {
 			connTm= ConnectionFactory.getConnection();
-			psT = connTm.prepareStatement("INSERT INTO tournament VALUES (?,?,?,?,?,?,?)");
+			psT = connTm.prepareStatement("INSERT INTO tournament(tournamentname, tournamentgame, tournamentpart, roomid, tournamentroom, tournamenthardware) VALUES (?,?,?,?,?,?)");
 			psT.setString(1, tournament.getTournamentName());
 			psT.setString(2, tournament.getTournamentGame());
 			psT.setInt(3, tournament.getTournamentPartecipants());
 			psT.setInt(4, id);
 			psT.setString(5, tournament.getTournamentRoom());
 			psT.setString(6, tournament.getTournamentHardware());
-			psT.setString(7, tournament.getTournamentDate());
 			int i = psT.executeUpdate();
 			
 			if(i == 1) {
@@ -242,11 +241,36 @@ public static boolean setTournamentNameByPlayerUsername(String playerus,String t
 			conn.close();
         }
 	}
-	return false;
-
-
-
+	return false;	
+	}
+	public static String getTournamentNameByPlayerUsername(String playerus)throws MyRuntimeException, SQLException {
+		String s= "";
+		Statement stmtP = null;
+		Connection conn = null;
 	
-}
+		try {
+			conn= ConnectionFactory.getConnection();
+			stmtP = conn.createStatement();
+			ResultSet rs = stmtP.executeQuery("SELECT * FROM player WHERE username='"+ playerus+"';" );
+			while(rs.next()) {
+				s = rs.getString("tournamentName");
+				return s;
+			}
+			stmtP.close();
+			conn.close();
+		
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+		finally {
+			if (stmtP != null) {
+				stmtP.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		}
+		return s;
+	}
 
 }

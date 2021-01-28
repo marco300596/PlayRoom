@@ -7,11 +7,14 @@ import logic.bean.HighscoreBean;
 import logic.dao.HighscoreDAO;
 import logic.dao.TournamentDAO;
 import logic.exception.MyRuntimeException;
+import logic.model.Highscore;
 
 public class SubmitHighscoreController {
 
 	private static SubmitHighscoreController inst;
     private HighscoreBean bean = new HighscoreBean();
+    private LoginController logc = LoginController.getInstance();
+	ObservableList<HighscoreBean> highscores;
 	
     public static SubmitHighscoreController getInstance() {
 
@@ -31,9 +34,22 @@ public class SubmitHighscoreController {
 		return TournamentDAO.checkAdehesion(bean.getPlayerUN(), bean.getTournament());
 	}
 	
+	public ObservableList<HighscoreBean> ShowHighscore() throws MyRuntimeException, SQLException{
+		bean.setPlayerUN(logc.getBean().getUsername());
+		bean.setTournament(TournamentDAO.getTournamentNameByPlayerUsername(bean.getPlayerUN()));
+		if (!(bean.getTournament() == "")) {
+			Highscore high = new Highscore(bean.getTournament(), true);
+			highscores = HighscoreDAO.showAllHighscoreForTournament(high);
+			return highscores;
+		}else {
+			return highscores;
+		}
+	}
+	
 	public ObservableList<HighscoreBean> submitHighscoreAndShow() throws MyRuntimeException, SQLException{
 
 		HighscoreDAO.insertHighscore(bean);
-		return HighscoreDAO.showAllHighscoreForTournament(bean.getTournament());
+		Highscore high = new Highscore(bean.getTournament(), false);
+		return HighscoreDAO.showAllHighscoreForTournament(high);
 	}
 }
