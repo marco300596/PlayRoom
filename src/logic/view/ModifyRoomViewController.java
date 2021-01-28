@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import logic.controller.CreateTournamentController;
 import logic.controller.ModifyRoomController;
 import logic.exception.MyRuntimeException;
+import logic.exception.WrongInputException;
 
 public class ModifyRoomViewController {
 
@@ -47,7 +48,7 @@ public class ModifyRoomViewController {
     
     
     @FXML
-    void addComponent(MouseEvent event) throws MyRuntimeException, SQLException {
+    void addComponent(MouseEvent event) throws MyRuntimeException, SQLException,WrongInputException {
     	
     	if(!cbeo1.isSelected() && !cbeo2.isSelected()) {
     		JOptionPane.showMessageDialog(null, "you have to select one  between hardware and videogame type ", "alert", JOptionPane.ERROR_MESSAGE);
@@ -74,17 +75,17 @@ public class ModifyRoomViewController {
 	    		controller.addComponentH(controller.getHVBean());
 	    		new Thread(() ->
             	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-	    	} catch(Exception e){
-	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
+	    		
+	    	} 
+	    		catch(Exception e){
+	    			Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
 	    	}
+	    	
+	    		
 		}
     	
     	
-    		else  {
-			
-			new Thread(() ->
-        	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
-		}
+    		
     	
     	if(cbeo2.isSelected() && verifyFields()){
     			
@@ -101,12 +102,19 @@ public class ModifyRoomViewController {
     	    		controller.addComponentV(controller.getHVBean());
     	    		new Thread(() ->
                 	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-    	    	}catch(Exception e) {
+    	    	}
+    	    	catch(Exception e) {
     	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
     	    	}
+    	    	
+    	    	
     		} 
     	
-    	
+    	else  {
+			
+			new Thread(() ->
+        	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+		}
     		
     }
     

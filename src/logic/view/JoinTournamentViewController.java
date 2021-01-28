@@ -1,7 +1,6 @@
 package logic.view;
 
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
 
 
@@ -16,6 +15,9 @@ import javafx.scene.input.MouseEvent;
 import logic.bean.TournamentBean;
 import logic.controller.JoinTournamentController;
 import logic.exception.MyRuntimeException;
+import logic.exception.NoRowSelected;
+import logic.exception.StringIsEmptyException;
+import logic.exception.WrongInputException;
 import logic.model.Hardware;
 import logic.model.Room;
 import logic.model.Tournament;
@@ -51,30 +53,48 @@ public class JoinTournamentViewController {
 
     
     @FXML
-    void initialize(MouseEvent event) throws MyRuntimeException, SQLException {
+    void initialize(MouseEvent event) throws MyRuntimeException, SQLException,StringIsEmptyException,WrongInputException {
     	
-    	if(verifyFields()) {
-    		JoinTournamentController controller = JoinTournamentController.getInstance();
-    		controller.getrBean().setCity(citytxt.getText());
-    		ObservableList<TournamentBean> tournament = controller.searchTournament(controller.getrBean());
-    		if(tournament.isEmpty())	{
-    			new Thread(() ->JOptionPane.showMessageDialog(null, "No tournaments for the city selected! Please go to Create Tournament page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
-    			return;
-    		}
+    	try {
+    		if(verifyFields()) {
+    		
+    		
+    				JoinTournamentController controller = JoinTournamentController.getInstance();
+    				controller.getrBean().setCity(citytxt.getText());
+    				ObservableList<TournamentBean> tournament = controller.searchTournament(controller.getrBean());
+    				if(tournament.isEmpty())	{
+    			
+    					new Thread(() ->JOptionPane.showMessageDialog(null, "No tournaments for the city selected! Please go to Create Tournament page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    					return;
+    				}
     	
     	
     	
-    	hTab.setItems(tournament);
-        tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentName"));
-        roomCol.setCellValueFactory(new PropertyValueFactory<>("tournamentRoom"));
-        gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentGame"));
-        hardCol.setCellValueFactory(new PropertyValueFactory<>("tournamentHardware"));
-   	}
-    	else {
-    		new Thread(() ->
-        	JOptionPane.showMessageDialog(null, "Fill the city textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    				hTab.setItems(tournament);
+    				tournamentCol.setCellValueFactory(new PropertyValueFactory<>("tournamentName"));
+    				roomCol.setCellValueFactory(new PropertyValueFactory<>("tournamentRoom"));
+    				gameCol.setCellValueFactory(new PropertyValueFactory<>("tournamentGame"));
+    				hardCol.setCellValueFactory(new PropertyValueFactory<>("tournamentHardware"));
+    		}else {
+    		
+    		throw new StringIsEmptyException();
+    	}
+    		
     	}
     	
+    		catch(StringIsEmptyException e) {
+    			System.err.println("StringIsEmptyException exception has been caught");
+    			e.printStackTrace();
+    			
+    			
+    			
+    		}
+    	
+    		
+    		
+    		
+    			
+    		
    }
     
     
@@ -83,24 +103,31 @@ public class JoinTournamentViewController {
   
 
     	JoinTournamentController controller = JoinTournamentController.getInstance(); 
-    	
-    	if (hTab.getSelectionModel().getSelectedItem() != null) {
+    	try {
+    		if (hTab.getSelectionModel().getSelectedItem() != null) {
     		
-    		TournamentBean tname = hTab.getSelectionModel().getSelectedItem();    
-    		controller.joinTournament(tname.getTournamentName());
-    		
-    		new Thread(() ->
-    		JOptionPane.showConfirmDialog(null,"GZ! Tournament joined!", "Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    			TournamentBean tname = hTab.getSelectionModel().getSelectedItem();    
+    			controller.joinTournament(tname.getTournamentName());
+    			new Thread(() ->
+    			JOptionPane.showConfirmDialog(null,"GZ! Tournament joined!", "Success", JOptionPane.INFORMATION_MESSAGE)).start();
    
     	}
     
-    	else {
-    		new Thread(() ->JOptionPane.showMessageDialog(null, "No tournaments  selected! Please select a tournament","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		else {
+    			throw new NoRowSelected();
     		
     		
     	}
+    		
     }
-    
+    		catch(NoRowSelected n) {
+    			System.err.println("NoRowSelected exception has been caught");
+    			n.printStackTrace();
+    			
+    		}
+    	
+    	
+    }
     
     private boolean verifyFields() {
     	return !(citytxt.getText().equals(""));
