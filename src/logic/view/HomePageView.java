@@ -17,6 +17,7 @@ public class HomePageView extends Application {
     	try {
     		Parent root = FXMLLoader.load(getClass().getResource("/logic/samples/homepage.fxml"));
     		primaryStage.setScene(new Scene(root));
+    		primaryStage.setResizable(false);
             primaryStage.show();
     	} catch (IOException e) {
     	
