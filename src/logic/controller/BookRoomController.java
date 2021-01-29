@@ -8,18 +8,25 @@ import logic.bean.GameHardwareBean;
 import logic.bean.ReservationBean;
 import logic.bean.RoomBean;
 import logic.dao.RoomDAO;
+import logic.dao.VideoGameDAO;
+import logic.dao.HardwareDAO;
 import logic.dao.ReservationDAO;
 import logic.exception.MyRuntimeException;
+import logic.model.Room;
 
 public class BookRoomController {
 	
 	private ObservableList<RoomBean> beanList = FXCollections.observableArrayList();
+	private ObservableList<GameHardwareBean> hList = FXCollections.observableArrayList();
+	private ObservableList<GameHardwareBean> vList = FXCollections.observableArrayList();
+	
 	private static BookRoomController inst;
     private ReservationBean bean = new ReservationBean();
     private RoomBean robean = new RoomBean();
 	private LoginController logc = LoginController.getInstance();
 	private GameHardwareBean ghbean = new GameHardwareBean();
-
+	private Room room = new Room();
+	
 	public static BookRoomController getInstance() {
 
         if (inst == null)
@@ -71,7 +78,30 @@ public class BookRoomController {
 		return beanList;
 	}
 	
+	public ObservableList<GameHardwareBean> populateHardware() throws MyRuntimeException, SQLException{
+		
+		int id;
+		id = RoomDAO.getRoomId(this.robean.getRoomName(), this.robean.getLocation());
+		hList = HardwareDAO.getAllHardwareForRoom(id);
+		return hList;
+	}
+	
+	public ObservableList<GameHardwareBean> populateGame() throws MyRuntimeException, SQLException{
+		
+		int id;
+		id = RoomDAO.getRoomId(this.robean.getRoomName(), this.robean.getLocation());
+		vList = VideoGameDAO.getAllVideoGameForRoom(id);
+		return vList;
+	}
+	
+	public String populateImage() throws MyRuntimeException, SQLException{
+		room = RoomDAO.getRoom(robean.getRoomName());
+		robean.setPhoto(room.getPhoto());
+		return robean.getPhoto();
+	}
+	
 	public boolean createReservation() throws MyRuntimeException, SQLException{
+		
 		boolean chk ;
 		int id;
 		int status = 0;

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="652.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.BookRoomViewController">
+   <children>
+      <Text fill="#6fd736" layoutX="203.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Room">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Text>
+      <TableView fx:id="vgTab" layoutX="33.0" layoutY="262.0" prefHeight="200.0" prefWidth="241.0">
+        <columns>
+          <TableColumn fx:id="vgNCol" prefWidth="98.0" text="Videogame" />
+          <TableColumn fx:id="vgNumCol" prefWidth="52.0" text="N" />
+            <TableColumn fx:id="vgGenCol" prefWidth="90.0" text="Genre" />
+        </columns>
+      </TableView>
+      <TableView fx:id="hwTab" layoutX="363.0" layoutY="262.0" prefHeight="200.0" prefWidth="241.0">
+        <columns>
+          <TableColumn fx:id="hwNCol" prefWidth="100.0" text="Hardware" />
+          <TableColumn fx:id="hwNumCol" prefWidth="42.0" text="N" />
+            <TableColumn fx:id="hwGenCol" prefWidth="96.0" text="Genre" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="rPh" fitHeight="150.0" fitWidth="200.0" layoutX="54.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="confBtn" layoutX="379.0" layoutY="202.0" mnemonicParsing="false" onMousePressed="#bookRoom" style="-fx-background-color: #11ff11;" text="Confirm">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="DecBtn" layoutX="484.0" layoutY="202.0" mnemonicParsing="false" onMousePressed="#close" style="-fx-background-color: #ff1111;" text="Decline">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

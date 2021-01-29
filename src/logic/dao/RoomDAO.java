@@ -78,7 +78,7 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 }
 
 	
-	public Room getRoom(String roomName) throws MyRuntimeException, SQLException {
+	public static Room getRoom(String roomName) throws MyRuntimeException, SQLException {
 		
 		Statement stmtR = null;
 		Connection connR = null;
@@ -344,7 +344,7 @@ private static int extractRoomIDFromResultSet(ResultSet rs) throws SQLException{
 		return i;
 	}
 	
-private Room extractRoomFromResultSet(ResultSet rs) throws  SQLException{
+private static Room extractRoomFromResultSet(ResultSet rs) throws  SQLException{
 		
 		Room room = new Room();
 		

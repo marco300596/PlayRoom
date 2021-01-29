@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import logic.bean.GameHardwareBean;
+import logic.bean.HighscoreBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Hardware;
 
@@ -39,6 +43,39 @@ public class HardwareDAO {
             }
 		}
 		return null;
+	}
+	
+public static ObservableList<GameHardwareBean> getAllHardwareForRoom(int id) throws MyRuntimeException, SQLException {
+		
+		Statement stmtH = null;
+		Connection connH = null;
+		ObservableList<GameHardwareBean> hardwares = FXCollections.observableArrayList();
+		try {
+			connH= ConnectionFactory.getConnection();
+			stmtH = connH.createStatement();
+			ResultSet rs = stmtH.executeQuery("SELECT * FROM hardware WHERE roomid = " + id + ";");
+			
+			while(rs.next()) {
+				GameHardwareBean hardware = extractHardwareBeanFromResultSet(rs);
+				hardwares.add(hardware);
+				}
+			
+			stmtH.close();
+			connH.close();
+			return hardwares;
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			if (stmtH != null) {
+				stmtH.close();
+			}
+			if (connH != null) {
+				connH.close();
+            }
+		}
+		return hardwares;
 	}
 	
 public boolean insertHardware(Hardware hardware, int id) throws MyRuntimeException, SQLException{
@@ -84,6 +121,17 @@ public boolean insertHardware(Hardware hardware, int id) throws MyRuntimeExcepti
 		hardware.setAvailability(rs.getBoolean("availability"));
 		hardware.setDescription(rs.getString("description"));
 		
+		
+		return hardware;
+	}
+	
+private static GameHardwareBean extractHardwareBeanFromResultSet(ResultSet rs) throws SQLException{
+		
+		GameHardwareBean hardware = new GameHardwareBean();
+		
+		hardware.setHardwareName(rs.getString("hardwareName"));
+		hardware.setHardwareGenre(rs.getString("hardwareGenre"));
+		hardware.setHardwareQuantity(rs.getInt("hardwareQuantity"));
 		
 		return hardware;
 	}

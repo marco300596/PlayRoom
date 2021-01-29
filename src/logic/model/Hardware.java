@@ -3,6 +3,7 @@ package logic.model;
 public class Hardware {
 
 	private String hardwareName;
+	private String genre;
 	private int quantity;
 	private boolean availability;
 	private String description;
@@ -24,6 +25,10 @@ public class Hardware {
 		return hardwareName;
 	}
 	
+	public String getGenre() {
+		return genre;
+	}
+	
 	public int getQuantity()
 	{
 		return quantity;
@@ -41,6 +46,10 @@ public class Hardware {
 	public void setHardwareName(String hardwareName)
 	{
 		this.hardwareName = hardwareName;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 	
 	public void setQuantity(int quantity)

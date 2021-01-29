@@ -6,10 +6,46 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import logic.bean.GameHardwareBean;
 import logic.exception.MyRuntimeException;
 import logic.model.VideoGame;
 
 public class VideoGameDAO {
+	
+public static ObservableList<GameHardwareBean> getAllVideoGameForRoom(int id) throws MyRuntimeException, SQLException {
+		
+		Statement stmtH = null;
+		Connection connH = null;
+		ObservableList<GameHardwareBean> videoGames = FXCollections.observableArrayList();
+		try {
+			connH= ConnectionFactory.getConnection();
+			stmtH = connH.createStatement();
+			ResultSet rs = stmtH.executeQuery("SELECT * FROM videogame WHERE roomid = " + id + ";");
+			
+			while(rs.next()) {
+				GameHardwareBean videoGame = extractVideoGameBeanFromResultSet(rs);
+				videoGames.add(videoGame);
+				}
+			
+			stmtH.close();
+			connH.close();
+			return videoGames;
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			if (stmtH != null) {
+				stmtH.close();
+			}
+			if (connH != null) {
+				connH.close();
+            }
+		}
+		return videoGames;
+	}
 	
 	public VideoGame getVideoGame(String gameName) throws MyRuntimeException, SQLException {
 		
@@ -83,6 +119,17 @@ public boolean insertVideoGame(VideoGame videogame) throws MyRuntimeException, S
 		videogame.setAvailability(rs.getBoolean("availability"));
 		videogame.setQuantity(rs.getInt("quantity"));
 		videogame.setDescription(rs.getString("description"));
+		
+		return videogame;
+	}
+	
+	private static GameHardwareBean extractVideoGameBeanFromResultSet(ResultSet rs) throws SQLException{
+		
+		GameHardwareBean videogame = new GameHardwareBean();
+		
+		videogame.setGameName(rs.getString("gameName"));
+		videogame.setGameGenre(rs.getString("gameGenre"));
+		videogame.setGameQuantity(rs.getInt("gameQuantity"));
 		
 		return videogame;
 	}
