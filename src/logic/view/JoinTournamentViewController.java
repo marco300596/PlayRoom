@@ -55,7 +55,7 @@ public class JoinTournamentViewController {
 
     
     @FXML
-    void initialize(MouseEvent event) throws MyRuntimeException, SQLException,StringIsEmptyException,NoRowSelected{
+    void initialize(MouseEvent event) throws MyRuntimeException, SQLException,StringIsEmptyException{
     	
     	try {
     		if(verifyFields()) {
@@ -101,7 +101,7 @@ public class JoinTournamentViewController {
     
     
     @FXML
-    void joinTournament(MouseEvent event) throws MyRuntimeException, SQLException {
+    void joinTournament(MouseEvent event) throws MyRuntimeException, SQLException ,NoRowSelected{
   
 
     	JoinTournamentController controller = JoinTournamentController.getInstance(); 
@@ -113,15 +113,15 @@ public class JoinTournamentViewController {
     			new Thread(() ->
     			JOptionPane.showConfirmDialog(null,"GZ! Tournament joined!", "Success", JOptionPane.INFORMATION_MESSAGE)).start();
    
-    	}
+    		}
     
     		else {
     			throw new NoRowSelected();
     		
     		
-    	}
+    		}
     		
-    }
+    		}
     		catch(NoRowSelected n) {
     			Logger.getLogger(JoinTournamentViewController.class.getName()).log(Level.SEVERE, null, n);
     			

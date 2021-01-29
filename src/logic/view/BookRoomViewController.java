@@ -201,7 +201,7 @@ public class BookRoomViewController {
     		if (lcontroller.findPlayerIdentity()) {
     		
     			controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
-    			controller.getRoomBean().setCity(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());
+    			controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());	//RIP
     			boolean val = controller.createReservation();
     		
     			if (val) {
@@ -223,7 +223,7 @@ public class BookRoomViewController {
     
    
 	private boolean verifyTxtFields() throws StringIsEmptyException {
-    	if(sprTxt.getText().equals("") && (gameTxt.getText().equals("") && hwTxt.getText().equals(""))&&(dpField.getValue() == null || hSB.getText()== "HH" || gsTxt.getText().isEmpty())) {
+    	if(sprTxt.getText().equals("") && (gameTxt.getText().equals("") && hwTxt.getText().equals(""))&&(dpField.getValue() == null || hSB.getText().equals("HH") || gsTxt.getText().isEmpty())) {
        			  throw new StringIsEmptyException();
     	}else{
 			return true;

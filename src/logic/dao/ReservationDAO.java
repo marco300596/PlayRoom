@@ -41,20 +41,21 @@ public class ReservationDAO {
 		return null;
 	}
 	
-public static boolean insertReservation(ReservationBean reservation, int id) throws MyRuntimeException, SQLException{
+public static boolean insertReservation(ReservationBean reservation, int id, int status) throws MyRuntimeException, SQLException{
 		
 		PreparedStatement psRS = null;
 		Connection connRes = null;
 		
 		try {
 			connRes= ConnectionFactory.getConnection();
-			psRS = connRes.prepareStatement("INSERT INTO reservation VALUES (0,?,?,?,?,?,?)");
-			psRS.setInt(1, reservation.getNumberOfPlayer());
-			psRS.setString(2, reservation.getPlayerUsername());
-			psRS.setString(3,  reservation.getDate());
-			psRS.setInt(4, id);
-			psRS.setString(5, reservation.getHour());
-			psRS.setString(6, reservation.getReservationRoom());
+			psRS = connRes.prepareStatement("INSERT INTO reservation VALUES (?,?,?,?,?,?,?)");
+			psRS.setInt(1,status);
+			psRS.setInt(2, reservation.getNumberOfPlayer());
+			psRS.setString(3, reservation.getPlayerUsername());
+			psRS.setString(4,  reservation.getDate());
+			psRS.setInt(5, id);
+			psRS.setString(6, reservation.getHour());
+			psRS.setString(7, reservation.getReservationRoom());
 			
 			
 			int i = psRS.executeUpdate();

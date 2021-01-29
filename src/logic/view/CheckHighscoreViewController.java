@@ -2,7 +2,7 @@ package logic.view;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -48,7 +48,7 @@ public class CheckHighscoreViewController {
     @FXML
     void initialize(MouseEvent event) throws MyRuntimeException, SQLException {
     	
-    	ObservableList<HighscoreBean> highscore = FXCollections.observableArrayList();
+    	ObservableList<HighscoreBean> highscore;
     	highscore = controller.findPendingHighscoreForTournament();
     	hscTbl.setItems(highscore);
 		usrNC.setCellValueFactory(new PropertyValueFactory<>("playerUN"));

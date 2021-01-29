@@ -74,10 +74,11 @@ public class BookRoomController {
 	public boolean createReservation() throws MyRuntimeException, SQLException{
 		boolean chk ;
 		int id;
+		int status = 0;
 		this.bean.setPlayerUsername(logc.getBean().getUsername());
 		id = RoomDAO.getRoomId(this.robean.getRoomName(), this.robean.getLocation());
 		this.bean.setReservationRoom(this.robean.getRoomName());
-		chk = ReservationDAO.insertReservation(this.bean, id);
+		chk = ReservationDAO.insertReservation(this.bean, id, status);
 		return chk;
 		}
 }
