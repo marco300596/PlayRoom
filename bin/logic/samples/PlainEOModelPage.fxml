@@ -26,7 +26,7 @@
                      <items>
                         <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
                            <content>
-                              <Button mnemonicParsing="false" onMousePressed="#checkReservationPage" text="Check Reservations" />
+                              <Button maxHeight="110.0" minHeight="110.0" mnemonicParsing="false" onMousePressed="#checkReservationPage" prefHeight="80.0" prefWidth="200.0" text="Check Reservations" />
                            </content>
                         </CustomMenuItem>
                         <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
