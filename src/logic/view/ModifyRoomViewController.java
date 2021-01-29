@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import logic.controller.CreateTournamentController;
 import logic.controller.ModifyRoomController;
 import logic.exception.MyRuntimeException;
+import logic.exception.StringIsEmptyException;
 import logic.exception.WrongInputException;
 
 public class ModifyRoomViewController {
@@ -48,7 +49,7 @@ public class ModifyRoomViewController {
     
     
     @FXML
-    void addComponent(MouseEvent event) throws MyRuntimeException, SQLException,WrongInputException {
+    void addComponent(MouseEvent event) throws MyRuntimeException, SQLException,WrongInputException,StringIsEmptyException {
     	
     	if(!cbeo1.isSelected() && !cbeo2.isSelected()) {
     		JOptionPane.showMessageDialog(null, "you have to select one  between hardware and videogame type ", "alert", JOptionPane.ERROR_MESSAGE);
@@ -60,8 +61,11 @@ public class ModifyRoomViewController {
     	
     	}
     
+    	
+    
     	if(cbeo1.isSelected() && verifyFields()){
 			
+    		try {
     			ModifyRoomController controller = ModifyRoomController.getInstance();
     			controller.getHVBean().setOrgUserName(orgustxt.getText());
     			controller.getHVBean().setHardwareName(nametxt.getText());
@@ -69,9 +73,11 @@ public class ModifyRoomViewController {
     			int hardwareQuantity = Integer.parseInt(quantxt.getText());
     			controller.getHVBean().setHardwareQuantity(hardwareQuantity);
     			controller.getHVBean().setHardwareDescription(desctxt.getText());
-	    	
-	    	try {
-	    		
+    			if(hardwareQuantity==0) {
+    				throw new WrongInputException("Quantity must be at least 1");
+    			}
+    			
+    			try {
 	    		controller.addComponentH(controller.getHVBean());
 	    		new Thread(() ->
             	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
@@ -80,15 +86,27 @@ public class ModifyRoomViewController {
 	    		catch(Exception e){
 	    			Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
 	    	}
-	    	
-	    		
-		}
-    	
-    	
+    			
+    			
+    	}
+    			catch(WrongInputException w){
+    				Logger.getLogger(ModifyRoomViewController.class.getName()).log(Level.SEVERE, null, w);
+    				System.err.println("WrongInputException has been caught");
+        			w.printStackTrace();
+    				
+			}
+    	}
     		
+    
     	
+    	
+    
+    	
+    			
+    
     	if(cbeo2.isSelected() && verifyFields()){
     			
+    		try {
     			ModifyRoomController controller = ModifyRoomController.getInstance();
     			controller.getHVBean().setOrgUserName(orgustxt.getText());
     			controller.getHVBean().setGameName(nametxt.getText());
@@ -96,6 +114,9 @@ public class ModifyRoomViewController {
     			int gameQuantity = Integer.parseInt(quantxt.getText());
     	  		controller.getHVBean().setGameQuantity(gameQuantity);
     	  		controller.getHVBean().setGameDescription(desctxt.getText());
+    	  		if(gameQuantity==0) {
+    				throw new WrongInputException("Quantity must be at least 1");
+    			}
     	  		
     	    	try {
     	    		
@@ -106,17 +127,32 @@ public class ModifyRoomViewController {
     	    	catch(Exception e) {
     	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
     	    	}
+    		}
+    		catch(WrongInputException w){
+				Logger.getLogger(ModifyRoomViewController.class.getName()).log(Level.SEVERE, null, w);
+				System.err.println("WrongInputException has been caught");
+    			w.printStackTrace();
+				
+		}
     	    	
-    	    	
-    		} 
+    		
     	
-    	else  {
+    		
+    	}
+    	
+    	if(!verifyFields()){
 			
 			new Thread(() ->
         	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
 		}
-    		
+    	
     }
+    	
+    	
+   
+    	
+    		
+    
     
     private boolean verifyFields() {
     	return !(orgustxt.getText().equals("") || nametxt.getText().equals("") || genretxt.getText().equals("") || quantxt.getText().equals("") || desctxt.getText().equals("") );

@@ -17,7 +17,6 @@ import logic.controller.JoinTournamentController;
 import logic.exception.MyRuntimeException;
 import logic.exception.NoRowSelected;
 import logic.exception.StringIsEmptyException;
-import logic.exception.WrongInputException;
 import logic.model.Hardware;
 import logic.model.Room;
 import logic.model.Tournament;
@@ -53,7 +52,7 @@ public class JoinTournamentViewController {
 
     
     @FXML
-    void initialize(MouseEvent event) throws MyRuntimeException, SQLException,StringIsEmptyException,WrongInputException {
+    void initialize(MouseEvent event) throws MyRuntimeException, SQLException,StringIsEmptyException,NoRowSelected{
     	
     	try {
     		if(verifyFields()) {

@@ -5,10 +5,10 @@ import javax.swing.JOptionPane;
 public class WrongInputException extends Exception {
 	private static final long serialVersionUID =  -811228214149798510L;
 	
-		public WrongInputException() {
-			super();
+		public WrongInputException(String message) {
+			super(message);
 			new Thread(() ->
-	    	JOptionPane.showMessageDialog(null, "Wrong input!change the type of input","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+	    	JOptionPane.showMessageDialog(null, message,"Error", JOptionPane.INFORMATION_MESSAGE)).start();
 	}
 
 }
