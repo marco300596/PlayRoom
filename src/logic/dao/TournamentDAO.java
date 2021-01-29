@@ -14,7 +14,7 @@ import logic.exception.MyRuntimeException;
 
 public class TournamentDAO {
 	
-	private static final String s = "tournamentName";
+	private static final String S = "tournamentName";
 	
 	public TournamentBean getTournament(String tournamentName) throws MyRuntimeException, SQLException {
 		
@@ -159,7 +159,7 @@ private static TournamentBean extractTournamentsFromResultSet(ResultSet rs) thro
 	
 	TournamentBean tournament = new TournamentBean();
 	
-	tournament.setTournamentName(rs.getString(s));
+	tournament.setTournamentName(rs.getString(S));
 	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
 	tournament.setTournamentGame(rs.getString("tournamentGame"));
 	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
@@ -210,7 +210,7 @@ private static TournamentBean extractTournamentFromResultSet(ResultSet rs) throw
 	
 	TournamentBean tournament = new TournamentBean();
 	
-	tournament.setTournamentName(rs.getString(s));
+	tournament.setTournamentName(rs.getString(S));
 	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
 	tournament.setTournamentGame(rs.getString("tournamentGame"));
 	tournament.setTournamentHardware(rs.getString("tournamentHardware"));	
