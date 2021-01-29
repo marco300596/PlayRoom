@@ -1,6 +1,9 @@
 package logic.view;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 
@@ -82,9 +85,9 @@ public class JoinTournamentViewController {
     	}
     	
     		catch(StringIsEmptyException e) {
-    			System.err.println("StringIsEmptyException exception has been caught");
-    			e.printStackTrace();
+    			Logger.getLogger(JoinTournamentViewController.class.getName()).log(Level.SEVERE, null, e);
     			
+    		
     			
     			
     		}
@@ -120,8 +123,8 @@ public class JoinTournamentViewController {
     		
     }
     		catch(NoRowSelected n) {
-    			System.err.println("NoRowSelected exception has been caught");
-    			n.printStackTrace();
+    			Logger.getLogger(JoinTournamentViewController.class.getName()).log(Level.SEVERE, null, n);
+    			
     			
     		}
     	

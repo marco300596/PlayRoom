@@ -91,8 +91,7 @@ public class ModifyRoomViewController {
     	}
     			catch(WrongInputException w){
     				Logger.getLogger(ModifyRoomViewController.class.getName()).log(Level.SEVERE, null, w);
-    				System.err.println("WrongInputException has been caught");
-        			w.printStackTrace();
+    				
     				
 			}
     	}
@@ -130,8 +129,7 @@ public class ModifyRoomViewController {
     		}
     		catch(WrongInputException w){
 				Logger.getLogger(ModifyRoomViewController.class.getName()).log(Level.SEVERE, null, w);
-				System.err.println("WrongInputException has been caught");
-    			w.printStackTrace();
+				
 				
 		}
     	    	
