@@ -1,5 +1,6 @@
 package logic.view;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -23,11 +24,13 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.cell.PropertyValueFactory;
 import logic.bean.RoomBean;
+import logic.bean.GameHardwareBean;
 import logic.controller.BookRoomController;
 import logic.controller.LoginController;
 import logic.exception.MyRuntimeException;
@@ -35,9 +38,36 @@ import logic.exception.StringIsEmptyException;
 import logic.exception.TimeException;
 import logic.exception.UserDoesNotExist;
 import logic.model.Room;
+import logic.model.VideoGame;
+import logic.model.Hardware;
 
 public class BookRoomViewController {
 
+	Stage primaryStage = new Stage();
+	//pagina2
+	@FXML
+	private TableView<GameHardwareBean> vgTab;
+	@FXML
+	private TableColumn<VideoGame, String> vgNCol;
+	@FXML
+	private TableColumn<VideoGame, Integer> vgNumCol;
+	@FXML
+	private TableColumn<VideoGame, String> vgGenCol;
+	@FXML
+	private TableView<GameHardwareBean> hwTab;
+	@FXML
+	private TableColumn<Hardware, String> hwNCol;
+	@FXML
+	private TableColumn<Hardware, Integer> hwNumCol;
+	@FXML
+	private TableColumn<Hardware, String> hwGenCol;
+	@FXML
+	private ImageView rPh;
+	@FXML
+	private Button confBtn;
+	@FXML
+	private Button DecBtn;
+	//pagina 1
     @FXML
     private Button bkBtn1;
     @FXML
@@ -191,16 +221,40 @@ public class BookRoomViewController {
     }
     
     @FXML
-    void bookRoom() throws MyRuntimeException, SQLException{
+    void showRoom() throws MyRuntimeException, SQLException{
     	
     	BookRoomController controller = BookRoomController.getInstance();
     	LoginController lcontroller = LoginController.getInstance();
+    	ObservableList<GameHardwareBean> hw = FXCollections.observableArrayList();
+    	ObservableList<GameHardwareBean> vg = FXCollections.observableArrayList();
     	
     	try {
     		
     		if (lcontroller.findPlayerIdentity()) {
     		
     			controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
+    			controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());
+    	    	Parent root = FXMLLoader.load(getClass().getResource("/logic/samples/BookRoomPage.fxml"));
+    	    	primaryStage.setScene(new Scene(root));
+    	    	primaryStage.setResizable(false);
+    	        primaryStage.show();
+    	        
+    	        hw = controller.populateHardware();
+    	        vg = controller.populateGame();
+    	        vgTab.setItems(vg);
+	    		/*script di popolazione delle celle 
+	    		ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
+    	        vgNCol.setCellValueFactory(new PropertyValueFactory<>("gameName"));
+    	        vgNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+    	        vgGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
+	    		hwTab.setItems(hw);
+	    		/*script di popolazione delle celle 
+	    		ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
+	    		hwNCol.setCellValueFactory(new PropertyValueFactory<>("hardwareName"));
+	    		hwNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+	    		hwGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
+	    		
+	    		rPh.setImage(new Image(new FileInputStream("/logic/image/"+controller.populateImage())));
     			controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());	//RIP
     			boolean val = controller.createReservation();
     		
@@ -214,14 +268,39 @@ public class BookRoomViewController {
     				new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
     			}
     		}
+    	} catch (IOException e) {    	
+    		
+    	    	Logger.getLogger(HomePageView.class.getName()).log(Level.SEVERE, null, e);
     	}catch(UserDoesNotExist u){
+		
+		new Thread(()-> JOptionPane.showMessageDialog(null, "you are no longer registrated in the system;/n you have been deleted!","Deleted", JOptionPane.INFORMATION_MESSAGE)).start();
+		reload("Registration");
+		}
+    	    	
+}
+
+    @FXML
+    void bookRoom() throws MyRuntimeException, SQLException{
+    	
+    	BookRoomController controller = BookRoomController.getInstance();
+    	boolean val = controller.createReservation();	
+    	if (val) {
     			
-    		new Thread(()-> JOptionPane.showMessageDialog(null, "you are no longer registrated in the system;/n you have been deleted!","Deleted", JOptionPane.INFORMATION_MESSAGE)).start();
-    		reload("Registration");
-    		}
+    			String d = controller.getReservationBean().getDate();
+    			String h = controller.getReservationBean().getHour();
+    			new Thread(()-> JOptionPane.showMessageDialog(null, "you PRENO! for: " + d + ", at: " + h + ":00 !","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    			reload("PlainPModelPage");
+    	}else {
+    			new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
     	}
+    }
     
-   
+    @FXML
+    private void close() {
+		Stage sce = (Stage)rPh.getScene().getWindow();
+		sce.close();
+    }
+    
 	private boolean verifyTxtFields() throws StringIsEmptyException {
     	if(sprTxt.getText().equals("") && (gameTxt.getText().equals("") && hwTxt.getText().equals(""))&&(dpField.getValue() == null || hSB.getText().equals("HH") || gsTxt.getText().isEmpty())) {
        			  throw new StringIsEmptyException();
