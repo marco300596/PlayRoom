@@ -78,6 +78,23 @@ public class CheckReservationViewController {
     		JOptionPane.showMessageDialog(null, "No reservation found! Please refresh the page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
     	}
     }
+    
+    @FXML
+    void confirmedRes(MouseEvent event) throws MyRuntimeException, SQLException {
+    	CheckReservationController controller = CheckReservationController.getInstance();
+    	ObservableList<ReservationBean> reservations = controller.confirmed();
+    	if(reservations.isEmpty())	{
+    		new Thread(() ->JOptionPane.showMessageDialog(null, "No reservation found! Please refresh the page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		return;
+    	}
+    	chkTable.setItems(reservations);
+    	usCol.setCellValueFactory(new PropertyValueFactory<>("playerUsername"));
+    	dtCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+    	hCol.setCellValueFactory(new PropertyValueFactory<>("hour"));
+    	numCol.setCellValueFactory(new PropertyValueFactory<>("numberOfPlayer"));
+    	roomCol.setCellValueFactory(new PropertyValueFactory<>("reservationRoom"));
+    }
+    
 
 }
 

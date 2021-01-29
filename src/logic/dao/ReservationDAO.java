@@ -114,6 +114,40 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
 	return reservations;
 }
 
+public static ObservableList<ReservationBean> getAllCheckedReservations(int roomid,String player) throws MyRuntimeException, SQLException{
+	
+	Statement stmtP = null;
+	Connection connP = null;
+	ObservableList<ReservationBean> reservations = FXCollections.observableArrayList();
+	
+	try {
+		connP= ConnectionFactory.getConnection();
+		stmtP = connP.createStatement();
+		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 1 and roomid='"+roomid+"' and playerusername ='"+player+"';");
+		
+		while(rs.next()) {
+			ReservationBean reservation = extractReservationFromResultSet(rs);
+			reservations.add(reservation);
+		}
+		
+		stmtP.close();
+		connP.close();
+		return reservations;
+		
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+	finally {
+		if (stmtP != null) {
+			stmtP.close();
+		}
+		if (connP != null) {
+			connP.close();
+        }
+	}
+	return reservations;
+}
+
 	public static boolean checkReservation(String player,String hour,String date) throws MyRuntimeException, SQLException {
 		PreparedStatement psRes = null;
 		Connection connRS = null;
@@ -141,6 +175,35 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
             }
 		}
 		return false;
+	}
+	
+	public static int getRoomIdFromReservation(String player) throws MyRuntimeException, SQLException {
+		
+		Statement stmtR = null;
+		Connection connR = null;
+		try {
+			connR= ConnectionFactory.getConnection();
+			stmtR = connR.createStatement();
+			ResultSet rs = stmtR.executeQuery("SELECT roomid FROM reservation WHERE playerusername ='" + player + "';");
+			
+			if(rs.next()) {
+				return rs.getInt("roomid");
+			}
+			stmtR.close();
+			connR.close();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			if (stmtR != null) {
+				stmtR.close();
+			}
+			if (connR != null) {
+				connR.close();
+	        }
+		}
+		return 0;
 	}
 	
 	private static ReservationBean extractReservationFromResultSet(ResultSet rs) throws SQLException{

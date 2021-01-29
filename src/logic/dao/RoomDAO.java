@@ -77,9 +77,6 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 	return 0;
 }
 
-
-
-
 	
 	public Room getRoom(String roomName) throws MyRuntimeException, SQLException {
 		

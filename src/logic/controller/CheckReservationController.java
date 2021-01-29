@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import logic.bean.LoginBean;
 import logic.bean.ReservationBean;
+import logic.dao.EventOrganizerDAO;
 import logic.dao.ReservationDAO;
 import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;
@@ -57,6 +58,14 @@ public class CheckReservationController {
 		int roomid;
 		roomid = RoomDAO.getRoomIdFromOrgUsername(logBean.getUsername());
 		this.beanList = ReservationDAO.getAllUncheckReservations(roomid);
+		return this.beanList;
+	}
+	
+	public ObservableList<ReservationBean> confirmed() throws MyRuntimeException, SQLException{
+		
+		int roomid;
+		roomid = ReservationDAO.getRoomIdFromReservation(logBean.getUsername());
+		this.beanList = ReservationDAO.getAllCheckedReservations(roomid,logBean.getUsername());
 		return this.beanList;
 	}
 

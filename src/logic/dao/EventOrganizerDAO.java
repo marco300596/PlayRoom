@@ -115,7 +115,7 @@ public static boolean insertOrganizer(RegistrationBean org) throws MyRuntimeExce
 		}
 		return false;
 	}
-	
+
 	private EventOrganizer extractEventOrganizerFromResultSet(ResultSet rs) throws SQLException{
 		
 		EventOrganizer org = new EventOrganizer();

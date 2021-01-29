@@ -68,9 +68,8 @@ public class PlayerPageViewController {
      
 
    @FXML
-   void contactPage(MouseEvent event) {
-		Logger.getLogger("sonar fatte i cazzi tuoi");
-
+   void playerRes(MouseEvent event) {
+	   loadPlayerPage("YourReservation");
    }
 
    @FXML
