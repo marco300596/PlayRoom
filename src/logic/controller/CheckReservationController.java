@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import logic.bean.LoginBean;
 import logic.bean.ReservationBean;
-import logic.dao.EventOrganizerDAO;
 import logic.dao.ReservationDAO;
 import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;

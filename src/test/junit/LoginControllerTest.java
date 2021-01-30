@@ -12,7 +12,7 @@ import logic.exception.MyRuntimeException;
 import logic.exception.UserDoesNotExist;
 
 class LoginControllerTest {
-
+	//Alessandro Picco
 	@Test
 	void loginTest() throws MyRuntimeException, SQLException, UserDoesNotExist {
 		

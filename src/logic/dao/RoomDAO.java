@@ -16,6 +16,10 @@ import logic.model.VideoGame;
 
 public class RoomDAO {
 	
+	private RoomDAO() {
+		//private constructor should be declared in all utility classes.
+	}
+	
 public static int getRoomId(String roomName, String location) throws MyRuntimeException, SQLException {
 		
 		PreparedStatement pStmtR = null;

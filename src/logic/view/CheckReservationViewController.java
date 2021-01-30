@@ -44,13 +44,16 @@ public class CheckReservationViewController {
     
     @FXML
     private Button okBtn;
+    
+    private static final String ERROR = "Error";
+    private static final String NORES = "No reservation found! Please refresh the page!";
 
     @FXML
     void checkList(MouseEvent event) throws MyRuntimeException, SQLException {
     	CheckReservationController controller = CheckReservationController.getInstance();
     	ObservableList<ReservationBean> reservations = controller.updateReservation();
     	if(reservations.isEmpty())	{
-    		new Thread(() ->JOptionPane.showMessageDialog(null, "No reservation found! Please refresh the page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		new Thread(() ->JOptionPane.showMessageDialog(null, NORES,ERROR, JOptionPane.INFORMATION_MESSAGE)).start();
     		return;
     	}
     	chkTable.setItems(reservations);
@@ -75,7 +78,7 @@ public class CheckReservationViewController {
     		JOptionPane.showMessageDialog(null, "Reservation confirmed! Please refresh the page!","Success", JOptionPane.INFORMATION_MESSAGE)).start();  
     	} else {
     		new Thread(() ->
-    		JOptionPane.showMessageDialog(null, "No reservation found! Please refresh the page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		JOptionPane.showMessageDialog(null, NORES ,ERROR, JOptionPane.INFORMATION_MESSAGE)).start();
     	}
     }
     
@@ -84,7 +87,7 @@ public class CheckReservationViewController {
     	CheckReservationController controller = CheckReservationController.getInstance();
     	ObservableList<ReservationBean> reservations = controller.confirmed();
     	if(reservations.isEmpty())	{
-    		new Thread(() ->JOptionPane.showMessageDialog(null, "No reservation found! Please refresh the page!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+    		new Thread(() ->JOptionPane.showMessageDialog(null, NORES,ERROR, JOptionPane.INFORMATION_MESSAGE)).start();
     		return;
     	}
     	chkTable.setItems(reservations);

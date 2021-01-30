@@ -9,7 +9,6 @@ import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import logic.bean.GameHardwareBean;
-import logic.bean.HighscoreBean;
 import logic.exception.MyRuntimeException;
 import logic.model.Hardware;
 
