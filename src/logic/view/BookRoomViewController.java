@@ -37,6 +37,7 @@ import logic.exception.MyRuntimeException;
 import logic.exception.StringIsEmptyException;
 import logic.exception.TimeException;
 import logic.exception.UserDoesNotExist;
+import logic.exception.WrongInputException;
 import logic.model.Room;
 import logic.model.VideoGame;
 import logic.model.Hardware;
@@ -146,7 +147,7 @@ public class BookRoomViewController {
     }
     
     @FXML
-    void showRooms(MouseEvent event) throws MyRuntimeException, SQLException{
+    void showRooms(MouseEvent event) throws MyRuntimeException, SQLException, WrongInputException{
     	
     	BookRoomController controller = BookRoomController.getInstance();
     	ObservableList<RoomBean> room = FXCollections.observableArrayList();
@@ -173,7 +174,11 @@ public class BookRoomViewController {
     				
     				controller.getReservationBean().setDate(formattedString);
     				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText()));
-    				controller.getReservationBean().setHour(hSB.getText());
+    				if(!hSB.getText().equals("HH:")) {
+    					controller.getReservationBean().setHour(hSB.getText());
+    				}else {
+    					throw new WrongInputException("No Hour Selected");
+    				}
     				controller.getReservationBean().setCity(sprTxt.getText());
 
     				//PORCA EVA
@@ -192,6 +197,16 @@ public class BookRoomViewController {
     				
     				}else if (!sprTxt.getText().isEmpty()) {
     					room = controller.findRoomForPreno();
+    					
+    				}if(room.isEmpty()) {
+    					new Thread(()-> JOptionPane.showMessageDialog(null, "seems like your criteria didn't provide any room available, try to change this criteria or check your spelling","information!", JOptionPane.INFORMATION_MESSAGE)).start();
+    		    		dpField.setValue(null);
+    		    		gsTxt.setText(null);
+    		    		sprTxt.setText(null);
+    		    		hSB.setText("HH:");
+    		    		gameTxt.setText(null);
+    		    		hwTxt.setText(null);
+    		    		
     				}
     	    		
     	    		//creare un observablelist a quanto sembra è necessario per creare una tabella
@@ -210,13 +225,22 @@ public class BookRoomViewController {
     	    	}
     	}catch(TimeException t) {
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, t);
-    		new Thread(()-> JOptionPane.showMessageDialog(null, "you are not allowed to time travel","Alert!", JOptionPane.INFORMATION_MESSAGE)).start();
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you inserted an invalid date","Alert!", JOptionPane.INFORMATION_MESSAGE)).start();
     		dpField.setValue(null);
     		
     	}catch(StringIsEmptyException s) {
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, s);
     		new Thread(()-> JOptionPane.showMessageDialog(null, "Please fill at least one textfield!","Fill Text Field", JOptionPane.INFORMATION_MESSAGE)).start();
            		
+    	}catch(NumberFormatException n) {
+    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, n);
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "Seems like you tried to insert some invad data! Please fill the format in the correct way","Fill Text Field", JOptionPane.INFORMATION_MESSAGE)).start();
+           	gsTxt.setText(null);
+           	
+    	}catch(WrongInputException w) {
+    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, w);
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "Seems like you tried to insert some invad data! Please fill the format in the correct way","Fill Text Field", JOptionPane.INFORMATION_MESSAGE)).start();
+    	
     	}
     }
     

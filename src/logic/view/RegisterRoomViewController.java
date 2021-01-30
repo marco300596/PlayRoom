@@ -49,6 +49,8 @@ public class RegisterRoomViewController {
     @FXML
     private Button phbtn;
     
+    @FXML
+    private TextArea pTxt;
     
     
     @FXML
@@ -84,6 +86,7 @@ public class RegisterRoomViewController {
     	controller.getBean().setDescription(desctxt.getText());
     	controller.getBean().setLocation(addrTxt.getText());	
     	controller.getBean().setCity(cTxt.getText());
+    	controller.getBean().setPrice(Integer.parseInt(pTxt.getText()));
     	
     	try {
     		controller.insertnewRoom(controller.getBean());

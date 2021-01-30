@@ -60,7 +60,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <DatePicker fx:id="dpField" layoutX="369.0" layoutY="268.0" prefHeight="37.0" prefWidth="183.0" />
+      <DatePicker fx:id="dpField" editable="false" layoutX="369.0" layoutY="268.0" prefHeight="37.0" prefWidth="183.0" />
       <Text fill="WHITE" layoutX="369.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert reservation's day (gg):">
          <font>
             <Font name="System Bold" size="15.0" />
