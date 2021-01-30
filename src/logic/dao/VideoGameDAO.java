@@ -46,6 +46,107 @@ public static ObservableList<GameHardwareBean> getAllVideoGameForRoom(int id) th
 		}
 		return videoGames;
 	}
+
+public static Boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+	PreparedStatement psR = null;
+	Connection connRh = null;
+
+	try {
+		connRh= ConnectionFactory.getConnection();
+		psR = connRh.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
+		psR.setString(1, gh.getGameName());
+		psR.setInt(2, gh.getGameQuantity());
+		psR.setString(3, gh.getGameGenre());
+		psR.setString(4, gh.getGameDescription());
+		psR.setInt(5, id);
+		int i = psR.executeUpdate();
+	
+		if(i == 1) {
+			return true;
+		}
+		psR.close();
+		connRh.close();
+	
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psR != null) {
+			psR.close();
+		}
+		if (connRh != null) {
+			connRh.close();
+    	}
+	}
+	return false;
+	
+}
+
+public static Boolean  gameUpdate(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+	PreparedStatement psRu = null;
+	Connection connRhu = null;
+
+	try {
+		connRhu= ConnectionFactory.getConnection();
+		psRu = connRhu.prepareStatement("UPDATE videogame SET quantity = quantity + 1 WHERE gamename =? and roomid=?");
+		psRu.setString(1, gh.getGameName());
+		psRu.setInt(2, id);
+		int i = psRu.executeUpdate();
+	
+		if(i == 1) {
+			return true;
+		}
+		psRu.close();
+		connRhu.close();
+	
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psRu != null) {
+			psRu.close();
+		}
+		if (connRhu != null) {
+			connRhu.close();
+    	}
+	}
+	return false;
+	
+}
+
+public static Boolean  gameCheck(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+	PreparedStatement psRc = null;
+	Connection connRhc = null;
+
+	try {
+		connRhc= ConnectionFactory.getConnection();
+		psRc = connRhc.prepareStatement("Select * FROM videogame WHERE roomid = ?, and gamename=?");
+		psRc.setInt(1, id);
+		psRc.setString(2, gh.getGameName());
+		int i = psRc.executeUpdate();
+	
+		if(i == 1) {
+			return true;
+		}
+		psRc.close();
+		connRhc.close();
+	
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psRc != null) {
+			psRc.close();
+		}
+		if (connRhc != null) {
+			connRhc.close();
+    	}
+	}
+	return false;
+	
+}
+
+
 	
 	public VideoGame getVideoGame(String gameName) throws MyRuntimeException, SQLException {
 		

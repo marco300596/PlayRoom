@@ -358,9 +358,6 @@ private static Room extractRoomFromResultSet(ResultSet rs) throws  SQLException{
 		room.setLocation(rs.getString("location"));
 		room.setPhoto(rs.getString("photo"));
 		room.setCity(rs.getString("city"));
-		room.addGame((VideoGame) rs.getArray("vg"));
-		room.addHardware((Hardware) rs.getArray("hw"));
-		
 		
 		return room;
 	}
@@ -380,82 +377,4 @@ private static RoomBean extractRoomBeanFromResultSet(ResultSet rs) throws SQLExc
 		return room;
 	}
 
-
-public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
-	PreparedStatement psR = null;
-	Connection connRh = null;
-
-	try {
-		connRh= ConnectionFactory.getConnection();
-		psR = connRh.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?,?)");
-		psR.setString(1, gh.getHardwareName());
-		psR.setInt(2, gh.getHardwareQuantity());
-		psR.setString(3, gh.getHardwareGenre());
-		psR.setString(4, gh.getHardwareDescription());
-		psR.setInt(5, id);
-		int i = psR.executeUpdate();
-	
-		if(i == 1) {
-			return true;
-		}
-		psR.close();
-		connRh.close();
-	
-	}catch(SQLException ex){
-		ex.printStackTrace();
-	}
-	finally {
-		if (psR != null) {
-			psR.close();
-		}
-		if (connRh != null) {
-			connRh.close();
-    	}
-	}
-	return false;
-	
 }
-
-
-
-
-
-public static Boolean gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
-	
-	PreparedStatement psR = null;
-	Connection connRv = null;
-	
-	try {
-		connRv= ConnectionFactory.getConnection();
-		psR = connRv.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
-		psR.setString(1, gh.getGameName());
-		psR.setString(2, gh.getGameGenre());
-		psR.setInt(3, gh.getGameQuantity());
-		psR.setString(4, gh.getGameDescription());
-		psR.setInt(5, id);
-		int i = psR.executeUpdate();
-	
-		if(i == 1) {
-			return true;
-		}
-		psR.close();
-		connRv.close();
-	
-	}catch(SQLException ex){
-		ex.printStackTrace();
-	}
-	finally {
-		if (psR != null) {
-			psR.close();
-		}
-		if (connRv != null) {
-			connRv.close();
-    	}
-	}
-	return false;
-	
-}
-
-
-}
-

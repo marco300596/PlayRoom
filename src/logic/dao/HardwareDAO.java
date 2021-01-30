@@ -15,6 +15,106 @@ import logic.model.Hardware;
 
 public class HardwareDAO {
 	
+
+public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+	PreparedStatement psR = null;
+	Connection connRh = null;
+
+	try {
+		connRh= ConnectionFactory.getConnection();
+		psR = connRh.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?,?)");
+		psR.setString(1, gh.getHardwareName());
+		psR.setInt(2, gh.getHardwareQuantity());
+		psR.setString(3, gh.getHardwareGenre());
+		psR.setString(4, gh.getHardwareDescription());
+		psR.setInt(5, id);
+		int i = psR.executeUpdate();
+	
+		if(i == 1) {
+			return true;
+		}
+		psR.close();
+		connRh.close();
+	
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psR != null) {
+			psR.close();
+		}
+		if (connRh != null) {
+			connRh.close();
+    	}
+	}
+	return false;
+	
+}
+
+public static Boolean  hardwareUpdate(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+	PreparedStatement psRu = null;
+	Connection connRhu = null;
+
+	try {
+		connRhu= ConnectionFactory.getConnection();
+		psRu = connRhu.prepareStatement("UPDATE hardware SET quantity = quantity + 1 WHERE hardwarename =? and roomid=?");
+		psRu.setString(1, gh.getHardwareName());
+		psRu.setInt(2, id);
+		int i = psRu.executeUpdate();
+	
+		if(i == 1) {
+			return true;
+		}
+		psRu.close();
+		connRhu.close();
+	
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psRu != null) {
+			psRu.close();
+		}
+		if (connRhu != null) {
+			connRhu.close();
+    	}
+	}
+	return false;
+	
+}
+
+public static Boolean  hardwareCheck(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+	PreparedStatement psRc = null;
+	Connection connRhc = null;
+
+	try {
+		connRhc= ConnectionFactory.getConnection();
+		psRc = connRhc.prepareStatement("Select * FROM hardware WHERE roomid = ?, and hardwarename=?");
+		psRc.setInt(1, id);
+		psRc.setString(2, gh.getHardwareName());
+		int i = psRc.executeUpdate();
+	
+		if(i == 1) {
+			return true;
+		}
+		psRc.close();
+		connRhc.close();
+	
+	}catch(SQLException ex){
+		ex.printStackTrace();
+	}
+	finally {
+		if (psRc != null) {
+			psRc.close();
+		}
+		if (connRhc != null) {
+			connRhc.close();
+    	}
+	}
+	return false;
+	
+}
+	
 	public Hardware getHardware(String hardwareName, int id) throws MyRuntimeException, SQLException {
 		
 		Statement stmtH = null;
