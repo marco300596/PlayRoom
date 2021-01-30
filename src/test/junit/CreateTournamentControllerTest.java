@@ -16,7 +16,7 @@ import logic.exception.MyRuntimeException;
 class CreateTournamentControllerTest {
 	//Alessandro Picco
 	TournamentBean bean = new TournamentBean();
-	Random r = new Random();
+	static Random r = new Random();
 	@Before
 	int id() throws MyRuntimeException, SQLException {
 		
@@ -29,7 +29,7 @@ class CreateTournamentControllerTest {
 	 * that must be unique.
 	 */
 	@Before
-    String getAlphaNumericString(int n){ 
+    static String getAlphaNumericString(int n){ 
   
         // chose a Character random from this String 
         String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
