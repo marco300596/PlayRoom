@@ -59,7 +59,7 @@
                         <Insets bottom="5.0" left="50.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea fx:id="desctxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="110.0" prefWidth="370.0">
+                  <TextArea fx:id="desctxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="110.0" prefWidth="385.0">
                      <VBox.margin>
                         <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -72,7 +72,7 @@
                         <Insets bottom="5.0" left="50.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea fx:id="cTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                  <TextArea fx:id="cTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="385.0">
                      <VBox.margin>
                         <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -85,10 +85,13 @@
                         <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
                   </Text>
-                  <TextArea fx:id="addrTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="183.0">
+                  <TextArea fx:id="addrTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="385.0" promptText="via allegato 1">
                      <VBox.margin>
                         <Insets bottom="5.0" left="50.0" right="50.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </TextArea>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="add price (for hour)">
                      <font>
