@@ -82,33 +82,33 @@ public static boolean insertReservation(ReservationBean reservation, int id, int
 
 public static ObservableList<ReservationBean> getAllUncheckReservations(int roomid) throws MyRuntimeException, SQLException{
 	
-	Statement stmtP = null;
-	Connection connP = null;
+	Statement stmtPu = null;
+	Connection connPu = null;
 	ObservableList<ReservationBean> reservations = FXCollections.observableArrayList();
 	
 	try {
-		connP= ConnectionFactory.getConnection();
-		stmtP = connP.createStatement();
-		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 0 and roomid=" + roomid +";");
+		connPu= ConnectionFactory.getConnection();
+		stmtPu = connPu.createStatement();
+		ResultSet rs = stmtPu.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 0 and roomid=" + roomid +";");
 		
 		while(rs.next()) {
 			ReservationBean reservation = extractReservationFromResultSet(rs);
 			reservations.add(reservation);
 		}
 		
-		stmtP.close();
-		connP.close();
+		stmtPu.close();
+		connPu.close();
 		return reservations;
 		
 	} catch (SQLException ex) {
 		ex.printStackTrace();
 	}
 	finally {
-		if (stmtP != null) {
-			stmtP.close();
+		if (stmtPu != null) {
+			stmtPu.close();
 		}
-		if (connP != null) {
-			connP.close();
+		if (connPu != null) {
+			connPu.close();
         }
 	}
 	return reservations;
@@ -116,33 +116,33 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
 
 public static ObservableList<ReservationBean> getAllCheckedReservations(int roomid,String player) throws MyRuntimeException, SQLException{
 	
-	Statement stmtP = null;
-	Connection connP = null;
+	Statement stmtPc = null;
+	Connection connPc = null;
 	ObservableList<ReservationBean> reservations = FXCollections.observableArrayList();
 	
 	try {
-		connP= ConnectionFactory.getConnection();
-		stmtP = connP.createStatement();
-		ResultSet rs = stmtP.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 1 and roomid='"+roomid+"' and playerusername ='"+player+"';");
+		connPc = ConnectionFactory.getConnection();
+		stmtPc = connPc.createStatement();
+		ResultSet rs = stmtPc.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 1 and roomid='"+roomid+"' and playerusername ='"+player+"';");
 		
 		while(rs.next()) {
 			ReservationBean reservation = extractReservationFromResultSet(rs);
 			reservations.add(reservation);
 		}
 		
-		stmtP.close();
-		connP.close();
+		stmtPc.close();
+		connPc.close();
 		return reservations;
 		
 	} catch (SQLException ex) {
 		ex.printStackTrace();
 	}
 	finally {
-		if (stmtP != null) {
-			stmtP.close();
+		if (stmtPc != null) {
+			stmtPc.close();
 		}
-		if (connP != null) {
-			connP.close();
+		if (connPc != null) {
+			connPc.close();
         }
 	}
 	return reservations;
