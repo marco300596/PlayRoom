@@ -67,11 +67,11 @@ public class JoinTournamentController {
 	}
 	
 	
-	public void joinTournament(String tournamentName) throws MyRuntimeException, SQLException  {
+	public boolean joinTournament(String tournamentName) throws MyRuntimeException, SQLException  {
 		
 		String playerus;
 		playerus=logBean.getUsername();
-		TournamentDAO.setTournamentNameByPlayerUsername(playerus,tournamentName);
+		return TournamentDAO.setTournamentNameByPlayerUsername(playerus,tournamentName);
 		
 		
 		

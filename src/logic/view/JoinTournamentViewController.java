@@ -109,10 +109,10 @@ public class JoinTournamentViewController {
     		if (hTab.getSelectionModel().getSelectedItem() != null) {
     		
     			TournamentBean tname = hTab.getSelectionModel().getSelectedItem();    
-    			controller.joinTournament(tname.getTournamentName());
+    			if(controller.joinTournament(tname.getTournamentName())) {
     			new Thread(() ->
     			JOptionPane.showConfirmDialog(null,"GZ! Tournament joined!", "Success", JOptionPane.INFORMATION_MESSAGE)).start();
-   
+    			}
     		}
     
     		else {
