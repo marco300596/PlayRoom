@@ -84,28 +84,28 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 	
 	public static Room getRoom(String roomName) throws MyRuntimeException, SQLException {
 		
-		Statement stmtR = null;
-		Connection connR = null;
+		Statement stmtRg = null;
+		Connection connRg = null;
 		try {
-			connR= ConnectionFactory.getConnection();
-			stmtR = connR.createStatement();
-			ResultSet rs = stmtR.executeQuery("SELECT * FROM room WHERE roomname=" + roomName);
+			connRg= ConnectionFactory.getConnection();
+			stmtRg = connRg.createStatement();
+			ResultSet rs = stmtRg.executeQuery("SELECT * FROM room WHERE roomname=" + roomName);
 			
 			if(rs.next()) {
 				return extractRoomFromResultSet(rs);
 			}
-			stmtR.close();
-			connR.close();
+			stmtRg.close();
+			connRg.close();
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		finally {
-			if (stmtR != null) {
-				stmtR.close();
+			if (stmtRg != null) {
+				stmtRg.close();
 			}
-			if (connR != null) {
-				connR.close();
+			if (connRg != null) {
+				connRg.close();
             }
 		}
 		return null;
