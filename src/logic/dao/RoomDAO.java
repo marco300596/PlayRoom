@@ -357,6 +357,7 @@ private static Room extractRoomFromResultSet(ResultSet rs) throws  SQLException{
 		room.setPrice(rs.getInt("price"));
 		room.setLocation(rs.getString("location"));
 		room.setPhoto(rs.getString("photo"));
+		room.setCity(rs.getString("city"));
 		room.addGame((VideoGame) rs.getArray("vg"));
 		room.addHardware((Hardware) rs.getArray("hw"));
 		

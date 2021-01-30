@@ -21,7 +21,6 @@ class RoomExistanceTest {
 		room.setPrice(Integer.parseInt("0"));
 		room.setLocation("via si");
 		room.setPhoto("");
-		
 		room.setCity("roma");
 		Room result=new Room();
 		result=RoomDAO.getRoom("stanza x");
