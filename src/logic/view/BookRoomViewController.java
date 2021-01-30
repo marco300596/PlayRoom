@@ -66,7 +66,7 @@ public class BookRoomViewController {
 	@FXML
 	private Button confBtn;
 	@FXML
-	private Button DecBtn;
+	private Button decBtn;
 	//pagina 1
     @FXML
     private Button bkBtn1;
@@ -241,33 +241,32 @@ public class BookRoomViewController {
     	        
     	        hw = controller.populateHardware();
     	        vg = controller.populateGame();
-    	        vgTab.setItems(vg);
-	    		/*script di popolazione delle celle 
-	    		ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
-    	        vgNCol.setCellValueFactory(new PropertyValueFactory<>("gameName"));
-    	        vgNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-    	        vgGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
-	    		hwTab.setItems(hw);
-	    		/*script di popolazione delle celle 
-	    		ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
-	    		hwNCol.setCellValueFactory(new PropertyValueFactory<>("hardwareName"));
-	    		hwNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-	    		hwGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
+    	        if(!vg.isEmpty()) {
+    	        	vgTab.setItems(vg);
+	    			/*script di popolazione delle celle 
+	    			ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
+    	        	vgNCol.setCellValueFactory(new PropertyValueFactory<>("gameName"));
+    	        	vgNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+    	        	vgGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
+    	        }else {
+    	    		new Thread(()-> JOptionPane.showMessageDialog(null, "this room didn't provide any game from the research: be careful!","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
+    	        
+    	        }
+    	        if(!hw.isEmpty()) {
+    	        	hwTab.setItems(hw);    	
+    	        	/*script di popolazione delle celle 
+	    			ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
+    	        	hwNCol.setCellValueFactory(new PropertyValueFactory<>("hardwareName"));
+    	        	hwNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+    	        	hwGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
 	    		
-	    		rPh.setImage(new Image(new FileInputStream("/logic/image/"+controller.populateImage())));
-    			controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());	//RIP
-    			boolean val = controller.createReservation();
-    		
-    			if (val) {
-    				
-    				LocalDate localDate = dpField.getValue();//For reference
-    				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    				String formattedString = localDate.format(formatter);
-    				new Thread(()-> JOptionPane.showMessageDialog(null, "you succesfully booked the room! for: " + formattedString + " at: " + hSB.getText() + "!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-    			}else {
-    				new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
-    			}
+    	        	rPh.setImage(new Image(new FileInputStream("/logic/image/"+controller.populateImage())));
+    	        }else {
+    	    		new Thread(()-> JOptionPane.showMessageDialog(null, "this room didn't provide any hardware from the research: be careful!","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
+
+    	        }
     		}
+    		
     	} catch (IOException e) {    	
     		
     	    	Logger.getLogger(HomePageView.class.getName()).log(Level.SEVERE, null, e);
