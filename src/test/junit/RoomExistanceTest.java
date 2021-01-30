@@ -6,26 +6,29 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 
+import logic.bean.RoomBean;
 import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;
-import logic.model.Room;
+
 
 class RoomExistanceTest {
-
+	//Flavio Pucci
 	@Test
-	void RoomExistancetest() throws MyRuntimeException, SQLException {
+	void roomExistancetest() throws MyRuntimeException, SQLException {
 		
-		Room room=new Room();
+		int id;
+		id=RoomDAO.getRoomIdFromOrgUsername("b");
+		RoomBean room=new RoomBean();
 		room.setRoomName("stanza x");
 		room.setNumSeat(Integer.parseInt("5"));
 		room.setPrice(Integer.parseInt("0"));
 		room.setLocation("via si");
 		room.setPhoto("");
 		room.setCity("roma");
-		Room result=new Room();
-		result=RoomDAO.getRoom("stanza x");
-		assertEquals(room,result);
 		
+		boolean res=RoomDAO.insertRoom(room, id);
+		
+		assertTrue(res);
 		
 	}
 

@@ -108,7 +108,7 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 				connRg.close();
             }
 		}
-		return null;
+		return new Room();
 	}
 	
 	public static ObservableList<RoomBean> getAllRoomsAvailable(String date, String hour, Integer nOP, String city) throws MyRuntimeException, SQLException{
