@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -43,10 +44,10 @@ public class RegistrationViewController {
     private TextField usTxt;
 
     @FXML
-    private TextField pwdTxt;
+    private PasswordField pwdTxt;
 
     @FXML
-    private TextField cpwdTxt;
+    private PasswordField cpwdTxt;
 
     @FXML
     private Button log;

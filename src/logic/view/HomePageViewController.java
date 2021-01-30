@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -38,7 +39,7 @@ public class HomePageViewController {
     private TextField usTxt;
 
     @FXML
-    private TextField pwdTxt;
+    private PasswordField pwdTxt;
 
     @FXML
     private Button logBtn;
