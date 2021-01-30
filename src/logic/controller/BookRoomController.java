@@ -78,28 +78,23 @@ public class BookRoomController {
 	public ObservableList<GameHardwareBean> populateHardware() throws MyRuntimeException, SQLException{
 		
 
-		ObservableList<GameHardwareBean> hList = FXCollections.observableArrayList();
 		int id;
 		id = RoomDAO.getRoomId(this.robean.getRoomName(), this.robean.getLocation());
-		hList = HardwareDAO.getAllHardwareForRoom(id);
+		ObservableList<GameHardwareBean> hList = HardwareDAO.getAllHardwareForRoom(id);
 		return hList;
 	}
 	
 	public ObservableList<GameHardwareBean> populateGame() throws MyRuntimeException, SQLException{
 		
-
-		ObservableList<GameHardwareBean> vList = FXCollections.observableArrayList();
 		int id;
 		id = RoomDAO.getRoomId(this.robean.getRoomName(), this.robean.getLocation());
-		vList = VideoGameDAO.getAllVideoGameForRoom(id);
+		ObservableList<GameHardwareBean> vList = VideoGameDAO.getAllVideoGameForRoom(id);
 		return vList;
 	}
 	
 	public String populateImage() throws MyRuntimeException, SQLException{
 		
-
-		Room room = new Room();
-		room = RoomDAO.getRoom(robean.getRoomName());
+		Room room = RoomDAO.getRoom(robean.getRoomName());
 		robean.setPhoto(room.getPhoto());
 		return robean.getPhoto();
 	}
