@@ -89,7 +89,7 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 		try {
 			connRg= ConnectionFactory.getConnection();
 			stmtRg = connRg.createStatement();
-			ResultSet rs = stmtRg.executeQuery("SELECT * FROM room WHERE roomname=" + roomName);
+			ResultSet rs = stmtRg.executeQuery("SELECT * FROM room WHERE roomname='" + roomName+"';");
 			
 			if(rs.next()) {
 				return extractRoomFromResultSet(rs);

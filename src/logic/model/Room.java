@@ -12,6 +12,10 @@ public class Room {
 	private String photo;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
+	private String City;
+	
+
+
 	public Room() {
 		// default constructor for dao impl
 	}
@@ -25,6 +29,16 @@ public class Room {
 		this.setPhoto(photo);
 		this.vg = new ArrayList<>();
 		this.hw = new ArrayList<>();
+	}
+	
+	
+	public String getCity() {
+		return City;
+	}
+
+
+	public void setCity(String city) {
+		City = city;
 	}
 
 	public List<Hardware> getHw(){
