@@ -18,9 +18,9 @@ class OrganizerRegistrationTest {
 		RegistrationBean bean=new RegistrationBean();
 		
 		bean.setOrgFirstname("Mario");
-		bean.setLastname("Rossi");
-		bean.setOrgUsername("Mario497");
-		bean.setPassword("ciao");
+		bean.setOrgLastname("Rossi");
+		bean.setOrgUsername("Mario597");
+		bean.setOrgPassword("ciao");
 		bean.setOrgEmail("Mario-Rossi@gmail.com");
 		boolean result =EventOrganizerDAO.insertOrganizer(bean);
 		assertTrue(result);

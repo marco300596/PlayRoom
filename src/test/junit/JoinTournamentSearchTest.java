@@ -18,9 +18,10 @@ class JoinTournamentSearchTest {
 	@Test
 	void joinTournamentTest() throws MyRuntimeException, SQLException {
 		
+		String nometorneo="primo torneo";
 		TournamentBean bean=new TournamentBean();
 		RoomBean rbean=new RoomBean();
-		bean.setTournamentName("c");
+		bean.setTournamentName(nometorneo);
 		bean.setTournamentGame("gta5");
 		bean.setTournamentPartecipants(5);
 		bean.setTournamentDate("");
@@ -37,8 +38,8 @@ class JoinTournamentSearchTest {
 		LoginBean lbean=new LoginBean();
 		lbean.setUsername("a");
 		
-		TournamentDAO.setTournamentNameByPlayerUsername(lbean.getUsername(),"c");
-		boolean res =TournamentDAO.setTournamentNameByPlayerUsername(lbean.getUsername(),"c");
+		TournamentDAO.setTournamentNameByPlayerUsername(lbean.getUsername(),nometorneo);
+		boolean res =TournamentDAO.setTournamentNameByPlayerUsername(lbean.getUsername(),nometorneo);
 		assertTrue(res);
 		
 		
