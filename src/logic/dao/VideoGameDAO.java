@@ -48,34 +48,34 @@ public static ObservableList<GameHardwareBean> getAllVideoGameForRoom(int id) th
 	}
 
 public static Boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
-	PreparedStatement psR = null;
-	Connection connRh = null;
+	PreparedStatement psRgi = null;
+	Connection connRgi = null;
 
 	try {
-		connRh= ConnectionFactory.getConnection();
-		psR = connRh.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
-		psR.setString(1, gh.getGameName());
-		psR.setInt(2, gh.getGameQuantity());
-		psR.setString(3, gh.getGameGenre());
-		psR.setString(4, gh.getGameDescription());
-		psR.setInt(5, id);
-		int i = psR.executeUpdate();
+		connRgi= ConnectionFactory.getConnection();
+		psRgi = connRgi.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
+		psRgi.setString(1, gh.getGameName());
+		psRgi.setInt(2, gh.getGameQuantity());
+		psRgi.setString(3, gh.getGameGenre());
+		psRgi.setString(4, gh.getGameDescription());
+		psRgi.setInt(5, id);
+		int i = psRgi.executeUpdate();
 	
 		if(i == 1) {
 			return true;
 		}
-		psR.close();
-		connRh.close();
+		psRgi.close();
+		connRgi.close();
 	
 	}catch(SQLException ex){
 		ex.printStackTrace();
 	}
 	finally {
-		if (psR != null) {
-			psR.close();
+		if (psRgi != null) {
+			psRgi.close();
 		}
-		if (connRh != null) {
-			connRh.close();
+		if (connRgi != null) {
+			connRgi.close();
     	}
 	}
 	return false;

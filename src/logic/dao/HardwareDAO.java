@@ -17,34 +17,34 @@ public class HardwareDAO {
 	
 
 public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
-	PreparedStatement psR = null;
-	Connection connRh = null;
+	PreparedStatement psRhi = null;
+	Connection connRhi = null;
 
 	try {
-		connRh= ConnectionFactory.getConnection();
-		psR = connRh.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?,?)");
-		psR.setString(1, gh.getHardwareName());
-		psR.setInt(2, gh.getHardwareQuantity());
-		psR.setString(3, gh.getHardwareGenre());
-		psR.setString(4, gh.getHardwareDescription());
-		psR.setInt(5, id);
-		int i = psR.executeUpdate();
+		connRhi = ConnectionFactory.getConnection();
+		psRhi = connRhi.prepareStatement("INSERT INTO hardware VALUES (?,?,?,?,?)");
+		psRhi.setString(1, gh.getHardwareName());
+		psRhi.setInt(2, gh.getHardwareQuantity());
+		psRhi.setString(3, gh.getHardwareGenre());
+		psRhi.setString(4, gh.getHardwareDescription());
+		psRhi.setInt(5, id);
+		int i = psRhi.executeUpdate();
 	
 		if(i == 1) {
 			return true;
 		}
-		psR.close();
-		connRh.close();
+		psRhi.close();
+		connRhi.close();
 	
 	}catch(SQLException ex){
 		ex.printStackTrace();
 	}
 	finally {
-		if (psR != null) {
-			psR.close();
+		if (psRhi != null) {
+			psRhi.close();
 		}
-		if (connRh != null) {
-			connRh.close();
+		if (connRhi != null) {
+			connRhi.close();
     	}
 	}
 	return false;

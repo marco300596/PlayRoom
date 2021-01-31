@@ -14,32 +14,32 @@ class BookRoomTest {
 
 	@Test
 	void bookTestT() throws MyRuntimeException, SQLException {
-		BookRoomController controller = BookRoomController.getInstance();
+		BookRoomController controllert = BookRoomController.getInstance();
 		LoginController logc = LoginController.getInstance();
-		controller.getRoomBean().setRoomName("lalla");
-		controller.getRoomBean().setLocation("via fiorano 15");
-		controller.getReservationBean().setCity("roma");
-		controller.getReservationBean().setDate("12-01-2000");
-		controller.getReservationBean().setHour("10");
-		controller.getReservationBean().setNumberOfPlayer(2);
+		controllert.getRoomBean().setRoomName("lalla");
+		controllert.getRoomBean().setLocation("via fiorano 15");
+		controllert.getReservationBean().setCity("roma");
+		controllert.getReservationBean().setDate("12-01-2000");
+		controllert.getReservationBean().setHour("10");
+		controllert.getReservationBean().setNumberOfPlayer(2);
 		logc.getBean().setUsername("a");
-		Boolean con = controller.createReservation();
+		Boolean con = controllert.createReservation();
 		assertTrue(con);
 
 	}
 	
 	@Test
 	void bookTestF() throws MyRuntimeException, SQLException {
-		BookRoomController controller = BookRoomController.getInstance();
+		BookRoomController controllerf = BookRoomController.getInstance();
 		LoginController logc = LoginController.getInstance();
-		controller.getRoomBean().setRoomName("allo");
-		controller.getRoomBean().setLocation("via floria 12");
-		controller.getReservationBean().setCity("altamura");
-		controller.getReservationBean().setDate("12-02-2000");
-		controller.getReservationBean().setHour("10");
-		controller.getReservationBean().setNumberOfPlayer(2);
+		controllerf.getRoomBean().setRoomName("allo");
+		controllerf.getRoomBean().setLocation("via floria 12");
+		controllerf.getReservationBean().setCity("altamura");
+		controllerf.getReservationBean().setDate("12-02-2000");
+		controllerf.getReservationBean().setHour("10");
+		controllerf.getReservationBean().setNumberOfPlayer(2);
 		logc.getBean().setUsername("a");
-		Boolean con = controller.createReservation();
+		Boolean con = controllerf.createReservation();
 		assertFalse(con);
 
 	}

@@ -163,7 +163,6 @@ private static TournamentBean extractTournamentsFromResultSet(ResultSet rs) thro
 	tournament.setTournamentGame(rs.getString("tournamentGame"));
 	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
 	tournament.setTournamentPartecipants(rs.getInt("tournamentPart"));
-	//tournament.setTournamentDate(rs.getString("tournamentDate"));
 	
 	
 	return tournament;

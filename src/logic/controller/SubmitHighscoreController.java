@@ -31,7 +31,6 @@ public class SubmitHighscoreController {
 	}
 	
 	public boolean checkTournamentAdehesion() throws MyRuntimeException, SQLException {		
-		System.out.println(bean.getTournament() + "," + bean.getPlayerUN());
 		return TournamentDAO.checkAdehesion(bean.getPlayerUN(), bean.getTournament());
 	}
 	
