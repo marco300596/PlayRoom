@@ -16,7 +16,7 @@ import logic.exception.MyRuntimeException;
 class JoinTournamentSearchTest {
 	//Flavio Pucci
 	@Test
-	void searchTournamentTest() throws MyRuntimeException, SQLException {
+	void joinTournamentTest() throws MyRuntimeException, SQLException {
 		
 		TournamentBean bean=new TournamentBean();
 		RoomBean rbean=new RoomBean();

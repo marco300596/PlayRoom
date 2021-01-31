@@ -198,7 +198,8 @@ public class BookRoomViewController {
     				}else if (!sprTxt.getText().isEmpty()) {
     					room = controller.findRoomForPreno();
     					
-    				}if(room.isEmpty()) {
+    				}
+    				if(room.isEmpty()) {
     					new Thread(()-> JOptionPane.showMessageDialog(null, "seems like your criteria didn't provide any room available, try to change this criteria or check your spelling","information!", JOptionPane.INFORMATION_MESSAGE)).start();
     		    		dpField.setValue(null);
     		    		gsTxt.setText(null);

@@ -13,7 +13,7 @@ import logic.exception.MyRuntimeException;
 class BookRoomTest {
 
 	@Test
-	void BookTestT() throws MyRuntimeException, SQLException {
+	void bookTestT() throws MyRuntimeException, SQLException {
 		BookRoomController controller = BookRoomController.getInstance();
 		LoginController logc = LoginController.getInstance();
 		controller.getRoomBean().setRoomName("lalla");
@@ -29,7 +29,7 @@ class BookRoomTest {
 	}
 	
 	@Test
-	void BookTestF() throws MyRuntimeException, SQLException {
+	void bookTestF() throws MyRuntimeException, SQLException {
 		BookRoomController controller = BookRoomController.getInstance();
 		LoginController logc = LoginController.getInstance();
 		controller.getRoomBean().setRoomName("allo");
