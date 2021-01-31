@@ -13,7 +13,7 @@ import logic.exception.MyRuntimeException;
 class OrganizerRegistrationTest {
 	//Flavio Pucci
 	@Test
-	void RegistrationTest() throws MyRuntimeException, SQLException {
+	void registrationTest() throws MyRuntimeException, SQLException {
 		
 		RegistrationBean bean=new RegistrationBean();
 		

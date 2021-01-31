@@ -4,15 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import logic.bean.GameHardwareBean;
 import logic.bean.RoomBean;
 import logic.exception.MyRuntimeException;
-import logic.model.Hardware;
 import logic.model.Room;
-import logic.model.VideoGame;
+
 
 public class RoomDAO {
 	

@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import logic.bean.LoginBean;
 import logic.bean.RoomBean;
 import logic.bean.TournamentBean;
-import logic.controller.JoinTournamentController;
 import logic.dao.RoomDAO;
 import logic.dao.TournamentDAO;
 import logic.exception.MyRuntimeException;

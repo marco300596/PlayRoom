@@ -12,7 +12,7 @@ public class Room {
 	private String photo;
 	private List<VideoGame> vg;
 	private List<Hardware>	hw;
-	private String City;
+	private String city;
 	
 
 
@@ -33,12 +33,12 @@ public class Room {
 	
 	
 	public String getCity() {
-		return City;
+		return city;
 	}
 
 
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 
 	public List<Hardware> getHw(){
