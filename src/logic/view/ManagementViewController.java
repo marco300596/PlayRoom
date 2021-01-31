@@ -82,7 +82,7 @@ public class ManagementViewController {
     	
     	delBtn.setOnAction(e -> {
     		try {
-    			if(nameInput.getText().equals("")) {
+    			if(!(nameInput.getText().equals(""))) {
     				controller.getRegBean().setUsername(nameInput.getText());
     				if(controller.delPlayer(controller.getRegBean())) {
     					new Thread(() ->

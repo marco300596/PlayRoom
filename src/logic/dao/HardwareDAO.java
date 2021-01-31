@@ -16,7 +16,7 @@ import logic.model.Hardware;
 public class HardwareDAO {
 	
 
-public static Boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+public static boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
 	PreparedStatement psRhi = null;
 	Connection connRhi = null;
 
@@ -83,7 +83,7 @@ public static Boolean  hardwareUpdate(GameHardwareBean gh, int id) throws  MyRun
 	
 }
 
-public static Boolean  hardwareCheck(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+public static boolean  hardwareCheck(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
 	PreparedStatement psRc = null;
 	Connection connRhc = null;
 

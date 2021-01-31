@@ -15,6 +15,10 @@ import logic.exception.MyRuntimeException;
 
 public class PlayerDAO {
 	
+	private PlayerDAO() {
+		//private constructor should be declared in all utility classes.
+	}
+	
 	public static RegistrationBean getPlayer(String username) throws MyRuntimeException, SQLException {
 		
 		Statement stmtP = null;

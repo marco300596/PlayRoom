@@ -114,7 +114,7 @@ public static Boolean  gameUpdate(GameHardwareBean gh, int id) throws  MyRuntime
 	
 }
 
-public static Boolean  gameCheck(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+public static boolean  gameCheck(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
 	PreparedStatement psRc = null;
 	Connection connRhc = null;
 

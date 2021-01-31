@@ -12,10 +12,9 @@ import logic.exception.MyRuntimeException;
 
 
 class ManagementControllerTest {
-	
+	//Alessandro Picco
 	ManagementController controller = ManagementController.getInstance();
 	RegistrationBean regBean = new RegistrationBean();
-	Object obj = new Object();
 	
 	
 	@Before
