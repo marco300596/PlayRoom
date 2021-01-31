@@ -83,31 +83,31 @@ public static Boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeEx
 }
 
 public static Boolean  gameUpdate(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
-	PreparedStatement psRu = null;
-	Connection connRhu = null;
+	PreparedStatement psGu = null;
+	Connection connGu = null;
 
 	try {
-		connRhu= ConnectionFactory.getConnection();
-		psRu = connRhu.prepareStatement("UPDATE videogame SET quantity = quantity + 1 WHERE gamename =? and roomid=?");
-		psRu.setString(1, gh.getGameName());
-		psRu.setInt(2, id);
-		int i = psRu.executeUpdate();
+		connGu= ConnectionFactory.getConnection();
+		psGu = connGu.prepareStatement("UPDATE videogame SET quantity = quantity + 1 WHERE gamename =? and roomid=?");
+		psGu.setString(1, gh.getGameName());
+		psGu.setInt(2, id);
+		int i = psGu.executeUpdate();
 	
 		if(i == 1) {
 			return true;
 		}
-		psRu.close();
-		connRhu.close();
+		psGu.close();
+		connGu.close();
 	
 	}catch(SQLException ex){
 		ex.printStackTrace();
 	}
 	finally {
-		if (psRu != null) {
-			psRu.close();
+		if (psGu != null) {
+			psGu.close();
 		}
-		if (connRhu != null) {
-			connRhu.close();
+		if (connGu != null) {
+			connGu.close();
     	}
 	}
 	return false;
@@ -115,31 +115,31 @@ public static Boolean  gameUpdate(GameHardwareBean gh, int id) throws  MyRuntime
 }
 
 public static boolean  gameCheck(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
-	PreparedStatement psRc = null;
-	Connection connRhc = null;
+	PreparedStatement psGc = null;
+	Connection connGc = null;
 
 	try {
-		connRhc= ConnectionFactory.getConnection();
-		psRc = connRhc.prepareStatement("Select * FROM videogame WHERE roomid = ?, and gamename=?");
-		psRc.setInt(1, id);
-		psRc.setString(2, gh.getGameName());
-		int i = psRc.executeUpdate();
+		connGc= ConnectionFactory.getConnection();
+		psGc = connGc.prepareStatement("Select * FROM videogame WHERE roomid = ?, and gamename=?");
+		psGc.setInt(1, id);
+		psGc.setString(2, gh.getGameName());
+		int i = psGc.executeUpdate();
 	
 		if(i == 1) {
 			return true;
 		}
-		psRc.close();
-		connRhc.close();
+		psGc.close();
+		connGc.close();
 	
 	}catch(SQLException ex){
 		ex.printStackTrace();
 	}
 	finally {
-		if (psRc != null) {
-			psRc.close();
+		if (psGc != null) {
+			psGc.close();
 		}
-		if (connRhc != null) {
-			connRhc.close();
+		if (connGc != null) {
+			connGc.close();
     	}
 	}
 	return false;

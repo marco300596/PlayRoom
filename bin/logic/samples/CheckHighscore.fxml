@@ -11,8 +11,9 @@
    <children>
       <TableView fx:id="hscTbl" layoutX="29.0" layoutY="138.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="358.0" prefWidth="625.0" style="-fx-background-color: #262628;">
          <columns>
-            <TableColumn fx:id="usrNC" prefWidth="308.0" text="Username" />
-            <TableColumn fx:id="hScC" prefWidth="316.0" text="Highscore" />
+            <TableColumn fx:id="usrNC" prefWidth="140.0" text="Username" />
+            <TableColumn fx:id="hScC" prefWidth="233.0" text="Highscore" />
+            <TableColumn fx:id="hScTC" prefWidth="251.0" text="Tournament" />
          </columns>
       </TableView>
       <Text boundsType="VISUAL" fill="#395dd4" layoutX="-356.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check Highscore" textAlignment="RIGHT" wrappingWidth="458.68359375" x="300.0" AnchorPane.leftAnchor="29.32421875" AnchorPane.rightAnchor="358.25" AnchorPane.topAnchor="25.609375">
