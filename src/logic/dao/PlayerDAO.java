@@ -15,14 +15,14 @@ import logic.exception.MyRuntimeException;
 
 public class PlayerDAO {
 	
-	public RegistrationBean getPlayer(String username) throws MyRuntimeException, SQLException {
+	public static RegistrationBean getPlayer(String username) throws MyRuntimeException, SQLException {
 		
 		Statement stmtP = null;
 		Connection connP = null;
 		try {
 			connP= ConnectionFactory.getConnection();
 			stmtP = connP.createStatement();
-			ResultSet rs = stmtP.executeQuery("SELECT * FROM player WHERE username=" + username);
+			ResultSet rs = stmtP.executeQuery("SELECT * FROM player WHERE username = '" + username + "';");
 			
 			if(rs.next()) {
 				return extractPlayerFromResultSet(rs);

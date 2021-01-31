@@ -52,13 +52,12 @@ public static boolean checkAdehesion(String playerUN, String tournamentName) thr
 		
 		try {
 			connT= ConnectionFactory.getConnection();
-			psTm = connT.prepareStatement("SELECT * FROM player WHERE username = ? and tournamentname = ? AND SELECT * FROM tournament WHERE and tournamentname = ?");
+			psTm = connT.prepareStatement("SELECT * FROM player WHERE username = ? and tournamentname = ?");
 			psTm.setString(1, playerUN);
 			psTm.setString(2, tournamentName);
-			psTm.setString(3, tournamentName);
-			int i = psTm.executeUpdate();
+			ResultSet i = psTm.executeQuery();
 			
-			if(i == 1) {
+			if(i != null) {
 				return true;
 			}
 			psTm.close();
@@ -163,8 +162,8 @@ private static TournamentBean extractTournamentsFromResultSet(ResultSet rs) thro
 	tournament.setTournamentRoom(rs.getString("tournamentRoom"));
 	tournament.setTournamentGame(rs.getString("tournamentGame"));
 	tournament.setTournamentHardware(rs.getString("tournamentHardware"));
-	tournament.setTournamentPartecipants(rs.getInt("tournamentPartecipants"));
-	tournament.setTournamentDate(rs.getString("tournamentDate"));
+	tournament.setTournamentPartecipants(rs.getInt("tournamentPart"));
+	//tournament.setTournamentDate(rs.getString("tournamentDate"));
 	
 	
 	return tournament;
@@ -248,17 +247,16 @@ public static boolean setTournamentNameByPlayerUsername(String playerus,String t
 	}
 
 	public static String getTournamentNameByPlayerUsername(String playerus)throws MyRuntimeException, SQLException {
-		String s= "";
+		String s = "";
 		Statement stmtP = null;
 		Connection conn = null;
 	
 		try {
 			conn= ConnectionFactory.getConnection();
 			stmtP = conn.createStatement();
-			ResultSet rs = stmtP.executeQuery("SELECT * FROM player WHERE username='"+ playerus+"';" );
+			ResultSet rs = stmtP.executeQuery("SELECT tournamentname FROM player WHERE username='"+ playerus+"';" );
 			while(rs.next()) {
-				s = rs.getString(s);
-				return s;
+				return rs.getString(S);
 			}
 			stmtP.close();
 			conn.close();

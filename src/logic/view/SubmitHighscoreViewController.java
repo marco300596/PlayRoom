@@ -64,7 +64,7 @@ public class SubmitHighscoreViewController {
 				if (controller.checkTournamentAdehesion()) {
 					highscore = controller.submitHighscoreAndShow();
 					hTab.setItems(highscore);
-					plNCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+					plNCol.setCellValueFactory(new PropertyValueFactory<>("playerUN"));
 					highValCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
 				}else {
 					new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered in this tournament!/n please register","Failed", JOptionPane.INFORMATION_MESSAGE)).start();

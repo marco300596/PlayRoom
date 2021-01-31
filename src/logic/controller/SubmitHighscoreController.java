@@ -30,13 +30,15 @@ public class SubmitHighscoreController {
 		return bean;
 	}
 	
-	public boolean checkTournamentAdehesion() throws MyRuntimeException, SQLException {
+	public boolean checkTournamentAdehesion() throws MyRuntimeException, SQLException {		
+		System.out.println(bean.getTournament() + "," + bean.getPlayerUN());
 		return TournamentDAO.checkAdehesion(bean.getPlayerUN(), bean.getTournament());
 	}
 	
 	public ObservableList<HighscoreBean> showHighscore() throws MyRuntimeException, SQLException{
 		bean.setPlayerUN(logc.getBean().getUsername());
 		bean.setTournament(TournamentDAO.getTournamentNameByPlayerUsername(bean.getPlayerUN()));
+		System.out.println(bean.getTournament() + "," + bean.getPlayerUN());
 		if (!(bean.getTournament().isEmpty())) {
 			Highscore high = new Highscore(bean.getTournament(), true);
 			highscores = HighscoreDAO.showAllHighscoreForTournament(high);
@@ -49,7 +51,7 @@ public class SubmitHighscoreController {
 	public ObservableList<HighscoreBean> submitHighscoreAndShow() throws MyRuntimeException, SQLException{
 
 		HighscoreDAO.insertHighscore(bean);
-		Highscore high = new Highscore(bean.getTournament(), false);
+		Highscore high = new Highscore(bean.getTournament(), true);
 		return HighscoreDAO.showAllHighscoreForTournament(high);
 	}
 }

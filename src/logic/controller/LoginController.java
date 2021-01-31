@@ -3,6 +3,7 @@ package logic.controller;
 import java.sql.SQLException;
 
 import logic.bean.LoginBean;
+import logic.bean.RegistrationBean;
 import logic.dao.EventOrganizerDAO;
 import logic.dao.PlayerDAO;
 import logic.exception.MyRuntimeException;
@@ -73,5 +74,17 @@ public class LoginController {
 			 throw new UserDoesNotExist();
 		}
 		return !(this.bean.getUsername().isEmpty());
+	}
+	
+	public boolean checkPlayer(String str) throws MyRuntimeException, SQLException, UserDoesNotExist{
+		RegistrationBean rb = new RegistrationBean();
+		if (str.isEmpty()){
+			return false;
+		}
+		rb = PlayerDAO.getPlayer(str);
+		if(rb.getUsername().isEmpty()) {
+			 throw new UserDoesNotExist();
+		}
+		 return !(rb.getUsername().isEmpty());
 	}
 }

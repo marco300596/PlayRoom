@@ -255,7 +255,7 @@ public class BookRoomViewController {
     	
     	try {
     		
-    		if (lcontroller.findPlayerIdentity()) {
+    		if (lcontroller.checkPlayer(lcontroller.getBean().getUsername())) {
     		
     			controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
     			controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());

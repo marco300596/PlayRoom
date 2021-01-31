@@ -26,6 +26,9 @@ public class CheckHighscoreViewController {
 
     @FXML
     private TableColumn<HighscoreBean, Integer> hScC;
+    
+    @FXML
+    private TableColumn<HighscoreBean, String> hScTC;
 
     @FXML
     private Button confBtn;
@@ -35,7 +38,9 @@ public class CheckHighscoreViewController {
     void confirmHighscore(MouseEvent event) throws MyRuntimeException, SQLException {
     	
     	controller.getHighscoreBean().setPlayerUN(hscTbl.getSelectionModel().getSelectedItems().get(0).getPlayerUN());
+    	controller.getHighscoreBean().setHighscore(hscTbl.getSelectionModel().getSelectedItems().get(0).getHighscore());
     	controller.getHighscoreBean().setTournament(hscTbl.getSelectionModel().getSelectedItems().get(0).getTournament());
+    	
     	boolean val = controller.confirmHighscore();
     		
     	if (val) {
@@ -46,13 +51,14 @@ public class CheckHighscoreViewController {
     }
 
     @FXML
-    void initialize(MouseEvent event) throws MyRuntimeException, SQLException {
+    void initialize() throws MyRuntimeException, SQLException {
     	
     	ObservableList<HighscoreBean> highscore;
     	highscore = controller.findPendingHighscoreForTournament();
     	hscTbl.setItems(highscore);
 		usrNC.setCellValueFactory(new PropertyValueFactory<>("playerUN"));
 		hScC.setCellValueFactory(new PropertyValueFactory<>("highscore"));
+		hScTC.setCellValueFactory(new PropertyValueFactory<>("tournament"));
 		
     }
 }

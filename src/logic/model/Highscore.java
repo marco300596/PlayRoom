@@ -27,9 +27,10 @@ public class Highscore {
 		this.hStatus = hStatus;
 	}
 
-	public Highscore(String tournament, String playerUN) {
+	public Highscore(String tournament, String playerUN, int score) {
 		this.tournament = tournament;
 		this.playerUN = playerUN;
+		this.score = score;
 	}
 
 	//setter&getter

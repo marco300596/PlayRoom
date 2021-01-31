@@ -49,7 +49,8 @@ public class HighscoreDAO {
 		try {
 			connHt= ConnectionFactory.getConnection();
 			stmtHt = connHt.createStatement();
-			ResultSet rs = stmtHt.executeQuery("UPDATE highscore SET highscorestatus = 1 WHERE username = '" +hi.getPlayerUserName()+"' AND tournamentname = '" +hi.getTournament()+"';");
+			ResultSet rs = stmtHt.executeQuery("UPDATE public.highscore	SET highscorestatus = true WHERE tournamentname = '"+ hi.getTournament() +"' and username = '"+ hi.getPlayerUserName() +"' and score =" + hi.getScore() +"returning highscorestatus;");
+			System.out.println(rs);
 			
 			if(rs.next()) {
 				return true;
@@ -114,7 +115,7 @@ public static boolean insertHighscore(HighscoreBean hTable) throws MyRuntimeExce
 		
 		try {
 			connHt= ConnectionFactory.getConnection();
-			psHt = connHt.prepareStatement("INSERT INTO highscore VALUES (0,?,?,?)");
+			psHt = connHt.prepareStatement("INSERT INTO highscore VALUES (false,?,?,?)");
 			psHt.setInt(1, hTable.getHighscore());
 			psHt.setString(2, hTable.getTournament());
 			psHt.setString(3, hTable.getPlayerUN());
@@ -157,6 +158,7 @@ private static HighscoreBean extractHighscoreBeanFromResultSet(ResultSet rs) thr
 		
 		highscore.setPlayerUN(rs.getString("username"));
 		highscore.setHighscore(rs.getInt("score"));
+		highscore.setTournament(rs.getString("tournamentName"));
 		
 		
 		return highscore;

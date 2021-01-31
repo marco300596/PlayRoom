@@ -47,6 +47,7 @@ public class CheckHighscoreController {
 		ObservableList<HighscoreBean> hbol = FXCollections.observableArrayList();
 		ArrayList<String> toru = new ArrayList<>();
 		for(TournamentBean j : x) {
+
 			toru.add(j.getTournamentName());
 		}
 		for(String s : toru) {
@@ -60,10 +61,11 @@ public class CheckHighscoreController {
 	public boolean confirmHighscore() throws MyRuntimeException, SQLException{
 		
 		try {
-			
-			logc.getBean().setUsername(this.hibean.getPlayerUN());
-			if(logc.findPlayerIdentity()) {
-				Highscore high = new Highscore(this.hibean.getTournament(), this.hibean.getPlayerUN());
+			System.out.println(hibean.getPlayerUN());
+			System.out.println(logc.checkPlayer(this.hibean.getPlayerUN()));
+			if(logc.checkPlayer(this.hibean.getPlayerUN())) {
+				System.out.println(hibean.getTournament());
+				Highscore high = new Highscore(this.hibean.getTournament(), this.hibean.getPlayerUN(), this.hibean.getHighscore());
 				return HighscoreDAO.newHighscore(high);
 			}
 		}catch(UserDoesNotExist u){
