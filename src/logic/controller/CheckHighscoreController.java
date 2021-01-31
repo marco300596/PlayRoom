@@ -61,10 +61,7 @@ public class CheckHighscoreController {
 	public boolean confirmHighscore() throws MyRuntimeException, SQLException{
 		
 		try {
-			System.out.println(hibean.getPlayerUN());
-			System.out.println(logc.checkPlayer(this.hibean.getPlayerUN()));
 			if(logc.checkPlayer(this.hibean.getPlayerUN())) {
-				System.out.println(hibean.getTournament());
 				Highscore high = new Highscore(this.hibean.getTournament(), this.hibean.getPlayerUN(), this.hibean.getHighscore());
 				return HighscoreDAO.newHighscore(high);
 			}

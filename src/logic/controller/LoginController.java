@@ -77,11 +77,10 @@ public class LoginController {
 	}
 	
 	public boolean checkPlayer(String str) throws MyRuntimeException, SQLException, UserDoesNotExist{
-		RegistrationBean rb = new RegistrationBean();
 		if (str.isEmpty()){
 			return false;
 		}
-		rb = PlayerDAO.getPlayer(str);
+		RegistrationBean rb = PlayerDAO.getPlayer(str);
 		if(rb.getUsername().isEmpty()) {
 			 throw new UserDoesNotExist();
 		}
