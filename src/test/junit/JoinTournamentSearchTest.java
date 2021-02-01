@@ -1,5 +1,4 @@
 package test.junit;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
@@ -18,7 +17,8 @@ class JoinTournamentSearchTest {
 	@Test
 	void joinTournamentTest() throws MyRuntimeException, SQLException {
 		
-		String nometorneo="primo torneo";
+		String nometorneo=CreateTournamentControllerTest.getAlphaNumericString(5);
+		
 		TournamentBean bean=new TournamentBean();
 		RoomBean rbean=new RoomBean();
 		bean.setTournamentName(nometorneo);

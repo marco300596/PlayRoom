@@ -1,5 +1,4 @@
 package test.junit;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
@@ -13,13 +12,16 @@ import logic.exception.MyRuntimeException;
 
 class RoomExistanceTest {
 	//Flavio Pucci
+	
 	@Test
 	void roomExistancetest() throws MyRuntimeException, SQLException {
+		
+		String nome=CreateTournamentControllerTest.getAlphaNumericString(5);
 		
 		int id;
 		id=RoomDAO.getRoomIdFromOrgUsername("b");
 		RoomBean room=new RoomBean();
-		room.setRoomName("stanza x");
+		room.setRoomName(nome);
 		room.setNumSeat(Integer.parseInt("5"));
 		room.setPrice(Integer.parseInt("0"));
 		room.setLocation("via si");

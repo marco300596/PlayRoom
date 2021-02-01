@@ -1,5 +1,4 @@
 package test.junit;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
@@ -15,11 +14,12 @@ class OrganizerRegistrationTest {
 	@Test
 	void registrationTest() throws MyRuntimeException, SQLException {
 		
+		String username=CreateTournamentControllerTest.getAlphaNumericString(5);
 		RegistrationBean bean=new RegistrationBean();
 		
 		bean.setOrgFirstname("Mario");
 		bean.setOrgLastname("Rossi");
-		bean.setOrgUsername("Mario597");
+		bean.setOrgUsername(username);
 		bean.setOrgPassword("ciao");
 		bean.setOrgEmail("Mario-Rossi@gmail.com");
 		boolean result =EventOrganizerDAO.insertOrganizer(bean);
