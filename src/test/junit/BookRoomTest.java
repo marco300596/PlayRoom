@@ -19,7 +19,7 @@ class BookRoomTest {
 		controllert.getRoomBean().setRoomName("lalla");
 		controllert.getRoomBean().setLocation("via fiorano 15");
 		controllert.getReservationBean().setCity("roma");
-		controllert.getReservationBean().setDate("12-01-2000");
+		controllert.getReservationBean().setDate("12-01-2022");
 		controllert.getReservationBean().setHour("10");
 		controllert.getReservationBean().setNumberOfPlayer(2);
 		logc.getBean().setUsername("a");
