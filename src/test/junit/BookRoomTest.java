@@ -4,14 +4,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import logic.controller.BookRoomController;
 import logic.controller.LoginController;
+import logic.dao.ReservationDAO;
+import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;
 
 class BookRoomTest {
 
+	@Before
+	int id() throws MyRuntimeException, SQLException {
+		
+		int id;
+		id = RoomDAO.getRoomIdFromOrgUsername("b");
+		return id;
+	}
+	
 	@Test
 	void bookTestT() throws MyRuntimeException, SQLException {
 		BookRoomController controllert = BookRoomController.getInstance();
@@ -23,7 +34,7 @@ class BookRoomTest {
 		controllert.getReservationBean().setHour("10");
 		controllert.getReservationBean().setNumberOfPlayer(2);
 		logc.getBean().setUsername("a");
-		Boolean con = controllert.createReservation();
+		Boolean con = ReservationDAO.insertReservation(controllert.getReservationBean(), id(), 0);
 		assertTrue(con);
 
 	}
