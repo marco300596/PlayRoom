@@ -3,6 +3,7 @@ package logic.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String username = request.getParameter("uname");
     	String password = request.getParameter("pass");
-    	//boolean player = request.get;
+    	
     	LoginController logc = LoginController.getInstance();
     	logc.getBean().setUsername(username);
     	logc.getBean().setPassword(password);
@@ -30,21 +31,23 @@ public class LoginServlet extends HttpServlet {
     	try {
     		if(request.getParameter("user").equals("player")){
     			if(logc.findPlayerIdentity()) {
-    				
-    				//fai cose
-    			}else {
-    				//fai altre cose
+					String nextJSP = "/Player.jsp";
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+					dispatcher.forward(request,response);
     			}
 			}else if (request.getParameter("user").equals("org")) {
 				if(logc.findOrgIdentity()) {
-					//fai cose
-				}else {
-					//fai altre cose.
+					String nextJSP = "/Organizer.jsp";
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+					dispatcher.forward(request,response);		
 				}
-				
 			}
-			
 		} catch (MyRuntimeException | SQLException | UserDoesNotExist e) {
+			
+				request.getSession().setAttribute("message", "Error. User not registered yet.");
+				response.sendRedirect(request.getHeader("Referer"));
+				//vedere a cosa fa riferimento.
+			
 			e.printStackTrace();
 		}
 	}
