@@ -14,10 +14,9 @@
 <h1><%=request.getSession().getAttribute("message")%></h1>
 <form action="LoginServlet">
 	Username: <input type="text" name="uname"><br>
-			
-			<input	type="radio" name="user" value=player>Player
-			<input  type="radio" name="user" value=org>Event Organizer
 	Password: <input type="password" name="pass"><br>
+	<input	type="radio" name="user" value=player>Player
+	<input  type="radio" name="user" value=org>Event Organizer<br>
 	<input type="submit" value="login">
 </form>
 
