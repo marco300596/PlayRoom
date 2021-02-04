@@ -16,15 +16,12 @@
   		<div class="container">
     		<h1>Create Tournament</h1>
     		<form action="CreateTournamentServlet">
-  				Room name:<br> 		<input type="text" name="uname"><br>
-  				Name:<br> 	   		<input type="text" name="uname"><br>
-  				Partecipants:<br> 	<input type="text" name="uname"><br>
-  				Videogame:<br> 		<input type="text" name="uname"><br>
-  				Hardware: <br>		<input type="text" name="uname"><br>
-  				<div class="form-floating">
-  					<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-  					<label for="floatingTextarea">Comments</label>
-				</div>
+  				Room name:<br> 		<input type="text" name="rname"><br>
+  				Name:<br> 	   		<input type="text" name="tname"><br>
+  				Partecipants:<br> 	<input type="text" name="part"><br>
+  				Videogame:<br> 		<input type="text" name="game"><br>
+  				Hardware: <br>		<input type="text" name="hw"><br>
+  									<input type="submit" value="create">
  
 			</form>
 		</div>
