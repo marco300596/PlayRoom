@@ -17,7 +17,7 @@
   		<div class="container">
     		<h1>Join Tournament</h1>
     		<form action="CreateTournamentServlet">
-  				Insert your City:<br> 	<input type="text" name="uname"><br>
+  				Insert your City:<br> 	<input type="text" name="city"><br>
   				<input type="submit" value="Join Tournament">
   				<input type="submit" value="Search Tournament">
   				<div class="form-floating">

@@ -17,8 +17,8 @@
 	Lastname: <input type="text" name="lname"><br>
 	Email: <input type="text" name="email"><br>
 	Username:<input type="text" name="uname"><br>
-	Password: <input type="text" name="pass"><br>
-	Confirm Password: <input type="text" name="confpass"><br>
+	Password: <input type="password" name="pass"><br>
+	Confirm Password: <input type="password" name="confpass"><br>
 	
 	<input	type="radio" name="user" value=player>Player
 	<input  type="radio" name="user" value=org>Event Organizer
