@@ -13,26 +13,19 @@
     <title>Hello, world!</title>
   </head>
   <body>
-  <form action="GenericServlet" method="get">
-  	<nav class="navbar navbar-dark bg-primary">
+<form action="GenericServlet" name= "form">
+	<nav class="navbar navbar-dark bg-primary">
   		<div class="container-fluid">
-    		<a class="navbar-brand" href="#">PlayRoom</a><br>
-       	</div>
-       	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  			<input type="submit" class="btn btn-primary" name="menu" value="join">Join Tournament
-  			<input type="submit" class="btn btn-primary" name="menu" value="submit">submit Highscore
-			<input type="submit" class="btn btn-primary" name="menu" value="book">Book Room
-  			<input type="submit" class="btn btn-primary" name="menu" value="reservation">Your Booking
+    		<a class="navbar-brand" href="login.jsp">PlayRoom</a><br>
+				<ul class="list-group list-group-horizontal" style="margin-left: 0%; margin-right: 0%" >
+ 					<li><a href="JoinTournament.jsp" class="list-group-item list-group-item-action list-group-item-primary">join Tournament</a></li>
+  					<li><a href="SubmitHighscore.jsp" class="list-group-item list-group-item-action list-group-item-primary">Submit Highscore</a></li>
+  					<li><a href="BookRoom.jsp" class="list-group-item list-group-item-action list-group-item-primary">Book a Room</a></li>
+  					<li><a href="Reservation.jsp" class="list-group-item list-group-item-action list-group-item-primary">Your Reservation</a></li>
+				</ul>
 		</div>
-		</nav>
-			<%
-				if(request.getParameter("menu").getValue() != null){
-			%>
-					<jsp:include page= "CreateTournament.jsp">
-			<%
-			}
-			%>
-	</form>	
+	</nav>
+</form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
 </html>

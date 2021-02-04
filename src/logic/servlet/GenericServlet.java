@@ -18,8 +18,8 @@ public class GenericServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nextJSP = "";
 		RequestDispatcher dispatcher;
-		if(request.getParameter("menu").equals("join")) {
-			nextJSP = "/JoinTournament.jsp";
+		if(request.getParameter("hdnbt").equals("join")) {
+			nextJSP = "/CreateTournament.jsp";
 			request.setAttribute("menu", nextJSP);
 			dispatcher = request.getRequestDispatcher("genericHomePage.jsp");
 			dispatcher.forward(request,response);
