@@ -16,12 +16,12 @@ public class GenericServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nextJSP = null;
+		String nextJSP = "";
 		RequestDispatcher dispatcher;
 		if(request.getParameter("menu").equals("join")) {
-			//nextJSP = "/JoinTournament.jsp";
-			String page = request.getParameter("page");
-			dispatcher = getServletContext().getRequestDispatcher(page);
+			nextJSP = "/JoinTournament.jsp";
+			request.setAttribute("menu", nextJSP);
+			dispatcher = request.getRequestDispatcher("genericHomePage.jsp");
 			dispatcher.forward(request,response);
 		}
 		if(request.getParameter("menu").equals("submit")) {
