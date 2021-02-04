@@ -19,8 +19,9 @@ public class GenericServlet extends HttpServlet {
 		String nextJSP = null;
 		RequestDispatcher dispatcher;
 		if(request.getParameter("menu").equals("join")) {
-			nextJSP = "/JoinTournament.jsp";
-			dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+			//nextJSP = "/JoinTournament.jsp";
+			String page = request.getParameter("page");
+			dispatcher = getServletContext().getRequestDispatcher(page);
 			dispatcher.forward(request,response);
 		}
 		if(request.getParameter("menu").equals("submit")) {
