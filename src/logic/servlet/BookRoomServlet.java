@@ -16,7 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import java.util.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,13 +44,14 @@ public class BookRoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BookRoomController controller = BookRoomController.getInstance();
     	ObservableList<RoomBean> rol = FXCollections.observableArrayList();
-    	ArrayList<RoomBean> ral = new ArrayList<>();
+    	List<RoomBean> ral = new ArrayList<RoomBean>();
     	if(request.getParameter("azione").equals("Search")) {
     	try {
     			
     			LocalDate localDate = LocalDate.parse(request.getParameter("date"));//For reference
     			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     			String formattedString = localDate.format(formatter);
+    			System.out.println(formattedString);
     			String[] parts = formattedString.split("-");
     			int year = Integer.parseInt(parts[2]);
     			int month = Integer.parseInt(parts[1])-1;
@@ -67,9 +69,13 @@ public class BookRoomServlet extends HttpServlet {
     			if(cal.getTime().after(comp.getTime())) {
     				
     				controller.getReservationBean().setDate(formattedString);
+    				System.out.println(controller.getReservationBean().getDate());
     				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(request.getParameter("gsize")));
+    				System.out.println(controller.getReservationBean().getNumberOfPlayer());
     				controller.getReservationBean().setHour(request.getParameter("hour"));
+    				System.out.println(controller.getReservationBean().getHour());
     				controller.getReservationBean().setCity(request.getParameter("city"));
+    				System.out.println(controller.getReservationBean().getCity());
 
     				//PORCA EVA
     				if(!request.getParameter("gname").isEmpty() && !request.getParameter("hard").isEmpty()) {

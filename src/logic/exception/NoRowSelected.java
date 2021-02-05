@@ -7,8 +7,7 @@ public class NoRowSelected extends Exception {
 	
 	public NoRowSelected() {
 		super();
-		new Thread(() ->
-    	JOptionPane.showMessageDialog(null, "No row selected,please select a row","Error", JOptionPane.INFORMATION_MESSAGE)).start();
+		new Thread(() -> JOptionPane.showMessageDialog(null, "No row selected,please select a row","Error", JOptionPane.INFORMATION_MESSAGE)).start();
 		
 }
 }
