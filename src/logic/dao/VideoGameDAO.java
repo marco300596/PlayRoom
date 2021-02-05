@@ -120,12 +120,12 @@ public static boolean  gameCheck(GameHardwareBean gh, int id) throws  MyRuntimeE
 
 	try {
 		connGc= ConnectionFactory.getConnection();
-		psGc = connGc.prepareStatement("Select * FROM videogame WHERE roomid = ?, and gamename=?");
+		psGc = connGc.prepareStatement("Select * FROM videogame WHERE roomid = ? and gamename=?");
 		psGc.setInt(1, id);
 		psGc.setString(2, gh.getGameName());
-		int i = psGc.executeUpdate();
+		ResultSet i = psGc.executeQuery();
 	
-		if(i == 1) {
+		if(i !=null) {
 			return true;
 		}
 		psGc.close();

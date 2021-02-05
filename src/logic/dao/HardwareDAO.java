@@ -89,12 +89,12 @@ public static boolean  hardwareCheck(GameHardwareBean gh, int id) throws  MyRunt
 
 	try {
 		connRhc= ConnectionFactory.getConnection();
-		psRc = connRhc.prepareStatement("Select * FROM hardware WHERE roomid = ?, and hardwarename=?");
+		psRc = connRhc.prepareStatement("Select * FROM hardware WHERE roomid = ? and hardwarename=?");
 		psRc.setInt(1, id);
 		psRc.setString(2, gh.getHardwareName());
-		int i = psRc.executeUpdate();
+		ResultSet i = psRc.executeQuery();
 	
-		if(i == 1) {
+		if(i !=null) {
 			return true;
 		}
 		psRc.close();

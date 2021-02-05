@@ -36,9 +36,11 @@ public class ModifyRoomController {
 			
 			int id;
 			id=RoomDAO.getRoomIdFromOrgUsername(bean.getOrgUserName());
+			
 			if(HardwareDAO.hardwareCheck(bean, id)) {
 				HardwareDAO.hardwareUpdate(bean,id);
 			}else {
+				
 				HardwareDAO.hardwareInfo(bean,id);
 			}
 		}

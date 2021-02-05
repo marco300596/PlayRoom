@@ -39,15 +39,15 @@
   	<body>
   		<div class="container">
     		<h1>Modify Room</h1>
-    		<form action="CreateTournamentServlet">
+    		<form action="ModifyRoomServlet">
   				Your Username: <input type="text" name="uname"><br>
 				Name: <input type="text" name="name"><br>
 				Genre: <input type="text" name="genre"><br>
 				Quantity:<input type="text" name="quantity"><br>
 				Description: <input type="text" name="description"><br>
 				
-				<input	type="radio" name="Hardware" value=hard>Hardware
-				<input  type="radio" name="Game" value=game>Game
+				<input	type="radio" name="type" value=hard>Hardware
+				<input  type="radio" name="type" value=game>Game
   				
   				<input type="submit" value="Add Component">
   				<div class="form-floating">
