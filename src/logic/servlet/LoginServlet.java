@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
     	try {
     		if(request.getParameter("user").equals("player")){
     			if(logc.findPlayerIdentity()) {
-					String nextJSP = "/genericHomePage.jsp";
+					String nextJSP = "/Player.jsp";
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 					dispatcher.forward(request,response);
     			}

@@ -33,8 +33,14 @@ public class CreateTournamentServlet extends HttpServlet {
     	controller.getBean().setTournamentHardware(hardware);
     	int num = Integer.parseInt(partecipants);
     	controller.getBean().setTournamentPartecipants(num);
+    
     	try {
 			controller.insertNewTournament(controller.getBean());
+			/*inserisco un messaggio da stampare che verra' passato 
+			 * al relativo jsp (crea torneo) qui faccio il set dell'
+			 * attributo che voglio stampare nel jsp (vedi)
+			 */
+			request.getSession().setAttribute("message", "Your tournament has been created!");
 		} catch (MyRuntimeException | SQLException e) {
     		Logger.getLogger(CreateTournamentServlet.class.getName()).log(Level.SEVERE, null, e);
 		}
