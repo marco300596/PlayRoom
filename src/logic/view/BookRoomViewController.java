@@ -148,7 +148,7 @@ public class BookRoomViewController {
     
     @FXML
     void showRooms(MouseEvent event) throws MyRuntimeException, SQLException, WrongInputException{
-    	
+    	String comment="Fill all textfield please";
     	BookRoomController controller = BookRoomController.getInstance();
     	ObservableList<RoomBean> room = FXCollections.observableArrayList();
     	try {
@@ -231,7 +231,7 @@ public class BookRoomViewController {
     		
     	}catch(StringIsEmptyException s) {
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, s);
-    		new Thread(()-> JOptionPane.showMessageDialog(null, "Please fill at least one textfield!","Fill Text Field", JOptionPane.INFORMATION_MESSAGE)).start();
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "Please fill at least one textfield!",comment, JOptionPane.INFORMATION_MESSAGE)).start();
            		
     	}catch(NumberFormatException n) {
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, n);

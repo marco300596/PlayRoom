@@ -25,22 +25,20 @@ import logic.exception.MyRuntimeException;
 import logic.exception.TimeException;
 import logic.view.BookRoomViewController;
 
-/**
- * Servlet implementation class BookRoomServlet
- */
+
 @WebServlet("/BookRoomServlet")
 public class BookRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BookRoomServlet() {
-        super();
-    }
     
+    
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BookRoomController controller = BookRoomController.getInstance();
+		String gname="gname";
+		String page="BookRoom.jsp";
+		String rooms="rooms";
+		
     	List<RoomBean> ral = new ArrayList<>();
     	if(request.getParameter("azione").equals("Search")) {
     	try {
@@ -75,36 +73,36 @@ public class BookRoomServlet extends HttpServlet {
     				System.out.println(controller.getReservationBean().getCity());
 
     				//PORCA EVA
-    				if(!request.getParameter("gname").isEmpty() && !request.getParameter("hard").isEmpty()) {
+    				if(!request.getParameter(gname).isEmpty() && !request.getParameter("hard").isEmpty()) {
     					controller.getGHBean().setGameName(request.getParameter("gname"));
     					controller.getGHBean().setHardwareName(request.getParameter("hard"));
 
     					ral.addAll(controller.findRoomForPrenoByGameandHardware());    					
-    					request.setAttribute("rooms", ral);
-    					RequestDispatcher dispatcher = request.getRequestDispatcher("BookRoom.jsp");
+    					request.setAttribute(rooms, ral);
+    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
     					dispatcher.forward(request, response);
     					
-    				}else if(!request.getParameter("gname").isEmpty()) {
-    					controller.getGHBean().setGameName(request.getParameter("gname"));
+    				}else if(!request.getParameter(gname).isEmpty()) {
+    					controller.getGHBean().setGameName(request.getParameter(gname));
     		    		
     					ral.addAll(controller.findRoomForPrenoByVideoGame());
-    		    		request.setAttribute("rooms", ral);
-    					RequestDispatcher dispatcher = request.getRequestDispatcher("BookRoom.jsp");
+    		    		request.setAttribute(rooms, ral);
+    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
     					dispatcher.forward(request, response);
     					
     				}else if (!request.getParameter("hard").isEmpty()) {
     					controller.getGHBean().setHardwareName(request.getParameter("hard"));
     					
     					ral.addAll(controller.findRoomForPrenoByHardware());
-    					request.setAttribute("rooms", ral);
-    					RequestDispatcher dispatcher = request.getRequestDispatcher("BookRoom.jsp");
+    					request.setAttribute(rooms, ral);
+    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
     					dispatcher.forward(request, response);
     					
     				}else if (!request.getParameter("city").isEmpty()) {
     					
     					ral.addAll(controller.findRoomForPreno());
-    					request.setAttribute("rooms", ral);
-    					RequestDispatcher dispatcher = request.getRequestDispatcher("BookRoom.jsp");
+    					request.setAttribute(rooms, ral);
+    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
     					dispatcher.forward(request, response);
     					
     				}
@@ -128,12 +126,6 @@ public class BookRoomServlet extends HttpServlet {
     }
 }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
 
 }

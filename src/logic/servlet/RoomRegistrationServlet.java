@@ -19,7 +19,7 @@ public class RoomRegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String room=request.getParameter("rname");
 		String nseat=request.getParameter("nseat");
@@ -27,7 +27,7 @@ public class RoomRegistrationServlet extends HttpServlet {
 		String city=request.getParameter("city");
 		String address=request.getParameter("address");
 		String price=request.getParameter("price");
-		String image=request.getParameter("img");
+	//	String image=request.getParameter("img");
 		
 		RegisterRoomController controller = RegisterRoomController.getInstance();
 		try {

@@ -35,12 +35,12 @@ public class LoginServlet extends HttpServlet {
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 					dispatcher.forward(request,response);
     			}
-			}else if (request.getParameter("user").equals("org")) {
-				if(logc.findOrgIdentity()) {
+			}else if (request.getParameter("user").equals("org") && logc.findOrgIdentity()) {
+				
 					String nextJSP = "/Organizer.jsp";
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 					dispatcher.forward(request,response);		
-				}
+				
 			}
 		} catch (MyRuntimeException | SQLException | UserDoesNotExist e) {
 			
