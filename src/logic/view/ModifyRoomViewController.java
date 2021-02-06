@@ -132,7 +132,6 @@ public class ModifyRoomViewController {
 	    
 	    		
 	    		if(controller.addComponentV(controller.getHVBean())) {
-	    			System.out.println(gameQuantity);
 		    		new Thread(() ->
 	            	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
 		    	

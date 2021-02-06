@@ -82,69 +82,7 @@ public static boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeEx
 	
 }
 
-public static boolean  gameUpdate(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
-	PreparedStatement psGu = null;
-	Connection connGu = null;
 
-	try {
-		connGu= ConnectionFactory.getConnection();
-		psGu = connGu.prepareStatement("UPDATE videogame SET quantity = quantity + 1 WHERE gamename =? and roomid=?");
-		psGu.setString(1, gh.getGameName());
-		psGu.setInt(2, id);
-		int i = psGu.executeUpdate();
-	
-		if(i == 1) {
-			return true;
-		}
-		psGu.close();
-		connGu.close();
-	
-	}catch(SQLException ex){
-		ex.printStackTrace();
-	}
-	finally {
-		if (psGu != null) {
-			psGu.close();
-		}
-		if (connGu != null) {
-			connGu.close();
-    	}
-	}
-	return false;
-	
-}
-
-public static boolean  gameCheck(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
-	PreparedStatement psGc = null;
-	Connection connGc = null;
-
-	try {
-		connGc= ConnectionFactory.getConnection();
-		psGc = connGc.prepareStatement("Select * FROM videogame WHERE roomid = ? and gamename=?");
-		psGc.setInt(1, id);
-		psGc.setString(2, gh.getGameName());
-		int i = psGc.executeUpdate();
-	
-		if(i == 1) {
-			return true;
-		}
-		psGc.close();
-		connGc.close();
-	
-	}catch(SQLException ex){
-		ex.printStackTrace();
-	}
-	finally {
-		if (psGc != null) {
-			psGc.close();
-		}
-		if (connGc != null) {
-			connGc.close();
-    	}
-	}
-	return false;
-	
-}
 
 
 	
