@@ -18,7 +18,7 @@ import logic.exception.MyRuntimeException;
 class SubmitHighscoreTest {
 //Casentini Marco
 	@Test
-	void test() throws MyRuntimeException, SQLException {
+	void SubmitHighscoreTTest() throws MyRuntimeException, SQLException {
 		String nometorneo1=CreateTournamentControllerTest.getAlphaNumericString(5);
 		
 		TournamentBean tbean=new TournamentBean();

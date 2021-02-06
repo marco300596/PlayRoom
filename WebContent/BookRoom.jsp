@@ -49,7 +49,6 @@
   				</select>
   				<input type="date" name="date" value="date">
       			<input type="submit" name="azione" value="Search">
-  				<input type="submit" name="azione" value="Book it">
   				<div class="form-floating">
   					
   					
@@ -72,10 +71,10 @@
 								<td>${room.location}</td>
 								<td>
 									<input type="submit" name="reserveButton" value="Reserve">
-									<input type="hidden" name="roomno" value="${room.roomName}">
-									<input type="hidden" name="roomtype" value="${room.numSeat}">
-									<input type="hidden" name="roomsmoke" value="${room.price}">
-									<input type="hidden" name="roomrate" value="${room.location}">
+									<input type="hidden" name="roomNo" value="${room.roomName}">
+									<input type="hidden" name="roomSeat" value="${room.numSeat}">
+									<input type="hidden" name="roomPrice" value="${room.price}">
+									<input type="hidden" name="roomLoc" value="${room.location}">
 								</td>
 							</tr>
 						</c:forEach>

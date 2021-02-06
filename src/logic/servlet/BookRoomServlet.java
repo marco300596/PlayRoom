@@ -22,6 +22,7 @@ import java.util.*;
 import logic.bean.RoomBean;
 import logic.controller.BookRoomController;
 import logic.exception.MyRuntimeException;
+import logic.exception.StringIsEmptyException;
 import logic.exception.TimeException;
 import logic.view.BookRoomViewController;
 
@@ -120,7 +121,16 @@ public class BookRoomServlet extends HttpServlet {
 		}
     	 
     
-}
+    	}if(request.getParameter("reserveButton").equals("Reserve")) {
+    		try {
+    			controller.getRoomBean().setRoomName(request.getParameter("roomNo"));
+    			controller.getRoomBean().setLocation(request.getParameter("roomLoc"));
+				controller.createReservation();
+			} catch (MyRuntimeException | SQLException e) {
+				e.printStackTrace();
+			}
+    		
+    	}
     }
 }
 	

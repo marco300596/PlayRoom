@@ -75,28 +75,6 @@ public class BookRoomController {
 		return beanList;
 	}
 	
-	public ObservableList<GameHardwareBean> populateHardware() throws MyRuntimeException, SQLException{
-		
-
-		int id;
-		id = RoomDAO.getRoomId(this.robean.getRoomName(), this.robean.getLocation());
-		return HardwareDAO.getAllHardwareForRoom(id);
-	}
-	
-	public ObservableList<GameHardwareBean> populateGame() throws MyRuntimeException, SQLException{
-		
-		int id;
-		id = RoomDAO.getRoomId(this.robean.getRoomName(), this.robean.getLocation());
-		return VideoGameDAO.getAllVideoGameForRoom(id);
-	}
-	
-	public String populateImage() throws MyRuntimeException, SQLException{
-		
-		Room room = RoomDAO.getRoom(robean.getRoomName());
-		robean.setPhoto(room.getPhoto());
-		return robean.getPhoto();
-	}
-	
 	public boolean createReservation() throws MyRuntimeException, SQLException{
 		
 		boolean chk ;

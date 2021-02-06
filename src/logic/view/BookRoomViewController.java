@@ -244,96 +244,36 @@ public class BookRoomViewController {
     	
     	}
     }
-    
-    @FXML
-    void showRoom() throws MyRuntimeException, SQLException{
-    	
-    	vgTab = new TableView<>();
-    	hwTab = new TableView<>();
-    	vgNCol = new TableColumn<>();
-    	vgNumCol = new TableColumn<>();
-    	vgGenCol = new TableColumn<>();
-    	hwNCol = new TableColumn<>();
-    	hwNumCol = new TableColumn<>();
-    	hwGenCol = new TableColumn<>();
-    	rPh = new ImageView();
-    	confBtn = new Button();
-    	decBtn = new Button();
-    	
-    	BookRoomController controller = BookRoomController.getInstance();
-    	LoginController lcontroller = LoginController.getInstance();
-    	ObservableList<GameHardwareBean> hw = FXCollections.observableArrayList();
-    	ObservableList<GameHardwareBean> vg = FXCollections.observableArrayList();
-    	
-    	try {
-    		
-    		if (lcontroller.checkPlayer(lcontroller.getBean().getUsername())) {
-    		
-    			controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
-    			controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation().toLowerCase());
-    	    	Parent root = FXMLLoader.load(getClass().getResource("/logic/samples/BookRoomPage.fxml"));
-    	    	primaryStage.setScene(new Scene(root));
-    	    	primaryStage.setResizable(false);
-    	        primaryStage.show();
-    	        
-    	        hw = controller.populateHardware();
-    	        vg = controller.populateGame();
-    	        if(vg.isEmpty()) {
-    	        	new Thread(()-> JOptionPane.showMessageDialog(null, "this room didn't provide any game from the research: be careful!","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
-        	        
-    	        }
-	        	vgTab.setItems(vg);
-    			/*script di popolazione delle celle 
-    			ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
-	        	vgNCol.setCellValueFactory(new PropertyValueFactory<>("gameName"));
-	        	vgNumCol.setCellValueFactory(new PropertyValueFactory<>("gameQuantity"));
-	        	vgGenCol.setCellValueFactory(new PropertyValueFactory<>("gameGenre"));
-	        
-    	        if(hw.isEmpty()) {
-    	        	new Thread(()-> JOptionPane.showMessageDialog(null, "this room didn't provide any hardware from the research: be careful!","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
-
-    	        }
-    	        hwTab.setItems(hw);    	
-    	        /*script di popolazione delle celle 
-	    		ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
-    	        hwNCol.setCellValueFactory(new PropertyValueFactory<>("hardwareName"));
-    	        hwNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-    	        hwGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
-    	        //rPh.setImage(new Image(new FileInputStream("/logic/image/"+controller.populateImage())));
-    		}
-    		
-    	} catch (IOException e) {    	
-    		
-    	    	Logger.getLogger(HomePageView.class.getName()).log(Level.SEVERE, null, e);
-    	}catch(UserDoesNotExist u){
-		
-		new Thread(()-> JOptionPane.showMessageDialog(null, "you are no longer registrated in the system;/n you have been deleted!","Deleted", JOptionPane.INFORMATION_MESSAGE)).start();
-		reload("Registration");
-		}
-    	    	
-}
-
+ 
     @FXML
     void bookRoom() throws MyRuntimeException, SQLException{
-    	
     	BookRoomController controller = BookRoomController.getInstance();
-    	boolean val = controller.createReservation();	
-    	if (val) {
-    			
-    			String d = controller.getReservationBean().getDate();
-    			String h = controller.getReservationBean().getHour();
-    			new Thread(()-> JOptionPane.showMessageDialog(null, "you PRENO! for: " + d + ", at: " + h + ":00 !","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-    			reload("PlainPModelPage");
-    	}else {
-    			new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
-    	}
+    	LoginController lcontroller = LoginController.getInstance();
+
+    	try {
+			if (lcontroller.checkPlayer(lcontroller.getBean().getUsername())) {
+				
+				controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
+				controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation().toLowerCase());
+			    	
+				boolean val = controller.createReservation();	
+				if (val) {
+						
+						String d = controller.getReservationBean().getDate();
+						String h = controller.getReservationBean().getHour();
+						new Thread(()-> JOptionPane.showMessageDialog(null, "you PRENO! for: " + d + ", at: " + h + ":00 !","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+						reload("PlainPModelPage");
+				}else {
+						new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+				}
+			}
+		} catch (UserDoesNotExist e) {
+			Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, e);
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you are no longer logged in the system","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
+    		reload("registration");
+		}
     }
     
-    @FXML
-    private void close() {
-		Stage sce = (Stage)rPh.getScene().getWindow();
-		sce.close();
-    }
     
 	private boolean verifyTxtFields() throws StringIsEmptyException {
     	if(sprTxt.getText().equals("") && (gameTxt.getText().equals("") && hwTxt.getText().equals(""))&&(dpField.getValue() == null || hSB.getText().equals("HH") || gsTxt.getText().isEmpty())) {
