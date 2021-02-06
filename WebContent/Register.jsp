@@ -13,12 +13,12 @@
 <body>
 <h1><%=request.getSession().getAttribute("message")%></h1>
 <form action="RegistrationServlet">
-	Firstname: <input type="text" name="fname"><br>
-	Lastname: <input type="text" name="lname"><br>
-	Email: <input type="text" name="email"><br>
-	Username:<input type="text" name="uname"><br>
-	Password: <input type="password" name="pass"><br>
-	Confirm Password: <input type="password" name="confpass"><br>
+	Firstname:<br>     <input type="text" name="fname"><br>
+	Lastname:<br>      <input type="text" name="lname"><br>
+	Email:<br>         <input type="text" name="email"><br>
+	Username:<br>      <input type="text" name="uname"><br>
+	Password:<br>      <input type="password" name="pass"><br>
+	Confirm Password:<br>  <input type="password" name="confpass"><br>
 	
 	<input	type="radio" name="user" value=player>Player
 	<input  type="radio" name="user" value=org>Event Organizer

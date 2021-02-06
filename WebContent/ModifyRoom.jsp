@@ -40,11 +40,15 @@
   		<div class="container">
     		<h1>Modify Room</h1>
     		<form action="ModifyRoomServlet">
-  				Your Username: <input type="text" name="uname"><br>
-				Name: <input type="text" name="name"><br>
-				Genre: <input type="text" name="genre"><br>
-				Quantity:<input type="text" name="quantity"><br>
-				Description: <input type="text" name="description"><br>
+  				Your Username:<br>     <input type="text" name="uname"><br>
+				Name:<br>              <input type="text" name="name"><br>
+				Genre:<br>             <input type="text" name="genre"><br>
+				Quantity:<br>          <input type="text" name="quantity"><br>
+				<label for="desc">Description:</label><br>
+
+				<textarea id="ds" name="description"
+         		 rows="5" cols="33">
+				</textarea><br>
 				
 				<input	type="radio" name="type" value=hard>Hardware
 				<input  type="radio" name="type" value=game>Game
