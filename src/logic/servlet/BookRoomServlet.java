@@ -19,8 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.*;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import logic.bean.RoomBean;
 import logic.controller.BookRoomController;
 import logic.exception.MyRuntimeException;
@@ -43,16 +41,15 @@ public class BookRoomServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BookRoomController controller = BookRoomController.getInstance();
-    	ObservableList<RoomBean> rol = FXCollections.observableArrayList();
-    	List<RoomBean> ral = new ArrayList<RoomBean>();
+    	List<RoomBean> ral = new ArrayList<>();
     	if(request.getParameter("azione").equals("Search")) {
     	try {
     			
     			LocalDate localDate = LocalDate.parse(request.getParameter("date"));//For reference
-    			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     			String formattedString = localDate.format(formatter);
     			System.out.println(formattedString);
-    			String[] parts = formattedString.split("-");
+    			String[] parts = formattedString.split("/");
     			int year = Integer.parseInt(parts[2]);
     			int month = Integer.parseInt(parts[1])-1;
     			int day = Integer.parseInt(parts[0]);
@@ -81,47 +78,31 @@ public class BookRoomServlet extends HttpServlet {
     				if(!request.getParameter("gname").isEmpty() && !request.getParameter("hard").isEmpty()) {
     					controller.getGHBean().setGameName(request.getParameter("gname"));
     					controller.getGHBean().setHardwareName(request.getParameter("hard"));
-    					rol = controller.findRoomForPrenoByGameandHardware();
-    					for(RoomBean j : rol) {
-    						
-    						ral.add(j);
-    					}
-    					
+
+    					ral.addAll(controller.findRoomForPrenoByGameandHardware());    					
     					request.setAttribute("rooms", ral);
     					RequestDispatcher dispatcher = request.getRequestDispatcher("BookRoom.jsp");
     					dispatcher.forward(request, response);
     					
     				}else if(!request.getParameter("gname").isEmpty()) {
     					controller.getGHBean().setGameName(request.getParameter("gname"));
-    		    		rol = controller.findRoomForPrenoByVideoGame();
-    		    		for(RoomBean j : rol) {
-    						
-    						ral.add(j);
-    					}
-    					
+    		    		
+    					ral.addAll(controller.findRoomForPrenoByVideoGame());
     		    		request.setAttribute("rooms", ral);
     					RequestDispatcher dispatcher = request.getRequestDispatcher("BookRoom.jsp");
     					dispatcher.forward(request, response);
     					
     				}else if (!request.getParameter("hard").isEmpty()) {
     					controller.getGHBean().setHardwareName(request.getParameter("hard"));
-    					rol = controller.findRoomForPrenoByHardware();
-    					for(RoomBean j : rol) {
-    						
-    						ral.add(j);
-    					}
     					
+    					ral.addAll(controller.findRoomForPrenoByHardware());
     					request.setAttribute("rooms", ral);
     					RequestDispatcher dispatcher = request.getRequestDispatcher("BookRoom.jsp");
     					dispatcher.forward(request, response);
     					
     				}else if (!request.getParameter("city").isEmpty()) {
-    					rol = controller.findRoomForPreno();
-    					for(RoomBean j : rol) {
-    						
-    						ral.add(j);
-    					}
     					
+    					ral.addAll(controller.findRoomForPreno());
     					request.setAttribute("rooms", ral);
     					RequestDispatcher dispatcher = request.getRequestDispatcher("BookRoom.jsp");
     					dispatcher.forward(request, response);
