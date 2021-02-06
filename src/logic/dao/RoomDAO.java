@@ -116,7 +116,7 @@ public static int getRoomIdFromOrgUsername(String orgUserName) throws MyRuntimeE
 		
 		try {
 			connR= ConnectionFactory.getConnection();
-			pStmtRm = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and date = ? and hour = ?)");
+			pStmtRm = connR.prepareStatement("SELECT * FROM room r WHERE city = ? and numseat >= ? and NOT EXISTS (SELECT FROM reservation WHERE roomid = r.roomid and roomname = r.roomname and date = ? and hour = ?)");
 			pStmtRm.setString(1, city);
 			pStmtRm.setInt(2, nOP);
 			pStmtRm.setString(3, date);

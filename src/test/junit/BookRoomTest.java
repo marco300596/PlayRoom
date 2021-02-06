@@ -14,7 +14,7 @@ import logic.dao.RoomDAO;
 import logic.exception.MyRuntimeException;
 
 class BookRoomTest {
-
+//Casentini Marco
 	@Before
 	int id() throws MyRuntimeException, SQLException {
 		
