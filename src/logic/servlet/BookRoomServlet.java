@@ -120,12 +120,14 @@ public class BookRoomServlet extends HttpServlet {
     	} catch (MyRuntimeException e) {
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, e);
     		
-		} catch (SQLException s) {
+		} catch (SQLException |IOException s) {
 			Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, s);
 		}
+    	 
+    
+}
     }
 }
-
 	
 
-}
+
