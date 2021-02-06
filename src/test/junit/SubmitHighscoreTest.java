@@ -19,21 +19,21 @@ class SubmitHighscoreTest {
 //Casentini Marco
 	@Test
 	void test() throws MyRuntimeException, SQLException {
-		String nometorneo=CreateTournamentControllerTest.getAlphaNumericString(5);
+		String nometorneo1=CreateTournamentControllerTest.getAlphaNumericString(5);
 		
-		TournamentBean bean=new TournamentBean();
+		TournamentBean tbean=new TournamentBean();
 		RoomBean rbean=new RoomBean();
-		bean.setTournamentName(nometorneo);
-		bean.setTournamentGame("gta5");
-		bean.setTournamentPartecipants(5);
-		bean.setTournamentDate("");
-		bean.setTournamentRoom("stanza bella");
-		bean.setTournamentHardware("ps4");
+		tbean.setTournamentName(nometorneo1);
+		tbean.setTournamentGame("gta5");
+		tbean.setTournamentPartecipants(5);
+		tbean.setTournamentDate("");
+		tbean.setTournamentRoom("stanza bella");
+		tbean.setTournamentHardware("ps4");
 		
 		
 		int id=RoomDAO.getRoomIdFromOrgUsername("b");
 		
-		TournamentDAO.insertTournament(bean, id);
+		TournamentDAO.insertTournament(tbean, id);
 		
 		rbean.setCity("roma");
 		
@@ -43,7 +43,7 @@ class SubmitHighscoreTest {
 		HighscoreBean highscorebean = new HighscoreBean();
 		highscorebean.setPlayerUN(lbean.getUsername());
 		highscorebean.setHighscore(150);
-		highscorebean.setTournament(nometorneo);
+		highscorebean.setTournament(nometorneo1);
 		boolean con = HighscoreDAO.insertHighscore(highscorebean);
 		assertTrue(con);
 	}
