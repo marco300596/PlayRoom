@@ -32,28 +32,30 @@ public class ModifyRoomController {
 			this.bean = bean;
 		}
 		
-		public void addComponentH(GameHardwareBean bean) throws MyRuntimeException, SQLException {
+		public boolean addComponentH(GameHardwareBean bean) throws MyRuntimeException, SQLException {
 			
 			int id;
 			id=RoomDAO.getRoomIdFromOrgUsername(bean.getOrgUserName());
 			
 			if(HardwareDAO.hardwareCheck(bean, id)) {
-				HardwareDAO.hardwareUpdate(bean,id);
+				return HardwareDAO.hardwareUpdate(bean,id);
 			}else {
 				
-				HardwareDAO.hardwareInfo(bean,id);
+				return HardwareDAO.hardwareInfo(bean,id);
 			}
 		}
 		
 		
 		
-		public void addComponentV(GameHardwareBean bean) throws MyRuntimeException, SQLException {
+		public boolean addComponentV(GameHardwareBean bean) throws MyRuntimeException, SQLException {
 			int id;
 			id=RoomDAO.getRoomIdFromOrgUsername(bean.getOrgUserName());
 			if(VideoGameDAO.gameCheck(bean, id)) {
-				VideoGameDAO.gameUpdate(bean,id);
+				System.out.println("trovato");
+				return VideoGameDAO.gameUpdate(bean,id);
 			}else {
-				VideoGameDAO.gameInfo(bean,id);
+				System.out.println("non trovato");
+				return VideoGameDAO.gameInfo(bean,id);
 			}
 		}
 		

@@ -47,7 +47,7 @@ public static ObservableList<GameHardwareBean> getAllVideoGameForRoom(int id) th
 		return videoGames;
 	}
 
-public static Boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+public static boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
 	PreparedStatement psRgi = null;
 	Connection connRgi = null;
 
@@ -55,8 +55,9 @@ public static Boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeEx
 		connRgi= ConnectionFactory.getConnection();
 		psRgi = connRgi.prepareStatement("INSERT INTO videogame VALUES (?,?,?,?,?)");
 		psRgi.setString(1, gh.getGameName());
-		psRgi.setInt(2, gh.getGameQuantity());
-		psRgi.setString(3, gh.getGameGenre());
+		//System.out.println(gh.getGameQuantity());
+		psRgi.setString(2, gh.getGameGenre());
+		psRgi.setInt(3, gh.getGameQuantity());
 		psRgi.setString(4, gh.getGameDescription());
 		psRgi.setInt(5, id);
 		int i = psRgi.executeUpdate();
@@ -82,7 +83,7 @@ public static Boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeEx
 	
 }
 
-public static Boolean  gameUpdate(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
+public static boolean  gameUpdate(GameHardwareBean gh, int id) throws  MyRuntimeException,SQLException{
 	PreparedStatement psGu = null;
 	Connection connGu = null;
 
@@ -123,9 +124,9 @@ public static boolean  gameCheck(GameHardwareBean gh, int id) throws  MyRuntimeE
 		psGc = connGc.prepareStatement("Select * FROM videogame WHERE roomid = ? and gamename=?");
 		psGc.setInt(1, id);
 		psGc.setString(2, gh.getGameName());
-		ResultSet i = psGc.executeQuery();
+		int i = psGc.executeUpdate();
 	
-		if(i !=null) {
+		if(i == 1) {
 			return true;
 		}
 		psGc.close();

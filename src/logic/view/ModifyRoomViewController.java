@@ -107,10 +107,10 @@ public class ModifyRoomViewController {
 			}
 			
 			
-    		controller.addComponentH(controller.getHVBean());
-    		new Thread(() ->
-        	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-			
+    		if(controller.addComponentH(controller.getHVBean())) {
+    			new Thread(() ->
+    			JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    			}
 			}catch(Exception e){
     			Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
     		}
@@ -131,11 +131,13 @@ public class ModifyRoomViewController {
 	  		
 	    
 	    		
-	    		controller.addComponentV(controller.getHVBean());
-	    		new Thread(() ->
-            	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-	    	}
-	    	catch(Exception e) {
+	    		if(controller.addComponentV(controller.getHVBean())) {
+	    			System.out.println(gameQuantity);
+		    		new Thread(() ->
+	            	JOptionPane.showMessageDialog(null, "You have modified correctly your room!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+		    	
+	    		}
+	    	}catch(Exception e) {
 	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
 	    	}
     }
