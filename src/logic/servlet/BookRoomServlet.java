@@ -46,7 +46,6 @@ public class BookRoomServlet extends HttpServlet {
     			LocalDate localDate = LocalDate.parse(request.getParameter("date"));//For reference
     			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     			String formattedString = localDate.format(formatter);
-    			System.out.println(formattedString);
     			String[] parts = formattedString.split("/");
     			int year = Integer.parseInt(parts[2]);
     			int month = Integer.parseInt(parts[1])-1;
@@ -64,14 +63,10 @@ public class BookRoomServlet extends HttpServlet {
     			if(cal.getTime().after(comp.getTime())) {
     				
     				controller.getReservationBean().setDate(formattedString);
-    				System.out.println(controller.getReservationBean().getDate());
     				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(request.getParameter("gsize")));
-    				System.out.println(controller.getReservationBean().getNumberOfPlayer());
     				controller.getReservationBean().setHour(request.getParameter("hour"));
-    				System.out.println(controller.getReservationBean().getHour());
     				controller.getReservationBean().setCity(request.getParameter("city"));
-    				System.out.println(controller.getReservationBean().getCity());
-
+    				
     				//PORCA EVA
     				if(!request.getParameter(gname).isEmpty() && !request.getParameter("hard").isEmpty()) {
     					controller.getGHBean().setGameName(request.getParameter("gname"));

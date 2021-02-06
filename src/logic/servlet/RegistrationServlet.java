@@ -2,6 +2,9 @@ package logic.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +15,7 @@ import logic.controller.LoginController;
 import logic.controller.RegistrationController;
 import logic.exception.MyRuntimeException;
 import logic.exception.UserDoesNotExist;
+import logic.view.BookRoomViewController;
 
 
 
@@ -19,7 +23,7 @@ import logic.exception.UserDoesNotExist;
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String firstname = request.getParameter("fname");
     	String lastname = request.getParameter("lname");
@@ -40,28 +44,32 @@ public class RegistrationServlet extends HttpServlet {
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 					dispatcher.forward(request,response);
     			} 
-    			else if(request.getParameter("user").equals("organizer")) {
-					if(!LoginController.getInstance().findOrgIdentity()) {
+    			else if(request.getParameter("user").equals("organizer") && !LoginController.getInstance().findOrgIdentity()) {
+					
 	    				reg.insertNewOrganizer(reg.getBean());
 	    				String nextJSP = "/login.jsp";
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 						dispatcher.forward(request,response);
 					}
     			}	 
-			}
+			
     		
     		} catch (MyRuntimeException | SQLException | UserDoesNotExist e) {
 			
+    		try {
     		request.getSession().setAttribute("message", "Error. User not registered yet.");
 			response.sendRedirect(request.getHeader("Referer"));
 			//vedere a cosa fa riferimento.
 		
-		e.printStackTrace();
+			
+	}catch(IOException i ) { 
+		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, i);
+    		
+    		
+    	
 	}
-    	
-    	
 	
-		
+    		}
 		
 	}
 
