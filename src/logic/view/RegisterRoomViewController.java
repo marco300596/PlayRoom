@@ -84,8 +84,8 @@ public class RegisterRoomViewController {
     	controller.getBean().setNumSeat(numSeat);
     	controller.getBean().setRoomName(nametxt.getText());
     	controller.getBean().setDescription(desctxt.getText());
-    	controller.getBean().setLocation(addrTxt.getText());	
-    	controller.getBean().setCity(cTxt.getText());
+    	controller.getBean().setLocation(addrTxt.getText().toLowerCase());	
+    	controller.getBean().setCity(cTxt.getText().toLowerCase());
     	controller.getBean().setPrice(Integer.parseInt(pTxt.getText()));
     	
     	try {

@@ -62,7 +62,7 @@ public class JoinTournamentViewController {
     		
     		
     				JoinTournamentController controller = JoinTournamentController.getInstance();
-    				controller.getrBean().setCity(citytxt.getText());
+    				controller.getrBean().setCity(citytxt.getText().toLowerCase());
     				ObservableList<TournamentBean> tournament = controller.searchTournament(controller.getrBean());
     				if(tournament.isEmpty())	{
     			

@@ -153,7 +153,7 @@ public boolean insertVideoGame(VideoGame videogame) throws MyRuntimeException, S
 		
 		VideoGame videogame = new VideoGame();
 		
-		videogame.setGameName(rs.getString("gameName"));
+		videogame.setGameName(rs.getString("gamename"));
 		videogame.setGenre(rs.getString("genre"));
 		videogame.setAvailability(rs.getBoolean("availability"));
 		videogame.setQuantity(rs.getInt("quantity"));
@@ -166,9 +166,9 @@ public boolean insertVideoGame(VideoGame videogame) throws MyRuntimeException, S
 		
 		GameHardwareBean videogame = new GameHardwareBean();
 		
-		videogame.setGameName(rs.getString("gameName"));
-		videogame.setGameGenre(rs.getString("gameGenre"));
-		videogame.setGameQuantity(rs.getInt("gameQuantity"));
+		videogame.setGameName(rs.getString("gamename"));
+		videogame.setGameGenre(rs.getString("genre"));
+		videogame.setGameQuantity(rs.getInt("quantity"));
 		
 		return videogame;
 	}

@@ -65,12 +65,12 @@ public class BookRoomServlet extends HttpServlet {
     				controller.getReservationBean().setDate(formattedString);
     				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(request.getParameter("gsize")));
     				controller.getReservationBean().setHour(request.getParameter("hour"));
-    				controller.getReservationBean().setCity(request.getParameter("city"));
+    				controller.getReservationBean().setCity(request.getParameter("city").toLowerCase());
     				
     				//PORCA EVA
     				if(!request.getParameter(gname).isEmpty() && !request.getParameter("hard").isEmpty()) {
-    					controller.getGHBean().setGameName(request.getParameter("gname"));
-    					controller.getGHBean().setHardwareName(request.getParameter("hard"));
+    					controller.getGHBean().setGameName(request.getParameter("gname").toLowerCase());
+    					controller.getGHBean().setHardwareName(request.getParameter("hard").toLowerCase());
 
     					ral.addAll(controller.findRoomForPrenoByGameandHardware());    					
     					request.setAttribute(rooms, ral);
@@ -78,7 +78,7 @@ public class BookRoomServlet extends HttpServlet {
     					dispatcher.forward(request, response);
     					
     				}else if(!request.getParameter(gname).isEmpty()) {
-    					controller.getGHBean().setGameName(request.getParameter(gname));
+    					controller.getGHBean().setGameName(request.getParameter(gname).toLowerCase());
     		    		
     					ral.addAll(controller.findRoomForPrenoByVideoGame());
     		    		request.setAttribute(rooms, ral);
@@ -86,7 +86,7 @@ public class BookRoomServlet extends HttpServlet {
     					dispatcher.forward(request, response);
     					
     				}else if (!request.getParameter("hard").isEmpty()) {
-    					controller.getGHBean().setHardwareName(request.getParameter("hard"));
+    					controller.getGHBean().setHardwareName(request.getParameter("hard").toLowerCase());
     					
     					ral.addAll(controller.findRoomForPrenoByHardware());
     					request.setAttribute(rooms, ral);

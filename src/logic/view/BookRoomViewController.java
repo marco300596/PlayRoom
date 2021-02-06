@@ -173,26 +173,26 @@ public class BookRoomViewController {
     			if(cal.getTime().after(comp.getTime())) {
     				
     				controller.getReservationBean().setDate(formattedString);
-    				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText()));
+    				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText().toLowerCase()));
     				if(!hSB.getText().equals("HH:")) {
-    					controller.getReservationBean().setHour(hSB.getText());
+    					controller.getReservationBean().setHour(hSB.getText().toLowerCase());
     				}else {
     					throw new WrongInputException("No Hour Selected");
     				}
-    				controller.getReservationBean().setCity(sprTxt.getText());
+    				controller.getReservationBean().setCity(sprTxt.getText().toLowerCase());
 
     				//PORCA EVA
     				if(!gameTxt.getText().isEmpty() && !hwTxt.getText().isEmpty()) {
-    					controller.getGHBean().setGameName(gameTxt.getText());
-    					controller.getGHBean().setHardwareName(hwTxt.getText());
+    					controller.getGHBean().setGameName(gameTxt.getText().toLowerCase());
+    					controller.getGHBean().setHardwareName(hwTxt.getText().toLowerCase());
     					room = controller.findRoomForPrenoByGameandHardware();
     					
     				}else if(!gameTxt.getText().isEmpty()) {
-    					controller.getGHBean().setGameName(gameTxt.getText());
+    					controller.getGHBean().setGameName(gameTxt.getText().toLowerCase());
     		    		room = controller.findRoomForPrenoByVideoGame();
     				
     				}else if (!hwTxt.getText().isEmpty()) {
-    					controller.getGHBean().setHardwareName(hwTxt.getText());
+    					controller.getGHBean().setHardwareName(hwTxt.getText().toLowerCase());
     					room = controller.findRoomForPrenoByHardware();
     				
     				}else if (!sprTxt.getText().isEmpty()) {
@@ -248,6 +248,18 @@ public class BookRoomViewController {
     @FXML
     void showRoom() throws MyRuntimeException, SQLException{
     	
+    	vgTab = new TableView<>();
+    	hwTab = new TableView<>();
+    	vgNCol = new TableColumn<>();
+    	vgNumCol = new TableColumn<>();
+    	vgGenCol = new TableColumn<>();
+    	hwNCol = new TableColumn<>();
+    	hwNumCol = new TableColumn<>();
+    	hwGenCol = new TableColumn<>();
+    	rPh = new ImageView();
+    	confBtn = new Button();
+    	decBtn = new Button();
+    	
     	BookRoomController controller = BookRoomController.getInstance();
     	LoginController lcontroller = LoginController.getInstance();
     	ObservableList<GameHardwareBean> hw = FXCollections.observableArrayList();
@@ -258,7 +270,7 @@ public class BookRoomViewController {
     		if (lcontroller.checkPlayer(lcontroller.getBean().getUsername())) {
     		
     			controller.getRoomBean().setRoomName(frhTab.getSelectionModel().getSelectedItems().get(0).getRoomName());
-    			controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation());
+    			controller.getRoomBean().setLocation(frhTab.getSelectionModel().getSelectedItems().get(0).getLocation().toLowerCase());
     	    	Parent root = FXMLLoader.load(getClass().getResource("/logic/samples/BookRoomPage.fxml"));
     	    	primaryStage.setScene(new Scene(root));
     	    	primaryStage.setResizable(false);
@@ -266,30 +278,28 @@ public class BookRoomViewController {
     	        
     	        hw = controller.populateHardware();
     	        vg = controller.populateGame();
-    	        if(!vg.isEmpty()) {
-    	        	vgTab.setItems(vg);
-	    			/*script di popolazione delle celle 
-	    			ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
-    	        	vgNCol.setCellValueFactory(new PropertyValueFactory<>("gameName"));
-    	        	vgNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-    	        	vgGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
-    	        }else {
-    	    		new Thread(()-> JOptionPane.showMessageDialog(null, "this room didn't provide any game from the research: be careful!","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
-    	        
+    	        if(vg.isEmpty()) {
+    	        	new Thread(()-> JOptionPane.showMessageDialog(null, "this room didn't provide any game from the research: be careful!","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
+        	        
     	        }
-    	        if(!hw.isEmpty()) {
-    	        	hwTab.setItems(hw);    	
-    	        	/*script di popolazione delle celle 
-	    			ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
-    	        	hwNCol.setCellValueFactory(new PropertyValueFactory<>("hardwareName"));
-    	        	hwNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-    	        	hwGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
-	    		
-    	        	rPh.setImage(new Image(new FileInputStream("/logic/image/"+controller.populateImage())));
-    	        }else {
-    	    		new Thread(()-> JOptionPane.showMessageDialog(null, "this room didn't provide any hardware from the research: be careful!","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
+	        	vgTab.setItems(vg);
+    			/*script di popolazione delle celle 
+    			ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
+	        	vgNCol.setCellValueFactory(new PropertyValueFactory<>("gameName"));
+	        	vgNumCol.setCellValueFactory(new PropertyValueFactory<>("gameQuantity"));
+	        	vgGenCol.setCellValueFactory(new PropertyValueFactory<>("gameGenre"));
+	        
+    	        if(hw.isEmpty()) {
+    	        	new Thread(()-> JOptionPane.showMessageDialog(null, "this room didn't provide any hardware from the research: be careful!","ATTENTION!", JOptionPane.INFORMATION_MESSAGE)).start();
 
     	        }
+    	        hwTab.setItems(hw);    	
+    	        /*script di popolazione delle celle 
+	    		ATTENZIONE: per popolare le celle in modo giusto vanno messe tra () gli attributi della classe a cui si riferisce la tabella*/
+    	        hwNCol.setCellValueFactory(new PropertyValueFactory<>("hardwareName"));
+    	        hwNumCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+    	        hwGenCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
+    	        //rPh.setImage(new Image(new FileInputStream("/logic/image/"+controller.populateImage())));
     		}
     		
     	} catch (IOException e) {    	
