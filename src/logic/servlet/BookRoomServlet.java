@@ -2,8 +2,6 @@ package logic.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,75 +33,29 @@ public class BookRoomServlet extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BookRoomController controller = BookRoomController.getInstance();
-		String gname="gname";
 		String page="BookRoom.jsp";
-		String rooms="rooms";
-		List<RoomBean> ral = new ArrayList<>();
-    	
+		
 		if(request.getParameter("azione").equals("Search")) {
 			try {
     			
-    			String formattedString = (request.getParameter("date"));
-    			String[] parts = formattedString.split("/");
-    			int year = Integer.parseInt(parts[2]);
-    			int month = Integer.parseInt(parts[1])-1;
-    			int day = Integer.parseInt(parts[0]);
-    			Calendar cal = Calendar.getInstance();
-    			cal.clear();
-    			cal.setLenient(false);
-    			cal.set(year, month, day, 0, 0,0);
+    			String formattedStringt = (request.getParameter("date"));
+    			String[] partst = formattedStringt.split("/");
+    			int yeart = Integer.parseInt(partst[2]);
+    			int montht = Integer.parseInt(partst[1])-1;
+    			int dayt = Integer.parseInt(partst[0]);
+    			Calendar calt = Calendar.getInstance();
+    			calt.clear();
+    			calt.setLenient(false);
+    			calt.set(yeart, montht, dayt, 0, 0,0);
 
-    			Calendar comp = Calendar.getInstance();
-    			Date date = new Date();
-    			comp.setTimeInMillis(date.getTime());
-    			cal.getTime();
+    			Calendar compt = Calendar.getInstance();
+    			Date datet = new Date();
+    			compt.setTimeInMillis(datet.getTime());
+    			calt.getTime();
 
-    			if(cal.getTime().after(comp.getTime())) {
+    			if(calt.getTime().after(compt.getTime())) {
     				
-    				controller.getReservationBean().setDate(formattedString);
-    				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(request.getParameter("gsize")));
-    				controller.getReservationBean().setHour(request.getParameter("hour"));
-    				controller.getReservationBean().setCity(request.getParameter("city").toLowerCase());
-    				
-    				//PORCA EVA
-    				if(!request.getParameter(gname).isEmpty() && !request.getParameter("hard").isEmpty()) {
-    					controller.getGHBean().setGameName(request.getParameter("gname").toLowerCase());
-    					controller.getGHBean().setHardwareName(request.getParameter("hard").toLowerCase());
-
-    					ral.addAll(controller.findRoomForPrenoByGameandHardware());    					
-    					request.setAttribute(rooms, ral);
-    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-    					dispatcher.forward(request, response);
-    					
-    				}else if(!request.getParameter(gname).isEmpty()) {
-    					controller.getGHBean().setGameName(request.getParameter(gname).toLowerCase());
-    		    		
-    					ral.addAll(controller.findRoomForPrenoByVideoGame());
-    		    		request.setAttribute(rooms, ral);
-    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-    					dispatcher.forward(request, response);
-    					
-    				}else if (!request.getParameter("hard").isEmpty()) {
-    					controller.getGHBean().setHardwareName(request.getParameter("hard").toLowerCase());
-    					
-    					ral.addAll(controller.findRoomForPrenoByHardware());
-    					request.setAttribute(rooms, ral);
-    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-    					dispatcher.forward(request, response);
-    					
-    				}else if (!request.getParameter("city").isEmpty()) {
-    					
-    					ral.addAll(controller.findRoomForPreno());
-    					request.setAttribute(rooms, ral);
-    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-    					dispatcher.forward(request, response);
-    					
-    				}else {
-    					
-    					request.getSession().setAttribute("message", "Error. Fill at leat City, Hour and Date.");
-    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-    					dispatcher.forward(request, response);
-    				}
+    				method(request, response, formattedStringt);
     				
     			}else {
     	    		throw new TimeException("invalid date selected");
@@ -147,4 +99,59 @@ public class BookRoomServlet extends HttpServlet {
 			}
 	    }
     }
+
+    private void method(HttpServletRequest request, HttpServletResponse response, String formattedStringt) throws MyRuntimeException, SQLException, ServletException, IOException {
+	    
+    	BookRoomController controller = BookRoomController.getInstance();
+    	String gname="gname";
+		String page="BookRoom.jsp";
+		String rooms="rooms";
+		List<RoomBean> ral = new ArrayList<>();
+    	
+		controller.getReservationBean().setDate(formattedStringt);
+		controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(request.getParameter("gsize")));
+		controller.getReservationBean().setHour(request.getParameter("hour"));
+		controller.getReservationBean().setCity(request.getParameter("city").toLowerCase());
+		
+		//PORCA EVA
+		if(!request.getParameter(gname).isEmpty() && !request.getParameter("hard").isEmpty()) {
+			controller.getGHBean().setGameName(request.getParameter(gname).toLowerCase());
+			controller.getGHBean().setHardwareName(request.getParameter("hard").toLowerCase());
+	
+			ral.addAll(controller.findRoomForPrenoByGameandHardware());    					
+			request.setAttribute(rooms, ral);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);
+			
+		}else if(!request.getParameter(gname).isEmpty()) {
+			controller.getGHBean().setGameName(request.getParameter(gname).toLowerCase());
+			
+			ral.addAll(controller.findRoomForPrenoByVideoGame());
+			request.setAttribute(rooms, ral);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);
+			
+		}else if (!request.getParameter("hard").isEmpty()) {
+			controller.getGHBean().setHardwareName(request.getParameter("hard").toLowerCase());
+			
+			ral.addAll(controller.findRoomForPrenoByHardware());
+			request.setAttribute(rooms, ral);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);
+			
+		}else if (!request.getParameter("city").isEmpty()) {
+			
+			ral.addAll(controller.findRoomForPreno());
+			request.setAttribute(rooms, ral);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);
+			
+		}else {
+			
+			request.getSession().setAttribute("message", "Error. Fill at leat City, Hour and Date.");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);
+		}
+    }
+
 }

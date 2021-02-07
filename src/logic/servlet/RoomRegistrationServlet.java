@@ -27,7 +27,6 @@ public class RoomRegistrationServlet extends HttpServlet {
 		String city=request.getParameter("city");
 		String address=request.getParameter("address");
 		String price=request.getParameter("price");
-	//	String image=request.getParameter("img");
 		
 		RegisterRoomController controller = RegisterRoomController.getInstance();
 		try {

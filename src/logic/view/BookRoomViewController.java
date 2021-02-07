@@ -148,7 +148,6 @@ public class BookRoomViewController {
     @FXML
     void showRooms(MouseEvent event) throws MyRuntimeException, SQLException, WrongInputException{
     	String comment="Fill all textfield please";
-    	BookRoomController controller = BookRoomController.getInstance();
     	ObservableList<RoomBean> room = FXCollections.observableArrayList();
     	try {
     			verifyTxtFields();
@@ -171,43 +170,7 @@ public class BookRoomViewController {
 
     			if(cal.getTime().after(comp.getTime())) {
     				
-    				controller.getReservationBean().setDate(formattedString);
-    				controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText().toLowerCase()));
-    				if(!hSB.getText().equals("HH:")) {
-    					controller.getReservationBean().setHour(hSB.getText().toLowerCase());
-    				}else {
-    					throw new WrongInputException("No Hour Selected");
-    				}
-    				controller.getReservationBean().setCity(sprTxt.getText().toLowerCase());
-
-    				//PORCA EVA
-    				if(!gameTxt.getText().isEmpty() && !hwTxt.getText().isEmpty()) {
-    					controller.getGHBean().setGameName(gameTxt.getText().toLowerCase());
-    					controller.getGHBean().setHardwareName(hwTxt.getText().toLowerCase());
-    					room = controller.findRoomForPrenoByGameandHardware();
-    					
-    				}else if(!gameTxt.getText().isEmpty()) {
-    					controller.getGHBean().setGameName(gameTxt.getText().toLowerCase());
-    		    		room = controller.findRoomForPrenoByVideoGame();
-    				
-    				}else if (!hwTxt.getText().isEmpty()) {
-    					controller.getGHBean().setHardwareName(hwTxt.getText().toLowerCase());
-    					room = controller.findRoomForPrenoByHardware();
-    				
-    				}else if (!sprTxt.getText().isEmpty()) {
-    					room = controller.findRoomForPreno();
-    					
-    				}
-    				if(room.isEmpty()) {
-    					new Thread(()-> JOptionPane.showMessageDialog(null, "seems like your criteria didn't provide any room available, try to change this criteria or check your spelling","information!", JOptionPane.INFORMATION_MESSAGE)).start();
-    		    		dpField.setValue(null);
-    		    		gsTxt.setText(null);
-    		    		sprTxt.setText(null);
-    		    		hSB.setText("HH:");
-    		    		gameTxt.setText(null);
-    		    		hwTxt.setText(null);
-    		    		
-    				}
+    				room = method(formattedString);
     	    		
     	    		//creare un observablelist a quanto sembra è necessario per creare una tabella
     	    		
@@ -226,7 +189,6 @@ public class BookRoomViewController {
     	}catch(TimeException t) {
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, t);
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you inserted an invalid date","Alert!", JOptionPane.INFORMATION_MESSAGE)).start();
-    		dpField.setValue(null);
     		
     	}catch(StringIsEmptyException s) {
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, s);
@@ -235,7 +197,7 @@ public class BookRoomViewController {
     	}catch(NumberFormatException n) {
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, n);
     		new Thread(()-> JOptionPane.showMessageDialog(null, "Seems like you tried to insert some invad data! Please fill the format in the correct way","Fill Text Field", JOptionPane.INFORMATION_MESSAGE)).start();
-           	gsTxt.setText(null);
+           	gsTxt.setText("");
            	
     	}catch(WrongInputException w) {
     		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, w);
@@ -294,5 +256,49 @@ public class BookRoomViewController {
 
 		sce.setScene(new Scene(root));
 		sce.show();
+	}
+	
+	private ObservableList<RoomBean> method(String formattedString) throws WrongInputException, MyRuntimeException, SQLException {
+		
+		BookRoomController controller = BookRoomController.getInstance();
+		controller.getReservationBean().setDate(formattedString);
+		controller.getReservationBean().setNumberOfPlayer(Integer.parseInt(gsTxt.getText().toLowerCase()));
+    	ObservableList<RoomBean> room = FXCollections.observableArrayList();
+    	
+		if(!hSB.getText().equals("HH:")) {
+			controller.getReservationBean().setHour(hSB.getText().toLowerCase());
+		}else {
+			throw new WrongInputException("No Hour Selected");
+		}
+		controller.getReservationBean().setCity(sprTxt.getText().toLowerCase());
+
+		//PORCA EVA
+		if(!gameTxt.getText().isEmpty() && !hwTxt.getText().isEmpty()) {
+			controller.getGHBean().setGameName(gameTxt.getText().toLowerCase());
+			controller.getGHBean().setHardwareName(hwTxt.getText().toLowerCase());
+			room = controller.findRoomForPrenoByGameandHardware();
+			
+		}else if(!gameTxt.getText().isEmpty()) {
+			controller.getGHBean().setGameName(gameTxt.getText().toLowerCase());
+    		room = controller.findRoomForPrenoByVideoGame();
+		
+		}else if (!hwTxt.getText().isEmpty()) {
+			controller.getGHBean().setHardwareName(hwTxt.getText().toLowerCase());
+			room = controller.findRoomForPrenoByHardware();
+		
+		}else if (!sprTxt.getText().isEmpty()) {
+			room = controller.findRoomForPreno();
+			
+		}
+		if(room.isEmpty()) {
+			new Thread(()-> JOptionPane.showMessageDialog(null, "seems like your criteria didn't provide any room available, try to change this criteria or check your spelling","information!", JOptionPane.INFORMATION_MESSAGE)).start();
+    		gsTxt.setText("");
+    		sprTxt.setText("");
+    		hSB.setText("HH:");
+    		gameTxt.setText("");
+    		hwTxt.setText("");
+    		
+		}
+		return room;
 	}
 }

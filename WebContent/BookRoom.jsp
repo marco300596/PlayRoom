@@ -30,13 +30,17 @@
   	<body>
    		<div class="container">
     		<h1>Room Booking</h1>
-    		<br><%=request.getSession().getAttribute("message")%>
+    		<br>
+    		<%
+    		if(request.getSession().getAttribute("message") != null){
+    			request.getSession().getAttribute("message");
+    		} %>
     		<br>
     		<form action="BookRoomServlet" method="get">
-  				Insert the Game Name:<br> 	<input type="text" name="gname"><br>
-  				Insert your group size:<br> 	<input type="text" name="gsize"><br>
-  				Insert the specific Hardware:<br> 	<input type="text" name="hard"><br>
-  				Insert the Specific City:<br> 	<input type="text" name="city"><br>
+  				Insert the Game Name:<br> 	<input type="text" name="gname"><br><br>
+  				Insert your group size:<br> 	<input type="text" name="gsize"><br><br>
+  				Insert the specific Hardware:<br> 	<input type="text" name="hard"><br><br>
+  				Insert the Specific City:<br> 	<input type="text" name="city"><br><br>
   				Insert reservation's hour:<select name="hour">
   					<option value="11">11</option>
   					<option value="12">12</option>
@@ -49,9 +53,10 @@
   					<option value="19">19</option>
   				
   				</select>
+  				<br><br>
+  				<div class="form-floating">
   				<input type="date" name="date" value="data">
       			<input type="submit" name="azione" value="Search">
-  				<div class="form-floating">
 				</div>
 				</form>
 				<form action="BookRoomServlet" method="get">

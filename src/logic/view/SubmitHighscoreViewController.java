@@ -48,16 +48,36 @@ public class SubmitHighscoreViewController {
     @FXML
     private TableColumn<Highscore, Integer> highValCol;
     
+    ObservableList<HighscoreBean> highscore = FXCollections.observableArrayList();
+	
     @FXML
     void initialize() throws MyRuntimeException, SQLException {
-    	controller.showHighscore();
+    	highscore = controller.showHighscore();
+    	if(highscore != null) {
+    		hTab.setItems(highscore);
+    		plNCol.setCellValueFactory(new PropertyValueFactory<>("playerUN"));
+    		highValCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
+    	}else {
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered any tournament! please register to one!","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+    		Parent root = null;
+    		Stage sce = (Stage)subBtn.getScene().getWindow();
+    		try {
+    			root = FXMLLoader.load(getClass().getResource("/logic/samples/PlainPModelPage.fxml"));
+    		
+    		} catch(IOException e){
+    			Logger.getLogger(HomePageViewController.class.getName()).log(Level.SEVERE, null, e);
+    		}
+
+    		sce.setScene(new Scene(root));
+    		sce.show();
+    	}
     }
     
     @FXML
     void show(MouseEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist {
     
-    	ObservableList<HighscoreBean> highscore = FXCollections.observableArrayList();
-		controller.getHighscoreBean().setHighscore(Integer.parseInt(scoreTxt.getText()));
+    	controller.getHighscoreBean().setHighscore(Integer.parseInt(scoreTxt.getText()));
+		
 			
 		try {
 			if (logc.findPlayerIdentity()) {

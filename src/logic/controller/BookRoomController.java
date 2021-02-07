@@ -77,12 +77,9 @@ public class BookRoomController {
 		boolean chk ;
 		int id = 0;
 		int status = 0;
-		System.out.println(this.getRoomBean().getRoomName());
 		this.bean.setPlayerUsername(logc.getBean().getUsername());
-		System.out.println(this.getRoomBean().getRoomName());
 		id = RoomDAO.getRoomId(this.robean.getRoomName(), this.robean.getLocation());
 		if (id != 0) {
-			System.out.println(this.getRoomBean().getRoomName());
 			this.bean.setReservationRoom(this.robean.getRoomName());
 			chk = ReservationDAO.insertReservation(this.bean, id, status);
 			return chk;

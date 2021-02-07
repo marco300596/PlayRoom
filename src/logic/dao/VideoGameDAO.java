@@ -127,15 +127,4 @@ public boolean insertVideoGame(VideoGame videogame) throws MyRuntimeException, S
 		
 		return videogame;
 	}
-	
-	private static GameHardwareBean extractVideoGameBeanFromResultSet(ResultSet rs) throws SQLException{
-		
-		GameHardwareBean videogame = new GameHardwareBean();
-		
-		videogame.setGameName(rs.getString("gamename"));
-		videogame.setGameGenre(rs.getString("genre"));
-		videogame.setGameQuantity(rs.getInt("quantity"));
-		
-		return videogame;
-	}
 }

@@ -37,7 +37,7 @@ public class SubmitHighscoreController {
 	public ObservableList<HighscoreBean> showHighscore() throws MyRuntimeException, SQLException{
 		bean.setPlayerUN(logc.getBean().getUsername());
 		bean.setTournament(TournamentDAO.getTournamentNameByPlayerUsername(bean.getPlayerUN()));
-		if (!(bean.getTournament().isEmpty())) {
+		if (bean.getTournament()!=null) {
 			Highscore high = new Highscore(bean.getTournament(), true);
 			highscores = HighscoreDAO.showAllHighscoreForTournament(high);
 			return highscores;

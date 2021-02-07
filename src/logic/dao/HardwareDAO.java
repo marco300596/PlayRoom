@@ -127,16 +127,5 @@ public boolean insertHardware(Hardware hardware, int id) throws MyRuntimeExcepti
 		
 		return hardware;
 	}
-	
-private static GameHardwareBean extractHardwareBeanFromResultSet(ResultSet rs) throws SQLException{
-		
-		GameHardwareBean hardware = new GameHardwareBean();
-		
-		hardware.setHardwareName(rs.getString("hardwareName"));
-		hardware.setHardwareGenre(rs.getString("hardwareGenre"));
-		hardware.setHardwareQuantity(rs.getInt("hardwareQuantity"));
-		
-		return hardware;
-	}
 
 }
