@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ page isELIgnored="false" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,60 +55,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-       
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-       
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-       
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
+   <c:forEach var="highscore" items="${highscores}">
+							<tr>
+								<td>${highscore.score}</td>
+								<td>${highscore.username}</td>
+								<td>${highscore.highscorestatus}</td>
+								
+								</tr>
+						</c:forEach>
   </tbody>
 </table>
 			</form>

@@ -43,10 +43,6 @@
   				Add address:<br>		<input type="text" name="address"><br>
   				Add price:<br>				<input type="text" name="price"><br>
   				
-  				 <label for="img">Select image:</label><br>
- 				 <input type="file" id="img" name="img" accept="image/*"><br>
-  				 <input type="submit" value="Add image"><br>
-  				
   				<input type="submit" value="Register Room">
   				
  

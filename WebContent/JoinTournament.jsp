@@ -40,9 +40,9 @@
   	<body>
   		<div class="container">
     		<h1>Join Tournament</h1>
-    		<form action="CreateTournamentServlet">
+    		<form action="JoinTournamentServlet">
   				Insert your City:<br> 	<input type="text" name="city"><br>
-  				<input type="submit" value="Search Tournament">
+  				<input type="submit" name="azione" value="Search Tournament">
   				<div class="form-floating">
   					
   					
@@ -64,7 +64,7 @@
 								<td>${tournament.tournamentGame}</td>
 								<td>${tournament.tournamentHardware}</td>
 								<td>
-									<input type="submit" name="joinButton" value="Join">
+									<input type="submit" name="azione" value="Join">
 									<input type="hidden" name="tname" value="${tournament.tournamentName}">
 									<input type="hidden" name="room" value="${tournament.tournamentRoom}">
 									<input type="hidden" name="game" value="${tournament.tournamentGame}">

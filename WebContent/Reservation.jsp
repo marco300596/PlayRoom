@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page isELIgnored="false" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,83 +53,21 @@
       <th scope="col">Hour</th>
        <th scope="col">Numseat</th>
         <th scope="col">Roomname</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-       <td></td>
-       <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-       
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-       
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-  </tbody>
-</table>
+       </tr>
+       </thead>
+					 <tbody>
+						<c:forEach var="reservation" items="${reservations}">
+							<tr>
+								<td>${reservation.playerusername}</td>
+								<td>${reservation.date}</td>
+								<td>${reservation.hour}</td>
+								<td>${reservation.numberofplayer}</td>
+								<td>${reservation.roomname}</td>
+								</tr>
+						</c:forEach>
+					  </tbody>
+					</table>
+  
 			</form>
 		</div>
     <!-- Optional JavaScript; choose one of the two! -->
