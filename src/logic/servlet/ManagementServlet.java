@@ -54,9 +54,10 @@ public class ManagementServlet extends HttpServlet {
     		try {
     			if(!request.getParameter("usname").equals("")) {
     				controller.getRegBean().setUsername(request.getParameter("usname"));
-    				System.out.print(request.getParameter("usname"));
+    				
         			if(controller.delPlayer(controller.getRegBean())){
-        				//aggiungi qualcosa
+        				request.setAttribute("message", "User deleted!");
+    	    			response.sendRedirect(request.getHeader("Referer"));
         			} else {
         				throw new UserDoesNotExist();
         			}
@@ -67,9 +68,10 @@ public class ManagementServlet extends HttpServlet {
     			
     		} catch (MyRuntimeException | SQLException | UserDoesNotExist | StringIsEmptyException e1) {
 				Logger.getLogger(ManagementViewController.class.getName()).log(Level.SEVERE, null, e1);
+				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+	    		dispatcher.forward(request, response);
 			}
-    		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-    		dispatcher.forward(request, response);
+    		
     	}
 	
     	

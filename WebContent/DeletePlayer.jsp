@@ -30,6 +30,10 @@
   	<body>
    		<div class="container">
     		<h1>User Management</h1>
+    		<%
+    		if(request.getSession().getAttribute("message") != null){
+    			request.getSession().getAttribute("message");
+    		} %>
     		<form action="ManagementServlet" method="get">
   				
   				<div class="form-floating">	
@@ -54,7 +58,7 @@
 								<td>
 									<input type="submit" name="azione" value="Delete">
 									<input type="hidden" name="usname" value="${user.username}">
-									<input type="hidden" name="us" value="${user.email}">
+									<input type="hidden" name="email" value="${user.email}">
 									<input type="hidden" name="fname" value="${user.firstname}">
 									<input type="hidden" name="lname" value="${user.lastname}">
 								</td>
