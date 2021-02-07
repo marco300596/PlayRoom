@@ -1,7 +1,9 @@
 package logic.view;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,7 +30,7 @@ import logic.exception.MyRuntimeException;
 import logic.exception.UserDoesNotExist;
 import logic.model.Highscore;
 
-public class SubmitHighscoreViewController {
+public class SubmitHighscoreViewController  {
 		
    
 	private SubmitHighscoreController controller = SubmitHighscoreController.getInstance();
@@ -50,7 +53,7 @@ public class SubmitHighscoreViewController {
     
     ObservableList<HighscoreBean> highscore = FXCollections.observableArrayList();
 	
-    @FXML
+    
     void initialize() throws MyRuntimeException, SQLException {
     	highscore = controller.showHighscore();
     	if(highscore != null) {
@@ -61,6 +64,7 @@ public class SubmitHighscoreViewController {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered any tournament! please register to one!","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
     		Parent root = null;
     		Stage sce = (Stage)subBtn.getScene().getWindow();
+    		
     		try {
     			root = FXMLLoader.load(getClass().getResource("/logic/samples/PlainPModelPage.fxml"));
     		
@@ -75,7 +79,7 @@ public class SubmitHighscoreViewController {
     
     @FXML
     void show(MouseEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist {
-    
+    	initialize();
     	controller.getHighscoreBean().setHighscore(Integer.parseInt(scoreTxt.getText()));
 		
 			
@@ -105,4 +109,5 @@ public class SubmitHighscoreViewController {
 				sce.show();
 		}
     }
+
 }

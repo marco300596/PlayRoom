@@ -36,10 +36,11 @@
     		<!-- viene preso il messaggio dalla servlet e stampato sul jsp (get) -->
     		<h1><%=request.getSession().getAttribute("message") %></h1>
     		<form action="CreateTournamentServlet">
-  				Room name:<br> 		<input type="text" name="rname"><br>
-  				Name:<br> 	   		<input type="text" name="tname"><br>
-  				Partecipants:<br> 	<input type="text" name="part"><br>
-  				Videogame:<br> 		<input type="text" name="game"><br>
+  				Room name:<br> 		<input type="text" name="rname">
+  		  <span>Name: 	   		<input type="text" name="tname"><br></span>
+  				
+  				Partecipants:<br> 	<input type="text" name="part">
+  				<span>Videogame: 		<input type="text" name="game"><br></span>
   				Hardware: <br>		<input type="text" name="hw"><br>
   									<input type="submit" value="create">
  
