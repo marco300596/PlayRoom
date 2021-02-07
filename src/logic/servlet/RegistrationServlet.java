@@ -37,24 +37,22 @@ public class RegistrationServlet extends HttpServlet {
     	reg.getBean().setUsername(username);
     	reg.getBean().setPassword(password);
     	try {	
-    		if(request.getParameter("user").equals("player")) {
-    			if(!LoginController.getInstance().findPlayerIdentity()) {
-    				reg.insertNewPlayer(reg.getBean());
-    				String nextJSP = "/login.jsp";
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-					dispatcher.forward(request,response);
-    			} 
-    			else if(request.getParameter("user").equals("organizer") && !LoginController.getInstance().findOrgIdentity()) {
+    		if(request.getParameter("user").equals("player") && !LoginController.getInstance().findPlayerIdentity()) {
+    				
+    			reg.insertNewPlayer(reg.getBean());
+				String nextJSP = "/login.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request,response);
+    		} 
+    		else if(request.getParameter("user").equals("organizer") && !LoginController.getInstance().findOrgIdentity()) {
 					
-	    				reg.insertNewOrganizer(reg.getBean());
-	    				String nextJSP = "/login.jsp";
-						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-						dispatcher.forward(request,response);
-					}
-    			}	 
-			
+				reg.insertNewOrganizer(reg.getBean());
+				String nextJSP = "/login.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request,response);
+			}
     		
-    		} catch (MyRuntimeException | SQLException | UserDoesNotExist e) {
+    	} catch (MyRuntimeException | SQLException | UserDoesNotExist e) {
 			
     		try {
     		request.getSession().setAttribute("message", "Error. User not registered yet.");
@@ -62,8 +60,8 @@ public class RegistrationServlet extends HttpServlet {
 			//vedere a cosa fa riferimento.
 		
 			
-	}catch(IOException i ) { 
-		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, i);
+			}catch(IOException i ) { 
+				Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, i);
     		
     		
     	

@@ -38,14 +38,12 @@ public class BookRoomServlet extends HttpServlet {
 		String gname="gname";
 		String page="BookRoom.jsp";
 		String rooms="rooms";
-		
-    	List<RoomBean> ral = new ArrayList<>();
-    	if(request.getParameter("azione").equals("Search")) {
-    	try {
+		List<RoomBean> ral = new ArrayList<>();
+    	
+		if(request.getParameter("azione").equals("Search")) {
+			try {
     			
-    			LocalDate localDate = LocalDate.parse(request.getParameter("date"));//For reference
-    			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    			String formattedString = localDate.format(formatter);
+    			String formattedString = (request.getParameter("date"));
     			String[] parts = formattedString.split("/");
     			int year = Integer.parseInt(parts[2]);
     			int month = Integer.parseInt(parts[1])-1;
@@ -100,38 +98,53 @@ public class BookRoomServlet extends HttpServlet {
     					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
     					dispatcher.forward(request, response);
     					
+    				}else {
+    					
+    					request.getSession().setAttribute("message", "Error. Fill at leat City, Hour and Date.");
+    					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+    					dispatcher.forward(request, response);
     				}
     				
     			}else {
     	    		throw new TimeException("invalid date selected");
     	    	}
-    	}catch(TimeException t) {
-    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, t);
-    			
-    	}catch(NumberFormatException n) {
-    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, n);
-    		
-    		
-    	} catch (MyRuntimeException e) {
-    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, e);
-    		
-		} catch (SQLException |IOException s) {
-			Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, s);
-		}
-    	 
-    
-    	}if(request.getParameter("reserveButton").equals("Reserve")) {
-    		try {
-    			controller.getRoomBean().setRoomName(request.getParameter("roomNo"));
-    			controller.getRoomBean().setLocation(request.getParameter("roomLoc"));
-				controller.createReservation();
-			} catch (MyRuntimeException | SQLException e) {
-				e.printStackTrace();
+	    	}catch(TimeException t) {
+	    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, t);
+	    		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+				dispatcher.forward(request, response);
+	    			
+	    	}catch(NumberFormatException n) {
+	    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, n);
+	    		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+				dispatcher.forward(request, response);
+				
+	    	} catch (MyRuntimeException e) {
+	    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, e);
+	    		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+				dispatcher.forward(request, response);
+				
+			} catch (SQLException |IOException s) {
+				Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, s);
+				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+				dispatcher.forward(request, response);
 			}
-    		
-    	}
+		}
+
+		else if(request.getParameter("azione").equals("Reserve")) {
+				
+			try {
+					controller.getRoomBean().setRoomName(request.getParameter("roomNo"));
+					controller.getRoomBean().setLocation(request.getParameter("roomLoc"));
+					controller.createReservation();
+					
+			} catch (MyRuntimeException | SQLException e) {
+				Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, e);
+				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+				dispatcher.forward(request, response);
+			}finally {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);
+			}
+	    }
     }
 }
-	
-
-

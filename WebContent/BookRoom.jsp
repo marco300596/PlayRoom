@@ -30,7 +30,9 @@
   	<body>
    		<div class="container">
     		<h1>Room Booking</h1>
-    		<form action="BookRoomServlet">
+    		<br><%=request.getSession().getAttribute("message")%>
+    		<br>
+    		<form action="BookRoomServlet" method="get">
   				Insert the Game Name:<br> 	<input type="text" name="gname"><br>
   				Insert your group size:<br> 	<input type="text" name="gsize"><br>
   				Insert the specific Hardware:<br> 	<input type="text" name="hard"><br>
@@ -47,12 +49,12 @@
   					<option value="19">19</option>
   				
   				</select>
-  				<input type="date" name="date" value="date">
+  				<input type="date" name="date" value="data">
       			<input type="submit" name="azione" value="Search">
   				<div class="form-floating">
-  					
-  					
 				</div>
+				</form>
+				<form action="BookRoomServlet" method="get">
 				<table class="table table-bordered">
 					<thead>
 					  	<tr>
@@ -70,7 +72,7 @@
 								<td>${room.price}</td>
 								<td>${room.location}</td>
 								<td>
-									<input type="submit" name="reserveButton" value="Reserve">
+									<input type="submit" name="azione" value="Reserve">
 									<input type="hidden" name="roomNo" value="${room.roomName}">
 									<input type="hidden" name="roomSeat" value="${room.numSeat}">
 									<input type="hidden" name="roomPrice" value="${room.price}">
@@ -78,10 +80,10 @@
 								</td>
 							</tr>
 						</c:forEach>
-					  </tbody>
-					</table>
-				</form>
-			</div>
+					 </tbody>
+				</table>
+			</form>	
+		</div>
 					    <!-- Optional JavaScript; choose one of the two! -->
 					
 					    <!-- Option 1: Bootstrap Bundle with Popper -->
