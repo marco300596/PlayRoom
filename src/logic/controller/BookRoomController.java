@@ -8,11 +8,8 @@ import logic.bean.GameHardwareBean;
 import logic.bean.ReservationBean;
 import logic.bean.RoomBean;
 import logic.dao.RoomDAO;
-import logic.dao.VideoGameDAO;
-import logic.dao.HardwareDAO;
 import logic.dao.ReservationDAO;
 import logic.exception.MyRuntimeException;
-import logic.model.Room;
 
 public class BookRoomController {
 	

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page isELIgnored="false" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -40,55 +42,41 @@
     		<h1>Join Tournament</h1>
     		<form action="CreateTournamentServlet">
   				Insert your City:<br> 	<input type="text" name="city"><br>
-  				<input type="submit" value="Join Tournament">
   				<input type="submit" value="Search Tournament">
   				<div class="form-floating">
   					
   					
 				</div>
  <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">TournamentName</th>
-      <th scope="col">Room</th>
-      <th scope="col">VideoGame</th>
-      <th scope="col">Hardware</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
-       <td></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td></td>
-      <td></td>
-      <td></td>
-       <td></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-       <td></td>
-      <td></td>
-      <td></td>
-       <td></td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-       <td></td>
-      <td></td>
-      <td></td>
-       <td></td>
-    </tr>
-  </tbody>
-</table>
+					<thead>
+					  	<tr>
+					      <th scope="col">Tournament name</th>
+					      <th scope="col">Room</th>
+					      <th scope="col">VideoGame</th>
+					      <th scope="col">Hardware</th>
+					    </tr>
+					 </thead>
+					 <tbody>
+						<c:forEach var="tournament" items="${tournaments}">
+							<tr>
+								<td>${tournament.tournamentName}</td>
+								<td>${tournament.tournamentRoom}</td>
+								<td>${tournament.tournamentGame}</td>
+								<td>${tournament.tournamentHardware}</td>
+								<td>
+									<input type="submit" name="joinButton" value="Join">
+									<input type="hidden" name="tname" value="${tournament.tournamentName}">
+									<input type="hidden" name="room" value="${tournament.tournamentRoom}">
+									<input type="hidden" name="game" value="${tournament.tournamentGame}">
+									<input type="hidden" name="hardware" value="${tournament.tournamentHardware}">
+								</td>
+							</tr>
+						</c:forEach>
+					  </tbody>
+					</table>
 			</form>
 		</div>
+		
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
