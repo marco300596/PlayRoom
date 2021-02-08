@@ -43,7 +43,7 @@ public class JoinTournamentServlet extends HttpServlet {
 		}
 		if(request.getParameter("azione").equals("Join")) {
 			try {
-    			controller.getBean().setTournamentName(request.getParameter("tname"));
+    			controller.getBean().setTournamentName(request.getParameter("tname"));		
     			controller.joinTournament(controller.getBean().getTournamentName());
     			
     			RequestDispatcher dispatcher = request.getRequestDispatcher("Player.jsp");

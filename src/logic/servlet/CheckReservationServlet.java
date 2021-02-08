@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import logic.bean.RegistrationBean;
+
 import logic.bean.ReservationBean;
 import logic.controller.CheckReservationController;
-import logic.controller.ManagementController;
+
 import logic.exception.MyRuntimeException;
-import logic.view.BookRoomViewController;
+
 
 /**
  * Servlet implementation class CheckReservationServlet

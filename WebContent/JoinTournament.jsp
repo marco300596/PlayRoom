@@ -47,6 +47,7 @@
   					
   					
 				</div>
+				</form>
  <table class="table table-bordered">
 					<thead>
 					  	<tr>
@@ -59,11 +60,13 @@
 					 <tbody>
 						<c:forEach var="tournament" items="${tournaments}">
 							<tr>
+								
 								<td>${tournament.tournamentName}</td>
 								<td>${tournament.tournamentRoom}</td>
 								<td>${tournament.tournamentGame}</td>
 								<td>${tournament.tournamentHardware}</td>
 								<td>
+									<form action="JoinTournamentServlet">
 									<input type="submit" name="azione" value="Join">
 									<input type="hidden" name="tname" value="${tournament.tournamentName}">
 									<input type="hidden" name="room" value="${tournament.tournamentRoom}">
@@ -71,10 +74,11 @@
 									<input type="hidden" name="hardware" value="${tournament.tournamentHardware}">
 								</td>
 							</tr>
+							</form>
 						</c:forEach>
 					  </tbody>
 					</table>
-			</form>
+			
 		</div>
 		
     <!-- Optional JavaScript; choose one of the two! -->
