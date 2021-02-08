@@ -223,7 +223,11 @@ public class BookRoomViewController {
 						String d = controller.getReservationBean().getDate();
 						String h = controller.getReservationBean().getHour();
 						new Thread(()-> JOptionPane.showMessageDialog(null, "you PRENO! for: " + d + ", at: " + h + ":00 !","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-						reload("PlainPModelPage");
+						gsTxt.setText("");
+			    		sprTxt.setText("");
+			    		hSB.setText("HH:");
+			    		gameTxt.setText("");
+			    		hwTxt.setText("");
 				}else {
 						new Thread(()-> JOptionPane.showMessageDialog(null, "you didn't PRENO","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
 				}

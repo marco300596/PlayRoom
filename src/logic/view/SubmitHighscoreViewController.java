@@ -1,9 +1,7 @@
 package logic.view;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +11,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -43,6 +40,9 @@ public class SubmitHighscoreViewController  {
     private Button subBtn;
 
     @FXML
+    private Button rvBtn;
+
+    @FXML
     private TableView<HighscoreBean> hTab;
 
     @FXML
@@ -54,9 +54,14 @@ public class SubmitHighscoreViewController  {
     ObservableList<HighscoreBean> highscore = FXCollections.observableArrayList();
 	
     @FXML
-    void show(MouseEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist {
+    void refresh(MouseEvent event) throws MyRuntimeException, SQLException {
     	
     	display();
+    }
+    
+    @FXML
+    void show(MouseEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist {
+    	
     	submit();
     }
     
@@ -89,10 +94,11 @@ public class SubmitHighscoreViewController  {
 		try {
 			if (logc.findPlayerIdentity()) {
 				if (controller.checkTournamentAdehesion()) {
-					highscore = controller.submitHighscoreAndShow();
-					hTab.setItems(highscore);
-					plNCol.setCellValueFactory(new PropertyValueFactory<>("playerUN"));
-					highValCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
+					if(controller.submitHighscore()) {
+						new Thread(()-> JOptionPane.showMessageDialog(null, "you have submitted your highscore! Wait for confirmation by E.O.","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+					}else {
+						new Thread(()-> JOptionPane.showMessageDialog(null, "your highscore didn't submit","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+					}
 				}else {
 					new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered in this tournament!/n please register","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
 				}
@@ -110,6 +116,9 @@ public class SubmitHighscoreViewController  {
 		  
 				sce.setScene(new Scene(root));
 				sce.show();
+		}catch(NumberFormatException n) {
+			new Thread(()-> JOptionPane.showMessageDialog(null, "you havn't insert an highscore yet!","Denied", JOptionPane.INFORMATION_MESSAGE)).start();
+			
 		}
     }
 

@@ -46,10 +46,9 @@ public class SubmitHighscoreController {
 		}
 	}
 	
-	public ObservableList<HighscoreBean> submitHighscoreAndShow() throws MyRuntimeException, SQLException{
+	public boolean submitHighscore() throws MyRuntimeException, SQLException{
 
-		HighscoreDAO.insertHighscore(bean);
-		Highscore high = new Highscore(bean.getTournament(), true);
-		return HighscoreDAO.showAllHighscoreForTournament(high);
+		return HighscoreDAO.insertHighscore(bean);
+		
 	}
 }

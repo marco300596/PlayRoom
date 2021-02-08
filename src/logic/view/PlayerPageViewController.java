@@ -63,7 +63,7 @@ public class PlayerPageViewController {
    
    @FXML
    void highscoreHistoryPage(MouseEvent event) {
-    	loadPlayerPage("HighscoreTableView");
+    	loadPlayerPage("SubmitHighscore");
    }
      
 
