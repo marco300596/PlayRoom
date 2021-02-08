@@ -46,15 +46,19 @@ public class CheckHighscoreController {
 		ObservableList<TournamentBean> x = TournamentDAO.getAllTournamentsAvailable(i);
 		ObservableList<HighscoreBean> hbol = FXCollections.observableArrayList();
 		ArrayList<String> toru = new ArrayList<>();
+		
 		for(TournamentBean j : x) {
 
 			toru.add(j.getTournamentName());
 		}
+		
 		for(String s : toru) {
+			System.out.println(s);
 			hibean.setTournament(s);
 			Highscore high = new Highscore(this.hibean.getTournament(), false);
 			hbol.addAll(HighscoreDAO.showAllHighscoreForTournament(high));
 		}
+		
 		return hbol;
 	}
 	

@@ -37,10 +37,10 @@
     		} %>
     		<br>
     		<form action="BookRoomServlet" method="get">
-  				Insert the Game Name:<br> 	<input type="text" name="gname"><br><br>
-  				Insert your group size:<br> 	<input type="text" name="gsize"><br><br>
-  				Insert the specific Hardware:<br> 	<input type="text" name="hard"><br><br>
-  				Insert the Specific City:<br> 	<input type="text" name="city"><br><br>
+  				Insert the Game Name:<br> 	<input type="text" name="gname"><br>
+  				Insert your group size:<br> 	<input type="text" name="gsize"><br>
+  				Insert the specific Hardware:<br> 	<input type="text" name="hard"><br>
+  				Insert the Specific City:<br> 	<input type="text" name="city"><br>
   				Insert reservation's hour:<select name="hour">
   					<option value="11">11</option>
   					<option value="12">12</option>
@@ -55,11 +55,10 @@
   				</select>
   				<br><br>
   				<div class="form-floating">
-  				<input type="date" name="date" value="data">
-      			<input type="submit" name="azione" value="Search">
+	  				<input type="date" name="date" value="data">
+	      			<input type="submit" name="azione" value="Search">
 				</div>
 				</form>
-				<form action="BookRoomServlet" method="get">
 				<table class="table table-bordered">
 					<thead>
 					  	<tr>
@@ -70,25 +69,26 @@
 					    </tr>
 					 </thead>
 					 <tbody>
-						<c:forEach var="room" items="${rooms}">
+						<c:forEach var="room" items="${rooms}" >
 							<tr>
 								<td>${room.roomName}</td>
 								<td>${room.numSeat}</td>
 								<td>${room.price}</td>
 								<td>${room.location}</td>
 								<td>
-									<input type="submit" name="azione" value="Reserve">
-									<input type="hidden" name="roomNo" value="${room.roomName}">
-									<input type="hidden" name="roomSeat" value="${room.numSeat}">
-									<input type="hidden" name="roomPrice" value="${room.price}">
-									<input type="hidden" name="roomLoc" value="${room.location}">
+									<form action="BookRoomServlet" method="get">
+										<input type="submit" name="azione" value="Reserve">
+										<input type="hidden" name="roomNo" value="${room.roomName}" >
+										<input type="hidden" name="roomSeat" value="${room.numSeat}" >
+										<input type="hidden" name="roomPrice" value="${room.price}" >
+										<input type="hidden" name="roomLoc" value="${room.location}" >
+									</form>	
 								</td>
 							</tr>
 						</c:forEach>
-					 </tbody>
+				 	</tbody>
 				</table>
-			</form>	
-		</div>
+			</div>
 					    <!-- Optional JavaScript; choose one of the two! -->
 					
 					    <!-- Option 1: Bootstrap Bundle with Popper -->

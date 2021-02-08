@@ -12,7 +12,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <title>Player Page</title>
+    <title>Submit Highscore</title>
   </head>
   <body>
 	<nav class="navbar navbar-dark bg-primary">
@@ -39,33 +39,31 @@
   	<body>
   		<div class="container">
     		<h1>Submit Highscore</h1>
-    		<form action="CreateTournamentServlet">
+    		<form action="SubmitHighscoreServlet" method="post">
   				Insert Highscore:<br> 	<input type="text" name="highscore"><br>
   				<input type="submit" value="Submit Highscore">
   				<div class="form-floating">
   					
   					
-				</div>
- <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">N°</th>
-      <th scope="col">Player's Username</th>
-      <th scope="col">Values</th>
-    </tr>
-  </thead>
-  <tbody>
-   <c:forEach var="highscore" items="${highscores}">
-							<tr>
+			</div>
+			</form>
+				<table class="table table-bordered">
+				  <thead>
+				    <tr>
+				      <th scope="col">N°</th>
+				      <th scope="col">Player's Username</th>
+				      <th scope="col">Values</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+			  		<c:forEach var="highscore" items="${highscores}" >
+						<tr>
 								<td>${highscore.score}</td>
 								<td>${highscore.username}</td>
-								<td>${highscore.highscorestatus}</td>
-								
-								</tr>
-						</c:forEach>
-  </tbody>
-</table>
-			</form>
+						</tr>
+					</c:forEach>		 	
+				  </tbody>
+				</table>
 		</div>
     <!-- Optional JavaScript; choose one of the two! -->
 

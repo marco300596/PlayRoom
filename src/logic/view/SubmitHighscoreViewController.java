@@ -53,8 +53,14 @@ public class SubmitHighscoreViewController  {
     
     ObservableList<HighscoreBean> highscore = FXCollections.observableArrayList();
 	
+    @FXML
+    void show(MouseEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist {
+    	
+    	display();
+    	submit();
+    }
     
-    void initialize() throws MyRuntimeException, SQLException {
+    private void display() throws MyRuntimeException, SQLException {
     	highscore = controller.showHighscore();
     	if(highscore != null) {
     		hTab.setItems(highscore);
@@ -76,12 +82,9 @@ public class SubmitHighscoreViewController  {
     		sce.show();
     	}
     }
-    
-    @FXML
-    void show(MouseEvent event) throws MyRuntimeException, SQLException, UserDoesNotExist {
-    	initialize();
+
+    private void submit() throws MyRuntimeException, SQLException {
     	controller.getHighscoreBean().setHighscore(Integer.parseInt(scoreTxt.getText()));
-		
 			
 		try {
 			if (logc.findPlayerIdentity()) {
