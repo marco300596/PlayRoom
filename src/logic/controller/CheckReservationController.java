@@ -63,8 +63,8 @@ public class CheckReservationController {
 	public ObservableList<ReservationBean> confirmed() throws MyRuntimeException, SQLException{
 		
 		int roomid;
-		roomid = ReservationDAO.getRoomIdFromReservation(logBean.getUsername());
-		this.beanList = ReservationDAO.getAllCheckedReservations(roomid,logBean.getUsername());
+		roomid = RoomDAO.getRoomIdFromOrgUsername(logBean.getUsername());
+		this.beanList = ReservationDAO.getAllCheckedReservations(roomid);
 		return this.beanList;
 	}
 

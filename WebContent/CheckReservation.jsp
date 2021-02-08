@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page isELIgnored="false" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <title>Check Reservation</title>
+<title>Check Reservation</title>
   </head>
   <body>
 	<nav class="navbar navbar-dark bg-primary">
@@ -29,15 +28,8 @@
 		</div>
 	</nav>
   
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
-    <title>Check Reservation</title>
- 	</head>
+    
+ 	
   	<body>
   		<div class="container">
     		<h1>Check Reservation</h1>
@@ -47,7 +39,8 @@
   					
   					
 				</div>
- <table class="table table-bordered">
+			</form>
+ 			<table class="table table-bordered">
 					<thead>
 					  	<tr>
 					      <th scope="col">Username</th>
@@ -66,6 +59,7 @@
 								<td>${resrvation.numberofplayer}</td>
 								<td>${resrvation.roomname}</td>
 								<td>
+									<form action="CheckReservationServlet">
 									<input type="submit" name="azione" value="confirm">
 									<input type="submit" name="azione" value="update">
 									<input type="hidden" name="uname" value="${reservation.playerusername}">
@@ -73,12 +67,13 @@
 									<input type="hidden" name="hour" value="${reservation.hour}">
 									<input type="hidden" name="numseat" value="${resrvation.numberofplayer}">
 									<input type="hidden" name="rname" value="${resrvation.roomname}">
+									</form>
 								</td>
 							</tr>
 						</c:forEach>
 					  </tbody>
 					</table>
-			</form>
+			
 		</div>
 		
     <!-- Optional JavaScript; choose one of the two! -->

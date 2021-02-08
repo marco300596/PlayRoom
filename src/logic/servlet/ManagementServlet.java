@@ -54,7 +54,6 @@ public class ManagementServlet extends HttpServlet {
     		try {
     			if(!request.getParameter("usname").equals("")) {
     				controller.getRegBean().setUsername(request.getParameter("usname"));
-    				System.out.println(request.getParameter("usname"));
         			if(controller.delPlayer(controller.getRegBean())){
         				request.setAttribute("message", "User deleted!");
     	    			response.sendRedirect(request.getHeader("Referer"));
