@@ -34,7 +34,8 @@
   		<div class="container">
     		<h1>Check Reservation</h1>
     		<form action="CheckReservationServlet">
-  				<input type="submit" name="azione" value="Update">
+  				<input type="submit" name="azione" value="update">
+  				<input type="submit" name="azione" value="confirmed">
   				<div class="form-floating">
   					
   					
@@ -53,20 +54,20 @@
 					 <tbody>
 						<c:forEach var="reservation" items="${reservations}">
 							<tr>
-								<td>${reservation.playerusername}</td>
+
+								<td>${reservation.playerUsername}</td>
 								<td>${reservation.date}</td>
 								<td>${reservation.hour}</td>
-								<td>${resrvation.numberofplayer}</td>
-								<td>${resrvation.roomname}</td>
+								<td>${reservation.numberOfPlayer}</td>
+								<td>${reservation.reservationRoom}</td>
 								<td>
 									<form action="CheckReservationServlet">
 									<input type="submit" name="azione" value="confirm">
-									<input type="submit" name="azione" value="update">
-									<input type="hidden" name="uname" value="${reservation.playerusername}">
+									<input type="hidden" name="uname" value="${reservation.playerUsername}">
 									<input type="hidden" name="date" value="${reservation.date}">
 									<input type="hidden" name="hour" value="${reservation.hour}">
-									<input type="hidden" name="numseat" value="${resrvation.numberofplayer}">
-									<input type="hidden" name="rname" value="${resrvation.roomname}">
+									<input type="hidden" name="numseat" value="${reservation.numberOfPlayer}">
+									<input type="hidden" name="rname" value="${reservation.reservationRoom}">
 									</form>
 								</td>
 							</tr>

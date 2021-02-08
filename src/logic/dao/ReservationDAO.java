@@ -123,13 +123,7 @@ public static ObservableList<ReservationBean> getAllCheckedReservations(int room
 	try {
 		connPc = ConnectionFactory.getConnection();
 		stmtPc = connPc.createStatement();
-		//da completare
-		String formattedString = localDate.format(formatter);
-		String[] parts = formattedString.split("-");
-		int year = Integer.parseInt(parts[2]);
-		int month = Integer.parseInt(parts[1])-1;
-		int day = Integer.parseInt(parts[0]);
-		ResultSet rs = stmtPc.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 1 and roomid="+roomid+" and date > ;");
+		ResultSet rs = stmtPc.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 1 and roomid="+roomid+";");
 		
 		while(rs.next()) {
 			ReservationBean reservation = extractReservationFromResultSet(rs);

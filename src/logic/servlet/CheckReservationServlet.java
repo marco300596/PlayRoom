@@ -26,7 +26,7 @@ import logic.exception.MyRuntimeException;
 @WebServlet("/CheckReservationServlet")
 public class CheckReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private static final String ACT = "azione";   
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CheckReservationController controller = CheckReservationController.getInstance();
@@ -35,7 +35,7 @@ public class CheckReservationServlet extends HttpServlet {
 		reservations = new ArrayList<>();
 		
     	String res = "reservations";
-    	if(request.getParameter("azione").equals("update")) {
+    	if(request.getParameter(ACT).equals("update")) {
     		try {
     			reservations.addAll(controller.updateReservation());
     		} catch(SQLException | MyRuntimeException e) {
@@ -45,16 +45,34 @@ public class CheckReservationServlet extends HttpServlet {
     		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
     		dispatcher.forward(request, response);
     	}
-    	if(request.getParameter("azione").equals("confirm")) {
+    	if(request.getParameter(ACT).equals("confirm")) {
     		controller.getResBean().setPlayerUsername(request.getParameter("usname"));
     		controller.getResBean().setDate(request.getParameter("date"));
     		controller.getResBean().setHour(request.getParameter("hour"));
     		try {
     			controller.confirmReservation();
+    			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+        		dispatcher.forward(request, response);
+    		}catch(SQLException | MyRuntimeException e){
+    			Logger.getLogger(CheckReservationServlet.class.getName()).log(Level.SEVERE, null, e);
+    			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+        		dispatcher.forward(request, response);
+    		}
+    		
+    		
+    	}
+    	
+    	if(request.getParameter(ACT).equals("confirmed")) {
+    		try {
+    			reservations.addAll(controller.confirmed());
     		}catch(SQLException | MyRuntimeException e){
     			Logger.getLogger(CheckReservationServlet.class.getName()).log(Level.SEVERE, null, e);
     		}
+    		request.setAttribute(res, reservations);
+    		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+    		dispatcher.forward(request, response);
     	}
+    	
 	}
 
 
