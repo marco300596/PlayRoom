@@ -39,6 +39,7 @@
   				<div class="form-floating">	
 				</div>
 				<input type="submit" name="azione" value="Search">
+				</form>
 				<table class="table table-bordered">
 					<thead>
 					  	<tr>
@@ -49,24 +50,29 @@
 					    </tr>
 					 </thead>
 					 <tbody>
-						<c:forEach var="user" items="${users}">
+					 
+						<c:forEach var="user" items="${users}" >
 							<tr>
+								
 								<td>${user.username}</td>
 								<td>${user.email}</td>
 								<td>${user.firstname}</td>
 								<td>${user.lastname}</td>
 								<td>
+									<form action="ManagementServlet" method="get">
 									<input type="submit" name="azione" value="Delete">
+								
 									<input type="hidden" name="usname" value="${user.username}">
 									<input type="hidden" name="email" value="${user.email}">
 									<input type="hidden" name="fname" value="${user.firstname}">
 									<input type="hidden" name="lname" value="${user.lastname}">
+									</form>
 								</td>
 							</tr>
 						</c:forEach>
 					  </tbody>
 					</table>
-				</form>
+				
 			</div>
 					    <!-- Optional JavaScript; choose one of the two! -->
 					

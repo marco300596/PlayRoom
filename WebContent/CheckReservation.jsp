@@ -67,6 +67,7 @@
 								<td>${resrvation.roomname}</td>
 								<td>
 									<input type="submit" name="azione" value="confirm">
+									<input type="submit" name="azione" value="update">
 									<input type="hidden" name="uname" value="${reservation.playerusername}">
 									<input type="hidden" name="date" value="${reservation.date}">
 									<input type="hidden" name="hour" value="${reservation.hour}">
