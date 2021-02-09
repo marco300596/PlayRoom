@@ -69,7 +69,7 @@ public class SubmitHighscoreViewController  {
     	
     	String failed="Failed";
     	highscore = controller.showHighscore();
-    	if(highscore != null) {
+    	if(!highscore.isEmpty()) {
     		hTab.setItems(highscore);
     		plNCol.setCellValueFactory(new PropertyValueFactory<>("playerUN"));
     		highValCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
