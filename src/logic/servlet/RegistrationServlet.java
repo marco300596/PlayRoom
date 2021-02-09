@@ -15,7 +15,7 @@ import logic.controller.LoginController;
 import logic.controller.RegistrationController;
 import logic.exception.MyRuntimeException;
 import logic.exception.UserDoesNotExist;
-import logic.view.BookRoomViewController;
+import logic.view.RegisterRoomViewController;
 
 
 
@@ -56,7 +56,7 @@ public class RegistrationServlet extends HttpServlet {
 			
     			e.printStackTrace();
 			}catch(IOException i ) { 
-				Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, i);
+				Logger.getLogger(RegisterRoomViewController.class.getName()).log(Level.SEVERE, null, i);
     		
     		
     	

@@ -13,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import logic.controller.CreateTournamentController;
+import logic.controller.LoginController;
 import logic.controller.ModifyRoomController;
 
 
@@ -20,8 +21,7 @@ import logic.exception.WrongInputException;
 
 public class ModifyRoomViewController {
 
-	@FXML
-    private TextField orgustxt;
+	
 	
 	@FXML
     private CheckBox cbeo1;
@@ -50,28 +50,35 @@ public class ModifyRoomViewController {
     @FXML
     void addComponent(MouseEvent event) {
     	
-    	if(!cbeo1.isSelected() && !cbeo2.isSelected()) {
+    	String error="Error";
+    	
+
+
+    	if(!cbeo1.isSelected() && !cbeo2.isSelected() ) {
     		new Thread(() ->
-    		JOptionPane.showMessageDialog(null, "you have to select one  between hardware and videogame type ", "alert", JOptionPane.ERROR_MESSAGE)).start();
-    	
-    	}
-    	
+        	JOptionPane.showMessageDialog(null, "You have to select one between hardware and game!",error, JOptionPane.ERROR_MESSAGE)).start();
+
+
     	if(cbeo1.isSelected() && cbeo2.isSelected()) {
     		new Thread(() ->
     		JOptionPane.showMessageDialog(null, "you cannot select both hardware and videogame type simultaneously", "alert", JOptionPane.ERROR_MESSAGE)).start();
+
     	
     	}
-    
     	
-    
-    	if(cbeo1.isSelected() && verifyFields()){
+    	
+    	if(cbeo1.isSelected() && verifyFields() && !cbeo2.isSelected()){
 			
     		hardware();
+    		
+    		
     	}
     			
-    			
+    	
+    	
+    	
     
-    	if(cbeo2.isSelected() && verifyFields()){
+    	if(cbeo2.isSelected() && verifyFields() && !cbeo1.isSelected()){
     			
     		videogame();
     		
@@ -82,9 +89,9 @@ public class ModifyRoomViewController {
 			new Thread(() ->
         	JOptionPane.showMessageDialog(null, "Fill all textfield please!","Error", JOptionPane.INFORMATION_MESSAGE)).start();
 		}
-    	
+    	}
     }
-    	
+    
     	
    
     	
@@ -92,13 +99,14 @@ public class ModifyRoomViewController {
     
     
     private boolean verifyFields() {
-    	return !(orgustxt.getText().equals("") || nametxt.getText().equals("") || genretxt.getText().equals("") || quantxt.getText().equals("") || desctxt.getText().equals("") );
+    	return !(nametxt.getText().equals("") || genretxt.getText().equals("") || quantxt.getText().equals("") || desctxt.getText().equals("") );
     }
     
     private void hardware() {
     	try {
+    		LoginController logc=LoginController.getInstance();
 			ModifyRoomController controller = ModifyRoomController.getInstance();
-			controller.getHVBean().setOrgUserName(orgustxt.getText());
+			controller.getHVBean().setOrgUserName(logc.getBean().getUsername());
 			controller.getHVBean().setHardwareName(nametxt.getText());
 			controller.getHVBean().setHardwareGenre(genretxt.getText());
 			int hardwareQuantity = Integer.parseInt(quantxt.getText());
@@ -120,8 +128,9 @@ public class ModifyRoomViewController {
     
     private void videogame() {
     	try {
+    		LoginController logc=LoginController.getInstance();
 			ModifyRoomController controller = ModifyRoomController.getInstance();
-			controller.getHVBean().setOrgUserName(orgustxt.getText());
+			controller.getHVBean().setOrgUserName(logc.getBean().getUsername());
 			controller.getHVBean().setGameName(nametxt.getText());
 			controller.getHVBean().setGameGenre(genretxt.getText());
 			int gameQuantity = Integer.parseInt(quantxt.getText());
@@ -142,6 +151,10 @@ public class ModifyRoomViewController {
 	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);
 	    	}
     }
+    
+    
+    
+    
 
 }
     

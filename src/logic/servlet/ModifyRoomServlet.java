@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import logic.controller.LoginController;
 import logic.controller.ModifyRoomController;
 import logic.exception.MyRuntimeException;
 
@@ -21,20 +21,20 @@ public class ModifyRoomServlet extends HttpServlet {
        
     
 
-	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("uname");
     	String name = request.getParameter("name");
     	String genre= request.getParameter("genre");
     	String quantity= request.getParameter("quantity");
     	String description= request.getParameter("description");
     	ModifyRoomController controller = ModifyRoomController.getInstance();
+    	LoginController logc=LoginController.getInstance();
     	
     	try {
     		
     		if(request.getParameter("type").equals("hard")) {
     				
-    				controller.getHVBean().setOrgUserName(username);
+    				controller.getHVBean().setOrgUserName(logc.getBean().getUsername());
     				controller.getHVBean().setHardwareName(name);
     				controller.getHVBean().setHardwareGenre(genre);
     				int hardwareQuantity = Integer.parseInt(quantity);
@@ -48,7 +48,7 @@ public class ModifyRoomServlet extends HttpServlet {
     		
     			else if(request.getParameter("type").equals("game")) {
     				
-    					controller.getHVBean().setOrgUserName(username);
+    					controller.getHVBean().setOrgUserName(logc.getBean().getUsername());
     					controller.getHVBean().setGameName(name);
     					controller.getHVBean().setGameGenre(genre);
     					int hardwareQuantity = Integer.parseInt(quantity);
@@ -59,7 +59,8 @@ public class ModifyRoomServlet extends HttpServlet {
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 						dispatcher.forward(request,response);
 					}
-    			}catch (MyRuntimeException | SQLException  e) {
+    			}
+    	catch (MyRuntimeException | SQLException  e) {
     					
 			
 		
