@@ -48,7 +48,34 @@ public static boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeEx
 	
 }
 
-
+	public static boolean getVideoGamebyId(String gameName, int id) throws MyRuntimeException, SQLException {
+		
+		Statement stmtVi = null;
+		Connection connVi = null;
+		try {
+			connVi= ConnectionFactory.getConnection();
+			stmtVi = connVi.createStatement();
+			ResultSet rs = stmtVi.executeQuery("SELECT * FROM videogame WHERE gameName= "+ gameName +" and roomid = "+ id +";");
+			
+			if(rs.next()) {
+				return true;
+			}
+			stmtVi.close();
+			connVi.close();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			if (stmtVi != null) {
+				stmtVi.close();
+			}
+			if (connVi != null) {
+				connVi.close();
+	        }
+		}
+		return false;
+}
 
 
 	

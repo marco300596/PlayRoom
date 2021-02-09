@@ -4,8 +4,10 @@ import java.sql.SQLException;
 
 import logic.bean.LoginBean;
 import logic.bean.TournamentBean;
+import logic.dao.HardwareDAO;
 import logic.dao.RoomDAO;
 import logic.dao.TournamentDAO;
+import logic.dao.VideoGameDAO;
 import logic.exception.MyRuntimeException;
 
 public class CreateTournamentController {
@@ -33,7 +35,10 @@ public class CreateTournamentController {
 	public boolean insertNewTournament(TournamentBean bean) throws MyRuntimeException, SQLException {
 		int id = 0;
 		id = RoomDAO.getRoomIdFromOrgUsername(logBean.getUsername());
-		return TournamentDAO.insertTournament(bean,id);	
+		if (VideoGameDAO.getVideoGamebyId(bean.getTournamentGame(), id) && HardwareDAO.getHardwarebyId(bean.getTournamentHardware(), id)) {
+			return TournamentDAO.insertTournament(bean,id);
+		}
+		return false;	
 	}
 	
 }

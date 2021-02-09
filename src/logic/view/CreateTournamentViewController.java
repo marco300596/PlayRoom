@@ -52,6 +52,9 @@ public class CreateTournamentViewController {
 	    		if(controller.insertNewTournament(controller.getBean())) {
 	    			new Thread(() ->
 	            	JOptionPane.showMessageDialog(null, "Your tournament has been created!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
+	    		}else {
+	    			new Thread(() ->
+	            	JOptionPane.showMessageDialog(null, "The tournament cannot be created, maybe you don't have the selected hardware/game!","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
 	    		}
 	    	} catch(Exception e){
 	    		Logger.getLogger(CreateTournamentController.class.getName()).log(Level.SEVERE, null, e);

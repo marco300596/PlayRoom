@@ -32,6 +32,9 @@ public class CheckHighscoreViewController {
     private TableColumn<HighscoreBean, String> hScTC;
 
     @FXML
+    private Button upBtn;
+    
+    @FXML
     private Button confBtn;
 
 
@@ -52,7 +55,7 @@ public class CheckHighscoreViewController {
     }
 
     @FXML
-    void initialize() throws MyRuntimeException, SQLException {
+    void update() throws MyRuntimeException, SQLException {
     	
     	ObservableList<HighscoreBean> highscore;
     	highscore = controller.findPendingHighscoreForTournament();
