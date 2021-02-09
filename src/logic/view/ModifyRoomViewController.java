@@ -51,12 +51,14 @@ public class ModifyRoomViewController {
     void addComponent(MouseEvent event) {
     	
     	if(!cbeo1.isSelected() && !cbeo2.isSelected()) {
-    		JOptionPane.showMessageDialog(null, "you have to select one  between hardware and videogame type ", "alert", JOptionPane.ERROR_MESSAGE);
+    		new Thread(() ->
+    		JOptionPane.showMessageDialog(null, "you have to select one  between hardware and videogame type ", "alert", JOptionPane.ERROR_MESSAGE)).start();
     	
     	}
     	
     	if(cbeo1.isSelected() && cbeo2.isSelected()) {
-    		JOptionPane.showMessageDialog(null, "you cannot select both hardware and videogame type simultaneously", "alert", JOptionPane.ERROR_MESSAGE);
+    		new Thread(() ->
+    		JOptionPane.showMessageDialog(null, "you cannot select both hardware and videogame type simultaneously", "alert", JOptionPane.ERROR_MESSAGE)).start();
     	
     	}
     
