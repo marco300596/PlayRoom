@@ -1,25 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%   if(request.getSession().getAttribute("message") == null) {
+    	request.getSession().setAttribute("message", "Welcome!");
+    	}
+    %> 
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 bg-dark">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <title>Create Tournament</title>
- 	</head>
+  </head>
+  
   	<body>
+  		<nav class="navbar navbar-dark bg-primary">
+  		<div class="container-fluid">
+    		<a class="navbar-brand" href="login.jsp">PlayRoom</a><br>
+				<ul class="list-group list-group-horizontal" style="margin-left: 0%; margin-right: 0%" >
+  					<li><a href="RoomRegistration.jsp" class="list-group-item list-group-item-action list-group-item-primary">Room Registration</a></li>
+ 					<li><a href="CreateTournament.jsp" class="list-group-item list-group-item-action list-group-item-primary">Create Tournament</a></li>
+  					<li><a href="CheckHighscore.jsp" class="list-group-item list-group-item-action list-group-item-primary">Check Highscore</a></li>
+  					<li><a href="CheckReservation.jsp" class="list-group-item list-group-item-action list-group-item-primary">Check Reservation</a></li>
+  					<li><a href="DeletePlayer.jsp" class="list-group-item list-group-item-action list-group-item-primary">Delete Player</a></li>
+  					<li><a href="ModifyRoom.jsp" class="list-group-item list-group-item-action list-group-item-primary">Modify Room</a></li>
+				</ul>
+		</div>
+	</nav>
   		<div class="container">
     		<h1>Create Tournament</h1>
+    		<!-- viene preso il messaggio dalla servlet e stampato sul jsp (get) -->
+    		<h1><%=request.getSession().getAttribute("message") %></h1>
     		<form action="CreateTournamentServlet">
-  				Room name:<br> 		<input type="text" name="rname"><br>
-  				Name:<br> 	   		<input type="text" name="tname"><br>
-  				Partecipants:<br> 	<input type="text" name="part"><br>
-  				Videogame:<br> 		<input type="text" name="game"><br>
+  				Room name:<br> 		<input type="text" name="rname">
+  		  <span>Name: 	   		<input type="text" name="tname"><br></span>
+  				
+  				Partecipants:<br> 	<input type="text" name="part">
+  				<span>Videogame: 		<input type="text" name="game"><br></span>
   				Hardware: <br>		<input type="text" name="hw"><br>
   									<input type="submit" value="create">
  

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+    
+   
     <%   if(request.getSession().getAttribute("message") == null) {
     	request.getSession().setAttribute("message", "Welcome!");
     	}
@@ -19,7 +22,6 @@
 			<input  type="radio" name="user" value=org>Event Organizer<br>
 			<input type="submit" value="login">
 			</form>
-
-
+	
 	</body>
 </html>

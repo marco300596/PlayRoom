@@ -35,7 +35,12 @@
                   </Button>
                   <Button fx:id="okBtn" alignment="BOTTOM_LEFT" mnemonicParsing="false" onMousePressed="#confirm" text="confirm">
                      <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
+                        <Insets left="130.0" top="-28.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="upBtn1" alignment="BOTTOM_LEFT" mnemonicParsing="false" onMousePressed="#confirmedRes" text="confirmed">
+                     <VBox.margin>
+                        <Insets left="210.0" top="-28.0" />
                      </VBox.margin>
                   </Button>
                </children>

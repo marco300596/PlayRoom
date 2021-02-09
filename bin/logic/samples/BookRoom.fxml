@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CustomMenuItem?>
 <?import javafx.scene.control.DatePicker?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="665.0" prefWidth="700.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.BookRoomViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="665.0" prefWidth="700.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.BookRoomViewController">
    <children>
       <Text fill="WHITE" layoutX="50.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the specific City (mandatory task):" wrappingWidth="236.4384765625">
          <font>
@@ -54,7 +55,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="bkBtn" layoutX="153.0" layoutY="389.0" mnemonicParsing="false" onMousePressed="#showRoom" style="-fx-background-color: trans; -fx-border-color: #6fd736; -fx-border-width: 2;" text="BOOK IT!" textFill="#6fd736" />
+      <Button fx:id="bkBtn" layoutX="153.0" layoutY="389.0" mnemonicParsing="false" onMousePressed="#bookRoom" style="-fx-background-color: trans; -fx-border-color: #6fd736; -fx-border-width: 2;" text="BOOK IT!" textFill="#6fd736" />
       <Text fill="WHITE" layoutX="369.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert reservation's hour (hh):">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -66,13 +67,16 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <TableView fx:id="frhTab" layoutX="10.0" layoutY="430.0" prefHeight="212.0" prefWidth="665.0" translateX="5.0">
+      <TableView fx:id="frhTab" layoutX="10.0" layoutY="430.0" prefHeight="150.0" prefWidth="665.0" translateX="5.0">
         <columns>
           <TableColumn fx:id="rName" prefWidth="175.0" text="Room's Name" />
           <TableColumn fx:id="maxGS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="122.0" text="Max Group Size" />
             <TableColumn fx:id="price" prefWidth="118.0" text="Price" />
             <TableColumn fx:id="loc" prefWidth="274.0" text="Location" />
         </columns>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
       </TableView>
       <MenuButton fx:id="hSB" layoutX="369.0" layoutY="178.0" mnemonicParsing="false" onMouseClicked="#settingHour" text="HH:">
         <items>
