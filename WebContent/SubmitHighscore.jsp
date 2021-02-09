@@ -37,33 +37,37 @@
     <title>Submit Highscore</title>
  	</head>
   	<body>
-  		<div class="container">
-    		<h1>Submit Highscore</h1>
-    		<form action="SubmitHighscoreServlet" method="post">
-  				Insert Highscore:<br> 	<input type="text" name="highscore"><br>
-  				<input type="submit" value="Submit Highscore">
-  				<div class="form-floating">
-  					
-  					
+  		<h1>Submit Highscore</h1>
+
+   		<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    		 <div class="btn-group me-2" role="group" aria-label="First group">
+    			<form action="SubmitHighscoreServlet" method="post">
+  				Insert Highscore: 	
+  					<input type="text" name="highscore">
+  					<input type="submit" value="Submit Highscore" style = "margin-left: 5px; margin-right: 10px">
+				</form>
 			</div>
+			<form action="SubmitHighscoreServlet" method="get">
+				<input type="submit" value="Update View">
 			</form>
-				<table class="table table-bordered">
-				  <thead>
-				    <tr>
-				      <th scope="col">N°</th>
-				      <th scope="col">Player's Username</th>
-				      <th scope="col">Values</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-			  		<c:forEach var="highscore" items="${highscores}" >
-						<tr>
-								<td>${highscore.score}</td>
-								<td>${highscore.username}</td>
-						</tr>
-					</c:forEach>		 	
-				  </tbody>
-				</table>
+		</div>
+		<div>
+			<table class="table table-bordered">
+			  <thead>
+			    <tr>
+			      <th scope="col">Player's Username</th>
+			      <th scope="col">Values</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  <c:forEach var="highscore" items="${highscores}" >
+			  	<tr>
+					<td>${highscore.highscore}</td>
+					<td>${highscore.username}</td>
+				</tr>
+			  </c:forEach>		 	
+			  </tbody>
+			</table>
 		</div>
     <!-- Optional JavaScript; choose one of the two! -->
 

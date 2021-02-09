@@ -66,6 +66,7 @@ public class SubmitHighscoreViewController  {
     }
     
     private void display() throws MyRuntimeException, SQLException {
+    	
     	String failed="Failed";
     	highscore = controller.showHighscore();
     	if(highscore != null) {

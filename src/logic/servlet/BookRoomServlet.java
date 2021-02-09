@@ -61,22 +61,22 @@ public class BookRoomServlet extends HttpServlet {
     	    		throw new TimeException("invalid date selected");
     	    	}
 	    	}catch(TimeException t) {
-	    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, t);
+	    		Logger.getLogger(BookRoomServlet.class.getName()).log(Level.SEVERE, null, t);
 	    		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 				dispatcher.forward(request, response);
 	    			
 	    	}catch(NumberFormatException n) {
-	    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, n);
+	    		Logger.getLogger(BookRoomServlet.class.getName()).log(Level.SEVERE, null, n);
 	    		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 				dispatcher.forward(request, response);
 				
 	    	} catch (MyRuntimeException e) {
-	    		Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, e);
+	    		Logger.getLogger(BookRoomServlet.class.getName()).log(Level.SEVERE, null, e);
 	    		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 				dispatcher.forward(request, response);
 				
 			} catch (SQLException |IOException s) {
-				Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, s);
+				Logger.getLogger(BookRoomServlet.class.getName()).log(Level.SEVERE, null, s);
 				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 				dispatcher.forward(request, response);
 			}
@@ -90,12 +90,13 @@ public class BookRoomServlet extends HttpServlet {
 					controller.createReservation();
 					
 			} catch (MyRuntimeException | SQLException e) {
-				Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, e);
+				Logger.getLogger(BookRoomServlet.class.getName()).log(Level.SEVERE, null, e);
 				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 				dispatcher.forward(request, response);
 			}finally {
-			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-			dispatcher.forward(request, response);
+			
+				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+				dispatcher.forward(request, response);
 			}
 	    }
     }
@@ -148,7 +149,6 @@ public class BookRoomServlet extends HttpServlet {
 			
 		}else {
 			
-			request.getSession().setAttribute("message", "Error. Fill at leat City, Hour and Date.");
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
 		}
