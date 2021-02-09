@@ -66,13 +66,14 @@ public class SubmitHighscoreViewController  {
     }
     
     private void display() throws MyRuntimeException, SQLException {
+    	String failed="Failed";
     	highscore = controller.showHighscore();
     	if(highscore != null) {
     		hTab.setItems(highscore);
     		plNCol.setCellValueFactory(new PropertyValueFactory<>("playerUN"));
     		highValCol.setCellValueFactory(new PropertyValueFactory<>("highscore"));
     	}else {
-    		new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered any tournament! please register to one!","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+    		new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered any tournament! please register to one!",failed, JOptionPane.INFORMATION_MESSAGE)).start();
     		Parent root = null;
     		Stage sce = (Stage)subBtn.getScene().getWindow();
     		
@@ -89,6 +90,7 @@ public class SubmitHighscoreViewController  {
     }
 
     private void submit() throws MyRuntimeException, SQLException {
+    	String failed="Failed";
     	controller.getHighscoreBean().setHighscore(Integer.parseInt(scoreTxt.getText()));
 			
 		try {
@@ -97,10 +99,10 @@ public class SubmitHighscoreViewController  {
 					if(controller.submitHighscore()) {
 						new Thread(()-> JOptionPane.showMessageDialog(null, "you have submitted your highscore! Wait for confirmation by E.O.","Success", JOptionPane.INFORMATION_MESSAGE)).start();
 					}else {
-						new Thread(()-> JOptionPane.showMessageDialog(null, "your highscore didn't submit","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+						new Thread(()-> JOptionPane.showMessageDialog(null, "your highscore didn't submit",failed, JOptionPane.INFORMATION_MESSAGE)).start();
 					}
 				}else {
-					new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered in this tournament!/n please register","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
+					new Thread(()-> JOptionPane.showMessageDialog(null, "you are not registered in this tournament!/n please register",failed, JOptionPane.INFORMATION_MESSAGE)).start();
 				}
 			}
 		}catch(UserDoesNotExist u) {

@@ -110,8 +110,7 @@ public class JoinTournamentViewController {
     		
     			TournamentBean tname = hTab.getSelectionModel().getSelectedItem();    
     			if(controller.joinTournament(tname.getTournamentName())) {
-    			new Thread(() ->
-    			JOptionPane.showConfirmDialog(null,"GZ! Tournament joined!", "Success", JOptionPane.INFORMATION_MESSAGE)).start();
+    			new Thread(()-> JOptionPane.showMessageDialog(null, "You have joined the tournament selected!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
     			}
     		}
     

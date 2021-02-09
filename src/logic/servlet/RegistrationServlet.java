@@ -52,14 +52,9 @@ public class RegistrationServlet extends HttpServlet {
 				dispatcher.forward(request,response);
 			}
     		
-    	} catch (MyRuntimeException | SQLException | UserDoesNotExist e) {
+    		}catch (MyRuntimeException | SQLException | UserDoesNotExist e) {
 			
-    		try {
-    		request.getSession().setAttribute("message", "Error. User not registered yet.");
-			response.sendRedirect(request.getHeader("Referer"));
-			//vedere a cosa fa riferimento.
-		
-			
+    			e.printStackTrace();
 			}catch(IOException i ) { 
 				Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, i);
     		
@@ -67,11 +62,15 @@ public class RegistrationServlet extends HttpServlet {
     	
 	}
 	
-    		}
+    		
 		
+    		
+    		
+    	
 	}
-
-	
-	
-
 }
+
+	
+	
+
+

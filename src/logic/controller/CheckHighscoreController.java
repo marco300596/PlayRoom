@@ -53,7 +53,6 @@ public class CheckHighscoreController {
 		}
 		
 		for(String s : toru) {
-			System.out.println(s);
 			hibean.setTournament(s);
 			Highscore high = new Highscore(this.hibean.getTournament(), false);
 			hbol.addAll(HighscoreDAO.showAllHighscoreForTournament(high));

@@ -27,7 +27,6 @@ public class JoinTournamentServlet extends HttpServlet {
 		List<TournamentBean> htab = new ArrayList<>();
 		JoinTournamentController controller = JoinTournamentController.getInstance();
 		String city=request.getParameter("city");
-		
 		controller.getrBean().setCity(city);
 		if(request.getParameter("azione").equals("Search Tournament")) {
 		try {
@@ -51,6 +50,16 @@ public class JoinTournamentServlet extends HttpServlet {
 			} catch (MyRuntimeException | SQLException e) {
 				e.printStackTrace();
 			}
+		}
+		if(city.equals("")) {
+			try {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("JoinTournament.jsp");
+			dispatcher.forward(request, response);	
+		}	catch (IOException | ServletException e) {
+			
+			e.printStackTrace();
+		}
+			
 		}
 }
 }
