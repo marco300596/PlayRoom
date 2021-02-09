@@ -52,12 +52,9 @@ public class ModifyRoomViewController {
     	
     	String error="Error";
     	
-
-
-    	if(!cbeo1.isSelected() && !cbeo2.isSelected() ) {
-    		new Thread(() ->
-        	JOptionPane.showMessageDialog(null, "You have to select one between hardware and game!",error, JOptionPane.ERROR_MESSAGE)).start();
-
+    	
+    	
+    	
 
     	if(cbeo1.isSelected() && cbeo2.isSelected()) {
     		new Thread(() ->
@@ -65,6 +62,15 @@ public class ModifyRoomViewController {
 
     	
     	}
+    	
+    	
+
+    	if(!cbeo1.isSelected() && !cbeo2.isSelected() ) {
+    		new Thread(() ->
+        	JOptionPane.showMessageDialog(null, "You have to select one between hardware and game!",error, JOptionPane.ERROR_MESSAGE)).start();
+
+
+    	
     	
     	
     	if(cbeo1.isSelected() && verifyFields() && !cbeo2.isSelected()){
