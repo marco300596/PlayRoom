@@ -19,7 +19,6 @@ import logic.controller.ManagementController;
 import logic.exception.MyRuntimeException;
 import logic.exception.StringIsEmptyException;
 import logic.exception.UserDoesNotExist;
-import logic.view.BookRoomViewController;
 import logic.view.ManagementViewController;
 
 /**
@@ -43,7 +42,7 @@ public class ManagementServlet extends HttpServlet {
     		try {
     			players.addAll(controller.updatePlayers());
     		} catch(SQLException | MyRuntimeException e) {
-    			Logger.getLogger(BookRoomViewController.class.getName()).log(Level.SEVERE, null, e);
+    			Logger.getLogger(ManagementServlet.class.getName()).log(Level.SEVERE, null, e);
     		}
     		request.setAttribute(users, players);
     		RequestDispatcher dispatcher = request.getRequestDispatcher(page);

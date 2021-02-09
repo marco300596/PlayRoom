@@ -45,13 +45,11 @@ public class CheckHighscoreViewController {
     	controller.getHighscoreBean().setHighscore(hscTbl.getSelectionModel().getSelectedItems().get(0).getHighscore());
     	controller.getHighscoreBean().setTournament(hscTbl.getSelectionModel().getSelectedItems().get(0).getTournament());
     	
-    	boolean val = controller.confirmHighscore();
-    		
-    	if (val) {
+    	if(controller.confirmHighscore()) {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "Highscore Confirmed!","Success", JOptionPane.INFORMATION_MESSAGE)).start();
-    	}else {
+    	} else {
     		new Thread(()-> JOptionPane.showMessageDialog(null, "Highscore non-acceptable!","Failed", JOptionPane.INFORMATION_MESSAGE)).start();
-    	}
+    	} 		
     }
 
     @FXML

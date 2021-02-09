@@ -55,7 +55,7 @@ public static boolean  gameInfo(GameHardwareBean gh, int id) throws  MyRuntimeEx
 		try {
 			connVi= ConnectionFactory.getConnection();
 			stmtVi = connVi.createStatement();
-			ResultSet rs = stmtVi.executeQuery("SELECT * FROM videogame WHERE gameName= "+ gameName +" and roomid = "+ id +";");
+			ResultSet rs = stmtVi.executeQuery("SELECT * FROM videogame WHERE gameName= '"+ gameName +"' and roomid = "+ id +";");
 			
 			if(rs.next()) {
 				return true;

@@ -49,14 +49,14 @@ public static boolean  hardwareInfo(GameHardwareBean gh, int id) throws  MyRunti
 	
 }
 
-	public static boolean getHardwarebyId(String gameName, int id) throws MyRuntimeException, SQLException {
+	public static boolean getHardwarebyId(String hardwareName, int id) throws MyRuntimeException, SQLException {
 		
 		Statement stmtHi = null;
 		Connection connHi = null;
 		try {
 			connHi= ConnectionFactory.getConnection();
 			stmtHi = connHi.createStatement();
-			ResultSet rs = stmtHi.executeQuery("SELECT * FROM videogame WHERE hardwarename= "+ gameName +" and roomid = "+ id +";");
+			ResultSet rs = stmtHi.executeQuery("SELECT * FROM hardware WHERE hardwarename= '"+ hardwareName +"' and roomid = "+ id +";");
 			
 			if(rs.next()) {
 				return true;

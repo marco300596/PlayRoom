@@ -46,13 +46,16 @@ public class CheckReservationServlet extends HttpServlet {
     		dispatcher.forward(request, response);
     	}
     	if(request.getParameter(ACT).equals("confirm")) {
-    		controller.getResBean().setPlayerUsername(request.getParameter("usname"));
+    		controller.getResBean().setPlayerUsername(request.getParameter("uname"));
     		controller.getResBean().setDate(request.getParameter("date"));
     		controller.getResBean().setHour(request.getParameter("hour"));
+    		
     		try {
-    			controller.confirmReservation();
-    			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-        		dispatcher.forward(request, response);
+    			if(controller.confirmReservation()) {
+    				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+            		dispatcher.forward(request, response);
+    			}
+    			
     		}catch(SQLException | MyRuntimeException e){
     			Logger.getLogger(CheckReservationServlet.class.getName()).log(Level.SEVERE, null, e);
     			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
