@@ -23,6 +23,10 @@ public class CheckHighscoreController {
 	private static CheckHighscoreController inst;
 	private HighscoreBean hibean = new HighscoreBean();
 	private LoginController logc = LoginController.getInstance();
+	
+	private CheckHighscoreController() {
+		//private constr
+	}
 
 	public static CheckHighscoreController getInstance() {
 

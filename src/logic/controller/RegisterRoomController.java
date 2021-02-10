@@ -12,7 +12,11 @@ public class RegisterRoomController {
 
     private RoomBean bean = new RoomBean();
 
-
+    
+    private RegisterRoomController(){
+    	//private constr
+    }
+    
 	public static RegisterRoomController getInstance() {
 
         if (inst == null)

@@ -18,7 +18,10 @@ public class CheckReservationController {
     private ReservationBean resBean = new ReservationBean();
     private LoginBean logBean = LoginController.getInstance().getBean();
 
-    /*singleton*/
+    private CheckReservationController(){
+    	//private constr
+    }
+    
 	public static CheckReservationController getInstance() {
 
         if (inst == null)

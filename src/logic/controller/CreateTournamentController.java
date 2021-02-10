@@ -17,6 +17,10 @@ public class CreateTournamentController {
 	private TournamentBean bean = new TournamentBean();
 	private LoginBean logBean = LoginController.getInstance().getBean();
 	
+	private CreateTournamentController(){
+    	//private constr
+    }
+	
 	public static CreateTournamentController getInstance() {
 		if (inst == null) {
 			inst = new CreateTournamentController();

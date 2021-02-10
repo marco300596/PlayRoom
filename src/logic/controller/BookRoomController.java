@@ -21,6 +21,10 @@ public class BookRoomController {
 	private LoginController logc = LoginController.getInstance();
 	private GameHardwareBean ghbean = new GameHardwareBean();
 	
+	private BookRoomController() {
+		//private constr
+	}
+	
 	public static BookRoomController getInstance() {
 
         if (inst == null)

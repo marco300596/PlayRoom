@@ -17,6 +17,10 @@ public class SubmitHighscoreController {
     private LoginController logc = LoginController.getInstance();
 	
 	
+    private SubmitHighscoreController(){
+    	//private constr
+    }
+    
     public static SubmitHighscoreController getInstance() {
 
         if (inst == null)

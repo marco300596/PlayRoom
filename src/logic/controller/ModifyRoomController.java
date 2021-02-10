@@ -15,6 +15,10 @@ public class ModifyRoomController {
 		
 		private GameHardwareBean bean = new GameHardwareBean();
 		
+		private ModifyRoomController(){
+	    	//private constr
+	    }
+		
 		public static ModifyRoomController getInstance() {
 			if (inst == null) {
 				inst = new ModifyRoomController();

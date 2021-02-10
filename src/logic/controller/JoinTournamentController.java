@@ -20,6 +20,10 @@ public class JoinTournamentController {
 	private RoomBean rbean = new RoomBean();
 	private LoginBean logBean = LoginController.getInstance().getBean();
 	
+	private JoinTournamentController(){
+    	//private constr
+    }
+	
 	public static JoinTournamentController getInstance() {
 		if (inst == null) {
 			inst = new JoinTournamentController();

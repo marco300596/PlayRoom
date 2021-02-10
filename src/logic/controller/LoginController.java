@@ -20,6 +20,11 @@ public class LoginController {
     private LoginBean bean = new LoginBean();
 
     /*singleton*/
+    
+    private LoginController(){
+    	//private constr
+    }
+    
 	public static LoginController getInstance() {
 
         if (inst == null)

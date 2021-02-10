@@ -16,6 +16,10 @@ public class RegistrationController {
 
     
     private RegistrationBean bean = new RegistrationBean();
+    
+    private RegistrationController(){
+    	//private constr
+    }
 
     /*singleton*/
 	public static RegistrationController getInstance() {

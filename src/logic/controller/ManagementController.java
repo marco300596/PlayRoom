@@ -15,7 +15,10 @@ public class ManagementController {
     private ObservableList<RegistrationBean> beanList = FXCollections.observableArrayList();
     private RegistrationBean regBean = new RegistrationBean();
 
-    /*singleton*/
+    private ManagementController(){
+    	//private constr
+    }
+    
 	public static ManagementController getInstance() {
 
         if (inst == null)
