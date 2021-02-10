@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 class JoinTournamentSelenium {
 	//Marco Casentini
 	@Test
-	void JoinTournamentTest() throws InterruptedException {
+	void joinTournamentTest() {
 		
 		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver");//ricordarsi di togliere .exe per chi lavopra con linux
 		WebDriver page = new ChromeDriver();
