@@ -30,15 +30,10 @@ class JoinTournamentSearchTest {
 		
 		
 		int id=RoomDAO.getRoomIdFromOrgUsername("b");
-		
 		TournamentDAO.insertTournament(bean, id);
-		
 		rbean.setCity("roma");
-		
 		LoginBean lbean=new LoginBean();
 		lbean.setUsername("a");
-		
-		TournamentDAO.setTournamentNameByPlayerUsername(lbean.getUsername(),nometorneo);
 		boolean res =TournamentDAO.setTournamentNameByPlayerUsername(lbean.getUsername(),nometorneo);
 		assertTrue(res);
 		

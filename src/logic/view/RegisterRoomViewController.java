@@ -1,5 +1,6 @@
 package logic.view;
 
+import java.awt.TextField;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,17 +17,17 @@ public class RegisterRoomViewController {
 	
 	
 	@FXML
-	private TextArea nstxt;
+	private TextField nstxt;
 
 	
 	@FXML
-    private TextArea nametxt;
+    private TextField nametxt;
 
 	@FXML
-    private TextArea cTxt;
+    private TextField cTxt;
 
     @FXML
-    private TextArea addrTxt;
+    private TextField addrTxt;
 
     @FXML
     private TextArea desctxt;
@@ -37,7 +38,7 @@ public class RegisterRoomViewController {
 
     
     @FXML
-    private TextArea pTxt;
+    private TextField pTxt;
     
     
    
