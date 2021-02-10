@@ -70,7 +70,7 @@ public class CheckHighscoreController {
 		try {
 			if(logc.checkPlayer(this.hibean.getPlayerUN())) {
 				Highscore high = new Highscore(this.hibean.getTournament(), this.hibean.getPlayerUN(), this.hibean.getHighscore());
-				return HighscoreDAO.newHighscore(high);
+				return HighscoreDAO.setHighscoreTrue(high);
 			}
 		}catch(UserDoesNotExist u){
 			

@@ -42,7 +42,7 @@ public class HighscoreDAO {
 		return null;
 	}
 	
-	public static Boolean newHighscore(Highscore hi) throws MyRuntimeException, SQLException {
+	public static Boolean setHighscoreTrue(Highscore hi) throws MyRuntimeException, SQLException {
 		
 		Statement stmtHt = null;
 		Connection connHt = null;
