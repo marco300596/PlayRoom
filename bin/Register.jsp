@@ -23,7 +23,7 @@
 	<input	type="radio" name="user" value=player>Player
 	<input  type="radio" name="user" value=org>Event Organizer
 	
-	<input type="submit" value="Register">
+	<input type="submit" name="azione" value="Register">
 </form>
 
 

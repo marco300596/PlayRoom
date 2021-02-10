@@ -40,7 +40,6 @@
   		<div class="container">
     		<h1>Modify Room</h1>
     		<form action="ModifyRoomServlet">
-  				Your Username:<br>     <input type="text" name="uname"><br>
 				Name:<br>              <input type="text" name="name"><br>
 				Genre:<br>             <input type="text" name="genre"><br>
 				Quantity:<br>          <input type="text" name="quantity"><br>

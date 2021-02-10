@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="665.0" prefWidth="700.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.BookRoomViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="665.0" prefWidth="700.0" style="-fx-background-color: #48484a;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.BookRoomViewController">
    <children>
       <Text fill="WHITE" layoutX="50.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the specific City (mandatory task):" wrappingWidth="236.4384765625">
          <font>
@@ -26,25 +26,25 @@
             <Image url="@../image/icons8-google-maps-48.png" />
          </image>
       </ImageView>
-      <TextField fx:id="sprTxt" layoutX="50.0" layoutY="268.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="183.0" />
+      <TextField fx:id="sprTxt" layoutX="50.0" layoutY="268.0" maxWidth="250.0" minHeight="-Infinity" minWidth="100.0" prefHeight="26.0" prefWidth="162.0" />
       <Text fill="WHITE" layoutX="50.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the Game Name:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="gameTxt" layoutX="50.0" layoutY="98.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="183.0" />
+      <TextField fx:id="gameTxt" layoutX="50.0" layoutY="98.0" maxWidth="250.0" minHeight="-Infinity" minWidth="100.0" prefHeight="26.0" prefWidth="162.0" />
       <Text fill="WHITE" layoutX="50.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the specific Hardware:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="hwTxt" layoutX="50.0" layoutY="179.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="183.0" />
+      <TextField fx:id="hwTxt" layoutX="50.0" layoutY="179.0" maxWidth="250.0" minHeight="-Infinity" minWidth="100.0" prefHeight="26.0" prefWidth="162.0" />
       <Text fill="WHITE" layoutX="369.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert your group size(a number):">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="gsTxt" layoutX="369.0" layoutY="100.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="60.0" />
+      <TextField fx:id="gsTxt" layoutX="369.0" layoutY="100.0" maxWidth="250.0" minHeight="-Infinity" minWidth="100.0" prefHeight="26.0" prefWidth="162.0" />
       <Button fx:id="fBtn" layoutX="52.0" layoutY="392.0" mnemonicParsing="false" onMousePressed="#showRooms" text="Search">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -61,7 +61,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <DatePicker fx:id="dpField" editable="false" layoutX="369.0" layoutY="268.0" prefHeight="37.0" prefWidth="183.0" />
+      <DatePicker fx:id="dpField" editable="false" layoutX="369.0" layoutY="268.0" maxWidth="250.0" minWidth="100.0" prefHeight="26.0" prefWidth="162.0" />
       <Text fill="WHITE" layoutX="369.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert reservation's day (gg):">
          <font>
             <Font name="System Bold" size="15.0" />

@@ -21,6 +21,14 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="confBtn" layoutX="29.0" layoutY="91.0" mnemonicParsing="false" onMousePressed="#confirmHighscore" style="-fx-background-color: transparent; -fx-border-color: #6fd736;" text="Confirm" textFill="#395dd4" />
+      <Button fx:id="confBtn" layoutX="29.0" layoutY="91.0" mnemonicParsing="false" onMousePressed="#confirmHighscore" style="-fx-background-color: transparent; -fx-border-color: #6fd736;" text="Confirm" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="upBtn" layoutX="143.0" layoutY="91.0" mnemonicParsing="false" onMousePressed="#update" style="-fx-background-color: transparent; -fx-border-color: #6fd736;" text="Update View" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
