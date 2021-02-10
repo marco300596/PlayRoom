@@ -1,6 +1,5 @@
 package logic.view;
 
-import java.awt.TextField;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,34 +10,31 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import logic.controller.RegisterRoomController;
 import logic.exception.MyRuntimeException;
-
+import javafx.scene.control.TextField;
 public class RegisterRoomViewController {
 	
 	
 	
 	@FXML
-	private TextField nstxt;
-
-	
-	@FXML
     private TextField nametxt;
 
-	@FXML
+    @FXML
+    private TextField nstxt;
+
+    @FXML
+    private TextArea desctxt;
+
+    @FXML
     private TextField cTxt;
 
     @FXML
     private TextField addrTxt;
 
     @FXML
-    private TextArea desctxt;
+    private TextField pTxt;
 
     @FXML
     private Button regroombtn;
-
-
-    
-    @FXML
-    private TextField pTxt;
     
     
    
