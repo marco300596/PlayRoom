@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 class ManagementSeleniumTest {
-
+	//Alessandro Picco
 	@Test
 	void testSearch() {
 		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver");
