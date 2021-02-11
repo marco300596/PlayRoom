@@ -8,9 +8,13 @@ import java.sql.SQLException;
 import logic.bean.LoginBean;
 import logic.bean.RegistrationBean;
 import logic.exception.MyRuntimeException;
-import logic.model.EventOrganizer;
+
 
 public class EventOrganizerDAO {
+	
+	private EventOrganizerDAO(){
+		//utility
+	}
 	
 	public static LoginBean getOrgByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
 		
@@ -87,17 +91,4 @@ public static boolean insertOrganizer(RegistrationBean org) throws MyRuntimeExce
 		return false;
 	}
 
-	private EventOrganizer extractEventOrganizerFromResultSet(ResultSet rs) throws SQLException{
-		
-		EventOrganizer org = new EventOrganizer();
-		
-		org.setOrgUsername(rs.getString("orgUsername"));
-		org.setOrgFirstname(rs.getString("orgFirstname"));
-		org.setOrgLastname(rs.getString("orgLastname"));
-		org.setOrgPassword(rs.getString("orgPassword"));
-		org.setOrgEmail(rs.getString("orgEmail"));
-		org.setOrgOwnRoom(rs.getString("orgOwnRoom"));
-		
-		return org;
-	}
 }
