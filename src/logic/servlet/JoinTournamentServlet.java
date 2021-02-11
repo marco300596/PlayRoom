@@ -31,18 +31,18 @@ public class JoinTournamentServlet extends HttpServlet {
 		if(request.getParameter("azione").equals("Search Tournament")) {
 			try {
 				if(city.equals("")) {
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("JoinTournament.jsp");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/JoinTournament.jsp");
 					dispatcher.forward(request, response);	
 				}
 				htab.addAll(controller.searchTournament(controller.getrBean()));    					
 				request.setAttribute("tournaments", htab);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("JoinTournament.jsp");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/JoinTournament.jsp");
 				dispatcher.forward(request, response);	
 				
 			} catch (MyRuntimeException | SQLException | IOException | ServletException e) {
 			
 				e.printStackTrace();
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("Player.jsp");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Player.jsp");
     			dispatcher.forward(request, response);
 			
 			}
@@ -51,7 +51,7 @@ public class JoinTournamentServlet extends HttpServlet {
     			controller.getBean().setTournamentName(request.getParameter("tname"));		
     			controller.joinTournament(controller.getBean().getTournamentName());
     			
-    			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("Player.jsp");
+    			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Player.jsp");
     			dispatcher.forward(request, response);	
 			} catch (MyRuntimeException | SQLException e) {
 				e.printStackTrace();
