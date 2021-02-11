@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import logic.bean.LoginBean;
 import logic.bean.RegistrationBean;
@@ -12,34 +11,6 @@ import logic.exception.MyRuntimeException;
 import logic.model.EventOrganizer;
 
 public class EventOrganizerDAO {
-	public EventOrganizer getOrganizer(String orgUsername) throws MyRuntimeException, SQLException {
-		
-		Statement stmtO = null;
-		Connection connO = null;
-		try {
-			connO= ConnectionFactory.getConnection();
-			stmtO = connO.createStatement();
-			ResultSet rs = stmtO.executeQuery("SELECT * FROM organizer WHERE orgusername=" + orgUsername);
-			
-			if(rs.next()) {
-				return extractEventOrganizerFromResultSet(rs);
-			}
-			stmtO.close();
-			connO.close();
-			
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		finally {
-			if (stmtO != null) {
-				stmtO.close();
-			}
-			if (connO != null) {
-				connO.close();
-            }
-		}
-		return null;
-	}
 	
 	public static LoginBean getOrgByUserNameAndPassword(String username, String password) throws MyRuntimeException, SQLException{
 		

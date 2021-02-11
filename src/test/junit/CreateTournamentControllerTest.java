@@ -60,7 +60,6 @@ class CreateTournamentControllerTest {
 		
 		bean.setTournamentName(getAlphaNumericString(9));
 		bean.setTournamentPartecipants(2);
-		bean.setTournamentDate("");
 		bean.setTournamentGame("call of duty");
 		bean.setTournamentHardware("xbox one");
 		bean.setTournamentRoom("stanza di b");

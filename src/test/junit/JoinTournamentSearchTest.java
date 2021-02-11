@@ -24,7 +24,6 @@ class JoinTournamentSearchTest {
 		bean.setTournamentName(nometorneo);
 		bean.setTournamentGame("gta5");
 		bean.setTournamentPartecipants(5);
-		bean.setTournamentDate("");
 		bean.setTournamentRoom("stanza bella");
 		bean.setTournamentHardware("ps4");
 		

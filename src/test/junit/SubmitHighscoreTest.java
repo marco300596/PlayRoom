@@ -26,7 +26,6 @@ class SubmitHighscoreTest {
 		tbean.setTournamentName(nometorneo1);
 		tbean.setTournamentGame("gta5");
 		tbean.setTournamentPartecipants(5);
-		tbean.setTournamentDate("");
 		tbean.setTournamentRoom("stanza bella");
 		tbean.setTournamentHardware("ps4");
 		

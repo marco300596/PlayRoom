@@ -6,7 +6,7 @@ public class TournamentBean {
 	private String tournamentRoom;
 	private String tournamentGame;
 	private String tournamentHardware;
-	private String tournamentDate;
+	
 	private int	tournamentPartecipants;
 
 
@@ -15,7 +15,7 @@ public class TournamentBean {
 		this.tournamentRoom = "";
 		this.tournamentGame = "";
 		this.tournamentHardware = "";
-		this.tournamentDate = "";
+		
 		this.tournamentPartecipants = 0;
 	}
 
@@ -83,14 +83,6 @@ public class TournamentBean {
 		
 	}
 	
-	public String getTournamentDate() {
-		return tournamentDate;
-	}
-
-
-
-	public void setTournamentDate(String tournamentDate) {
-		this.tournamentDate = tournamentDate;
-	}
+	
 	
 }

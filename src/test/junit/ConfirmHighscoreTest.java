@@ -34,7 +34,6 @@ class ConfirmHighscoreTest {
 		tb.setTournamentHardware("Acer Predator Orion 3000");
 		tb.setTournamentPartecipants(20);
 		tb.setTournamentRoom("stanza di prova");
-		tb.setTournamentDate("");
 		int id=RoomDAO.getRoomIdFromOrgUsername("b");
 		TournamentDAO.insertTournament(tb, id);
 		RegistrationBean pb = new RegistrationBean();
