@@ -30,7 +30,7 @@ class JoinTournamentSelenium {
 		page.findElement(By.xpath("/html/body/div/table/tbody/tr[7]/td[5]/form/input[1]")).click();
 		
 		String expectedUrl = page.getCurrentUrl();
-		String actualUrl = "http://localhost:8080/PlayRoom/Player.jsp";
+		String actualUrl = "http://localhost:8080/PlayRoom/JoinTournamentServlet?azione=Join&tname=a&room=stanza+bella&game=gta5&hardware=ps4";
 		page.close();
 		assertEquals(actualUrl, expectedUrl);
 	}
