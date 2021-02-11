@@ -29,37 +29,35 @@ public class JoinTournamentServlet extends HttpServlet {
 		String city=request.getParameter("city");
 		controller.getrBean().setCity(city);
 		if(request.getParameter("azione").equals("Search Tournament")) {
-		try {
-			htab.addAll(controller.searchTournament(controller.getrBean()));    					
-			request.setAttribute("tournaments", htab);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("JoinTournament.jsp");
-			dispatcher.forward(request, response);	
+			try {
+				if(city.equals("")) {
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("JoinTournament.jsp");
+					dispatcher.forward(request, response);	
+				}
+				htab.addAll(controller.searchTournament(controller.getrBean()));    					
+				request.setAttribute("tournaments", htab);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("JoinTournament.jsp");
+				dispatcher.forward(request, response);	
+				
+			} catch (MyRuntimeException | SQLException e) {
 			
-		} catch (MyRuntimeException | SQLException e) {
-		
-		e.printStackTrace();
-	}
-		}
-		if(request.getParameter("azione").equals("Join")) {
+			e.printStackTrace();
+			
+			}catch (IOException | ServletException e) {
+				
+				e.printStackTrace();
+			}
+		}if(request.getParameter("azione").equals("Join")) {
 			try {
     			controller.getBean().setTournamentName(request.getParameter("tname"));		
     			controller.joinTournament(controller.getBean().getTournamentName());
     			
-    			RequestDispatcher dispatcher = request.getRequestDispatcher("Player.jsp");
+    			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("Player.jsp");
     			dispatcher.forward(request, response);	
 			} catch (MyRuntimeException | SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		if(city.equals("")) {
-			try {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("JoinTournament.jsp");
-			dispatcher.forward(request, response);	
-		}	catch (IOException | ServletException e) {
-			
-			e.printStackTrace();
-		}
 			
 		}
-}
 }
