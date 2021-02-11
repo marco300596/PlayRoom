@@ -39,13 +39,12 @@ public class JoinTournamentServlet extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("JoinTournament.jsp");
 				dispatcher.forward(request, response);	
 				
-			} catch (MyRuntimeException | SQLException e) {
+			} catch (MyRuntimeException | SQLException | IOException | ServletException e) {
 			
-			e.printStackTrace();
-			
-			}catch (IOException | ServletException e) {
-				
 				e.printStackTrace();
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("Player.jsp");
+    			dispatcher.forward(request, response);
+			
 			}
 		}if(request.getParameter("azione").equals("Join")) {
 			try {

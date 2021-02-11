@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 class JoinTournamentSelenium {
 	//Marco Casentini
 	@Test
-	void joinTournamentTest() {
+	void joinTournamentTest() throws InterruptedException {
 		
 		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver");//ricordarsi di togliere .exe per chi lavopra con linux
 		WebDriver page = new ChromeDriver();
@@ -21,6 +21,7 @@ class JoinTournamentSelenium {
 		page.findElement(By.xpath("/html/body/form/input[3]")).click();
 		page.findElement(By.xpath("/html/body/form/input[5]")).click();
 		
+		Thread.sleep(1500);
 		page.findElement(By.xpath("/html/body/nav/div/ul/li[1]/a")).click();
 		
 		page.findElement(By.xpath("/html/body/div/form/input[1]")).sendKeys("roma");
