@@ -63,24 +63,10 @@ public class SubmitHighscoreServlet extends HttpServlet {
     	controller.getHighscoreBean().setHighscore(Integer.parseInt(request.getParameter("highscore")));
 			
 		try {
-			if (logc.findPlayerIdentity()) {
-				if (controller.checkTournamentAdehesion()) {
-					if(controller.submitHighscore()) {
-						
-						RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-						dispatcher.forward(request, response);
-						
-					}else {
-						
-						RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-						dispatcher.forward(request, response);
-					}
-					
-				}else {
-					
-					RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-					dispatcher.forward(request, response);
-				}
+			if (logc.findPlayerIdentity() && controller.checkTournamentAdehesion() && controller.submitHighscore()) {
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+				dispatcher.forward(request, response);			
 			}
 		}catch(UserDoesNotExist u) {
 			
