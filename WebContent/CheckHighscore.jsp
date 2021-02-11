@@ -17,7 +17,8 @@
   <body>
 	<nav class="navbar navbar-dark bg-primary">
   		<div class="container-fluid">
-    		<a class="navbar-brand" href="login.jsp">PlayRoom</a><br>
+    		<a class="navbar-brand" href="Organizer.jsp">PlayRoom</a><br>
+    		<a class="navbar-brand" href="login.jsp">logout</a><br>
 				<ul class="list-group list-group-horizontal" style="margin-left: 0%; margin-right: 0%" >
  					<li><a href="RoomRegistration.jsp" class="list-group-item list-group-item-action list-group-item-primary">Room Registration</a></li>
  					<li><a href="CreateTournament.jsp" class="list-group-item list-group-item-action list-group-item-primary">Create Tournament</a></li>

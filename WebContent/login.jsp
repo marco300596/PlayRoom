@@ -21,6 +21,7 @@
 			<input	type="radio" name="user" value=player>Player
 			<input  type="radio" name="user" value=org>Event Organizer<br>
 			<input type="submit" value="login">
+			<a href="Register.jsp">Register</a>
 			</form>
 	
 	</body>
