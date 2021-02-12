@@ -10,7 +10,6 @@ public class Reservation
 	private String reservationRoom;
 	private String playerUsername;
 	private String date;
-	//attenzione in database c'è roomid qui poi hour
 	private String hour;
 	
 
