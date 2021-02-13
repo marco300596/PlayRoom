@@ -32,6 +32,7 @@ public class CheckReservationServlet extends HttpServlet {
 		CheckReservationController controller = CheckReservationController.getInstance();
 		ArrayList<ReservationBean> reservations;
 		String page="CheckReservation.jsp";
+		String page2="Reservation.jsp";
 		reservations = new ArrayList<>();
 		
     	String res = "reservations";
@@ -75,6 +76,18 @@ public class CheckReservationServlet extends HttpServlet {
     		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
     		dispatcher.forward(request, response);
     	}
+    	
+    	if(request.getParameter(ACT).equals("Yconfirmed")) {
+    		try {
+    			reservations.addAll(controller.playerConfirmed());
+    		}catch(SQLException | MyRuntimeException e){
+    			Logger.getLogger(CheckReservationServlet.class.getName()).log(Level.SEVERE, null, e);
+    		}
+    		request.setAttribute(res, reservations);
+    		RequestDispatcher dispatcher = request.getRequestDispatcher(page2);
+    		dispatcher.forward(request, response);
+    	}
+    	
     	
 	}
 

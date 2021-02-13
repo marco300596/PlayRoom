@@ -28,7 +28,7 @@
                         <Insets left="50.0" top="100.0" />
                      </VBox.margin>
                   </TableView>
-                  <Button fx:id="upBtn" alignment="BOTTOM_LEFT" mnemonicParsing="false" onMousePressed="#confirmedRes" text="update">
+                  <Button fx:id="upBtn" alignment="BOTTOM_LEFT" mnemonicParsing="false" onMousePressed="#confirmedResP" text="update">
                      <VBox.margin>
                         <Insets left="50.0" top="20.0" />
                      </VBox.margin>

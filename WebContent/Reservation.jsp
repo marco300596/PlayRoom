@@ -40,8 +40,8 @@
   	<body>
   		<div class="container">
     		<h1>Your Reservations</h1>
-    		<form action="CreateTournamentServlet">
-  				<input type="submit" value="Update">
+    		<form action="CheckReservationServlet">
+  				<input type="submit" name="azione" value="Yconfirmed">
   				<div class="form-floating">
   					
   					
@@ -59,11 +59,12 @@
 					 <tbody>
 						<c:forEach var="reservation" items="${reservations}">
 							<tr>
-								<td>${reservation.playerusername}</td>
+								<td>${reservation.playerUsername}</td>
 								<td>${reservation.date}</td>
 								<td>${reservation.hour}</td>
-								<td>${reservation.numberofplayer}</td>
-								<td>${reservation.roomname}</td>
+								<td>${reservation.numberOfPlayer}</td>
+								<td>${reservation.reservationRoom}</td>
+								
 								</tr>
 						</c:forEach>
 					  </tbody>

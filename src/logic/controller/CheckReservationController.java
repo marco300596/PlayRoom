@@ -74,4 +74,10 @@ public class CheckReservationController {
 	public boolean confirmReservation() throws MyRuntimeException, SQLException {
 		 return ReservationDAO.checkReservation(resBean.getPlayerUsername(),resBean.getHour(),resBean.getDate());
 	}
+	
+	public ObservableList<ReservationBean> playerConfirmed() throws MyRuntimeException, SQLException{
+			
+		this.beanList = ReservationDAO.getAllCheckedPlayerReservations(logBean.getUsername());
+		return this.beanList;
+	}
 }

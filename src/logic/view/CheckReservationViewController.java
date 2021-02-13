@@ -98,6 +98,20 @@ public class CheckReservationViewController {
     	roomCol.setCellValueFactory(new PropertyValueFactory<>("reservationRoom"));
     }
     
-
+    @FXML
+    void confirmedResP(MouseEvent event) throws MyRuntimeException, SQLException {
+    	CheckReservationController controller = CheckReservationController.getInstance();
+    	ObservableList<ReservationBean> reservations = controller.playerConfirmed();
+    	if(reservations.isEmpty())	{
+    		new Thread(() ->JOptionPane.showMessageDialog(null, NORES,ERROR, JOptionPane.INFORMATION_MESSAGE)).start();
+    		return;
+    	}
+    	chkTable.setItems(reservations);
+    	usCol.setCellValueFactory(new PropertyValueFactory<>("playerUsername"));
+    	dtCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+    	hCol.setCellValueFactory(new PropertyValueFactory<>("hour"));
+    	numCol.setCellValueFactory(new PropertyValueFactory<>("numberOfPlayer"));
+    	roomCol.setCellValueFactory(new PropertyValueFactory<>("reservationRoom"));
+    }
 }
 

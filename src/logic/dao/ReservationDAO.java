@@ -148,6 +148,40 @@ public static ObservableList<ReservationBean> getAllCheckedReservations(int room
 	return reservations;
 }
 
+public static ObservableList<ReservationBean> getAllCheckedPlayerReservations(String username) throws MyRuntimeException, SQLException{
+	
+	Statement stmtPc = null;
+	Connection connPc = null;
+	ObservableList<ReservationBean> reservations = FXCollections.observableArrayList();
+	
+	try {
+		connPc = ConnectionFactory.getConnection();
+		stmtPc = connPc.createStatement();
+		ResultSet rs = stmtPc.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 1 and playerusername='"+username+"';");
+		
+		while(rs.next()) {
+			ReservationBean reservation = extractReservationFromResultSet(rs);
+			reservations.add(reservation);
+		}
+		
+		stmtPc.close();
+		connPc.close();
+		return reservations;
+		
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+	finally {
+		if (stmtPc != null) {
+			stmtPc.close();
+		}
+		if (connPc != null) {
+			connPc.close();
+        }
+	}
+	return reservations;
+}
+
 	public static boolean checkReservation(String player,String hour,String date) throws MyRuntimeException, SQLException {
 		PreparedStatement psRes = null;
 		Connection connRS = null;
