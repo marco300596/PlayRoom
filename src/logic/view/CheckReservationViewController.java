@@ -45,8 +45,14 @@ public class CheckReservationViewController {
     @FXML
     private Button okBtn;
     
-    private static final String ERROR = "Error";
-    private static final String NORES = "No reservation found! Please refresh the page!";
+    public static final String ERROR = "Error";
+    public static final String NORES = "No reservation found! Please refresh the page!";
+    public static final String PLAYER = "playerUsername";
+    public static final String NUM = "numberOfPlayer";
+    public static final String ROOM = "reservationRoom";
+    public static final String DATE = "date";
+    public static final String HOUR = "hour";
+    
 
     @FXML
     void checkList(MouseEvent event) throws MyRuntimeException, SQLException {
@@ -57,11 +63,11 @@ public class CheckReservationViewController {
     		return;
     	}
     	chkTable.setItems(reservations);
-    	usCol.setCellValueFactory(new PropertyValueFactory<>("playerUsername"));
-    	dtCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-    	hCol.setCellValueFactory(new PropertyValueFactory<>("hour"));
-    	numCol.setCellValueFactory(new PropertyValueFactory<>("numberOfPlayer"));
-    	roomCol.setCellValueFactory(new PropertyValueFactory<>("reservationRoom"));
+    	usCol.setCellValueFactory(new PropertyValueFactory<>(PLAYER));
+    	dtCol.setCellValueFactory(new PropertyValueFactory<>(DATE));
+    	hCol.setCellValueFactory(new PropertyValueFactory<>(HOUR));
+    	numCol.setCellValueFactory(new PropertyValueFactory<>(NUM));
+    	roomCol.setCellValueFactory(new PropertyValueFactory<>(ROOM));
     }
     
     @FXML
@@ -85,17 +91,17 @@ public class CheckReservationViewController {
     @FXML
     void confirmedRes(MouseEvent event) throws MyRuntimeException, SQLException {
     	CheckReservationController controller = CheckReservationController.getInstance();
-    	ObservableList<ReservationBean> reservations = controller.confirmed();
-    	if(reservations.isEmpty())	{
+    	ObservableList<ReservationBean> res = controller.confirmed();
+    	if(res.isEmpty())	{
     		new Thread(() ->JOptionPane.showMessageDialog(null, NORES,ERROR, JOptionPane.INFORMATION_MESSAGE)).start();
     		return;
     	}
-    	chkTable.setItems(reservations);
-    	usCol.setCellValueFactory(new PropertyValueFactory<>("playerUsername"));
-    	dtCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-    	hCol.setCellValueFactory(new PropertyValueFactory<>("hour"));
-    	numCol.setCellValueFactory(new PropertyValueFactory<>("numberOfPlayer"));
-    	roomCol.setCellValueFactory(new PropertyValueFactory<>("reservationRoom"));
+    	chkTable.setItems(res);
+    	usCol.setCellValueFactory(new PropertyValueFactory<>(PLAYER));
+    	dtCol.setCellValueFactory(new PropertyValueFactory<>(DATE));
+    	hCol.setCellValueFactory(new PropertyValueFactory<>(HOUR));
+    	numCol.setCellValueFactory(new PropertyValueFactory<>(NUM));
+    	roomCol.setCellValueFactory(new PropertyValueFactory<>(ROOM));
     }
     
     @FXML
@@ -107,11 +113,11 @@ public class CheckReservationViewController {
     		return;
     	}
     	chkTable.setItems(reservations);
-    	usCol.setCellValueFactory(new PropertyValueFactory<>("playerUsername"));
-    	dtCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-    	hCol.setCellValueFactory(new PropertyValueFactory<>("hour"));
-    	numCol.setCellValueFactory(new PropertyValueFactory<>("numberOfPlayer"));
-    	roomCol.setCellValueFactory(new PropertyValueFactory<>("reservationRoom"));
+    	usCol.setCellValueFactory(new PropertyValueFactory<>(PLAYER));
+    	dtCol.setCellValueFactory(new PropertyValueFactory<>(DATE));
+    	hCol.setCellValueFactory(new PropertyValueFactory<>(HOUR));
+    	numCol.setCellValueFactory(new PropertyValueFactory<>(NUM));
+    	roomCol.setCellValueFactory(new PropertyValueFactory<>(ROOM));
     }
 }
 
