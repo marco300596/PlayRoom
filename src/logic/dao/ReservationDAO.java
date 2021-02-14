@@ -116,21 +116,21 @@ public static ObservableList<ReservationBean> getAllUncheckReservations(int room
 
 public static ObservableList<ReservationBean> getAllCheckedReservations(int roomid) throws MyRuntimeException, SQLException{
 	
-	Statement stmtPc = null;
+	Statement stmtPcr = null;
 	Connection connPc = null;
 	ObservableList<ReservationBean> reservations = FXCollections.observableArrayList();
 	
 	try {
 		connPc = ConnectionFactory.getConnection();
-		stmtPc = connPc.createStatement();
-		ResultSet rs = stmtPc.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 1 and roomid="+roomid+";");
+		stmtPcr = connPc.createStatement();
+		ResultSet rs = stmtPcr.executeQuery("SELECT * FROM reservation WHERE reservationstatus = 1 and roomid="+roomid+";");
 		
 		while(rs.next()) {
 			ReservationBean reservation = extractReservationFromResultSet(rs);
 			reservations.add(reservation);
 		}
 		
-		stmtPc.close();
+		stmtPcr.close();
 		connPc.close();
 		return reservations;
 		
@@ -138,8 +138,8 @@ public static ObservableList<ReservationBean> getAllCheckedReservations(int room
 		ex.printStackTrace();
 	}
 	finally {
-		if (stmtPc != null) {
-			stmtPc.close();
+		if (stmtPcr != null) {
+			stmtPcr.close();
 		}
 		if (connPc != null) {
 			connPc.close();
