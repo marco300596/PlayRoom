@@ -43,8 +43,7 @@ public class RegistrationServlet extends HttpServlet {
 				String nextJSP = "/login.jsp";
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 				dispatcher.forward(request,response);
-    		} 
-    		else if(request.getParameter("user").equals("organizer") && !LoginController.getInstance().findOrgIdentity()) {
+    		} else if(request.getParameter("user").equals("org") && !LoginController.getInstance().findOrgIdentity()) {
 					
 				reg.insertNewOrganizer(reg.getBean());
 				String nextJSP = "/login.jsp";
@@ -52,15 +51,16 @@ public class RegistrationServlet extends HttpServlet {
 				dispatcher.forward(request,response);
 			}
     		
-    		}catch (MyRuntimeException | SQLException | UserDoesNotExist e) {
-			
+    		}catch (MyRuntimeException | SQLException|UserDoesNotExist e) {
+    			
+    			
     			e.printStackTrace();
 			}catch(IOException i ) { 
 				Logger.getLogger(RegisterRoomViewController.class.getName()).log(Level.SEVERE, null, i);
     		
     		
     	
-	}
+	} 
 	
     		
 		
