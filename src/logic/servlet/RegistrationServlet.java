@@ -30,27 +30,34 @@ public class RegistrationServlet extends HttpServlet {
     	String email = request.getParameter("email");
     	String username = request.getParameter("uname");
     	String password = request.getParameter("pass");
-		RegistrationController reg=RegistrationController.getInstance();
-		reg.getBean().setFirstname(firstname);
-    	reg.getBean().setLastname(lastname);
-    	reg.getBean().setEmail(email);
-    	reg.getBean().setUsername(username);
-    	reg.getBean().setPassword(password);
     	try {	
-    		if(request.getParameter("user").equals("player") && !LoginController.getInstance().findPlayerIdentity()) {
-    				
-    			reg.insertNewPlayer(reg.getBean());
-				String nextJSP = "/login.jsp";
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-				dispatcher.forward(request,response);
-    		} else if(request.getParameter("user").equals("org") && !LoginController.getInstance().findOrgIdentity()) {
-					
-				reg.insertNewOrganizer(reg.getBean());
-				String nextJSP = "/login.jsp";
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-				dispatcher.forward(request,response);
+    		if(request.getParameter("user").equals("player")) {
+    			RegistrationController reg=RegistrationController.getInstance();
+    			reg.getBean().setFirstname(firstname);
+    	    	reg.getBean().setLastname(lastname);
+    	    	reg.getBean().setEmail(email);
+    	    	reg.getBean().setUsername(username);
+    	    	reg.getBean().setPassword(password);
+    	    	if(!LoginController.getInstance().findPlayerIdentity()) {
+    	    		reg.insertNewPlayer(reg.getBean());
+    	    		String nextJSP = "/login.jsp";
+    	    		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+    	    		dispatcher.forward(request,response);
+    	    	}
+    		} else if(request.getParameter("user").equals("org")) {
+    			RegistrationController reg=RegistrationController.getInstance();
+    			reg.getBean().setOrgFirstname(firstname);
+    	    	reg.getBean().setOrgLastname(lastname);
+    	    	reg.getBean().setOrgEmail(email);
+    	    	reg.getBean().setOrgUsername(username);
+    	    	reg.getBean().setOrgPassword(password);
+    	    	if(!LoginController.getInstance().findOrgIdentity()) {
+    	    		reg.insertNewOrganizer(reg.getBean());
+    	    		String nextJSP = "/login.jsp";
+    	    		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+    	    		dispatcher.forward(request,response);
 			}
-    		
+    		}
     		}catch (MyRuntimeException | SQLException|UserDoesNotExist e) {
     			
     			
