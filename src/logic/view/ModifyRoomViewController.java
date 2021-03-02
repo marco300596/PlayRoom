@@ -53,7 +53,18 @@ public class ModifyRoomViewController {
     	String error="Error";
     	
     	
+    	if(cbeo1.isSelected()){
+			
+    		hardware();
+    		
+    		
+    	}
     	
+    	if(cbeo2.isSelected()){
+			
+    		videogame();
+    		
+    	}
     	
 
     	if(cbeo1.isSelected() && cbeo2.isSelected()) {
@@ -71,24 +82,7 @@ public class ModifyRoomViewController {
 
 
     	
-    	
-    	
-    	if(cbeo1.isSelected() && verifyFields() && !cbeo2.isSelected()){
-			
-    		hardware();
-    		
-    		
-    	}
-    			
-    	
-    	
-    	
-    
-    	if(cbeo2.isSelected() && verifyFields() && !cbeo1.isSelected()){
-    			
-    		videogame();
-    		
-    	}
+  
     	
     	if(!verifyFields()){
 			
