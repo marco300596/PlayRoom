@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -54,7 +56,7 @@ public class JoinTournamentServlet extends HttpServlet {
     			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Player.jsp");
     			dispatcher.forward(request, response);	
 			} catch (MyRuntimeException | SQLException e) {
-				e.printStackTrace();
+				Logger.getLogger(JoinTournamentServlet.class.getName()).log(Level.SEVERE, null, e);
 			}
 		}
 			

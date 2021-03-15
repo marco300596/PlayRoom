@@ -2,6 +2,8 @@ package logic.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -64,7 +66,7 @@ public class ModifyRoomServlet extends HttpServlet {
     					
 			
 		
-    					e.printStackTrace();
+    		Logger.getLogger(ModifyRoomServlet.class.getName()).log(Level.SEVERE, null, e);
 			}
     		
     	

@@ -22,7 +22,7 @@ public class CreateTournamentServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = "Organizer.jsp";
+		String page = "/Organizer.jsp";
 		String room = request.getParameter("rname");
 		String tournament = request.getParameter("tname");
 		String partecipants = request.getParameter("part");
@@ -39,15 +39,13 @@ public class CreateTournamentServlet extends HttpServlet {
     		int num = Integer.parseInt(partecipants);
         	controller.getBean().setTournamentPartecipants(num);
 			controller.insertNewTournament(controller.getBean());
-			/*inserisco un messaggio da stampare che verra' passato 
-			 * al relativo jsp (crea torneo) qui faccio il set dell'
-			 * attributo che voglio stampare nel jsp (vedi)
-			 */
-			request.getSession().setAttribute("message", "Your tournament has been created!");
-		} catch (MyRuntimeException | SQLException | NumberFormatException e) {
-    		Logger.getLogger(CreateTournamentServlet.class.getName()).log(Level.SEVERE, null, e);
-			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
 			dispatcher.forward(request, response);
+			
+		} catch (MyRuntimeException | SQLException | NumberFormatException e) {
+			Logger.getLogger(CreateTournamentServlet.class.getName()).log(Level.SEVERE, null, e);
+    		
 		}
 	}
 

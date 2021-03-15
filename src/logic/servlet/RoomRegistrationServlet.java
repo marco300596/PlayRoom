@@ -2,6 +2,8 @@ package logic.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,7 +47,7 @@ public class RoomRegistrationServlet extends HttpServlet {
 	}
 		catch (MyRuntimeException | SQLException  e) {
 			
-			e.printStackTrace();
+			Logger.getLogger(RoomRegistrationServlet.class.getName()).log(Level.SEVERE, null, e);
 }
 
 	
